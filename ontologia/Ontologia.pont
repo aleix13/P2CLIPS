@@ -1,4 +1,4 @@
-; Tue May 10 19:54:14 CEST 2016
+; Thu May 12 23:29:22 CEST 2016
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -11,6 +11,11 @@
 		(type FLOAT)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot picar_entre_hores
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot Resistencia_max
 		(type INTEGER)
 ;+		(cardinality 1 1)
@@ -20,15 +25,6 @@
 ;+		(allowed-classes Problema_Salut)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Actiu
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Ontologia_Class1
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot Menors
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
@@ -36,6 +32,7 @@
 		(create-accessor read-write))
 	(multislot Indicat_Per
 		(type SYMBOL)
+		(allowed-values Coll Avantbrac Brac abdominals part_superior_cama part_inferior_cama esquena espatlles pressio_alta obesitat)
 		(create-accessor read-write))
 	(single-slot Repeticions_max
 		(type INTEGER)
@@ -77,7 +74,6 @@
 		(create-accessor read-write))
 	(single-slot Series
 		(type INTEGER)
-		(range 1 %3FVARIABLE)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(multislot Habits
@@ -101,7 +97,6 @@
 		(create-accessor read-write))
 	(single-slot Nombre_cigarretes
 		(type INTEGER)
-		(range 0 %3FVARIABLE)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot Exercici_Assignat
@@ -111,7 +106,6 @@
 		(create-accessor read-write))
 	(single-slot Peces_fruita
 		(type INTEGER)
-		(range 0 %3FVARIABLE)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot Velocitat_min
@@ -120,6 +114,7 @@
 		(create-accessor read-write))
 	(multislot Contraindicacions
 		(type SYMBOL)
+		(allowed-values Coll Avantbrac brac abdominals part_superior_cama part_inferior_cama esquena espatlles Pressio_alta Obesitat)
 		(create-accessor read-write))
 	(single-slot IMC
 ;+		(comment "Pes/alcada^2")
@@ -129,11 +124,6 @@
 	(single-slot Majors
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Tipus
-		(type SYMBOL)
-		(allowed-values Domestic Feiner Lleure)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot Velocitat_max
@@ -187,7 +177,7 @@
 		(create-accessor read-write))
 	(multislot Parts_Afectades
 		(type SYMBOL)
-		(allowed-values Bracos Cames Tronc)
+		(allowed-values Coll Esquena Avantbrac Brac Part_superior_cama part_inferior_cama Abdominals espatlles)
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write))
 	(single-slot Critic
@@ -195,25 +185,13 @@
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Intensitat
-		(type SYMBOL)
-		(allowed-values Lleu Moderada Greu)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot Pes_min
 		(type FLOAT)
-		(range 0.0 %3FVARIABLE)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot Edat
 		(type INTEGER)
 		(range 0 130)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Quantitat
-;+		(comment "En peces/Setmana")
-		(type INTEGER)
-		(range 0 %3FVARIABLE)
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
@@ -306,9 +284,13 @@
 (defclass Habit_Salut
 	(is-a USER)
 	(role concrete)
+	(single-slot picar_entre_hores
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot Nombre_cigarretes
 		(type INTEGER)
-		(range 0 %3FVARIABLE)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot Copes
@@ -317,7 +299,6 @@
 		(create-accessor read-write))
 	(single-slot Peces_fruita
 		(type INTEGER)
-		(range 0 %3FVARIABLE)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot Abus_sal
@@ -331,6 +312,7 @@
 	(role concrete)
 	(multislot Contraindicacions
 		(type SYMBOL)
+		(allowed-values Coll Avantbrac brac abdominals part_superior_cama part_inferior_cama esquena espatlles Pressio_alta Obesitat)
 		(create-accessor read-write))
 	(single-slot Nom
 ;+		(comment "Nom de l'usuari")
@@ -349,6 +331,7 @@
 		(create-accessor read-write))
 	(multislot Indicat_Per
 		(type SYMBOL)
+		(allowed-values Coll Avantbrac Brac abdominals part_superior_cama part_inferior_cama esquena espatlles pressio_alta obesitat)
 		(create-accessor read-write)))
 
 (defclass Musculacio
@@ -390,7 +373,6 @@
 		(create-accessor read-write))
 	(single-slot Series
 		(type INTEGER)
-		(range 1 %3FVARIABLE)
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
@@ -412,7 +394,6 @@
 		(create-accessor read-write))
 	(single-slot Pes_min
 		(type FLOAT)
-		(range 0.0 %3FVARIABLE)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot Repeticions_max
@@ -549,6 +530,6 @@
 	(role concrete)
 	(multislot Parts_Afectades
 		(type SYMBOL)
-		(allowed-values Bracos Cames Tronc)
+		(allowed-values Coll Esquena Avantbrac Brac Part_superior_cama part_inferior_cama Abdominals espatlles)
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write)))

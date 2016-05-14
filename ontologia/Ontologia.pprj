@@ -1,4 +1,4 @@
-; Tue May 10 19:54:14 CEST 2016
+; Thu May 12 23:29:22 CEST 2016
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -20,9 +20,9 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[Ontologia_ProjectKB_Class96]
-		[Ontologia_ProjectKB_Class97]
-		[Ontologia_ProjectKB_Class98]))
+		[Ontologia_ProjectKB_Class94]
+		[Ontologia_ProjectKB_Class95]
+		[Ontologia_ProjectKB_Class96]))
 
 ([CLSES_TAB] of  Widget
 
@@ -163,7 +163,7 @@
 ([KB_291316_Class99] of  Property_List
 )
 
-([KB_311646_Class0] of  Map
+([KB_307286_Class0] of  Map
 )
 
 ([LAYOUT_PROPERTIES] of  Property_List
@@ -535,17 +535,17 @@
 	(property_list [Ontologia_ProjectKB_Class10])
 	(widget_class_name "edu.stanford.smi.protegex.owl.ui.cls.OWLClassesTab"))
 
-([Ontologia_ProjectKB_Class96] of  String
+([Ontologia_ProjectKB_Class94] of  String
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))
 
-([Ontologia_ProjectKB_Class97] of  String
+([Ontologia_ProjectKB_Class95] of  String
 
 	(name ":PAL-CONSTRAINT")
 	(string_value "%3APAL-NAME"))
 
-([Ontologia_ProjectKB_Class98] of  String
+([Ontologia_ProjectKB_Class96] of  String
 
 	(name ":META-CLASS")
 	(string_value "%3ANAME"))

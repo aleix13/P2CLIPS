@@ -1,4 +1,11 @@
-; Tue May 10 19:54:14 CEST 2016
+; Thu May 12 23:29:22 CEST 2016
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
+
+([Ontologia_Class0] of  Exercici
+
+	(Indicat_Per obesitat)
+	(Majors TRUE)
+	(Menors TRUE)
+	(Nom "Cinta"))
