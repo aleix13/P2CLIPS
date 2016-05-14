@@ -539,11 +539,24 @@
 ;--------------------------------INSTANCIES-----------------------------------------------------------
 
 ;--------------------------------TEMPLATES-----------------------------------------------------------
-;---Templates per les preguntes ---
 		(deftemplate Nom "guardem el nom de l'usuari"
 			(slot nom (type STRING))
 		)
-	;---Templates per les preguntes ---
+
+	;templates per a l'abstraccion
+	(deftemplate forma_Fisica
+		(slot valors (type SYMBOL) (allowed-values Molt_Baixa Baixa Normal Alta Molt_Alta))
+	)
+	(deftemplate nivell_Massa
+		(slot valors (type SYMBOL) (allowed-values Insuf Normal Sobrepes Obsesitat ObsesitatMorbida ))
+	)
+	(deftemplate temps_disp
+		(slot valors (type SYMBOL) (allowed-values POC NORMAL MOLT))
+	)
+	(deftemplate pressio
+		(slot valors (type SYMBOL) (allowed-values BAIXA NORMAL ALTA))
+	)
+
 ;--------------------------------TEMPLATES-----------------------------------------------------------
 ;--------------------------------MODUL:MAIN-----------------------------------------------------------
 (defmodule MAIN (export ?ALL))
@@ -567,7 +580,7 @@
 ?client_actual <- (object (is-a Client))
 	=>
 	(printout t "Introdueix el teu nom:" crlf)
-	(bind ?nom (read))
+	(bind ?nom (readline))
 	(send ?client_actual put-Nom ?nom)
 	)
 
@@ -576,6 +589,9 @@
 		=>
 		(printout t "Introdueix la teva edat:" crlf)
 		(bind ?edat (read))
+		(if (neq (integerp ?edat) TRUE)
+		then (assert (edat_incorrecte))
+		)
 		(send ?client_actual put-Edat ?edat)
 		)
 
@@ -596,7 +612,43 @@
 				(assert (pes))
 				(focus ABSTRACCIO)
 				)
+			(defrule pregunta-temps "preguntem temps disponible diari"
+				?client_actual <- (object (is-a Client))
+					=>
+					(printout t "Quant temps tens disponible al dia?:" crlf)
+					(bind ?temps (read))
+					(send ?client_actual put-Temps_Disponible_Diari ?temps)
+					)
+			(defrule pregunta-pressio "preguntem pressio min i max"
+				?client_actual <- (object (is-a Client))
+					=>
+					(printout t "Introdueix la pressio sanguinea minima i maxima en estat de repos:" crlf)
+					(printout t "Minima:" crlf)
+					(bind ?pmin (read))
+					(printout t "Maxima:" crlf)
+					(bind ?pmax (read))
+					(send ?client_actual put-Pressio_Sanguinea ?pmin ?pmax)
+				)
 
+
+
+			;preguntes-dades-incorrectes
+			(defrule pregunta-edat-repeat "preguntem edat si s'ha equivocat"
+			(declare (salience 20))
+			(edat_incorrecte)
+			?ei <-(edat_incorrecte)
+			?client_actual <- (object (is-a Client))
+
+				=>
+				(printout t "No has introduit l'edat adequadament, torna-la a introduir:" crlf)
+				(bind ?edat (read))
+				(if (eq (integerp ?edat) TRUE)
+				then (retract ?ei)
+			  (send ?client_actual put-Edat ?edat)
+				else (assert (edat_incorrecte))
+				)
+
+				)
 ;--------------------------------MODUL:PREGUNTES-----------------------------------------------------------
 
 ;--------------------------------MODUL:ABSTR-----------------------------------------------------------
