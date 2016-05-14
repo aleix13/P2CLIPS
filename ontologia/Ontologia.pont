@@ -1,4 +1,4 @@
-; Sat May 14 12:26:13 CEST 2016
+; Sat May 14 12:37:48 CEST 2016
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -37,10 +37,6 @@
 	(single-slot Repeticions_max
 		(type INTEGER)
 ;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Ontologia_Class10008
-		(type STRING)
-;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(multislot Pressio_Sanguinea
 ;+		(comment "Min i Max")
@@ -156,6 +152,10 @@
 	(single-slot Velocitat_max
 		(type FLOAT)
 ;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Puntuacio
+		(type INTEGER)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot Nom
 ;+		(comment "Nom de l'usuari")
@@ -312,6 +312,10 @@
 	(single-slot hores_exercici_feina
 		(type STRING)
 ;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Puntuacio
+		(type INTEGER)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot hores_sedentari
 		(type INTEGER)

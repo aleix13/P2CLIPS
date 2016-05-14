@@ -1,4 +1,4 @@
-; Sat May 14 12:26:13 CEST 2016
+; Sat May 14 12:37:48 CEST 2016
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -60,3 +60,16 @@
 	(Menors TRUE)
 	(Nom "Stepper")
 	(Objectiu Manteniment Perdre_pes condicio_fisica_general Rehabilitacio))
+
+([Ontologia_Class10017] of  Cardio
+
+	(Contraindicacions pressio_alta problemes_cardiovasculars problemes_respiratoris lesio_extremitats_superiors mobilitat_nula_extremitats_superiors)
+	(Descripcio "Maquina que simula el moviment de esquiar")
+	(Indicat_Per rehab_extremitats_superiors)
+	(Majors TRUE)
+	(Menors TRUE)
+	(Nom "Esqui")
+	(Objectiu Manteniment Perdre_pes condicio_fisica_general Rehabilitacio))
+
+([Ontologia_Class10018] of  Terra_Repeticions
+)
