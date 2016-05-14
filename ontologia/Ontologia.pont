@@ -1,7 +1,7 @@
-; Thu May 12 23:29:22 CEST 2016
+; Sat May 14 12:26:13 CEST 2016
 ; 
-;+ (version "3.4.8")
-;+ (build "Build 629")
+;+ (version "3.5")
+;+ (build "Build 663")
 
 
 (defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
@@ -32,16 +32,25 @@
 		(create-accessor read-write))
 	(multislot Indicat_Per
 		(type SYMBOL)
-		(allowed-values Coll Avantbrac Brac abdominals part_superior_cama part_inferior_cama esquena espatlles pressio_alta obesitat)
+		(allowed-values rehab_extremitats_inferiors rehab_extremitats_superiors rehab_esquena rehab_coll molesties_esquena rehab_abdomen)
 		(create-accessor read-write))
 	(single-slot Repeticions_max
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(single-slot Ontologia_Class10008
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(multislot Pressio_Sanguinea
 ;+		(comment "Min i Max")
 		(type FLOAT)
 		(cardinality 2 2)
+		(create-accessor read-write))
+	(single-slot hores_domestiques
+;+		(comment "(en minuts)")
+		(type INTEGER)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot Resistencia_min
 		(type INTEGER)
@@ -63,6 +72,10 @@
 ;+		(allowed-classes Assignacio_Exercici)
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write))
+	(single-slot Descripcio
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot Durada_max
 		(type INTEGER)
 ;+		(cardinality 1 1)
@@ -76,9 +89,10 @@
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(multislot Habits
+	(single-slot Habits
 		(type INSTANCE)
-;+		(allowed-classes Assignacio_Habit_Fisic)
+;+		(allowed-classes Habit_Fisic)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot Durada_min
 		(type INTEGER)
@@ -108,13 +122,17 @@
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(single-slot hores_esport_extra
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot Velocitat_min
 		(type FLOAT)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(multislot Contraindicacions
 		(type SYMBOL)
-		(allowed-values Coll Avantbrac brac abdominals part_superior_cama part_inferior_cama esquena espatlles Pressio_alta Obesitat)
+		(allowed-values pressio_alta problemes_cardiovasculars problemes_respiratoris lesio_exstremitats_inferiors lesio_esquena lesio_extremitats_superiors lesio_coll mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors lesio_abdomen)
 		(create-accessor read-write))
 	(single-slot IMC
 ;+		(comment "Pes/alcada^2")
@@ -124,6 +142,15 @@
 	(single-slot Majors
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot Objectiu
+		(type SYMBOL)
+		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general Rehabilitacio)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot hores_exercici_feina
+		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot Velocitat_max
@@ -136,6 +163,10 @@
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot Copes
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot hores_sedentari
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
@@ -175,6 +206,11 @@
 		(type INSTANCE)
 ;+		(allowed-classes Assignacio_problema_salut)
 		(create-accessor read-write))
+	(single-slot part_rehab
+		(type SYMBOL)
+		(allowed-values lesio_extremitats_inferiors lesio_extremitats_superiors lesio_esquena lesio_coll)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(multislot Parts_Afectades
 		(type SYMBOL)
 		(allowed-values Coll Esquena Avantbrac Brac Part_superior_cama part_inferior_cama Abdominals espatlles)
@@ -189,6 +225,10 @@
 		(type FLOAT)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(single-slot hores_despl
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot Edat
 		(type INTEGER)
 		(range 0 130)
@@ -198,16 +238,6 @@
 (defclass Client
 	(is-a USER)
 	(role concrete)
-	(single-slot Nom
-;+		(comment "Nom de l'usuari")
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(multislot Pressio_Sanguinea
-;+		(comment "Min i Max")
-		(type FLOAT)
-		(cardinality 2 2)
-		(create-accessor read-write))
 	(single-slot Habits_salut
 		(type INSTANCE)
 ;+		(allowed-classes Habit_Salut)
@@ -218,13 +248,34 @@
 		(type FLOAT)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(multislot Habits
+	(single-slot Habits
 		(type INSTANCE)
-;+		(allowed-classes Assignacio_Habit_Fisic)
+;+		(allowed-classes Habit_Fisic)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(multislot Problemes_Salut
 		(type INSTANCE)
 ;+		(allowed-classes Assignacio_problema_salut)
+		(create-accessor read-write))
+	(multislot Objectiu
+		(type SYMBOL)
+		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general Rehabilitacio)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot part_rehab
+		(type SYMBOL)
+		(allowed-values lesio_extremitats_inferiors lesio_extremitats_superiors lesio_esquena lesio_coll)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Nom
+;+		(comment "Nom de l'usuari")
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot Pressio_Sanguinea
+;+		(comment "Min i Max")
+		(type FLOAT)
+		(cardinality 2 2)
 		(create-accessor read-write))
 	(single-slot Alcada
 ;+		(comment "Alcada en centimetres")
@@ -258,9 +309,25 @@
 (defclass Habit_Fisic
 	(is-a USER)
 	(role concrete)
-	(single-slot Nom
-;+		(comment "Nom de l'usuari")
+	(single-slot hores_exercici_feina
 		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot hores_sedentari
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot hores_despl
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot hores_domestiques
+;+		(comment "(en minuts)")
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot hores_esport_extra
+		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
@@ -312,7 +379,7 @@
 	(role concrete)
 	(multislot Contraindicacions
 		(type SYMBOL)
-		(allowed-values Coll Avantbrac brac abdominals part_superior_cama part_inferior_cama esquena espatlles Pressio_alta Obesitat)
+		(allowed-values pressio_alta problemes_cardiovasculars problemes_respiratoris lesio_exstremitats_inferiors lesio_esquena lesio_extremitats_superiors lesio_coll mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors lesio_abdomen)
 		(create-accessor read-write))
 	(single-slot Nom
 ;+		(comment "Nom de l'usuari")
@@ -324,14 +391,24 @@
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(multislot Objectiu
+;+		(comment "objectiu fisic pel qual es adequat")
+		(type SYMBOL)
+		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general Rehabilitacio)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
 	(single-slot Menors
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(single-slot Descripcio
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(multislot Indicat_Per
 		(type SYMBOL)
-		(allowed-values Coll Avantbrac Brac abdominals part_superior_cama part_inferior_cama esquena espatlles pressio_alta obesitat)
+		(allowed-values rehab_extremitats_inferiors rehab_extremitats_superiors rehab_esquena rehab_coll molesties_esquena rehab_abdomen)
 		(create-accessor read-write)))
 
 (defclass Musculacio
@@ -473,27 +550,6 @@
 		(create-accessor read-write))
 	(single-slot Velocitat_max
 		(type FLOAT)
-;+		(cardinality 1 1)
-		(create-accessor read-write)))
-
-(defclass Assignacio_Habit_Fisic
-	(is-a USER)
-	(role concrete)
-	(single-slot Frequencia
-;+		(comment "En dies/setmana")
-		(type INTEGER)
-		(range 0 7)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Durada
-;+		(comment "En minuts setmanals")
-		(type INTEGER)
-		(range 0 1440)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Habit_associat
-		(type INSTANCE)
-;+		(allowed-classes Habit_Fisic)
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
 

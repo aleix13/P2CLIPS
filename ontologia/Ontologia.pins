@@ -1,11 +1,62 @@
-; Thu May 12 23:29:22 CEST 2016
+; Sat May 14 12:26:13 CEST 2016
 ; 
-;+ (version "3.4.8")
-;+ (build "Build 629")
+;+ (version "3.5")
+;+ (build "Build 663")
 
-([Ontologia_Class0] of  Exercici
+([Ontologia_Class10003] of  CInta
 
-	(Indicat_Per obesitat)
+	(Contraindicacions pressio_alta problemes_cardiovasculars problemes_respiratoris lesio_exstremitats_inferiors lesio_coll mobilitat_nula_extremitats_inferiors lesio_esquena)
+	(Descripcio "Maquina que s'usa per correr on es pot graduar la velocitat i el pendent de la marxa.")
 	(Majors TRUE)
 	(Menors TRUE)
-	(Nom "Cinta"))
+	(Nom "Cinta de correr"))
+
+([Ontologia_Class10004] of  Cardio
+
+	(Contraindicacions pressio_alta problemes_cardiovasculars problemes_respiratoris lesio_exstremitats_inferiors mobilitat_nula_extremitats_inferiors)
+	(Descripcio "Bicicleta estatica on es va assentat en un seient que te respatller")
+	(Indicat_Per rehab_extremitats_inferiors molesties_esquena)
+	(Majors TRUE)
+	(Menors TRUE)
+	(Nom "Bicicleta reclinable")
+	(Objectiu Manteniment Perdre_pes condicio_fisica_general Rehabilitacio))
+
+([Ontologia_Class10005] of  Cardio
+
+	(Contraindicacions problemes_cardiovasculars pressio_alta problemes_respiratoris lesio_exstremitats_inferiors lesio_extremitats_superiors lesio_esquena mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors)
+	(Descripcio "Bicleta eliptica")
+	(Indicat_Per rehab_extremitats_inferiors molesties_esquena)
+	(Majors TRUE)
+	(Menors TRUE)
+	(Nom "Eliptica")
+	(Objectiu Manteniment Perdre_pes condicio_fisica_general Rehabilitacio))
+
+([Ontologia_Class10009] of  Cardio
+
+	(Contraindicacions pressio_alta problemes_cardiovasculars problemes_respiratoris lesio_exstremitats_inferiors lesio_esquena mobilitat_nula_extremitats_inferiors)
+	(Descripcio "Maquina que recrea una bicicleta on es pot ajustar la intensitat")
+	(Indicat_Per rehab_extremitats_inferiors)
+	(Majors TRUE)
+	(Menors TRUE)
+	(Nom "Bicileta estatica")
+	(Objectiu Manteniment Perdre_pes condicio_fisica_general Rehabilitacio))
+
+([Ontologia_Class10010] of  Cardio
+
+	(Contraindicacions lesio_exstremitats_inferiors pressio_alta problemes_cardiovasculars problemes_respiratoris mobilitat_nula_extremitats_superiors mobilitat_nula_extremitats_inferiors lesio_extremitats_superiors)
+	(Descripcio "Maquina que simula el moviment de rem on es pot modificar la resistencia de la remada")
+	(Indicat_Per rehab_extremitats_inferiors rehab_extremitats_superiors rehab_esquena molesties_esquena)
+	(Majors TRUE)
+	(Menors TRUE)
+	(Nom "Maquina de remar")
+	(Objectiu Manteniment Perdre_pes condicio_fisica_general Rehabilitacio))
+
+([Ontologia_Class10011] of  Cardio
+
+	(Contraindicacions pressio_alta problemes_cardiovasculars problemes_respiratoris lesio_exstremitats_inferiors lesio_esquena mobilitat_nula_extremitats_inferiors)
+	(Descripcio "Maquina que simula el moviment de pujar escales")
+	(Indicat_Per rehab_extremitats_inferiors)
+	(Majors TRUE)
+	(Menors TRUE)
+	(Nom "Stepper")
+	(Objectiu Manteniment Perdre_pes condicio_fisica_general Rehabilitacio))
