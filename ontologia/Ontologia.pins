@@ -1,4 +1,4 @@
-; Sat May 14 12:37:48 CEST 2016
+; Sat May 14 13:31:02 CEST 2016
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -7,14 +7,17 @@
 
 	(Contraindicacions pressio_alta problemes_cardiovasculars problemes_respiratoris lesio_exstremitats_inferiors lesio_coll mobilitat_nula_extremitats_inferiors lesio_esquena)
 	(Descripcio "Maquina que s'usa per correr on es pot graduar la velocitat i el pendent de la marxa.")
+	(grups_musculars abdominals glutis part_superior_cama part_inferior_cama)
 	(Majors TRUE)
 	(Menors TRUE)
-	(Nom "Cinta de correr"))
+	(Nom "Cinta de correr")
+	(Objectiu Perdre_pes Manteniment condicio_fisica_general Rehabilitacio))
 
 ([Ontologia_Class10004] of  Cardio
 
 	(Contraindicacions pressio_alta problemes_cardiovasculars problemes_respiratoris lesio_exstremitats_inferiors mobilitat_nula_extremitats_inferiors)
 	(Descripcio "Bicicleta estatica on es va assentat en un seient que te respatller")
+	(grups_musculars glutis part_superior_cama part_inferior_cama)
 	(Indicat_Per rehab_extremitats_inferiors molesties_esquena)
 	(Majors TRUE)
 	(Menors TRUE)
@@ -25,6 +28,7 @@
 
 	(Contraindicacions problemes_cardiovasculars pressio_alta problemes_respiratoris lesio_exstremitats_inferiors lesio_extremitats_superiors lesio_esquena mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors)
 	(Descripcio "Bicleta eliptica")
+	(grups_musculars part_superior_cama espatlles brac esquena glutis part_inferior_cama)
 	(Indicat_Per rehab_extremitats_inferiors molesties_esquena)
 	(Majors TRUE)
 	(Menors TRUE)
@@ -35,6 +39,7 @@
 
 	(Contraindicacions pressio_alta problemes_cardiovasculars problemes_respiratoris lesio_exstremitats_inferiors lesio_esquena mobilitat_nula_extremitats_inferiors)
 	(Descripcio "Maquina que recrea una bicicleta on es pot ajustar la intensitat")
+	(grups_musculars part_superior_cama part_inferior_cama glutis)
 	(Indicat_Per rehab_extremitats_inferiors)
 	(Majors TRUE)
 	(Menors TRUE)
@@ -45,6 +50,7 @@
 
 	(Contraindicacions lesio_exstremitats_inferiors pressio_alta problemes_cardiovasculars problemes_respiratoris mobilitat_nula_extremitats_superiors mobilitat_nula_extremitats_inferiors lesio_extremitats_superiors)
 	(Descripcio "Maquina que simula el moviment de rem on es pot modificar la resistencia de la remada")
+	(grups_musculars espatlles brac avantbrac part_superior_cama glutis esquena Pectoral abdominals)
 	(Indicat_Per rehab_extremitats_inferiors rehab_extremitats_superiors rehab_esquena molesties_esquena)
 	(Majors TRUE)
 	(Menors TRUE)
@@ -55,6 +61,7 @@
 
 	(Contraindicacions pressio_alta problemes_cardiovasculars problemes_respiratoris lesio_exstremitats_inferiors lesio_esquena mobilitat_nula_extremitats_inferiors)
 	(Descripcio "Maquina que simula el moviment de pujar escales")
+	(grups_musculars part_superior_cama part_inferior_cama glutis)
 	(Indicat_Per rehab_extremitats_inferiors)
 	(Majors TRUE)
 	(Menors TRUE)
@@ -65,6 +72,7 @@
 
 	(Contraindicacions pressio_alta problemes_cardiovasculars problemes_respiratoris lesio_extremitats_superiors mobilitat_nula_extremitats_superiors)
 	(Descripcio "Maquina que simula el moviment de esquiar")
+	(grups_musculars brac espatlles esquena abdominals glutis part_superior_cama part_inferior_cama)
 	(Indicat_Per rehab_extremitats_superiors)
 	(Majors TRUE)
 	(Menors TRUE)
@@ -72,4 +80,42 @@
 	(Objectiu Manteniment Perdre_pes condicio_fisica_general Rehabilitacio))
 
 ([Ontologia_Class10018] of  Terra_Repeticions
-)
+
+	(Contraindicacions pressio_alta problemes_cardiovasculars lesio_esquena lesio_abdomen)
+	(Descripcio "Abdominals convencionals, estirat al terra i amb les mans juntes darrere del coll, elevar fins als genolls")
+	(grups_musculars abdominals_superiors)
+	(Majors TRUE)
+	(Menors TRUE)
+	(Nom "Abdominals")
+	(Objectiu Musculacio Manteniment condicio_fisica_general))
+
+([Ontologia_Class10019] of  Terra_Repeticions
+
+	(Contraindicacions pressio_alta problemes_cardiovasculars mobilitat_nula_extremitats_inferiors lesio_abdomen)
+	(Descripcio "Estirat al terra amb les mans cara avall al terra, aixecar les cames rectes i la cintura fins que estiguin perpendiculars al terra i tornar a la posicio")
+	(grups_musculars abdominals_superiors abdominals_inferiors)
+	(Majors TRUE)
+	(Menors TRUE)
+	(Nom "Bottoms up")
+	(Objectiu Musculacio))
+
+([Ontologia_Class10023] of  Terra_Repeticions
+
+	(Contraindicacions lesio_abdomen pressio_alta problemes_cardiovasculars lesio_abdomen)
+	(Descripcio "Estirat al terra de panxa enlaire, amb les mans al clatell i amb les cames flexionades però perpendicualrs al terra, portar el colze dret al genoll esquerre i viceversa.")
+	(grups_musculars abdominals_laterals abdominals_superiors)
+	(Majors TRUE)
+	(Menors TRUE)
+	(Nom "Abdominals Laterals")
+	(Objectiu Musculacio))
+
+([Ontologia_Class10024] of  Terra_Duracio
+
+	(Contraindicacions pressio_alta problemes_cardiovasculars lesio_extremitats_superiors lesio_abdomen mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors)
+	(Descripcio "Estirat amb els bracos doblats de panxa a terra aguantant amb els avantbracos i la punta del peu mantenirse recte sense tocar el terra.")
+	(grups_musculars abdominals_superiors abdominals_inferiors)
+	(Indicat_Per molesties_esquena)
+	(Majors TRUE)
+	(Menors TRUE)
+	(Nom "Planxa")
+	(Objectiu Musculacio))

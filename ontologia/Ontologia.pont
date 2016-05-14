@@ -1,4 +1,4 @@
-; Sat May 14 12:37:48 CEST 2016
+; Sat May 14 13:31:02 CEST 2016
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -22,7 +22,7 @@
 		(create-accessor read-write))
 	(single-slot Problema_salut_associat
 		(type INSTANCE)
-;+		(allowed-classes Problema_Salut)
+;+		(allowed-classes)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot Menors
@@ -80,6 +80,10 @@
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Ontologia_Class10021
+		(type STRING)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot Series
 		(type INTEGER)
@@ -170,6 +174,10 @@
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(single-slot Ontologia_Class10022
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot Alcada
 ;+		(comment "Alcada en centimetres")
 		(type INTEGER)
@@ -191,6 +199,11 @@
 		(allowed-values Lleu Considerable Greu)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(multislot grups_musculars
+		(type SYMBOL)
+		(allowed-values coll espatlles avantbrac brac part_superior_cama part_inferior_cama abdominals glutis esquena Pectoral abdominals_superiors abdominals_inferiors abdominals_laterals)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
 	(single-slot Habits_salut
 		(type INSTANCE)
 ;+		(allowed-classes Habit_Salut)
@@ -204,7 +217,7 @@
 		(create-accessor read-write))
 	(multislot Problemes_Salut
 		(type INSTANCE)
-;+		(allowed-classes Assignacio_problema_salut)
+;+		(allowed-classes Problema_salut)
 		(create-accessor read-write))
 	(single-slot part_rehab
 		(type SYMBOL)
@@ -213,7 +226,7 @@
 		(create-accessor read-write))
 	(multislot Parts_Afectades
 		(type SYMBOL)
-		(allowed-values Coll Esquena Avantbrac Brac Part_superior_cama part_inferior_cama Abdominals espatlles)
+		(allowed-values Coll Esquena Avantbrac Brac Part_superior_cama part_inferior_cama Abdominals espatlles Pectoral)
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write))
 	(single-slot Critic
@@ -255,7 +268,7 @@
 		(create-accessor read-write))
 	(multislot Problemes_Salut
 		(type INSTANCE)
-;+		(allowed-classes Assignacio_problema_salut)
+;+		(allowed-classes Problema_salut)
 		(create-accessor read-write))
 	(multislot Objectiu
 		(type SYMBOL)
@@ -335,23 +348,6 @@
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
-(defclass Problema_Salut
-	(is-a USER)
-	(role concrete)
-	(single-slot Nom
-;+		(comment "Nom de l'usuari")
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write)))
-
-(defclass Problema_musculo_esqueletic
-	(is-a Problema_Salut)
-	(role concrete))
-
-(defclass Problema_Cardiorespiratori
-	(is-a Problema_Salut)
-	(role concrete))
-
 (defclass Habit_Salut
 	(is-a USER)
 	(role concrete)
@@ -381,6 +377,11 @@
 (defclass Exercici
 	(is-a USER)
 	(role concrete)
+	(multislot grups_musculars
+		(type SYMBOL)
+		(allowed-values coll espatlles avantbrac brac part_superior_cama part_inferior_cama abdominals glutis esquena Pectoral abdominals_superiors abdominals_inferiors abdominals_laterals)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
 	(multislot Contraindicacions
 		(type SYMBOL)
 		(allowed-values pressio_alta problemes_cardiovasculars problemes_respiratoris lesio_exstremitats_inferiors lesio_esquena lesio_extremitats_superiors lesio_coll mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors lesio_abdomen)
@@ -557,39 +558,29 @@
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
-(defclass Assignacio_problema_salut
+(defclass Problema_salut
 	(is-a USER)
 	(role concrete)
 	(single-slot Gravetat
 		(type SYMBOL)
 		(allowed-values Lleu Considerable Greu)
 ;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Problema_salut_associat
-		(type INSTANCE)
-;+		(allowed-classes Problema_Salut)
-;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
-(defclass Assignacio_problema_cardiorespiratori
-	(is-a Assignacio_problema_salut)
+(defclass problema_cardiorespiratori
+	(is-a Problema_salut)
 	(role concrete)
 	(single-slot Critic
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Problema_salut_associat
-		(type INSTANCE)
-;+		(allowed-classes Problema_Cardiorespiratori)
-;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
-(defclass Assignacio_problema_musculo_esqueletic
-	(is-a Assignacio_problema_salut)
+(defclass Problema_musculoesqueletic
+	(is-a Problema_salut)
 	(role concrete)
 	(multislot Parts_Afectades
 		(type SYMBOL)
-		(allowed-values Coll Esquena Avantbrac Brac Part_superior_cama part_inferior_cama Abdominals espatlles)
+		(allowed-values Coll Esquena Avantbrac Brac Part_superior_cama part_inferior_cama Abdominals espatlles Pectoral)
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write)))
