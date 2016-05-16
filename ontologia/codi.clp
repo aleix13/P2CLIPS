@@ -589,8 +589,10 @@
 		=>
 		(printout t "Introdueix la teva edat:" crlf)
 		(bind ?edat (read))
-		(if (neq (integerp ?edat) TRUE)
-		then (assert (edat_incorrecte))
+		(while (neq (integerp ?edat) TRUE)
+			do
+			(printout t "Edat incorrecte, torna-la a introduir: ")
+			(bind ?edat (read))
 		)
 		(send ?client_actual put-Edat ?edat)
 		)
@@ -600,6 +602,11 @@
 			=>
 			(printout t "Introdueix la teva alcada(en cm):" crlf)
 			(bind ?alc (read))
+			(while (neq (integerp ?alc) TRUE)
+				do
+				(printout t "Alcada incorrecte, torna-la a introduir: ")
+				(bind ?alc (read))
+			)
 			(send ?client_actual put-Alcada ?alc)
 			(assert (alcada))
 			)
@@ -608,6 +615,11 @@
 				=>
 				(printout t "Introdueix la teva massa(en kg):" crlf)
 				(bind ?mass (read))
+				(while (neq (integerp ?mass) TRUE)
+					do
+					(printout t "Massa incorrecte, torna-la a introduir: ")
+					(bind ?mass (read))
+				)
 				(send ?client_actual put-Massa ?mass)
 				(assert (pes))
 				(focus ABSTRACCIO)
@@ -617,6 +629,11 @@
 					=>
 					(printout t "Quant temps tens disponible al dia?:" crlf)
 					(bind ?temps (read))
+					(while (neq (integerp ?temps) TRUE)
+						do
+						(printout t "Temps incorrecte, torna-la a introduir: ")
+						(bind ?temps (read))
+					)
 					(send ?client_actual put-Temps_Disponible_Diari ?temps)
 					)
 			(defrule pregunta-pressio "preguntem pressio min i max"
@@ -625,30 +642,21 @@
 					(printout t "Introdueix la pressio sanguinea minima i maxima en estat de repos:" crlf)
 					(printout t "Minima:" crlf)
 					(bind ?pmin (read))
+					(while (neq (integerp ?pmin) TRUE)
+						do
+						(printout t "Pressio minima incorrecte, torna-la a introduir: ")
+						(bind ?pmin (read))
+					)
 					(printout t "Maxima:" crlf)
 					(bind ?pmax (read))
+					(while (neq (integerp ?pmax) TRUE)
+						do
+						(printout t "Pressio maxima incorrecte, torna-la a introduir: ")
+						(bind ?pmax (read))
+					)
 					(send ?client_actual put-Pressio_Sanguinea ?pmin ?pmax)
 				)
 
-
-
-			;preguntes-dades-incorrectes
-			(defrule pregunta-edat-repeat "preguntem edat si s'ha equivocat"
-			(declare (salience 20))
-			(edat_incorrecte)
-			?ei <-(edat_incorrecte)
-			?client_actual <- (object (is-a Client))
-
-				=>
-				(printout t "No has introduit l'edat adequadament, torna-la a introduir:" crlf)
-				(bind ?edat (read))
-				(if (eq (integerp ?edat) TRUE)
-				then (retract ?ei)
-			  (send ?client_actual put-Edat ?edat)
-				else (assert (edat_incorrecte))
-				)
-
-				)
 ;--------------------------------MODUL:PREGUNTES-----------------------------------------------------------
 
 ;--------------------------------MODUL:ABSTR-----------------------------------------------------------
