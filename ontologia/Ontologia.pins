@@ -1,7 +1,16 @@
-; Sat May 14 13:31:02 CEST 2016
+; Mon May 16 12:31:56 CEST 2016
 ; 
-;+ (version "3.5")
-;+ (build "Build 663")
+;+ (version "3.4.8")
+;+ (build "Build 629")
+
+([Ontologia_Class1] of  Habit_Fisic
+
+	(hores_despl "0")
+	(hores_domestiques 0)
+	(hores_esport_extra 0)
+	(hores_exercici_feina "0")
+	(hores_sedentari 0)
+	(Puntuacio 0))
 
 ([Ontologia_Class10003] of  CInta
 

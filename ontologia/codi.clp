@@ -20,7 +20,7 @@
 		(create-accessor read-write))
 	(single-slot Problema_salut_associat
 		(type INSTANCE)
-;+		(allowed-classes Problema_Salut)
+;+		(allowed-classes)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot Menors
@@ -30,7 +30,7 @@
 		(create-accessor read-write))
 	(multislot Indicat_Per
 		(type SYMBOL)
-		(allowed-values Coll Avantbrac Brac abdominals part_superior_cama part_inferior_cama esquena espatlles pressio_alta obesitat)
+		(allowed-values rehab_extremitats_inferiors rehab_extremitats_superiors rehab_esquena rehab_coll molesties_esquena rehab_abdomen)
 		(create-accessor read-write))
 	(single-slot Repeticions_max
 		(type INTEGER)
@@ -40,6 +40,11 @@
 ;+		(comment "Min i Max")
 		(type FLOAT)
 		(cardinality 2 2)
+		(create-accessor read-write))
+	(single-slot hores_domestiques
+;+		(comment "(en minuts)")
+		(type INTEGER)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot Resistencia_min
 		(type INTEGER)
@@ -61,6 +66,10 @@
 ;+		(allowed-classes Assignacio_Exercici)
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write))
+	(single-slot Descripcio
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot Durada_max
 		(type INTEGER)
 ;+		(cardinality 1 1)
@@ -70,13 +79,19 @@
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(single-slot Ontologia_Class10021
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot Series
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(multislot Habits
+	(single-slot Habits
 		(type INSTANCE)
-;+		(allowed-classes Assignacio_Habit_Fisic)
+;+		(allowed-classes Habit_Fisic)
+		(default [Ontologia_Class1])
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot Durada_min
 		(type INTEGER)
@@ -106,13 +121,17 @@
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(single-slot hores_esport_extra
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot Velocitat_min
 		(type FLOAT)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(multislot Contraindicacions
 		(type SYMBOL)
-		(allowed-values Coll Avantbrac brac abdominals part_superior_cama part_inferior_cama esquena espatlles Pressio_alta Obesitat)
+		(allowed-values pressio_alta problemes_cardiovasculars problemes_respiratoris lesio_exstremitats_inferiors lesio_esquena lesio_extremitats_superiors lesio_coll mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors lesio_abdomen)
 		(create-accessor read-write))
 	(single-slot IMC
 ;+		(comment "Pes/alcada^2")
@@ -124,9 +143,22 @@
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(multislot Objectiu
+		(type SYMBOL)
+		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general Rehabilitacio)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot hores_exercici_feina
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot Velocitat_max
 		(type FLOAT)
 ;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Puntuacio
+		(type INTEGER)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot Nom
 ;+		(comment "Nom de l'usuari")
@@ -136,6 +168,14 @@
 	(single-slot Copes
 		(type INTEGER)
 ;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot hores_sedentari
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Ontologia_Class10022
+		(type STRING)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot Alcada
 ;+		(comment "Alcada en centimetres")
@@ -155,8 +195,13 @@
 		(create-accessor read-write))
 	(single-slot Gravetat
 		(type SYMBOL)
-		(allowed-values Lleu Considerable Greu)
+		(allowed-values Lleu Considerable Greu Critic)
 ;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot grups_musculars
+		(type SYMBOL)
+		(allowed-values coll espatlles avantbrac brac part_superior_cama part_inferior_cama abdominals glutis esquena Pectoral abdominals_superiors abdominals_inferiors abdominals_laterals)
+		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write))
 	(single-slot Habits_salut
 		(type INSTANCE)
@@ -171,11 +216,16 @@
 		(create-accessor read-write))
 	(multislot Problemes_Salut
 		(type INSTANCE)
-;+		(allowed-classes Assignacio_problema_salut)
+;+		(allowed-classes Problema_salut)
+		(create-accessor read-write))
+	(single-slot part_rehab
+		(type SYMBOL)
+		(allowed-values lesio_extremitats_inferiors lesio_extremitats_superiors lesio_esquena lesio_coll)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(multislot Parts_Afectades
 		(type SYMBOL)
-		(allowed-values Coll Esquena Avantbrac Brac Part_superior_cama part_inferior_cama Abdominals espatlles)
+		(allowed-values Coll Esquena Avantbrac Brac Part_superior_cama part_inferior_cama Abdominals espatlles Pectoral)
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write))
 	(single-slot Critic
@@ -187,6 +237,10 @@
 		(type FLOAT)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(single-slot hores_despl
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot Edat
 		(type INTEGER)
 		(range 0 130)
@@ -196,16 +250,6 @@
 (defclass Client
 	(is-a USER)
 	(role concrete)
-	(single-slot Nom
-;+		(comment "Nom de l'usuari")
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(multislot Pressio_Sanguinea
-;+		(comment "Min i Max")
-		(type FLOAT)
-		(cardinality 2 2)
-		(create-accessor read-write))
 	(single-slot Habits_salut
 		(type INSTANCE)
 ;+		(allowed-classes Habit_Salut)
@@ -216,13 +260,35 @@
 		(type FLOAT)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(multislot Habits
+	(single-slot Habits
 		(type INSTANCE)
-;+		(allowed-classes Assignacio_Habit_Fisic)
+;+		(allowed-classes Habit_Fisic)
+		(default [Ontologia_Class1])
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(multislot Problemes_Salut
 		(type INSTANCE)
-;+		(allowed-classes Assignacio_problema_salut)
+;+		(allowed-classes Problema_salut)
+		(create-accessor read-write))
+	(multislot Objectiu
+		(type SYMBOL)
+		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general Rehabilitacio)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot part_rehab
+		(type SYMBOL)
+		(allowed-values lesio_extremitats_inferiors lesio_extremitats_superiors lesio_esquena lesio_coll)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Nom
+;+		(comment "Nom de l'usuari")
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot Pressio_Sanguinea
+;+		(comment "Min i Max")
+		(type FLOAT)
+		(cardinality 2 2)
 		(create-accessor read-write))
 	(single-slot Alcada
 ;+		(comment "Alcada en centimetres")
@@ -256,28 +322,31 @@
 (defclass Habit_Fisic
 	(is-a USER)
 	(role concrete)
-	(single-slot Nom
-;+		(comment "Nom de l'usuari")
+	(single-slot hores_exercici_feina
 		(type STRING)
 ;+		(cardinality 1 1)
-		(create-accessor read-write)))
-
-(defclass Problema_Salut
-	(is-a USER)
-	(role concrete)
-	(single-slot Nom
-;+		(comment "Nom de l'usuari")
+		(create-accessor read-write))
+	(single-slot Puntuacio
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot hores_sedentari
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot hores_despl
 		(type STRING)
 ;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot hores_domestiques
+;+		(comment "(en minuts)")
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot hores_esport_extra
+		(type INTEGER)
+;+		(cardinality 1 1)
 		(create-accessor read-write)))
-
-(defclass Problema_musculo_esqueletic
-	(is-a Problema_Salut)
-	(role concrete))
-
-(defclass Problema_Cardiorespiratori
-	(is-a Problema_Salut)
-	(role concrete))
 
 (defclass Habit_Salut
 	(is-a USER)
@@ -308,9 +377,14 @@
 (defclass Exercici
 	(is-a USER)
 	(role concrete)
+	(multislot grups_musculars
+		(type SYMBOL)
+		(allowed-values coll espatlles avantbrac brac part_superior_cama part_inferior_cama abdominals glutis esquena Pectoral abdominals_superiors abdominals_inferiors abdominals_laterals)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
 	(multislot Contraindicacions
 		(type SYMBOL)
-		(allowed-values Coll Avantbrac brac abdominals part_superior_cama part_inferior_cama esquena espatlles Pressio_alta Obesitat)
+		(allowed-values pressio_alta problemes_cardiovasculars problemes_respiratoris lesio_exstremitats_inferiors lesio_esquena lesio_extremitats_superiors lesio_coll mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors lesio_abdomen)
 		(create-accessor read-write))
 	(single-slot Nom
 ;+		(comment "Nom de l'usuari")
@@ -322,14 +396,24 @@
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(multislot Objectiu
+;+		(comment "objectiu fisic pel qual es adequat")
+		(type SYMBOL)
+		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general Rehabilitacio)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
 	(single-slot Menors
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(single-slot Descripcio
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(multislot Indicat_Per
 		(type SYMBOL)
-		(allowed-values Coll Avantbrac Brac abdominals part_superior_cama part_inferior_cama esquena espatlles pressio_alta obesitat)
+		(allowed-values rehab_extremitats_inferiors rehab_extremitats_superiors rehab_esquena rehab_coll molesties_esquena rehab_abdomen)
 		(create-accessor read-write)))
 
 (defclass Musculacio
@@ -474,68 +558,159 @@
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
-(defclass Assignacio_Habit_Fisic
-	(is-a USER)
-	(role concrete)
-	(single-slot Frequencia
-;+		(comment "En dies/setmana")
-		(type INTEGER)
-		(range 0 7)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Durada
-;+		(comment "En minuts setmanals")
-		(type INTEGER)
-		(range 0 1440)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Habit_associat
-		(type INSTANCE)
-;+		(allowed-classes Habit_Fisic)
-;+		(cardinality 1 1)
-		(create-accessor read-write)))
-
-(defclass Assignacio_problema_salut
+(defclass Problema_salut
 	(is-a USER)
 	(role concrete)
 	(single-slot Gravetat
 		(type SYMBOL)
-		(allowed-values Lleu Considerable Greu)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Problema_salut_associat
-		(type INSTANCE)
-;+		(allowed-classes Problema_Salut)
+		(allowed-values Lleu Considerable Greu Critic)
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
-(defclass Assignacio_problema_cardiorespiratori
-	(is-a Assignacio_problema_salut)
-	(role concrete)
-	(single-slot Critic
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Problema_salut_associat
-		(type INSTANCE)
-;+		(allowed-classes Problema_Cardiorespiratori)
-;+		(cardinality 1 1)
-		(create-accessor read-write)))
+(defclass problema_cardiorespiratori
+	(is-a Problema_salut)
+	(role concrete))
 
-(defclass Assignacio_problema_musculo_esqueletic
-	(is-a Assignacio_problema_salut)
+(defclass Problema_musculoesqueletic
+	(is-a Problema_salut)
 	(role concrete)
 	(multislot Parts_Afectades
 		(type SYMBOL)
-		(allowed-values Coll Esquena Avantbrac Brac Part_superior_cama part_inferior_cama Abdominals espatlles)
+		(allowed-values Coll Esquena Avantbrac Brac Part_superior_cama part_inferior_cama Abdominals espatlles Pectoral)
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write)))
 
-
-
 ;--------------------------------CLASSES-----------------------------------------------------------
 ;--------------------------------INSTANCIES-----------------------------------------------------------
+(definstances instancies
+
+	([Ontologia_Class1] of  Habit_Fisic
+
+		(hores_despl "0")
+		(hores_domestiques 0)
+		(hores_esport_extra 0)
+		(hores_exercici_feina "0")
+		(hores_sedentari 0)
+		(Puntuacio 0))
+
+	([Ontologia_Class10003] of  CInta
+
+		(Contraindicacions pressio_alta problemes_cardiovasculars problemes_respiratoris lesio_exstremitats_inferiors lesio_coll mobilitat_nula_extremitats_inferiors lesio_esquena)
+		(Descripcio "Maquina que s'usa per correr on es pot graduar la velocitat i el pendent de la marxa.")
+		(grups_musculars abdominals glutis part_superior_cama part_inferior_cama)
+		(Majors TRUE)
+		(Menors TRUE)
+		(Nom "Cinta de correr")
+		(Objectiu Perdre_pes Manteniment condicio_fisica_general Rehabilitacio))
+
+	([Ontologia_Class10004] of  Cardio
+
+		(Contraindicacions pressio_alta problemes_cardiovasculars problemes_respiratoris lesio_exstremitats_inferiors mobilitat_nula_extremitats_inferiors)
+		(Descripcio "Bicicleta estatica on es va assentat en un seient que te respatller")
+		(grups_musculars glutis part_superior_cama part_inferior_cama)
+		(Indicat_Per rehab_extremitats_inferiors molesties_esquena)
+		(Majors TRUE)
+		(Menors TRUE)
+		(Nom "Bicicleta reclinable")
+		(Objectiu Manteniment Perdre_pes condicio_fisica_general Rehabilitacio))
+
+	([Ontologia_Class10005] of  Cardio
+
+		(Contraindicacions problemes_cardiovasculars pressio_alta problemes_respiratoris lesio_exstremitats_inferiors lesio_extremitats_superiors lesio_esquena mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors)
+		(Descripcio "Bicleta eliptica")
+		(grups_musculars part_superior_cama espatlles brac esquena glutis part_inferior_cama)
+		(Indicat_Per rehab_extremitats_inferiors molesties_esquena)
+		(Majors TRUE)
+		(Menors TRUE)
+		(Nom "Eliptica")
+		(Objectiu Manteniment Perdre_pes condicio_fisica_general Rehabilitacio))
+
+	([Ontologia_Class10009] of  Cardio
+
+		(Contraindicacions pressio_alta problemes_cardiovasculars problemes_respiratoris lesio_exstremitats_inferiors lesio_esquena mobilitat_nula_extremitats_inferiors)
+		(Descripcio "Maquina que recrea una bicicleta on es pot ajustar la intensitat")
+		(grups_musculars part_superior_cama part_inferior_cama glutis)
+		(Indicat_Per rehab_extremitats_inferiors)
+		(Majors TRUE)
+		(Menors TRUE)
+		(Nom "Bicileta estatica")
+		(Objectiu Manteniment Perdre_pes condicio_fisica_general Rehabilitacio))
+
+	([Ontologia_Class10010] of  Cardio
+
+		(Contraindicacions lesio_exstremitats_inferiors pressio_alta problemes_cardiovasculars problemes_respiratoris mobilitat_nula_extremitats_superiors mobilitat_nula_extremitats_inferiors lesio_extremitats_superiors)
+		(Descripcio "Maquina que simula el moviment de rem on es pot modificar la resistencia de la remada")
+		(grups_musculars espatlles brac avantbrac part_superior_cama glutis esquena Pectoral abdominals)
+		(Indicat_Per rehab_extremitats_inferiors rehab_extremitats_superiors rehab_esquena molesties_esquena)
+		(Majors TRUE)
+		(Menors TRUE)
+		(Nom "Maquina de remar")
+		(Objectiu Manteniment Perdre_pes condicio_fisica_general Rehabilitacio))
+
+	([Ontologia_Class10011] of  Cardio
+
+		(Contraindicacions pressio_alta problemes_cardiovasculars problemes_respiratoris lesio_exstremitats_inferiors lesio_esquena mobilitat_nula_extremitats_inferiors)
+		(Descripcio "Maquina que simula el moviment de pujar escales")
+		(grups_musculars part_superior_cama part_inferior_cama glutis)
+		(Indicat_Per rehab_extremitats_inferiors)
+		(Majors TRUE)
+		(Menors TRUE)
+		(Nom "Stepper")
+		(Objectiu Manteniment Perdre_pes condicio_fisica_general Rehabilitacio))
+
+	([Ontologia_Class10017] of  Cardio
+
+		(Contraindicacions pressio_alta problemes_cardiovasculars problemes_respiratoris lesio_extremitats_superiors mobilitat_nula_extremitats_superiors)
+		(Descripcio "Maquina que simula el moviment de esquiar")
+		(grups_musculars brac espatlles esquena abdominals glutis part_superior_cama part_inferior_cama)
+		(Indicat_Per rehab_extremitats_superiors)
+		(Majors TRUE)
+		(Menors TRUE)
+		(Nom "Esqui")
+		(Objectiu Manteniment Perdre_pes condicio_fisica_general Rehabilitacio))
+
+	([Ontologia_Class10018] of  Terra_Repeticions
+
+		(Contraindicacions pressio_alta problemes_cardiovasculars lesio_esquena lesio_abdomen)
+		(Descripcio "Abdominals convencionals, estirat al terra i amb les mans juntes darrere del coll, elevar fins als genolls")
+		(grups_musculars abdominals_superiors)
+		(Majors TRUE)
+		(Menors TRUE)
+		(Nom "Abdominals")
+		(Objectiu Musculacio Manteniment condicio_fisica_general))
+
+	([Ontologia_Class10019] of  Terra_Repeticions
+
+		(Contraindicacions pressio_alta problemes_cardiovasculars mobilitat_nula_extremitats_inferiors lesio_abdomen)
+		(Descripcio "Estirat al terra amb les mans cara avall al terra, aixecar les cames rectes i la cintura fins que estiguin perpendiculars al terra i tornar a la posicio")
+		(grups_musculars abdominals_superiors abdominals_inferiors)
+		(Majors TRUE)
+		(Menors TRUE)
+		(Nom "Bottoms up")
+		(Objectiu Musculacio))
+
+	([Ontologia_Class10023] of  Terra_Repeticions
+
+		(Contraindicacions lesio_abdomen pressio_alta problemes_cardiovasculars lesio_abdomen)
+		(Descripcio "Estirat al terra de panxa enlaire, amb les mans al clatell i amb les cames flexionades però perpendicualrs al terra, portar el colze dret al genoll esquerre i viceversa.")
+		(grups_musculars abdominals_laterals abdominals_superiors)
+		(Majors TRUE)
+		(Menors TRUE)
+		(Nom "Abdominals Laterals")
+		(Objectiu Musculacio))
+
+	([Ontologia_Class10024] of  Terra_Duracio
+
+		(Contraindicacions pressio_alta problemes_cardiovasculars lesio_extremitats_superiors lesio_abdomen mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors)
+		(Descripcio "Estirat amb els bracos doblats de panxa a terra aguantant amb els avantbracos i la punta del peu mantenirse recte sense tocar el terra.")
+		(grups_musculars abdominals_superiors abdominals_inferiors)
+		(Indicat_Per molesties_esquena)
+		(Majors TRUE)
+		(Menors TRUE)
+		(Nom "Planxa")
+		(Objectiu Musculacio))
+
+)
 ;--------------------------------INSTANCIES-----------------------------------------------------------
 
 ;--------------------------------TEMPLATES-----------------------------------------------------------
@@ -636,6 +811,14 @@
 					)
 					(send ?client_actual put-Temps_Disponible_Diari ?temps)
 					)
+			(defrule pregunta-objectiu
+				?client_actual <- (object (is-a Client))
+				=>
+				(printout t "Quins dels següents objectius és el teu? [Manteniment],[Musculacio],[Perdre_pes],[condicio_fisica_general],[Rehabilitacio]" crlf)
+				(bind ?obj (readline))
+				(bind ?obj (str-explode ?obj ))
+				(send ?client_actual put-Objectiu ?obj)
+			)
 			(defrule pregunta-pressio "preguntem pressio min i max"
 				?client_actual <- (object (is-a Client))
 					=>
@@ -656,7 +839,71 @@
 					)
 					(send ?client_actual put-Pressio_Sanguinea ?pmin ?pmax)
 				)
+				(defrule pregunta-habits "Preguntes pels habits cootidians"
+					?client_actual <- (object (is-a Client))
+					=>
+					(printout t "A continuació et realitzarem unes preguntes per determinar el teu dia a dia:" crlf)
+					(printout t "Cuantes hores setmanals dediques als desplcacaments(anar a la feina, anat a l'escola etc.) a peu ?" crlf)
+					(bind ?horesd (read))
+					(printout t "Cuantes hores setmanals dediques a les tasques domestiques(planxar,fregar la casa, etc.)?" crlf)
+					(bind ?horesdom (read))
+					(printout t "Cuantes hores setmanals dediques a fer esport?" crlf)
+					(bind ?horese (read))
+					(printout t "Cuantes hores setmanals dediques a realitzar esforc fisic a la feina(aixecar pesos, moviments repetitius etc.)?" crlf)
+					(bind ?horesf (read))
+					(printout t "Cuantes hores setmanals dediques a activitats sedentaries(mirar TV, migdiada, llegir, etc.)?" crlf)
+					(bind ?horessed (read))
 
+          (bind ?pun (+ (* 3 ?horesd) (* 2 ?horesdom) (* 5 ?horese) (* 4 ?horesf) (* -2 ?horessed)))
+
+					(bind ?Habit_Fisic (make-instance habitF of Habit_Fisic))
+					(send ?Habit_Fisic put-hores_despl ?horesd)
+					(send ?Habit_Fisic put-hores_domestiques ?horesdom)
+					(send ?Habit_Fisic put-hores_esport_extra ?horese)
+					(send ?Habit_Fisic put-hores_exercici_feina ?horesf)
+					(send ?Habit_Fisic put-hores_sedentari ?horessed)
+					(send ?Habit_Fisic put-Puntuacio ?pun)
+					(send ?client_actual put-Habits ?Habit_Fisic)
+				)
+		(defrule pregunta-malaties
+			?client_actual <- (object (is-a Client))
+			=>
+			(printout t "A continuació et demanem que ens diguis els teus problemes de salut:" crlf)
+			(printout t "Quats problemes cardiorespiratoris tens?" crlf)
+			(bind ?numr (read))
+			(bind ?problems (create$))
+			(bind ?i 1)
+			(while (<= ?i ?numr)
+			do
+			(printout t "Problema numero: " ?i crlf)
+			(printout t "Introdueix la gravetat: [Lleu],[Considerable],[Greu],[Critic]" crlf)
+			(bind ?grav (read))
+			(bind ?pcardio (make-instance (sym-cat cardio- (gensym)) of problema_cardiorespiratori))
+			(send ?pcardio put-Gravetat ?grav)
+			(insert$ ?problems ?i ?pcardio)
+			(bind ?i (+ ?i 1))
+			)
+
+			(printout t "Quants problemes musculo-esqueletics tens? "crlf)
+			(bind ?numme (read))
+			(bind ?numme (+ ?numme ?numr))
+			(while (<= ?i ?numme)
+			do
+			(printout t "Problema numero: " ?i crlf)
+			(printout t "Introdueix la gravetat: [Lleu],[Considerable],[Greu],[Critic]" crlf)
+			(bind ?grav (read))
+			(printout t "Introdeuix les parts del cos a les que afecta el problema: [Coll],[Esquena],[Avantbrac],[Brac],[Part_superior_cama],[part_inferior_cama],[Abdominals],[espatlles],[Pectoral]" crlf)
+			(printout t "Introdueix les parts dins les citades anteriorment separades per espais:")
+			(bind ?parts (readline))
+			(bind ?parts (str-explode ?parts))
+			(bind ?pme (make-instance (sym-cat me- (gensym)) of Problema_musculoesqueletic))
+			(send ?pme put-Gravetat ?grav)
+			(send ?pme put-Parts_Afectades ?parts)
+			(insert$ ?problems ?i ?pme)
+			(bind ?i (+ ?i 1))
+			)
+			(send ?client_actual put-Problemes_Salut ?problems)
+		)
 ;--------------------------------MODUL:PREGUNTES-----------------------------------------------------------
 
 ;--------------------------------MODUL:ABSTR-----------------------------------------------------------
