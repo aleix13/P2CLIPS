@@ -718,7 +718,7 @@
 			(slot nom (type STRING))
 		)
 
-	;templates per a l'abstraccion
+	;templates per a l'abstraccio
 	(deftemplate forma_Fisica
 		(slot valors (type SYMBOL) (allowed-values Molt_Baixa Baixa Normal Alta Molt_Alta))
 	)
@@ -729,7 +729,7 @@
 		(slot valors (type SYMBOL) (allowed-values POC NORMAL MOLT))
 	)
 	(deftemplate pressio
-		(slot valors (type SYMBOL) (allowed-values BAIXA NORMAL ALTA))
+		(slot valors (type SYMBOL) (allowed-values HIPO NORMAL HIPER))
 	)
 
 ;--------------------------------TEMPLATES-----------------------------------------------------------
@@ -797,12 +797,11 @@
 				)
 				(send ?client_actual put-Massa ?mass)
 				(assert (pes))
-				(focus ABSTRACCIO)
 				)
 			(defrule pregunta-temps "preguntem temps disponible diari"
 				?client_actual <- (object (is-a Client))
 					=>
-					(printout t "Quant temps tens disponible al dia?:" crlf)
+					(printout t "Quant temps tens disponible al dia?(en minuts):" crlf)
 					(bind ?temps (read))
 					(while (neq (integerp ?temps) TRUE)
 						do
@@ -810,6 +809,7 @@
 						(bind ?temps (read))
 					)
 					(send ?client_actual put-Temps_Disponible_Diari ?temps)
+					(assert (temps-disp))
 					)
 			(defrule pregunta-objectiu
 				?client_actual <- (object (is-a Client))
@@ -823,14 +823,14 @@
 				?client_actual <- (object (is-a Client))
 					=>
 					(printout t "Introdueix la pressio sanguinea minima i maxima en estat de repos:" crlf)
-					(printout t "Minima:" crlf)
+					(printout t "Minima(mmHg):" crlf)
 					(bind ?pmin (read))
 					(while (neq (integerp ?pmin) TRUE)
 						do
 						(printout t "Pressio minima incorrecte, torna-la a introduir: ")
 						(bind ?pmin (read))
 					)
-					(printout t "Maxima:" crlf)
+					(printout t "Maxima(mmHg):" crlf)
 					(bind ?pmax (read))
 					(while (neq (integerp ?pmax) TRUE)
 						do
@@ -838,23 +838,75 @@
 						(bind ?pmax (read))
 					)
 					(send ?client_actual put-Pressio_Sanguinea ?pmin ?pmax)
+					(assert (pressio_Q))
 				)
 				(defrule pregunta-habits "Preguntes pels habits cootidians"
 					?client_actual <- (object (is-a Client))
 					=>
-					(printout t "A continuació et realitzarem unes preguntes per determinar el teu dia a dia:" crlf)
-					(printout t "Cuantes hores setmanals dediques als desplcacaments(anar a la feina, anat a l'escola etc.) a peu ?" crlf)
+					(printout t "A continuacio et realitzarem unes preguntes per determinar el teu dia a dia:" crlf)
+					(printout t "Per a cadascuna de les seguents preguntes, introdueix una de les opcions donades.")
+					(printout t "Cuantes hores setmanals dediques als desplacacaments(anar a la feina, anat a l'escola etc.) a peu ?" crlf)
+					(printout t "				1: [0-2]" crlf)
+					(printout t "				2: [3-5]" crlf)
+					(printout t "				3: mes de 5" crlf)
 					(bind ?horesd (read))
-					(printout t "Cuantes hores setmanals dediques a les tasques domestiques(planxar,fregar la casa, etc.)?" crlf)
+					(printout t "Cuantes hores diaries dediques a les tasques domestiques(planxar,fregar la casa, etc.)?" crlf)
+					(printout t "				1: [0-1]" crlf)
+					(printout t "				2: [2-3]" crlf)
+					(printout t "				3: mes de 3" crlf)
 					(bind ?horesdom (read))
 					(printout t "Cuantes hores setmanals dediques a fer esport?" crlf)
+					(printout t "				1: [0-1]" crlf)
+					(printout t "				2: [2-4]" crlf)
+					(printout t "				3: [5-8]" crlf)
+					(printout t "				4: mes de 8" crlf)
 					(bind ?horese (read))
-					(printout t "Cuantes hores setmanals dediques a realitzar esforc fisic a la feina(aixecar pesos, moviments repetitius etc.)?" crlf)
+					(printout t "Cuantes hores diaries dediques a realitzar esforc fisic a la feina(aixecar pesos, moviments repetitius etc.)?" crlf)
+					(printout t "				1: [0-1]" crlf)
+					(printout t "				2: [2-4]" crlf)
+					(printout t "				3: [5-8]" crlf)
+					(printout t "				4: mes de 8" crlf)
 					(bind ?horesf (read))
-					(printout t "Cuantes hores setmanals dediques a activitats sedentaries(mirar TV, migdiada, llegir, etc.)?" crlf)
+					(printout t "Cuantes hores diaries dediques a activitats sedentaries(mirar TV, migdiada, llegir, etc.)?" crlf)
+					(printout t "				1: [0-1]" crlf)
+					(printout t "				2: [2-4]" crlf)
+					(printout t "				3: [5-8]" crlf)
+					(printout t "				4: mes de 8" crlf)
 					(bind ?horessed (read))
 
-          (bind ?pun (+ (* 3 ?horesd) (* 2 ?horesdom) (* 5 ?horese) (* 4 ?horesf) (* -2 ?horessed)))
+					(printout t crlf)
+					(printout t "A continuacio et farem preguntes realcionades amb els teus habits saludables: " crlf)
+					(printout t "Abuses de la sal al menjar habitualment? (si/no)" crlf)
+					(bind ?as (read))
+					(printout t "Cuantes peces de fruita consumeixes al dia?" crlf)
+					(printout t "				1: 0 peces" crlf)
+					(printout t "				2: 1 peca" crlf)
+					(printout t "				3: 2 peces" crlf)
+					(printout t "				4: mes de 3" crlf)
+					(bind ?pf (read))
+					(printout t "Piques entre hores?(si/no)" crlf)
+					(bind ?pen (read))
+					(printout t "Quantes copes(alcohol) consumeixes durant la setmana habitualment?" crlf)
+					(printout t "				1: [0-2]" crlf)
+					(printout t "				2: [3-5]" crlf)
+					(printout t "				3: [6-10]" crlf)
+					(printout t "				4: [11-15]" crlf)
+					(printout t "				5: mes de 15" crlf)
+					(bind ?copes (read))
+					(printout t "Fumes? (si/no)" crlf)
+					(bind ?f (read))
+					(if (eq ?f no) then (bind ?nc 0)
+					else (printout t "Cuantes cigarretes fumes al dia habitualment?" crlf)
+					(printout t "				1: [1-5]" crlf)
+					(printout t "				2: [6-10]" crlf)
+					(printout t "				3: [11-20]" crlf)
+					(printout t "				4: mes de 20" crlf)
+					(bind ?nc (read))
+					)
+					(if (eq ?as si) then (bind ?as 1) else (bind ?as 0))
+					(if (eq ?pen si) then (bind ?pen 1) else (bind ?pen 0))
+          (bind ?pun (+ (* 0.10 ?horesd) (* 0.05 ?horesdom) (* 0.40 ?horese) (* 0.15 ?horesf) (* -0.10 ?horessed) (* -0.10 ?nc) (* ?as -0.025) (* ?copes -0.05)
+					(* ?pen -0.025)))
 
 					(bind ?Habit_Fisic (make-instance habitF of Habit_Fisic))
 					(send ?Habit_Fisic put-hores_despl ?horesd)
@@ -864,11 +916,12 @@
 					(send ?Habit_Fisic put-hores_sedentari ?horessed)
 					(send ?Habit_Fisic put-Puntuacio ?pun)
 					(send ?client_actual put-Habits ?Habit_Fisic)
+					(assert (puntuacio))
 				)
 		(defrule pregunta-malaties
 			?client_actual <- (object (is-a Client))
 			=>
-			(printout t "A continuació et demanem que ens diguis els teus problemes de salut:" crlf)
+			(printout t "A continuacio et demanem que ens diguis els teus problemes de salut:" crlf)
 			(printout t "Quats problemes cardiorespiratoris tens?" crlf)
 			(bind ?numr (read))
 			(bind ?problems (create$))
@@ -903,21 +956,76 @@
 			(bind ?i (+ ?i 1))
 			)
 			(send ?client_actual put-Problemes_Salut ?problems)
+			(assert (last-q))
+		)
+		;Regles auxiliars derivades de preguntes
+		(defrule calcul_IMC "calcula IMC"
+			(alcada)
+			(pes)
+			?client_actual <- (object (is-a Client))
+			=>
+				(bind ?alcada (send ?client_actual get-Alcada))
+				(bind ?aux (/ ?alcada 100))
+				(bind ?alc_2 (* ?aux ?aux))
+				(bind ?massa (send ?client_actual get-Massa))
+				(bind ?imc (/ ?massa ?alc_2))
+				(send ?client_actual put-IMC ?imc)
+				(assert (imc))
+		)
+		(defrule saltarAbst "Saltem al modul abstr"
+			(last-q)
+			=>
+			(focus ABSTRACCIO)
 		)
 ;--------------------------------MODUL:PREGUNTES-----------------------------------------------------------
 
 ;--------------------------------MODUL:ABSTR-----------------------------------------------------------
 (defmodule ABSTRACCIO (import MAIN ?ALL) (import PREGUNTES ?ALL) (export ?ALL))
-(defrule calcul_IMC "calcula IMC"
-	(alcada)
-	(pes)
+(defrule calcul-forma "Abstraiem el nivell de forma fisica inicial"
+(puntuacio)
+?client_actual <- (object (is-a Client))
+	=>
+	(bind ?hf (send ?client_actual get-Habits) )
+	(bind ?punt (send ?hf get-Puntuacio))
+	(if (< ?punt 0.06) then (assert (forma_Fisica (valors Molt_Baixa))))
+	(if (and (>= ?punt 0.06) (< ?punt 0.62)) then (assert (forma_Fisica (valors Baixa))))
+	(if (and (>= ?punt 0.62) (< ?punt 1.18)) then (assert (forma_Fisica (valors Normal))))
+	(if (and (>= ?punt 1.18) (< ?punt 1.74)) then (assert (forma_Fisica (valors Alta))))
+	(if (>= ?punt 1.74) then (assert (forma_Fisica (valors Molt_Alta))))
+)
+(defrule calcul-Estat-Fisic "Abstraiem l'imc de les persones"
+	(imc)
 	?client_actual <- (object (is-a Client))
 	=>
-		(bind ?alcada (send ?client_actual get-Alcada))
-		(bind ?aux (/ ?alcada 100))
-		(bind ?alc_2 (* ?aux ?aux))
-		(bind ?massa (send ?client_actual get-Massa))
-		(bind ?imc (/ ?massa ?alc_2))
-		(send ?client_actual put-IMC ?imc)
+	(bind ?imc (send ?client_actual get-IMC))
+	(if (< ?imc 18) then (assert (nivell_Massa (valors Insuf))))
+	(if (and (>= ?imc 18) (< ?imc 25)) then (assert (nivell_Massa (valors Normal))))
+	(if (and (>= ?imc 25) (< ?imc 30)) then (assert (nivell_Massa (valors Sobrepes))))
+	(if (and (>= ?imc 30) (< ?imc 40)) then (assert (nivell_Massa (valors Obsesitat))))
+  (if (>= ?imc 40) then (assert (nivell_Massa (valors ObsesitatMorbida))))
+)
+(defrule calcul-Temps
+	(temps-disp)
+	?client_actual <- (object (is-a Client))
+	=>
+	(bind ?temps (send ?client_actual get-Temps_Disponible_Diari))
+	(if (< ?temps 45) then (assert (temps_disp (valors POC))))
+	(if (and (>= ?temps 45)(< ?temps 90)) then (assert (temps_disp (valors NORMAL))))
+	(if (>= ?temps 120) then (assert (temps_disp(valors MOLT))))
+)
+(defrule calcul-Pressio
+	(pressio_Q)
+	?client_actual <- (object (is-a Client))
+	=>
+	(bind ?press (send ?client_actual get-Pressio_Sanguinea))
+	(bind ?pmin (nth$ 1 ?press))
+	(bind ?pmax (nth$ 2 ?press))
+	(if (and (< ?pmax 90) (< ?pmin 60)) then (assert (pressio (valors HIPO))))
+	(if (and (>= ?pmax 90) (< ?pmax 139) (>= ?pmin 60) (< ?pmin 89)) then (assert (pressio (valors NORMAL))))
+	(if (and (>= ?pmax 140) (>= ?pmin 90)) then (assert (pressio (valors HIPER))))
 )
 ;--------------------------------MODUL:ABSTR-----------------------------------------------------------
+;--------------------------------MODUL:SOL_ABSTR-------------------------------------------------------
+(defmodule SOL_ABSTR (import MAIN ?ALL) (import PREGUNTES ?ALL)(import ABSTRACCIO ?ALL) (export ?ALL))
+
+;--------------------------------MODUL:SOL_ABSTR-------------------------------------------------------
