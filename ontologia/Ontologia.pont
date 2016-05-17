@@ -1,7 +1,7 @@
-; Mon May 16 12:31:56 CEST 2016
+; Tue May 17 20:12:46 CEST 2016
 ; 
-;+ (version "3.4.8")
-;+ (build "Build 629")
+;+ (version "3.5")
+;+ (build "Build 663")
 
 
 (defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
@@ -133,7 +133,7 @@
 		(create-accessor read-write))
 	(multislot Contraindicacions
 		(type SYMBOL)
-		(allowed-values pressio_alta problemes_cardiovasculars problemes_respiratoris lesio_exstremitats_inferiors lesio_esquena lesio_extremitats_superiors lesio_coll mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors lesio_abdomen)
+		(allowed-values pressio_alta problemes_cardiovasculars problemes_respiratoris lesio_extremitats_inferiors lesio_esquena lesio_extremitats_superiors lesio_coll mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors lesio_abdomen)
 		(create-accessor read-write))
 	(single-slot IMC
 ;+		(comment "Pes/alcada^2")
@@ -200,11 +200,6 @@
 		(allowed-values Lleu Considerable Greu Critic)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(multislot grups_musculars
-		(type SYMBOL)
-		(allowed-values coll espatlles avantbrac brac part_superior_cama part_inferior_cama abdominals glutis esquena Pectoral abdominals_superiors abdominals_inferiors abdominals_laterals)
-		(cardinality 1 ?VARIABLE)
-		(create-accessor read-write))
 	(single-slot Habits_salut
 		(type INSTANCE)
 ;+		(allowed-classes Habit_Salut)
@@ -219,6 +214,11 @@
 	(multislot Problemes_Salut
 		(type INSTANCE)
 ;+		(allowed-classes Problema_salut)
+		(create-accessor read-write))
+	(multislot Grups_musculars
+		(type SYMBOL)
+		(allowed-values coll espatlles avantbrac brac part_superior_cama part_inferior_cama abdominals glutis esquena Pectoral abdominals_superiors abdominals_inferiors abdominals_laterals)
+		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write))
 	(single-slot part_rehab
 		(type SYMBOL)
@@ -379,19 +379,19 @@
 (defclass Exercici
 	(is-a USER)
 	(role concrete)
-	(multislot grups_musculars
-		(type SYMBOL)
-		(allowed-values coll espatlles avantbrac brac part_superior_cama part_inferior_cama abdominals glutis esquena Pectoral abdominals_superiors abdominals_inferiors abdominals_laterals)
-		(cardinality 1 ?VARIABLE)
-		(create-accessor read-write))
 	(multislot Contraindicacions
 		(type SYMBOL)
-		(allowed-values pressio_alta problemes_cardiovasculars problemes_respiratoris lesio_exstremitats_inferiors lesio_esquena lesio_extremitats_superiors lesio_coll mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors lesio_abdomen)
+		(allowed-values pressio_alta problemes_cardiovasculars problemes_respiratoris lesio_extremitats_inferiors lesio_esquena lesio_extremitats_superiors lesio_coll mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors lesio_abdomen)
 		(create-accessor read-write))
 	(single-slot Nom
 ;+		(comment "Nom de l'usuari")
 		(type STRING)
 ;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot Grups_musculars
+		(type SYMBOL)
+		(allowed-values coll espatlles avantbrac brac part_superior_cama part_inferior_cama abdominals glutis esquena Pectoral abdominals_superiors abdominals_inferiors abdominals_laterals)
+		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write))
 	(single-slot Majors
 		(type SYMBOL)
@@ -438,7 +438,7 @@
 	(is-a Exercici)
 	(role concrete))
 
-(defclass CInta
+(defclass Cinta
 	(is-a Cardio)
 	(role concrete))
 
