@@ -1,4 +1,4 @@
-; Wed May 18 17:09:03 CEST 2016
+; Wed May 18 17:55:23 CEST 2016
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -38,7 +38,7 @@
 	(Grups_musculars coll espatlles)
 	(Majors TRUE)
 	(Menors TRUE)
-	(Nom "Resitencia coll cara amunt")
+	(Nom "Resistencia coll cara amunt")
 	(Objectiu Manteniment Musculacio condicio_fisica_general Rehabilitacio))
 
 ([Ontologia_Class10002] of  Musculacio
