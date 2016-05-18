@@ -1,4 +1,4 @@
-; Tue May 17 20:12:46 CEST 2016
+; Wed May 18 17:09:03 CEST 2016
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -21,6 +21,15 @@
 	(hores_exercici_feina "0")
 	(hores_sedentari 0)
 	(Puntuacio 0))
+
+([Ontologia_Class10000] of  Musculacio
+
+	(Contraindicacions lesio_esquena lesio_extremitats_superiors mobilitat_nula_extremitats_superiors lesio_coll)
+	(Descripcio "Seure a la maquina i estirar dels llocs adients fent forca amb el dorsal per aixecar el pes desitjat.")
+	(Grups_musculars coll espatlles esquena)
+	(Majors TRUE)
+	(Nom "Maquina esquena estirar")
+	(Objectiu Manteniment Musculacio))
 
 ([Ontologia_Class10001] of  Musculacio
 
@@ -348,6 +357,7 @@
 	(Descripcio "Assegut en un banc inclinant el cos endavant amb els colzes doblats sostenint una barra amb pes, tenint els palmells mirant amunt, pujar i baixar la barra obrint i tancant els dits de la ma.")
 	(Grups_musculars avantbrac)
 	(Majors TRUE)
+	(Menors FALSE)
 	(Nom "Aixecament barra amb dits")
 	(Objectiu Manteniment Musculacio))
 
@@ -470,3 +480,30 @@
 	(Menors FALSE)
 	(Nom "Cama enrere al terra")
 	(Objectiu Manteniment Musculacio condicio_fisica_general))
+
+([Ontologia_Class30003] of  Musculacio
+
+	(Contraindicacions lesio_esquena lesio_extremitats_superiors mobilitat_nula_extremitats_superiors lesio_coll)
+	(Descripcio "Agafar-se a una barra alta amb tots dos bracos, inicialment estirats, i aixecar el pres del propi cos doblant els colzes alcant el cos sencer.")
+	(Grups_musculars coll espatlles esquena)
+	(Majors TRUE)
+	(Nom "Dominades")
+	(Objectiu Manteniment Musculacio))
+
+([Ontologia_Class30004] of  Musculacio
+
+	(Contraindicacions lesio_esquena lesio_extremitats_superiors mobilitat_nula_extremitats_superiors lesio_coll)
+	(Descripcio "Posar una barra amb peses al terra i aixecarla amb els bracos nomes inclinant lesquena i mantenint els bracos estirats avall en tot moment fins a tenir el cos recte.")
+	(Grups_musculars coll espatlles esquena)
+	(Majors TRUE)
+	(Nom "Aixecar pes mort")
+	(Objectiu Manteniment Musculacio))
+
+([Ontologia_Class30005] of  Musculacio
+
+	(Contraindicacions lesio_esquena lesio_extremitats_superiors mobilitat_nula_extremitats_superiors lesio_coll)
+	(Descripcio "Recolzar-se inclinat en un banc que sostingui el cos fins als malucs i inclinar el tors cap avall i despres cap amunt simulant el moviment d'abdominals.")
+	(Grups_musculars coll espatlles esquena)
+	(Majors TRUE)
+	(Nom "Inclinacio en banc")
+	(Objectiu Manteniment Musculacio))
