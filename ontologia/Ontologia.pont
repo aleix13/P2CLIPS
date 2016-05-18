@@ -1,7 +1,7 @@
-; Wed May 18 17:55:23 CEST 2016
+; Wed May 18 20:01:06 CEST 2016
 ; 
-;+ (version "3.5")
-;+ (build "Build 663")
+;+ (version "3.4.8")
+;+ (build "Build 629")
 
 
 (defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
@@ -12,6 +12,11 @@
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot picar_entre_hores
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Problemes_esquena
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 1 1)
@@ -105,6 +110,11 @@
 		(range 0 7)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(single-slot Problema_Cardiorespiratori
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot Dificultat
 		(type SYMBOL)
 		(allowed-values Facil Moderada Alta Molt_alta)
@@ -127,13 +137,18 @@
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(single-slot Problemes_mobilitat
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot Velocitat_min
 		(type FLOAT)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(multislot Contraindicacions
 		(type SYMBOL)
-		(allowed-values pressio_alta problemes_cardiovasculars problemes_respiratoris lesio_extremitats_inferiors lesio_esquena lesio_extremitats_superiors lesio_coll mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors lesio_abdomen)
+		(allowed-values pressio_alta problemes_cardiorespiratoris mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors problemes_articulars problemes_esquena)
 		(create-accessor read-write))
 	(single-slot IMC
 ;+		(comment "Pes/alcada^2")
@@ -213,7 +228,7 @@
 		(create-accessor read-write))
 	(multislot Problemes_Salut
 		(type INSTANCE)
-;+		(allowed-classes Problema_salut)
+;+		(allowed-classes)
 		(create-accessor read-write))
 	(multislot Grups_musculars
 		(type SYMBOL)
@@ -228,9 +243,13 @@
 	(multislot Parts_Afectades
 		(type SYMBOL)
 		(allowed-values Coll Esquena Avantbrac Brac Part_superior_cama part_inferior_cama Abdominals espatlles Pectoral)
-		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write))
 	(single-slot Critic
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Problemes_articulars
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 1 1)
@@ -252,6 +271,11 @@
 (defclass Client
 	(is-a USER)
 	(role concrete)
+	(single-slot Problemes_esquena
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot Habits_salut
 		(type INSTANCE)
 ;+		(allowed-classes Habit_Salut)
@@ -268,19 +292,24 @@
 		(default [Ontologia_Class1])
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(multislot Problemes_Salut
-		(type INSTANCE)
-;+		(allowed-classes Problema_salut)
-		(create-accessor read-write))
 	(multislot Objectiu
 		(type SYMBOL)
 		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general Rehabilitacio)
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write))
-	(single-slot part_rehab
+	(single-slot Problema_Cardiorespiratori
 		(type SYMBOL)
-		(allowed-values lesio_extremitats_inferiors lesio_extremitats_superiors lesio_esquena lesio_coll)
-;+		(cardinality 0 1)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot Parts_Afectades
+		(type SYMBOL)
+		(allowed-values Coll Esquena Avantbrac Brac Part_superior_cama part_inferior_cama Abdominals espatlles Pectoral)
+		(create-accessor read-write))
+	(single-slot Problemes_articulars
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot Nom
 ;+		(comment "Nom de l'usuari")
@@ -379,9 +408,14 @@
 (defclass Exercici
 	(is-a USER)
 	(role concrete)
+	(single-slot Dificultat
+		(type SYMBOL)
+		(allowed-values Facil Moderada Alta Molt_alta)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(multislot Contraindicacions
 		(type SYMBOL)
-		(allowed-values pressio_alta problemes_cardiovasculars problemes_respiratoris lesio_extremitats_inferiors lesio_esquena lesio_extremitats_superiors lesio_coll mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors lesio_abdomen)
+		(allowed-values pressio_alta problemes_cardiorespiratoris mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors problemes_articulars problemes_esquena)
 		(create-accessor read-write))
 	(single-slot Nom
 ;+		(comment "Nom de l'usuari")
@@ -412,35 +446,92 @@
 	(single-slot Descripcio
 		(type STRING)
 ;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(multislot Indicat_Per
-		(type SYMBOL)
-		(allowed-values rehab_extremitats_inferiors rehab_extremitats_superiors rehab_esquena rehab_coll molesties_esquena rehab_abdomen)
 		(create-accessor read-write)))
 
 (defclass Musculacio
 	(is-a Exercici)
-	(role concrete))
+	(role concrete)
+	(single-slot Dificultat
+		(type SYMBOL)
+		(allowed-values Facil Moderada Alta Molt_alta)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot Objectiu
+;+		(comment "objectiu fisic pel qual es adequat")
+		(type SYMBOL)
+		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general Rehabilitacio)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write)))
 
 (defclass Terra
 	(is-a Exercici)
-	(role concrete))
+	(role concrete)
+	(single-slot Dificultat
+		(type SYMBOL)
+		(allowed-values Facil Moderada Alta Molt_alta)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot Objectiu
+;+		(comment "objectiu fisic pel qual es adequat")
+		(type SYMBOL)
+		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general Rehabilitacio)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write)))
 
 (defclass Terra_Duracio
 	(is-a Terra)
-	(role concrete))
+	(role concrete)
+	(single-slot Dificultat
+		(type SYMBOL)
+		(allowed-values Facil Moderada Alta Molt_alta)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot Objectiu
+;+		(comment "objectiu fisic pel qual es adequat")
+		(type SYMBOL)
+		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general Rehabilitacio)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write)))
 
 (defclass Terra_Repeticions
 	(is-a Terra)
-	(role concrete))
+	(role concrete)
+	(single-slot Dificultat
+		(type SYMBOL)
+		(allowed-values Facil Moderada Alta Molt_alta)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot Objectiu
+;+		(comment "objectiu fisic pel qual es adequat")
+		(type SYMBOL)
+		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general Rehabilitacio)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write)))
 
 (defclass Cardio
 	(is-a Exercici)
-	(role concrete))
+	(role concrete)
+	(single-slot Dificultat
+		(type SYMBOL)
+		(allowed-values Facil Moderada Alta Molt_alta)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot Objectiu
+;+		(comment "objectiu fisic pel qual es adequat")
+		(type SYMBOL)
+		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general Rehabilitacio)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write)))
 
 (defclass Cinta
 	(is-a Cardio)
-	(role concrete))
+	(role concrete)
+	(multislot Objectiu
+;+		(comment "objectiu fisic pel qual es adequat")
+		(type SYMBOL)
+		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general Rehabilitacio)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write)))
 
 (defclass Assignacio_Exercici
 	(is-a USER)
@@ -492,6 +583,10 @@
 		(type INSTANCE)
 ;+		(allowed-classes Terra)
 ;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Durada_min
+		(type INTEGER)
+;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
 (defclass Assignacio_exercici_terra_Duracio
@@ -500,10 +595,6 @@
 	(single-slot Exercici_Assignat
 		(type INSTANCE)
 ;+		(allowed-classes Terra_Duracio)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Durada_min
-		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot Durada_max
@@ -516,6 +607,11 @@
 	(role concrete)
 	(single-slot Repeticions_min
 		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Exercici_Assignat
+		(type INSTANCE)
+;+		(allowed-classes Terra)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot Repeticions_max
@@ -551,33 +647,37 @@
 (defclass Assignacio_exercici_cinta
 	(is-a Assignacio_exercici_cardio)
 	(role concrete)
+	(single-slot Dificultat
+		(type SYMBOL)
+		(allowed-values Facil Moderada Alta Molt_alta)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot Velocitat_min
 		(type FLOAT)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Exercici_Assignat
+		(type INSTANCE)
+;+		(allowed-classes Cardio)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot Velocitat_max
 		(type FLOAT)
 ;+		(cardinality 1 1)
-		(create-accessor read-write)))
-
-(defclass Problema_salut
-	(is-a USER)
-	(role concrete)
-	(single-slot Gravetat
-		(type SYMBOL)
-		(allowed-values Lleu Considerable Greu Critic)
+		(create-accessor read-write))
+	(single-slot Resistencia_max
+		(type INTEGER)
 ;+		(cardinality 1 1)
-		(create-accessor read-write)))
-
-(defclass problema_cardiorespiratori
-	(is-a Problema_salut)
-	(role concrete))
-
-(defclass Problema_musculoesqueletic
-	(is-a Problema_salut)
-	(role concrete)
-	(multislot Parts_Afectades
-		(type SYMBOL)
-		(allowed-values Coll Esquena Avantbrac Brac Part_superior_cama part_inferior_cama Abdominals espatlles Pectoral)
-		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot Durada_min
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Resistencia_min
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Durada_max
+		(type INTEGER)
+;+		(cardinality 1 1)
 		(create-accessor read-write)))

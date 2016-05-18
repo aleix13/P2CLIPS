@@ -1,7 +1,7 @@
-; Wed May 18 17:55:23 CEST 2016
+; Wed May 18 20:01:06 CEST 2016
 ; 
-;+ (version "3.5")
-;+ (build "Build 663")
+;+ (version "3.4.8")
+;+ (build "Build 629")
 
 ([Ontologia_Class0] of  Musculacio
 
@@ -46,7 +46,6 @@
 	(Contraindicacions lesio_coll lesio_extremitats_superiors mobilitat_nula_extremitats_superiors)
 	(Descripcio "Posarse una ma al costat del cap que es vulgui exercitar i fer forca amb el coll en direccio contraria a la que es fa amb la ma.")
 	(Grups_musculars coll)
-	(Indicat_Per rehab_coll)
 	(Majors TRUE)
 	(Menors TRUE)
 	(Nom "Forca coll lateral")
@@ -67,7 +66,6 @@
 	(Contraindicacions pressio_alta problemes_cardiovasculars problemes_respiratoris lesio_extremitats_inferiors mobilitat_nula_extremitats_inferiors)
 	(Descripcio "Bicicleta estatica on es va assentat en un seient que te respatller")
 	(Grups_musculars glutis part_superior_cama part_inferior_cama)
-	(Indicat_Per rehab_extremitats_inferiors molesties_esquena)
 	(Majors TRUE)
 	(Menors TRUE)
 	(Nom "Bicicleta reclinable")
@@ -78,7 +76,6 @@
 	(Contraindicacions problemes_cardiovasculars pressio_alta problemes_respiratoris lesio_extremitats_inferiors lesio_extremitats_superiors lesio_esquena mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors)
 	(Descripcio "Bicicleta eliptica")
 	(Grups_musculars part_superior_cama espatlles brac esquena glutis part_inferior_cama)
-	(Indicat_Per rehab_extremitats_inferiors molesties_esquena)
 	(Majors TRUE)
 	(Menors TRUE)
 	(Nom "Eliptica")
@@ -89,7 +86,6 @@
 	(Contraindicacions pressio_alta problemes_cardiovasculars problemes_respiratoris lesio_extremitats_inferiors lesio_esquena mobilitat_nula_extremitats_inferiors)
 	(Descripcio "Maquina que recrea una bicicleta on es pot ajustar la intensitat")
 	(Grups_musculars part_superior_cama part_inferior_cama glutis)
-	(Indicat_Per rehab_extremitats_inferiors)
 	(Majors TRUE)
 	(Menors TRUE)
 	(Nom "Bicileta estatica")
@@ -100,7 +96,6 @@
 	(Contraindicacions lesio_extremitats_inferiors pressio_alta problemes_cardiovasculars problemes_respiratoris mobilitat_nula_extremitats_superiors mobilitat_nula_extremitats_inferiors lesio_extremitats_superiors)
 	(Descripcio "Maquina que simula el moviment de rem on es pot modificar la resistencia de la remada")
 	(Grups_musculars espatlles brac avantbrac part_superior_cama glutis esquena Pectoral abdominals)
-	(Indicat_Per rehab_extremitats_inferiors rehab_extremitats_superiors rehab_esquena molesties_esquena)
 	(Majors TRUE)
 	(Menors TRUE)
 	(Nom "Maquina de remar")
@@ -111,7 +106,6 @@
 	(Contraindicacions pressio_alta problemes_cardiovasculars problemes_respiratoris lesio_extremitats_inferiors lesio_esquena mobilitat_nula_extremitats_inferiors)
 	(Descripcio "Maquina que simula el moviment de pujar escales")
 	(Grups_musculars part_superior_cama part_inferior_cama glutis)
-	(Indicat_Per rehab_extremitats_inferiors)
 	(Majors TRUE)
 	(Menors TRUE)
 	(Nom "Stepper")
@@ -122,7 +116,6 @@
 	(Contraindicacions pressio_alta problemes_cardiovasculars problemes_respiratoris lesio_extremitats_superiors mobilitat_nula_extremitats_superiors)
 	(Descripcio "Maquina que simula el moviment de esquiar")
 	(Grups_musculars brac espatlles esquena abdominals glutis part_superior_cama part_inferior_cama)
-	(Indicat_Per rehab_extremitats_superiors)
 	(Majors TRUE)
 	(Menors TRUE)
 	(Nom "Esqui")
@@ -163,7 +156,6 @@
 	(Contraindicacions pressio_alta problemes_cardiovasculars lesio_extremitats_superiors lesio_abdomen mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors)
 	(Descripcio "Estirat amb els bracos doblats de panxa a terra aguantant amb els avantbracos i la punta del peu mantenirse recte sense tocar el terra.")
 	(Grups_musculars abdominals_superiors abdominals_inferiors)
-	(Indicat_Per molesties_esquena)
 	(Majors TRUE)
 	(Menors TRUE)
 	(Nom "Planxa")
@@ -174,7 +166,6 @@
 	(Contraindicacions lesio_coll lesio_extremitats_superiors mobilitat_nula_extremitats_superiors)
 	(Descripcio "Posarse una ma a darrere o a davant del cap i fer forca amb el coll en direccio contraria a la que es fa amb la ma.")
 	(Grups_musculars coll)
-	(Indicat_Per rehab_coll)
 	(Majors TRUE)
 	(Menors TRUE)
 	(Nom "Forca coll davant i darrere")
@@ -335,7 +326,7 @@
 
 ([Ontologia_Class20024] of  Musculacio
 
-	(Contraindicacions lesio_esquena lesio_extremitats_superiors mobilitat_nula_extremitats_superiors)
+	(Contraindicacions mobilitat_nula_extremitats_superiors)
 	(Descripcio "Posant l'avantbrac sobre una superficie plana de manera que les mans quedin a l'aire, pujar i baixar una barra amb peses, movent els canells amb els palmells amunt.")
 	(Grups_musculars avantbrac)
 	(Majors TRUE)
@@ -344,7 +335,7 @@
 
 ([Ontologia_Class20025] of  Musculacio
 
-	(Contraindicacions lesio_esquena lesio_extremitats_superiors mobilitat_nula_extremitats_superiors)
+	(Contraindicacions mobilitat_nula_extremitats_superiors)
 	(Descripcio "Posant l'avantbrac sobre una superficie plana de manera que les mans quedin a l'aire, pujar i baixar una barra amb peses, movent els canells amb els palmells avall.")
 	(Grups_musculars avantbrac)
 	(Majors TRUE)
@@ -353,7 +344,7 @@
 
 ([Ontologia_Class20026] of  Musculacio
 
-	(Contraindicacions lesio_esquena lesio_extremitats_superiors mobilitat_nula_extremitats_superiors)
+	(Contraindicacions mobilitat_nula_extremitats_superiors)
 	(Descripcio "Assegut en un banc inclinant el cos endavant amb els colzes doblats sostenint una barra amb pes, tenint els palmells mirant amunt, pujar i baixar la barra obrint i tancant els dits de la ma.")
 	(Grups_musculars avantbrac)
 	(Majors TRUE)
@@ -408,7 +399,7 @@
 
 ([Ontologia_Class20032] of  Musculacio
 
-	(Contraindicacions lesio_extremitats_inferiors lesio_esquena lesio_coll mobilitat_nula_extremitats_inferiors problemes_respiratoris)
+	(Contraindicacions mobilitat_nula_extremitats_inferiors)
 	(Descripcio "Saltar amb ambdues cames alhora tant amunt com es pugui i tocant-se el cul amb els talons.")
 	(Grups_musculars part_superior_cama)
 	(Majors TRUE)
