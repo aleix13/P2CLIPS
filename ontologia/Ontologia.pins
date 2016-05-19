@@ -1,11 +1,11 @@
-; Wed May 18 20:01:06 CEST 2016
+; Thu May 19 18:33:49 CEST 2016
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
 
 ([Ontologia_Class0] of  Musculacio
 
-	(Contraindicacions lesio_coll lesio_esquena lesio_extremitats_superiors lesio_abdomen mobilitat_nula_extremitats_superiors)
+	(Contraindicacions mobilitat_nula_extremitats_superiors)
 	(Descripcio "Estirarse cara avall a sobre d'un banc i, amb una pesa o sense al clatell, fer un moviment amb el coll d'amunt cap avall.")
 	(Grups_musculars coll espatlles)
 	(Majors TRUE)
@@ -24,7 +24,7 @@
 
 ([Ontologia_Class10000] of  Musculacio
 
-	(Contraindicacions lesio_esquena lesio_extremitats_superiors mobilitat_nula_extremitats_superiors lesio_coll)
+	(Contraindicacions mobilitat_nula_extremitats_superiors)
 	(Descripcio "Seure a la maquina i estirar dels llocs adients fent forca amb el dorsal per aixecar el pes desitjat.")
 	(Grups_musculars coll espatlles esquena)
 	(Majors TRUE)
@@ -33,7 +33,7 @@
 
 ([Ontologia_Class10001] of  Musculacio
 
-	(Contraindicacions lesio_coll lesio_esquena lesio_extremitats_superiors mobilitat_nula_extremitats_superiors)
+	(Contraindicacions mobilitat_nula_extremitats_superiors)
 	(Descripcio "Estirarse a sobre dun banc cara amunt i fer un moviment des de avall, cap amunt, com dient \"si\".")
 	(Grups_musculars coll espatlles)
 	(Majors TRUE)
@@ -43,7 +43,7 @@
 
 ([Ontologia_Class10002] of  Musculacio
 
-	(Contraindicacions lesio_coll lesio_extremitats_superiors mobilitat_nula_extremitats_superiors)
+	(Contraindicacions mobilitat_nula_extremitats_superiors)
 	(Descripcio "Posarse una ma al costat del cap que es vulgui exercitar i fer forca amb el coll en direccio contraria a la que es fa amb la ma.")
 	(Grups_musculars coll)
 	(Majors TRUE)
@@ -63,7 +63,7 @@
 
 ([Ontologia_Class10004] of  Cardio
 
-	(Contraindicacions pressio_alta problemes_cardiovasculars problemes_respiratoris lesio_extremitats_inferiors mobilitat_nula_extremitats_inferiors)
+	(Contraindicacions pressio_alta mobilitat_nula_extremitats_inferiors)
 	(Descripcio "Bicicleta estatica on es va assentat en un seient que te respatller")
 	(Grups_musculars glutis part_superior_cama part_inferior_cama)
 	(Majors TRUE)
@@ -73,7 +73,7 @@
 
 ([Ontologia_Class10005] of  Cardio
 
-	(Contraindicacions problemes_cardiovasculars pressio_alta problemes_respiratoris lesio_extremitats_inferiors lesio_extremitats_superiors lesio_esquena mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors)
+	(Contraindicacions pressio_alta mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors)
 	(Descripcio "Bicicleta eliptica")
 	(Grups_musculars part_superior_cama espatlles brac esquena glutis part_inferior_cama)
 	(Majors TRUE)
@@ -83,7 +83,7 @@
 
 ([Ontologia_Class10009] of  Cardio
 
-	(Contraindicacions pressio_alta problemes_cardiovasculars problemes_respiratoris lesio_extremitats_inferiors lesio_esquena mobilitat_nula_extremitats_inferiors)
+	(Contraindicacions pressio_alta mobilitat_nula_extremitats_inferiors)
 	(Descripcio "Maquina que recrea una bicicleta on es pot ajustar la intensitat")
 	(Grups_musculars part_superior_cama part_inferior_cama glutis)
 	(Majors TRUE)
@@ -93,7 +93,7 @@
 
 ([Ontologia_Class10010] of  Cardio
 
-	(Contraindicacions lesio_extremitats_inferiors pressio_alta problemes_cardiovasculars problemes_respiratoris mobilitat_nula_extremitats_superiors mobilitat_nula_extremitats_inferiors lesio_extremitats_superiors)
+	(Contraindicacions pressio_alta mobilitat_nula_extremitats_superiors mobilitat_nula_extremitats_inferiors)
 	(Descripcio "Maquina que simula el moviment de rem on es pot modificar la resistencia de la remada")
 	(Grups_musculars espatlles brac avantbrac part_superior_cama glutis esquena Pectoral abdominals)
 	(Majors TRUE)
@@ -103,7 +103,7 @@
 
 ([Ontologia_Class10011] of  Cardio
 
-	(Contraindicacions pressio_alta problemes_cardiovasculars problemes_respiratoris lesio_extremitats_inferiors lesio_esquena mobilitat_nula_extremitats_inferiors)
+	(Contraindicacions pressio_alta mobilitat_nula_extremitats_inferiors)
 	(Descripcio "Maquina que simula el moviment de pujar escales")
 	(Grups_musculars part_superior_cama part_inferior_cama glutis)
 	(Majors TRUE)
@@ -113,7 +113,7 @@
 
 ([Ontologia_Class10017] of  Cardio
 
-	(Contraindicacions pressio_alta problemes_cardiovasculars problemes_respiratoris lesio_extremitats_superiors mobilitat_nula_extremitats_superiors)
+	(Contraindicacions pressio_alta mobilitat_nula_extremitats_superiors)
 	(Descripcio "Maquina que simula el moviment de esquiar")
 	(Grups_musculars brac espatlles esquena abdominals glutis part_superior_cama part_inferior_cama)
 	(Majors TRUE)
@@ -123,7 +123,7 @@
 
 ([Ontologia_Class10018] of  Terra_Repeticions
 
-	(Contraindicacions pressio_alta problemes_cardiovasculars lesio_esquena lesio_abdomen)
+	(Contraindicacions pressio_alta)
 	(Descripcio "Abdominals convencionals, estirat al terra i amb les mans juntes darrere del coll, elevar fins als genolls")
 	(Grups_musculars abdominals_superiors)
 	(Majors TRUE)
@@ -133,7 +133,7 @@
 
 ([Ontologia_Class10019] of  Terra_Repeticions
 
-	(Contraindicacions pressio_alta problemes_cardiovasculars mobilitat_nula_extremitats_inferiors lesio_abdomen)
+	(Contraindicacions pressio_alta mobilitat_nula_extremitats_inferiors)
 	(Descripcio "Estirat al terra amb les mans cara avall al terra, aixecar les cames rectes i la cintura fins que estiguin perpendiculars al terra i tornar a la posicio")
 	(Grups_musculars abdominals_superiors abdominals_inferiors)
 	(Majors TRUE)
@@ -143,7 +143,7 @@
 
 ([Ontologia_Class10023] of  Terra_Repeticions
 
-	(Contraindicacions lesio_abdomen pressio_alta problemes_cardiovasculars lesio_abdomen)
+	(Contraindicacions pressio_alta)
 	(Descripcio "Estirat al terra de panxa enlaire, amb les mans al clatell i amb les cames flexionades però perpendicualrs al terra, portar el colze dret al genoll esquerre i viceversa.")
 	(Grups_musculars abdominals_laterals abdominals_superiors)
 	(Majors TRUE)
@@ -153,7 +153,7 @@
 
 ([Ontologia_Class10024] of  Terra_Duracio
 
-	(Contraindicacions pressio_alta problemes_cardiovasculars lesio_extremitats_superiors lesio_abdomen mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors)
+	(Contraindicacions pressio_alta mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors)
 	(Descripcio "Estirat amb els bracos doblats de panxa a terra aguantant amb els avantbracos i la punta del peu mantenirse recte sense tocar el terra.")
 	(Grups_musculars abdominals_superiors abdominals_inferiors)
 	(Majors TRUE)
@@ -161,9 +161,31 @@
 	(Nom "Planxa")
 	(Objectiu Musculacio))
 
+([Ontologia_Class20000] of  Terra_Duracio
+
+	(Contraindicacions problemes_esquena mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors)
+	(Descripcio "Amb el cos lateral i amb l'avantbrac recolzat al semi esferic, mantenirse amb el cos totalment estirat.")
+	(Dificultat Moderada)
+	(Grups_musculars abdominals abdominals_laterals)
+	(Majors TRUE)
+	(Menors TRUE)
+	(Nom "Planxa lateral en el Semi esferic")
+	(Objectiu Manteniment Musculacio condicio_fisica_general))
+
+([Ontologia_Class20002] of  Terra_Duracio
+
+	(Contraindicacions problemes_esquena)
+	(Descripcio "Recolzarse amb els avantbracos a la bola de fitness amb el cos totalment estirat i mantenirse en la posicio")
+	(Dificultat Moderada)
+	(Grups_musculars abdominals)
+	(Majors TRUE)
+	(Menors TRUE)
+	(Nom "Planxa lateral a la pilota de fitness")
+	(Objectiu Manteniment condicio_fisica_general Musculacio))
+
 ([Ontologia_Class20003] of  Musculacio
 
-	(Contraindicacions lesio_coll lesio_extremitats_superiors mobilitat_nula_extremitats_superiors)
+	(Contraindicacions mobilitat_nula_extremitats_superiors)
 	(Descripcio "Posarse una ma a darrere o a davant del cap i fer forca amb el coll en direccio contraria a la que es fa amb la ma.")
 	(Grups_musculars coll)
 	(Majors TRUE)
@@ -173,7 +195,7 @@
 
 ([Ontologia_Class20004] of  Musculacio
 
-	(Contraindicacions lesio_esquena lesio_extremitats_superiors lesio_coll mobilitat_nula_extremitats_superiors mobilitat_nula_extremitats_inferiors)
+	(Contraindicacions mobilitat_nula_extremitats_superiors mobilitat_nula_extremitats_inferiors)
 	(Descripcio "Aguantant una barra amb peses o unes manuelles amb els bracos totalment extesos cap avall, mourels cap amunt encongint les espatlles.")
 	(Grups_musculars espatlles coll esquena)
 	(Majors TRUE)
@@ -183,7 +205,7 @@
 
 ([Ontologia_Class20006] of  Musculacio
 
-	(Contraindicacions lesio_esquena lesio_extremitats_superiors lesio_coll mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors)
+	(Contraindicacions mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors)
 	(Descripcio "Aguantant una barra duna maquina amb cable amb els bracos totalment extesos cap avall, mourels cap amunt encongint les espatlles.")
 	(Grups_musculars espatlles coll esquena)
 	(Majors TRUE)
@@ -193,7 +215,7 @@
 
 ([Ontologia_Class20007] of  Musculacio
 
-	(Contraindicacions lesio_esquena lesio_extremitats_superiors lesio_coll mobilitat_nula_extremitats_superiors mobilitat_nula_extremitats_inferiors)
+	(Contraindicacions mobilitat_nula_extremitats_superiors mobilitat_nula_extremitats_inferiors)
 	(Descripcio "Agafarse a una barra alta i fer un exercici semblant al de \"dominades\" amb la diferencia que no cal pujar gaire, sino que es tracta dinclinar el cos enrere per fer forca amb lesquena i les espatlles.")
 	(Grups_musculars espatlles coll esquena)
 	(Majors TRUE)
@@ -203,7 +225,7 @@
 
 ([Ontologia_Class20009] of  Musculacio
 
-	(Contraindicacions lesio_esquena lesio_extremitats_superiors lesio_coll mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors)
+	(Contraindicacions mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors)
 	(Descripcio "Aixecar una pesa amb nansa, des del terra fins al pit, agafantla amb les dues mans i mantenint lesquena recta.")
 	(Grups_musculars espatlles coll esquena)
 	(Majors TRUE)
@@ -213,7 +235,7 @@
 
 ([Ontologia_Class20010] of  Musculacio
 
-	(Contraindicacions lesio_esquena lesio_coll mobilitat_nula_extremitats_superiors lesio_extremitats_superiors mobilitat_nula_extremitats_inferiors)
+	(Contraindicacions mobilitat_nula_extremitats_superiors mobilitat_nula_extremitats_inferiors)
 	(Descripcio "Amb una manuella a cada ma, aixecarles lateralment, o una mica per davant, fins a l'alcada de les espatlles.")
 	(Grups_musculars coll espatlles esquena)
 	(Majors TRUE)
@@ -223,7 +245,7 @@
 
 ([Ontologia_Class20011] of  Musculacio
 
-	(Contraindicacions lesio_esquena lesio_coll mobilitat_nula_extremitats_superiors lesio_extremitats_superiors mobilitat_nula_extremitats_inferiors)
+	(Contraindicacions mobilitat_nula_extremitats_superiors mobilitat_nula_extremitats_inferiors)
 	(Descripcio "Estirat cara avall a sobre d'un banc inclinat cap amunt, aixecar una manuella amb cada ma lateralment.")
 	(Grups_musculars coll espatlles esquena)
 	(Majors TRUE)
@@ -233,7 +255,7 @@
 
 ([Ontologia_Class20012] of  Musculacio
 
-	(Contraindicacions lesio_esquena lesio_extremitats_superiors mobilitat_nula_extremitats_superiors)
+	(Contraindicacions mobilitat_nula_extremitats_superiors)
 	(Descripcio "Seure en un banc inclinat cap enrere, amb una manuella a cada ma, fer un moviment d'estirar els bracos cap amunt, des del pit.")
 	(Grups_musculars Pectoral brac)
 	(Majors TRUE)
@@ -243,7 +265,7 @@
 
 ([Ontologia_Class20014] of  Terra_Repeticions
 
-	(Contraindicacions lesio_esquena lesio_extremitats_superiors lesio_coll mobilitat_nula_extremitats_superiors lesio_abdomen)
+	(Contraindicacions problemes_esquena)
 	(Descripcio "Posar-se cara avall, tocar el terra nomes amb les puntes dels peus i amb les mans plantades al terra, estirar els bracos, perpendicularment al terra, aixecant el pes del cos.")
 	(Grups_musculars brac Pectoral)
 	(Majors TRUE)
@@ -253,7 +275,7 @@
 
 ([Ontologia_Class20015] of  Musculacio
 
-	(Contraindicacions lesio_extremitats_superiors mobilitat_nula_extremitats_superiors)
+	(Contraindicacions mobilitat_nula_extremitats_superiors)
 	(Descripcio "Fer forca amb els bracos estirant-los des del pit cap a fora.")
 	(Grups_musculars Pectoral)
 	(Majors TRUE)
@@ -263,7 +285,7 @@
 
 ([Ontologia_Class20016] of  Musculacio
 
-	(Contraindicacions lesio_extremitats_superiors mobilitat_nula_extremitats_superiors)
+	(Contraindicacions mobilitat_nula_extremitats_superiors)
 	(Descripcio "Fer forca amb els bracos, inicialment oberts portant-los cap endavant mantenint-los estirats en tot moment.")
 	(Grups_musculars Pectoral)
 	(Majors TRUE)
@@ -272,7 +294,7 @@
 
 ([Ontologia_Class20017] of  Musculacio
 
-	(Contraindicacions lesio_esquena mobilitat_nula_extremitats_superiors lesio_extremitats_superiors)
+	(Contraindicacions mobilitat_nula_extremitats_superiors)
 	(Descripcio "Amb una manuella a cada brac, amb els bracos estirats, alcar-les alternadament doblant els colzes de manera que es treballi el biceps.")
 	(Grups_musculars brac)
 	(Majors TRUE)
@@ -281,7 +303,7 @@
 
 ([Ontologia_Class20018] of  Musculacio
 
-	(Contraindicacions lesio_esquena mobilitat_nula_extremitats_superiors lesio_extremitats_superiors)
+	(Contraindicacions mobilitat_nula_extremitats_superiors)
 	(Descripcio "Amb una manuella a cada brac, alcar-les alternadament des de l'alcada de les espatlles, estirant els bracos cap amunt, amb els palmells de les mans mirant cap a la cara, i acabant amb les mans en la posicio contraria.")
 	(Grups_musculars brac)
 	(Majors TRUE)
@@ -290,7 +312,7 @@
 
 ([Ontologia_Class20019] of  Musculacio
 
-	(Contraindicacions lesio_esquena mobilitat_nula_extremitats_superiors lesio_extremitats_superiors)
+	(Contraindicacions mobilitat_nula_extremitats_superiors)
 	(Descripcio "Aixecar una barra amb peses, amb els bracos inicialment estirats i portant-los cap al pit doblant els colzes.")
 	(Grups_musculars brac)
 	(Majors TRUE)
@@ -299,7 +321,7 @@
 
 ([Ontologia_Class20021] of  Musculacio
 
-	(Contraindicacions lesio_esquena mobilitat_nula_extremitats_superiors lesio_extremitats_superiors)
+	(Contraindicacions mobilitat_nula_extremitats_superiors)
 	(Descripcio "Aixecar el pes de la maquina fent forca amb tots dos bracos.")
 	(Grups_musculars brac)
 	(Majors TRUE)
@@ -308,7 +330,7 @@
 
 ([Ontologia_Class20022] of  Musculacio
 
-	(Contraindicacions lesio_esquena mobilitat_nula_extremitats_superiors lesio_extremitats_superiors)
+	(Contraindicacions mobilitat_nula_extremitats_superiors)
 	(Descripcio "Assegut en un banc i amb cada manuella per separat, aixecar la manuella comencant amb el brac estirat cap avall, doblant el colze i portant la ma cap al pit, de manera que treballi el biceps.")
 	(Grups_musculars brac)
 	(Majors TRUE)
@@ -317,7 +339,7 @@
 
 ([Ontologia_Class20023] of  Musculacio
 
-	(Contraindicacions lesio_esquena mobilitat_nula_extremitats_superiors lesio_extremitats_superiors)
+	(Contraindicacions mobilitat_nula_extremitats_superiors)
 	(Descripcio "Amb una manuella a cada brac, amb els bracos estirats, alcar-les alhora fent un moviment com de colpejar amb un martell.")
 	(Grups_musculars brac)
 	(Majors TRUE)
@@ -354,7 +376,7 @@
 
 ([Ontologia_Class20027] of  Musculacio
 
-	(Contraindicacions lesio_extremitats_inferiors mobilitat_nula_extremitats_inferiors)
+	(Contraindicacions mobilitat_nula_extremitats_inferiors)
 	(Descripcio "En una maquina per a quadriceps estant estirat inclinat cap enrere, fer forca cap amunt amb les cames per tal d'aixecar el pes que s'hi posi.")
 	(Grups_musculars part_superior_cama)
 	(Majors TRUE)
@@ -363,7 +385,7 @@
 
 ([Ontologia_Class20028] of  Musculacio
 
-	(Contraindicacions lesio_extremitats_inferiors mobilitat_nula_extremitats_inferiors)
+	(Contraindicacions mobilitat_nula_extremitats_inferiors)
 	(Descripcio "En una maquina per quadriceps assegut, posar els peus darrere les barres i fer forca amb les cames per aixecar el pes requerit.")
 	(Grups_musculars part_superior_cama)
 	(Majors TRUE)
@@ -372,7 +394,7 @@
 
 ([Ontologia_Class20029] of  Musculacio
 
-	(Contraindicacions lesio_extremitats_inferiors mobilitat_nula_extremitats_inferiors lesio_esquena lesio_coll)
+	(Contraindicacions mobilitat_nula_extremitats_inferiors)
 	(Descripcio "Sostenint una barra amb pes a l'esquena estant dempeus, flexionar els genolls intentant mantenir l'esquena bastant recta.")
 	(Grups_musculars part_superior_cama)
 	(Majors TRUE)
@@ -381,7 +403,7 @@
 
 ([Ontologia_Class20030] of  Musculacio
 
-	(Contraindicacions lesio_extremitats_inferiors mobilitat_nula_extremitats_inferiors lesio_coll lesio_esquena)
+	(Contraindicacions mobilitat_nula_extremitats_inferiors)
 	(Descripcio "Sostenint una barra amb pes a l'esquena estant dempeus, fer passes caminant lentament i flexionant els genolls intentant mantenir l'esquena bastant recta.")
 	(Grups_musculars part_superior_cama)
 	(Majors TRUE)
@@ -390,7 +412,7 @@
 
 ([Ontologia_Class20031] of  Musculacio
 
-	(Contraindicacions lesio_extremitats_inferiors mobilitat_nula_extremitats_inferiors lesio_esquena lesio_coll problemes_respiratoris)
+	(Contraindicacions mobilitat_nula_extremitats_inferiors)
 	(Descripcio "Posant una capsa al terra, impulsar-se sobre la capsa fent un salt cap amunt alternant les cames.")
 	(Grups_musculars part_superior_cama)
 	(Majors TRUE)
@@ -408,7 +430,7 @@
 
 ([Ontologia_Class20033] of  Musculacio
 
-	(Contraindicacions lesio_extremitats_inferiors lesio_esquena lesio_coll mobilitat_nula_extremitats_inferiors problemes_respiratoris)
+	(Contraindicacions mobilitat_nula_extremitats_inferiors)
 	(Descripcio "Sostenint una barra amb pes a l'esquena i posant la punta dels peus en una capsa, fer moviments d'estirar i arronsar els talons.")
 	(Grups_musculars part_inferior_cama)
 	(Majors TRUE)
@@ -417,7 +439,7 @@
 
 ([Ontologia_Class20034] of  Musculacio
 
-	(Contraindicacions lesio_extremitats_inferiors lesio_esquena lesio_coll mobilitat_nula_extremitats_inferiors problemes_respiratoris)
+	(Contraindicacions mobilitat_nula_extremitats_inferiors)
 	(Descripcio "Assegut en una maquina per treballar bessons, estirar i arronsar els talons aixecant el pes requerit.")
 	(Grups_musculars part_inferior_cama)
 	(Majors TRUE)
@@ -426,7 +448,7 @@
 
 ([Ontologia_Class20035] of  Musculacio
 
-	(Contraindicacions lesio_extremitats_inferiors lesio_esquena lesio_coll mobilitat_nula_extremitats_inferiors problemes_respiratoris)
+	(Contraindicacions mobilitat_nula_extremitats_inferiors)
 	(Descripcio "Estant dempeus sostenint una barra amb pes sobre l'esquena, moure's d'endavant cap endarrere recolzant-se nomes amb la punta dels peus per, despres, recolzar-se nomes amb els talons (i les puntes del peu aixecades).")
 	(Grups_musculars part_inferior_cama)
 	(Majors TRUE)
@@ -435,7 +457,7 @@
 
 ([Ontologia_Class20037] of  Terra_Repeticions
 
-	(Contraindicacions lesio_extremitats_inferiors mobilitat_nula_extremitats_superiors mobilitat_nula_extremitats_inferiors lesio_esquena lesio_coll lesio_extremitats_superiors lesio_abdomen)
+	(Contraindicacions mobilitat_nula_extremitats_superiors mobilitat_nula_extremitats_inferiors)
 	(Descripcio "Estirar-se al terra cara amunt amb una barra amb peses a sobre dels malucs i fer forca amb ells per aixecar-la.")
 	(Grups_musculars glutis)
 	(Majors TRUE)
@@ -445,7 +467,7 @@
 
 ([Ontologia_Class20038] of  Musculacio
 
-	(Contraindicacions lesio_extremitats_inferiors mobilitat_nula_extremitats_inferiors lesio_esquena)
+	(Contraindicacions mobilitat_nula_extremitats_inferiors)
 	(Descripcio "Lligar-se una cable amb pes al turmell i estibar amb la cam cap enrere aixecant-la, de manera que es treballi el glutis.")
 	(Grups_musculars glutis)
 	(Majors TRUE)
@@ -454,7 +476,7 @@
 
 ([Ontologia_Class20039] of  Terra_Repeticions
 
-	(Contraindicacions lesio_extremitats_inferiors mobilitat_nula_extremitats_superiors mobilitat_nula_extremitats_inferiors lesio_esquena lesio_coll lesio_extremitats_superiors lesio_abdomen)
+	(Contraindicacions mobilitat_nula_extremitats_superiors mobilitat_nula_extremitats_inferiors)
 	(Descripcio "Estirar-se al terra cara amunt i aixecar els malucs fent un pont amb el cos.")
 	(Grups_musculars glutis)
 	(Majors TRUE)
@@ -464,7 +486,7 @@
 
 ([Ontologia_Class20040] of  Terra_Repeticions
 
-	(Contraindicacions lesio_extremitats_inferiors mobilitat_nula_extremitats_superiors mobilitat_nula_extremitats_inferiors lesio_esquena lesio_coll lesio_extremitats_superiors lesio_abdomen)
+	(Contraindicacions mobilitat_nula_extremitats_superiors mobilitat_nula_extremitats_inferiors)
 	(Descripcio "Posar-se de quatre grapes (amb genolls i mans) al terra i aixecar, alternadament, cada cama cap enrere i cap amunt, amb el genoll flexionat.")
 	(Grups_musculars glutis)
 	(Majors TRUE)
@@ -474,7 +496,7 @@
 
 ([Ontologia_Class30003] of  Musculacio
 
-	(Contraindicacions lesio_esquena lesio_extremitats_superiors mobilitat_nula_extremitats_superiors lesio_coll)
+	(Contraindicacions mobilitat_nula_extremitats_superiors)
 	(Descripcio "Agafar-se a una barra alta amb tots dos bracos, inicialment estirats, i aixecar el pres del propi cos doblant els colzes alcant el cos sencer.")
 	(Grups_musculars coll espatlles esquena)
 	(Majors TRUE)
@@ -483,7 +505,7 @@
 
 ([Ontologia_Class30004] of  Musculacio
 
-	(Contraindicacions lesio_esquena lesio_extremitats_superiors mobilitat_nula_extremitats_superiors lesio_coll)
+	(Contraindicacions mobilitat_nula_extremitats_superiors)
 	(Descripcio "Posar una barra amb peses al terra i aixecarla amb els bracos nomes inclinant lesquena i mantenint els bracos estirats avall en tot moment fins a tenir el cos recte.")
 	(Grups_musculars coll espatlles esquena)
 	(Majors TRUE)
@@ -492,7 +514,7 @@
 
 ([Ontologia_Class30005] of  Musculacio
 
-	(Contraindicacions lesio_esquena lesio_extremitats_superiors mobilitat_nula_extremitats_superiors lesio_coll)
+	(Contraindicacions mobilitat_nula_extremitats_superiors)
 	(Descripcio "Recolzar-se inclinat en un banc que sostingui el cos fins als malucs i inclinar el tors cap avall i despres cap amunt simulant el moviment d'abdominals.")
 	(Grups_musculars coll espatlles esquena)
 	(Majors TRUE)

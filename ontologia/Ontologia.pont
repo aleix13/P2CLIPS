@@ -1,4 +1,4 @@
-; Wed May 18 20:01:06 CEST 2016
+; Thu May 19 18:33:49 CEST 2016
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -451,11 +451,6 @@
 (defclass Musculacio
 	(is-a Exercici)
 	(role concrete)
-	(single-slot Dificultat
-		(type SYMBOL)
-		(allowed-values Facil Moderada Alta Molt_alta)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(multislot Objectiu
 ;+		(comment "objectiu fisic pel qual es adequat")
 		(type SYMBOL)
@@ -466,11 +461,6 @@
 (defclass Terra
 	(is-a Exercici)
 	(role concrete)
-	(single-slot Dificultat
-		(type SYMBOL)
-		(allowed-values Facil Moderada Alta Molt_alta)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(multislot Objectiu
 ;+		(comment "objectiu fisic pel qual es adequat")
 		(type SYMBOL)
@@ -481,11 +471,6 @@
 (defclass Terra_Duracio
 	(is-a Terra)
 	(role concrete)
-	(single-slot Dificultat
-		(type SYMBOL)
-		(allowed-values Facil Moderada Alta Molt_alta)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(multislot Objectiu
 ;+		(comment "objectiu fisic pel qual es adequat")
 		(type SYMBOL)
@@ -496,11 +481,6 @@
 (defclass Terra_Repeticions
 	(is-a Terra)
 	(role concrete)
-	(single-slot Dificultat
-		(type SYMBOL)
-		(allowed-values Facil Moderada Alta Molt_alta)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(multislot Objectiu
 ;+		(comment "objectiu fisic pel qual es adequat")
 		(type SYMBOL)
@@ -511,11 +491,6 @@
 (defclass Cardio
 	(is-a Exercici)
 	(role concrete)
-	(single-slot Dificultat
-		(type SYMBOL)
-		(allowed-values Facil Moderada Alta Molt_alta)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(multislot Objectiu
 ;+		(comment "objectiu fisic pel qual es adequat")
 		(type SYMBOL)
@@ -647,11 +622,6 @@
 (defclass Assignacio_exercici_cinta
 	(is-a Assignacio_exercici_cardio)
 	(role concrete)
-	(single-slot Dificultat
-		(type SYMBOL)
-		(allowed-values Facil Moderada Alta Molt_alta)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot Velocitat_min
 		(type FLOAT)
 ;+		(cardinality 1 1)
@@ -663,21 +633,5 @@
 		(create-accessor read-write))
 	(single-slot Velocitat_max
 		(type FLOAT)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Resistencia_max
-		(type INTEGER)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Durada_min
-		(type INTEGER)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Resistencia_min
-		(type INTEGER)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Durada_max
-		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
