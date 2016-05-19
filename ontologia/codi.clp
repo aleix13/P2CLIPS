@@ -1574,6 +1574,7 @@
 	;()
 ;)
 
+;------------REGLES OBJECTIU-----------------------------
 (defrule defMusc
 	(objectiu (valors Musculacio))
 	?d1 <- (dia (numDia 1)(imp_Musculacio NUL))
@@ -1625,12 +1626,12 @@
 				?d4 <- (dia (numDia 4)(imp_Musculacio NUL)(imp_Cardio NUL))
 				?d5 <- (dia (numDia 5)(imp_Musculacio NUL)(imp_Cardio NUL))
 				=>
-				 (modify ?d1 (imp_Musculacio NORMAL) (imp_Cardio NORMAL))
-				 (modify ?d2 (imp_Musculacio ALTA) (imp_Cardio NORMAL))
-				 (modify ?d3 (imp_Musculacio NORMAL) (imp_Cardio NORMAL))
-				 (modify ?d4 (imp_Musculacio BAIXA) (imp_Cardio NORMAL))
-				 (modify ?d5 (imp_Musculacio NORMAL) (imp_Cardio NORMAL))
+				 (modify ?d1 (imp_Musculacio NUL) (imp_Cardio ALTA))
+				 (modify ?d2 (imp_Musculacio NUL) (imp_Cardio ALTA))
+				 (modify ?d3 (imp_Musculacio NUL) (imp_Cardio ALTA))
+				 (modify ?d4 (imp_Musculacio NUL) (imp_Cardio ALTA))
+				 (modify ?d5 (imp_Musculacio NUL) (imp_Cardio ALTA))
 				)
 
-
+;-----------REGES FORMA FISICA-----------------------------------
 ;--------------------------------MODUL:SOL_ABSTR-------------------------------------------------------
