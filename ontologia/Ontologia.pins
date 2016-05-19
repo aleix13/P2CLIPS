@@ -1,4 +1,4 @@
-; Thu May 19 18:33:49 CEST 2016
+; Thu May 19 19:18:32 CEST 2016
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -11,7 +11,7 @@
 	(Majors TRUE)
 	(Menors TRUE)
 	(Nom "Resistencia de coll cara avall")
-	(Objectiu Musculacio condicio_fisica_general Rehabilitacio Manteniment))
+	(Objectiu Musculacio condicio_fisica_general Manteniment))
 
 ([Ontologia_Class1] of  Habit_Fisic
 
@@ -39,7 +39,7 @@
 	(Majors TRUE)
 	(Menors TRUE)
 	(Nom "Resistencia coll cara amunt")
-	(Objectiu Manteniment Musculacio condicio_fisica_general Rehabilitacio))
+	(Objectiu Manteniment Musculacio condicio_fisica_general))
 
 ([Ontologia_Class10002] of  Musculacio
 
@@ -49,17 +49,17 @@
 	(Majors TRUE)
 	(Menors TRUE)
 	(Nom "Forca coll lateral")
-	(Objectiu Manteniment Rehabilitacio))
+	(Objectiu Manteniment))
 
 ([Ontologia_Class10003] of  Cinta
 
-	(Contraindicacions pressio_alta problemes_cardiovasculars problemes_respiratoris lesio_extremitats_inferiors lesio_coll mobilitat_nula_extremitats_inferiors lesio_esquena)
+	(Contraindicacions pressio_alta mobilitat_nula_extremitats_inferiors)
 	(Descripcio "Maquina que s'usa per correr on es pot graduar la velocitat i el pendent de la marxa.")
 	(Grups_musculars abdominals glutis part_superior_cama part_inferior_cama)
 	(Majors TRUE)
 	(Menors TRUE)
 	(Nom "Cinta de correr")
-	(Objectiu Perdre_pes Manteniment condicio_fisica_general Rehabilitacio))
+	(Objectiu Perdre_pes Manteniment condicio_fisica_general))
 
 ([Ontologia_Class10004] of  Cardio
 
@@ -69,7 +69,7 @@
 	(Majors TRUE)
 	(Menors TRUE)
 	(Nom "Bicicleta reclinable")
-	(Objectiu Manteniment Perdre_pes condicio_fisica_general Rehabilitacio))
+	(Objectiu Manteniment Perdre_pes condicio_fisica_general))
 
 ([Ontologia_Class10005] of  Cardio
 
@@ -79,7 +79,7 @@
 	(Majors TRUE)
 	(Menors TRUE)
 	(Nom "Eliptica")
-	(Objectiu Manteniment Perdre_pes condicio_fisica_general Rehabilitacio))
+	(Objectiu Manteniment Perdre_pes condicio_fisica_general))
 
 ([Ontologia_Class10009] of  Cardio
 
@@ -89,7 +89,7 @@
 	(Majors TRUE)
 	(Menors TRUE)
 	(Nom "Bicileta estatica")
-	(Objectiu Manteniment Perdre_pes condicio_fisica_general Rehabilitacio))
+	(Objectiu Manteniment Perdre_pes condicio_fisica_general))
 
 ([Ontologia_Class10010] of  Cardio
 
@@ -99,7 +99,7 @@
 	(Majors TRUE)
 	(Menors TRUE)
 	(Nom "Maquina de remar")
-	(Objectiu Manteniment Perdre_pes condicio_fisica_general Rehabilitacio))
+	(Objectiu Manteniment Perdre_pes condicio_fisica_general))
 
 ([Ontologia_Class10011] of  Cardio
 
@@ -109,7 +109,7 @@
 	(Majors TRUE)
 	(Menors TRUE)
 	(Nom "Stepper")
-	(Objectiu Manteniment Perdre_pes condicio_fisica_general Rehabilitacio))
+	(Objectiu Manteniment Perdre_pes condicio_fisica_general))
 
 ([Ontologia_Class10017] of  Cardio
 
@@ -119,7 +119,7 @@
 	(Majors TRUE)
 	(Menors TRUE)
 	(Nom "Esqui")
-	(Objectiu Manteniment Perdre_pes condicio_fisica_general Rehabilitacio))
+	(Objectiu Manteniment Perdre_pes condicio_fisica_general))
 
 ([Ontologia_Class10018] of  Terra_Repeticions
 
@@ -165,7 +165,6 @@
 
 	(Contraindicacions problemes_esquena mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors)
 	(Descripcio "Amb el cos lateral i amb l'avantbrac recolzat al semi esferic, mantenirse amb el cos totalment estirat.")
-	(Dificultat Moderada)
 	(Grups_musculars abdominals abdominals_laterals)
 	(Majors TRUE)
 	(Menors TRUE)
@@ -176,7 +175,6 @@
 
 	(Contraindicacions problemes_esquena)
 	(Descripcio "Recolzarse amb els avantbracos a la bola de fitness amb el cos totalment estirat i mantenirse en la posicio")
-	(Dificultat Moderada)
 	(Grups_musculars abdominals)
 	(Majors TRUE)
 	(Menors TRUE)
@@ -191,7 +189,7 @@
 	(Majors TRUE)
 	(Menors TRUE)
 	(Nom "Forca coll davant i darrere")
-	(Objectiu Manteniment Rehabilitacio))
+	(Objectiu Manteniment))
 
 ([Ontologia_Class20004] of  Musculacio
 
