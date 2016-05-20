@@ -1,4 +1,4 @@
-; Fri May 20 19:07:14 CEST 2016
+; Fri May 20 22:44:43 CEST 2016
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -149,7 +149,7 @@
 		(create-accessor read-write))
 	(multislot Contraindicacions
 		(type SYMBOL)
-		(allowed-values pressio_alta problemes_cardiorespiratoris mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors problemes_articulars problemes_esquena)
+		(allowed-values pressio_alta problemes_cardiorespiratoris problemes_articulars problemes_esquena)
 		(create-accessor read-write))
 	(single-slot IMC
 ;+		(comment "Pes/alcada^2")
@@ -406,7 +406,7 @@
 	(role concrete)
 	(multislot Contraindicacions
 		(type SYMBOL)
-		(allowed-values pressio_alta problemes_cardiorespiratoris mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors problemes_articulars problemes_esquena)
+		(allowed-values pressio_alta problemes_cardiorespiratoris problemes_articulars problemes_esquena)
 		(create-accessor read-write))
 	(single-slot Nom
 ;+		(comment "Nom de l'usuari")
