@@ -1270,15 +1270,12 @@
 	(printout t "Introdueix el teu nom:" crlf)
 	(bind ?nom (readline))
 	(send ?client_actual put-Nom ?nom)
-	(assert (askedNom))
 	)
 
 	(defrule pregunta-edat "preguntem edat"
-	(askedNom)
 	(notInFile)
 	?client_actual <- (object (is-a Client))
 		=>
-		(assert (askedEdat))
 		(printout t "Introdueix la teva edat:" crlf)
 		(bind ?edat (read))
 		(while (neq (integerp ?edat) TRUE)
@@ -1290,11 +1287,9 @@
 		)
 
 		(defrule pregunta-alcada "preguntem alcada"
-		(askedEdat)
 		(notInFile)
 		?client_actual <- (object (is-a Client))
 			=>
-		  (assert (askedAlcada))
 			(printout t "Introdueix la teva alcada(en cm):" crlf)
 			(bind ?alc (read))
 			(while (neq (integerp ?alc) TRUE)
@@ -1306,11 +1301,9 @@
 			(assert (alcada))
 			)
 			(defrule pregunta-massa "preguntem massa"
-			(askedAlcada)
 			(notInFile)
 			?client_actual <- (object (is-a Client))
 				=>
-				(assert (askedMassa))
 				(printout t "Introdueix la teva massa(en kg):" crlf)
 				(bind ?mass (read))
 				(while (neq (integerp ?mass) TRUE)
@@ -1322,11 +1315,9 @@
 				(assert (pes))
 				)
 			(defrule pregunta-temps "preguntem temps disponible diari"
-			  (askedMassa)
 				?client_actual <- (object (is-a Client))
 				(notInFile)
 					=>
-					(assert (askedTemps))
 					(printout t "Quant temps tens disponible al dia?(en minuts):" crlf)
 					(bind ?temps (read))
 					(while (neq (integerp ?temps) TRUE)
@@ -1338,11 +1329,9 @@
 					(assert (temps-disp))
 					)
 			(defrule pregunta-objectiu
-				(askedTemps)
 				(notInFile)
 				?client_actual <- (object (is-a Client))
 				=>
-				(assert (askedObjectiu))
 				(bind ?lista (create$ Musculacio Perdre_pes condicio_fisica_general))
 				(printout t "Quins dels seguents objectius es el teu? [Manteniment],[Musculacio],[Perdre_pes],[condicio_fisica_general], [Elasticitat]" crlf)
 				(printout t "Les combinacions possibles son: [Musculacio,condicio_fisica_general],[condicio_fisica_general,Perdre_pes]" crlf)
@@ -1354,11 +1343,9 @@
 				(assert (objectiuOk))
 			)
 			(defrule pregunta-pressio "preguntem pressio min i max"
-			  (askedObjectiu)
 				?client_actual <- (object (is-a Client))
 				(notInFile)
 					=>
-					(assert (askedPressio))
 					(printout t "Introdueix la pressio sanguinea minima i maxima en estat de repos:" crlf)
 					(printout t "Minima(mmHg):" crlf)
 					(bind ?pmin (read))
@@ -1378,11 +1365,9 @@
 					(assert (pressio_Q))
 				)
 				(defrule pregunta-habits "Preguntes pels habits cootidians"
-				  (askedPressio)
 					?client_actual <- (object (is-a Client))
 					(notInFile)
 					=>
-					(assert (askedHabits))
 					(printout t "A continuacio et realitzarem unes preguntes per determinar el teu dia a dia:" crlf)
 					(printout t "Per a cadascuna de les seguents preguntes, introdueix una de les opcions donades.")
 					(printout t "Cuantes hores setmanals dediques als desplacacaments(anar a la feina, anat a l'escola etc.) a peu ?" crlf)
@@ -1459,11 +1444,9 @@
 					(assert (puntuacio))
 				)
 		(defrule pregunta-malaties
-			(askedHabits)
 			(notInFile)
 			?client_actual <- (object (is-a Client))
 			=>
-			(assert (askedMalalties))
 			(printout t "A continuacio et demanem que ens diguis els teus problemes de salut:" crlf)
 			(printout t "Tens problemes d'esquena?(si/no)" crlf)
 			(bind ?esq (read))
@@ -1479,15 +1462,6 @@
 			(bind ?cardio (read))
 			(if (eq ?cardio si) then (bind ?cardio TRUE) else (bind ?cardio FALSE) )
 			(send ?client_actual put-Problema_Cardiorespiratori ?cardio)
-
-			(printout t "Tens problemes musculo-esqueletics?(si/no)" crlf)
-			(bind ?pme (read))
-			(if (eq ?pme si)
-			then
-			(printout t "Quines de les següent parts t'afecten els problemes: [coll, espatlles, avantbrac, brac, part_superior_cama, part_inferior_cama, abdominals, glutis, esquena, Pectoral, abdominals_superiors, abdominals_inferiors,abdominals_laterals]" crlf)
-			(bind ?parts (readline))
-			(bind ?parts_aux (str-explode ?parts))
-			(send ?client_actual put-Parts_Afectades ?parts_aux)
 			)
 			(assert (last-q))
 		)
@@ -1496,18 +1470,15 @@
 		(inFile)
 		?client_actual <- (object (is-a Client))
 			=>
-			(assert (askedNom))
 			(printout t "Introdueix el teu nom:" crlf)
 			(bind ?nom (readline jocs))
 			(send ?client_actual put-Nom ?nom)
 			)
 
 			(defrule pregunta-edat-F "preguntem edat"
-			(askedNom)
 			(inFile)
 			?client_actual <- (object (is-a Client))
 				=>
-				(assert (askedEdat))
 				(printout t "Introdueix la teva edat:" crlf)
 				(bind ?edat (read jocs))
 				(while (neq (integerp ?edat) TRUE)
@@ -1519,11 +1490,9 @@
 				)
 
 				(defrule pregunta-alcada-F "preguntem alcada"
-				(askedEdat)
 				(inFile)
 				?client_actual <- (object (is-a Client))
 					=>
-					(assert (askedAlcada))
 					(printout t "Introdueix la teva alcada(en cm):" crlf)
 					(bind ?alc (read jocs))
 					(while (neq (integerp ?alc) TRUE)
@@ -1536,10 +1505,8 @@
 					)
 					(defrule pregunta-massa-F "preguntem massa"
 					(inFile)
-					(askedAlcada)
 					?client_actual <- (object (is-a Client))
 						=>
-						(assert (askedMassa))
 						(printout t "Introdueix la teva massa(en kg):" crlf)
 						(bind ?mass (read jocs))
 						(while (neq (integerp ?mass) TRUE)
@@ -1551,11 +1518,9 @@
 						(assert (pes))
 						)
 					(defrule pregunta-temps-F "preguntem temps disponible diari"
-					  (askedMassa)
 						?client_actual <- (object (is-a Client))
 						(inFile)
 							=>
-							(assert (askedTemps))
 							(printout t "Quant temps tens disponible al dia?(en minuts):" crlf)
 							(bind ?temps (read jocs))
 							(while (neq (integerp ?temps) TRUE)
@@ -1567,11 +1532,9 @@
 							(assert (temps-disp))
 							)
 					(defrule pregunta-objectiu-F
-						(askedTemps)
 						(inFile)
 						?client_actual <- (object (is-a Client))
 						=>
-						(assert (askedObjectiu))
 						(bind ?lista (create$ Musculacio Perdre_pes condicio_fisica_general))
 						(printout t "Quins dels seguents objectius es el teu? [Manteniment],[Musculacio],[Perdre_pes],[condicio_fisica_general], [Elasticitat]" crlf)
 						(printout t "Les combinacions possibles son: [Musculacio,condicio_fisica_general],[condicio_fisica_general,Perdre_pes]" crlf)
@@ -1583,11 +1546,9 @@
 						(assert (objectiuOk))
 					)
 					(defrule pregunta-pressio-F "preguntem pressio min i max"
-					  (askedObjectiu)
 						?client_actual <- (object (is-a Client))
 						(inFile)
 							=>
-							(assert (askedPressio))
 							(printout t "Introdueix la pressio sanguinea minima i maxima en estat de repos:" crlf)
 							(printout t "Minima(mmHg):" crlf)
 							(bind ?pmin (read jocs))
@@ -1607,11 +1568,9 @@
 							(assert (pressio_Q))
 						)
 						(defrule pregunta-habits-F "Preguntes pels habits cootidians"
-						  (askedPressio)
 							?client_actual <- (object (is-a Client))
 							(inFile)
 							=>
-							(assert(askedHabits))
 							(printout t "A continuacio et realitzarem unes preguntes per determinar el teu dia a dia:" crlf)
 							(printout t "Per a cadascuna de les seguents preguntes, introdueix una de les opcions donades.")
 							(printout t "Cuantes hores setmanals dediques als desplacacaments(anar a la feina, anat a l'escola etc.) a peu ?" crlf)
@@ -1690,9 +1649,7 @@
 				(defrule pregunta-malaties-F
 					?client_actual <- (object (is-a Client))
 					(inFile)
-					(askedHabits)
 					=>
-					(assert (askedMalalties))
 					(printout t "A continuacio et demanem que ens diguis els teus problemes de salut:" crlf)
 					(printout t "Tens problemes d'esquena?(si/no)" crlf)
 					(bind ?esq (read jocs))
@@ -1708,15 +1665,6 @@
 					(bind ?cardio (read jocs))
 					(if (eq ?cardio si) then (bind ?cardio TRUE) else (bind ?cardio FALSE) )
 					(send ?client_actual put-Problema_Cardiorespiratori ?cardio)
-
-					(printout t "Tens problemes musculo-esqueletics?(si/no)" crlf)
-					(bind ?pme (read jocs))
-					(if (eq ?pme si)
-					then
-					(printout t "Quines de les següent parts t'afecten els problemes: [coll, espatlles, avantbrac, brac, part_superior_cama, part_inferior_cama, abdominals, glutis, esquena, Pectoral, abdominals_superiors, abdominals_inferiors,abdominals_laterals]" crlf)
-					(bind ?parts (readline jocs))
-					(bind ?parts_aux (str-explode ?parts))
-					(send ?client_actual put-Parts_Afectades ?parts_aux)
 					)
 					(assert (last-q))
 				)
@@ -1964,6 +1912,11 @@
 									 (modify ?d3 (imp_Musculacio ALTA) (imp_Cardio POC) (imp_Elas NORMAL)  (cardio_Final SI))
 									 (modify ?d4 (imp_Musculacio NORMAL) (imp_Cardio NORMAL) (imp_Elas NORMAL) (elas_Final SI)  )
 									 (modify ?d5 (imp_Musculacio POC) (imp_Cardio ALTA) (imp_Elas NORMAL) (elas_Final SI))
+									)
+
+
+									(defrule def
+
 									)
 
 
