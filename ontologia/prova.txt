@@ -1,0 +1,24 @@
+Nom
+20
+190
+90
+120
+Manteniment Musculacio
+60
+90
+1
+1
+1
+1
+1
+no
+1
+si
+1
+si
+1
+si
+si
+si
+si
+cama abdominals

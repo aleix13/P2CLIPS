@@ -1,0 +1,69 @@
+(clear)
+(load codi.clp)
+(reset)
+(watch facts)
+(run)
+l5:  Nom   ;nom
+l6:  20    ;Edat
+l7:  190   ;Alçada
+l8:  90    ;pes
+l9:  120   ;temps
+l10: Manteniment Musculacio    ;objectius
+l11: 60    ;minima
+l12: 90    ;maxima
+l13: 1     ;desplacaments opcions:
+          ;1: [0-2]
+          ;2: [3-5]
+          ;3: mes de 5
+l14: 1     ;domestiques opcions:
+          ;1: [0-1]
+          ;2: [2-3]
+          ;3: mes de 3
+
+l15: 1     ;esport opcions:
+          ;1: [0-1]
+          ;2: [2-4]
+          ;3: [5-8]
+          ;4: mes de 8
+
+l16: 1     ;feina opcions:
+          ;1: [0-1]
+          ;2: [2-4]
+          ;3: [5-8]
+          ;4: mes de 8
+l17: 1     ;sedentarisme:
+          ;1: [0-1]
+          ;2: [2-4]
+          ;3: [5-8]
+          ;4: mes de 8
+
+
+l18:no    ;sal
+
+l19:1     ;fruita dia
+          ;1: 0 peces
+          ;2: 1 peca
+          ;3: 2 peces
+          ;4: mes de 3 peces
+
+l20:no    ;picar hores
+
+l21:  1   ;copes alcohol
+          ;1: [0-2]
+          ;2: [3-5]
+          ;3: [6-10]
+          ;4: [11-15]
+          ;5: mes de 15
+
+l22:   si  ;fumar
+l23:   1  ;cigarros:
+      ;1: [1-5]
+      ;2: [6-10]
+      ;3: [11-20]
+      ;4: mes de 20
+
+l24:  si    ;esquena
+l25:  si    ;articualrs
+l26:  si    ;cardiorespiratoris
+l27:  si    ;musculoesqueletics
+l28:  cama abdominals   ;parts
