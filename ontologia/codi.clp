@@ -1201,8 +1201,8 @@
 	 (slot int_Cardio (type SYMBOL) (allowed-values BAIXA MITJA ALTA))
 	 ;part_final
 	 (slot intensitatPartFinal (type SYMBOL) (allowed-values BAIXA MITJA ALTA))
-	 (slot imp_Elas_Final (type SYMBOL) (allowed-values NUL POC NORMAL ALTA))
-	 (slot imp_Cardio_Final (type SYMBOL) (allowed-values NUL POC NORMAL ALTA))
+	 (slot elas_Final (type SYMBOL) (allowed-values NO SI))
+	 (slot cardio_Final (type SYMBOL) (allowed-values NO SI))
  )
 ;--------------------------------TEMPLATES-----------------------------------------------------------
 
@@ -1335,7 +1335,7 @@
 				(bind ?lista (create$ Musculacio Perdre_pes condicio_fisica_general))
 				(printout t "Quins dels seguents objectius es el teu? [Manteniment],[Musculacio],[Perdre_pes],[condicio_fisica_general], [Elasticitat]" crlf)
 				(printout t "Les combinacions possibles son: [Musculacio,condicio_fisica_general],[condicio_fisica_general,Perdre_pes]" crlf)
-				(printout t "[Musculacio,Perdre_pes], [Elasticitat,Perdre_pes], [Elasticitat,condicio_fisica_general],[Elasticitat,Musculacio].")
+				(printout t "[Musculacio,Perdre_pes], [Elasticitat,Perdre_pes], [Elasticitat,condicio_fisica_general],[Elasticitat,Musculacio]." crlf)
 				(bind ?obj (readline))
 				(bind ?obj (str-explode ?obj ))
 
@@ -1791,11 +1791,11 @@
 	?d4 <- (dia (numDia 4)(imp_Musculacio NUL))
 	?d5 <- (dia (numDia 5)(imp_Musculacio NUL))
 	=>
-	 (modify ?d1 (imp_Musculacio ALTA))
-	 (modify ?d2 (imp_Musculacio ALTA))
-	 (modify ?d3 (imp_Musculacio ALTA))
-	 (modify ?d4 (imp_Musculacio ALTA))
-	 (modify ?d5 (imp_Musculacio ALTA))
+	 (modify ?d1 (imp_Musculacio ALTA)(elas_Final SI))
+	 (modify ?d2 (imp_Musculacio ALTA)(cardio_Final SI))
+	 (modify ?d3 (imp_Musculacio ALTA)(elas_Final SI))
+	 (modify ?d4 (imp_Musculacio ALTA)(cardio_Final SI))
+	 (modify ?d5 (imp_Musculacio ALTA)(elas_Final SI))
 	)
 
 	(defrule defMant
@@ -1806,11 +1806,11 @@
 		?d4 <- (dia (numDia 4)(imp_Musculacio NUL)(imp_Cardio NUL))
 		?d5 <- (dia (numDia 5)(imp_Musculacio NUL)(imp_Cardio NUL))
 		=>
-		 (modify ?d1 (imp_Musculacio NORMAL) (imp_Cardio NORMAL))
-		 (modify ?d2 (imp_Musculacio ALTA) (imp_Cardio NORMAL))
-		 (modify ?d3 (imp_Musculacio NORMAL) (imp_Cardio NORMAL))
-		 (modify ?d4 (imp_Musculacio POC) (imp_Cardio NORMAL))
-		 (modify ?d5 (imp_Musculacio NORMAL) (imp_Cardio NORMAL))
+		 (modify ?d1 (imp_Musculacio NORMAL) (imp_Cardio NORMAL)(elas_Final SI))
+		 (modify ?d2 (imp_Musculacio ALTA) (imp_Cardio NORMAL)(elas_Final SI))
+		 (modify ?d3 (imp_Musculacio NORMAL) (imp_Cardio NORMAL)(cardio_Final SI))
+		 (modify ?d4 (imp_Musculacio POC) (imp_Cardio NORMAL)(elas_Final SI))
+		 (modify ?d5 (imp_Musculacio NORMAL) (imp_Cardio NORMAL)(elas_Final SI))
 		)
 
 		(defrule defCondF
@@ -1821,11 +1821,11 @@
 			?d4 <- (dia (numDia 4)(imp_Musculacio NUL)(imp_Cardio NUL))
 			?d5 <- (dia (numDia 5)(imp_Musculacio NUL)(imp_Cardio NUL))
 			=>
-			 (modify ?d1 (imp_Musculacio NORMAL) (imp_Cardio NORMAL))
-			 (modify ?d2 (imp_Musculacio ALTA) (imp_Cardio NORMAL))
-			 (modify ?d3 (imp_Musculacio NORMAL) (imp_Cardio NORMAL))
-			 (modify ?d4 (imp_Musculacio POC) (imp_Cardio NORMAL))
-			 (modify ?d5 (imp_Musculacio NORMAL) (imp_Cardio NORMAL))
+			(modify ?d1 (imp_Musculacio NORMAL) (imp_Cardio NORMAL)(elas_Final SI))
+			(modify ?d2 (imp_Musculacio ALTA) (imp_Cardio NORMAL)(elas_Final SI))
+			(modify ?d3 (imp_Musculacio NORMAL) (imp_Cardio NORMAL)(cardio_Final SI))
+			(modify ?d4 (imp_Musculacio POC) (imp_Cardio NORMAL)(elas_Final SI))
+			(modify ?d5 (imp_Musculacio NORMAL) (imp_Cardio NORMAL)(elas_Final SI))
 			)
 
 			(defrule defPerdrePes
@@ -1836,14 +1836,14 @@
 				?d4 <- (dia (numDia 4)(imp_Musculacio NUL)(imp_Cardio NUL))
 				?d5 <- (dia (numDia 5)(imp_Musculacio NUL)(imp_Cardio NUL))
 				=>
-				 (modify ?d1 (imp_Musculacio NUL) (imp_Cardio ALTA))
-				 (modify ?d2 (imp_Musculacio NUL) (imp_Cardio ALTA))
-				 (modify ?d3 (imp_Musculacio NUL) (imp_Cardio ALTA))
-				 (modify ?d4 (imp_Musculacio NUL) (imp_Cardio ALTA))
-				 (modify ?d5 (imp_Musculacio NUL) (imp_Cardio ALTA))
+				 (modify ?d1 (imp_Musculacio NUL) (imp_Cardio ALTA)(elas_Final SI))
+				 (modify ?d2 (imp_Musculacio NUL) (imp_Cardio ALTA)(elas_Final SI))
+				 (modify ?d3 (imp_Musculacio NUL) (imp_Cardio ALTA)(elas_Final SI))
+				 (modify ?d4 (imp_Musculacio NUL) (imp_Cardio ALTA)(elas_Final SI))
+				 (modify ?d5 (imp_Musculacio NUL) (imp_Cardio ALTA)(elas_Final SI))
 				)
 
-					(defrule defFlexibilitat
+					(defrule defElasticitat
 							(objectiu (valors Elasticitat))
 							?d1 <- (dia (numDia 1)(imp_Musculacio NUL)(imp_Cardio NUL))
 							?d2 <- (dia (numDia 2)(imp_Musculacio NUL)(imp_Cardio NUL))
@@ -1851,87 +1851,87 @@
 							?d4 <- (dia (numDia 4)(imp_Musculacio NUL)(imp_Cardio NUL))
 							?d5 <- (dia (numDia 5)(imp_Musculacio NUL)(imp_Cardio NUL))
 							=>
-							 (modify ?d1 (imp_Elas ALTA))
-							 (modify ?d2 (imp_Elas ALTA))
-							 (modify ?d3 (imp_Elas ALTA))
-							 (modify ?d4 (imp_Elas ALTA))
-							 (modify ?d5 (imp_Elas ALTA))
+							 (modify ?d1 (imp_Elas ALTA)(cardio_Final SI))
+							 (modify ?d2 (imp_Elas ALTA)(cardio_Final SI))
+							 (modify ?d3 (imp_Elas ALTA)(cardio_Final SI))
+							 (modify ?d4 (imp_Elas ALTA)(cardio_Final SI))
+							 (modify ?d5 (imp_Elas ALTA)(cardio_Final SI))
 							)
 
 				(defrule defPC
-					(objectiu (valors Perdre_pes condicio_fisica_general | condicio_fisica_general Perdre_pes))
+					(objectiu (valors condicio_fisica_general Perdre_pes))
 					?d1 <- (dia (numDia 1)(imp_Musculacio NUL)(imp_Cardio NUL))
 					?d2 <- (dia (numDia 2)(imp_Musculacio NUL)(imp_Cardio NUL))
 					?d3 <- (dia (numDia 3)(imp_Musculacio NUL)(imp_Cardio NUL))
 					?d4 <- (dia (numDia 4)(imp_Musculacio NUL)(imp_Cardio NUL))
 					?d5 <- (dia (numDia 5)(imp_Musculacio NUL)(imp_Cardio NUL))
 					=>
-					 (modify ?d1 (imp_Musculacio POC) (imp_Cardio ALTA))
-					 (modify ?d2 (imp_Musculacio NORMAL) (imp_Cardio NORMAL))
-					 (modify ?d3 (imp_Musculacio POC) (imp_Cardio ALTA))
-					 (modify ?d4 (imp_Musculacio POC) (imp_Cardio ALTA))
-					 (modify ?d5 (imp_Musculacio NORMAL) (imp_Cardio NORMAL))
+					 (modify ?d1 (imp_Musculacio POC) (imp_Cardio ALTA)(elas_Final SI))
+					 (modify ?d2 (imp_Musculacio NORMAL) (imp_Cardio NORMAL)(elas_Final SI))
+					 (modify ?d3 (imp_Musculacio POC) (imp_Cardio ALTA)(elas_Final SI))
+					 (modify ?d4 (imp_Musculacio POC) (imp_Cardio ALTA)(elas_Final SI))
+					 (modify ?d5 (imp_Musculacio NORMAL) (imp_Cardio NORMAL)(elas_Final SI))
 					)
 					(defrule defMC
-						(objectiu (valors Musculacio condicio_fisica_general | condicio_fisica_general Musculacio))
+						(objectiu (valors Musculacio condicio_fisica_general))
 						?d1 <- (dia (numDia 1)(imp_Musculacio NUL)(imp_Cardio NUL))
 						?d2 <- (dia (numDia 2)(imp_Musculacio NUL)(imp_Cardio NUL))
 						?d3 <- (dia (numDia 3)(imp_Musculacio NUL)(imp_Cardio NUL))
 						?d4 <- (dia (numDia 4)(imp_Musculacio NUL)(imp_Cardio NUL))
 						?d5 <- (dia (numDia 5)(imp_Musculacio NUL)(imp_Cardio NUL))
 						=>
-						 (modify ?d1 (imp_Musculacio POC) (imp_Cardio ALTA))
-						 (modify ?d2 (imp_Musculacio NORMAL) (imp_Cardio NORMAL))
-						 (modify ?d3 (imp_Musculacio ALTA) (imp_Cardio POC))
-						 (modify ?d4 (imp_Musculacio NORMAL) (imp_Cardio NORMAL))
-						 (modify ?d5 (imp_Musculacio ALTA) (imp_Cardio POC))
+						 (modify ?d1 (imp_Musculacio POC) (imp_Cardio ALTA)(elas_Final SI))
+						 (modify ?d2 (imp_Musculacio NORMAL) (imp_Cardio NORMAL)(elas_Final SI))
+						 (modify ?d3 (imp_Musculacio ALTA) (imp_Cardio POC)(cardio_Final SI))
+						 (modify ?d4 (imp_Musculacio NORMAL) (imp_Cardio NORMAL)(elas_Final SI))
+						 (modify ?d5 (imp_Musculacio ALTA) (imp_Cardio POC)(cardio_Final SI))
 						)
 
 						(defrule defMP
-							(objectiu (valors Musculacio Perdre_pes | Perdre_pes Musculacio))
+							(objectiu (valors Musculacio Perdre_pes))
 							?d1 <- (dia (numDia 1)(imp_Musculacio NUL)(imp_Cardio NUL))
 							?d2 <- (dia (numDia 2)(imp_Musculacio NUL)(imp_Cardio NUL))
 							?d3 <- (dia (numDia 3)(imp_Musculacio NUL)(imp_Cardio NUL))
 							?d4 <- (dia (numDia 4)(imp_Musculacio NUL)(imp_Cardio NUL))
 							?d5 <- (dia (numDia 5)(imp_Musculacio NUL)(imp_Cardio NUL))
 							=>
-							 (modify ?d1 (imp_Musculacio NUL) (imp_Cardio ALTA))
-							 (modify ?d2 (imp_Musculacio POC) (imp_Cardio ALTA))
-							 (modify ?d3 (imp_Musculacio NORMAL) (imp_Cardio NORMAL))
-							 (modify ?d4 (imp_Musculacio POC) (imp_Cardio ALTA))
-							 (modify ?d5 (imp_Musculacio NUL) (imp_Cardio ALTA))
+							 (modify ?d1 (imp_Musculacio NUL) (imp_Cardio ALTA)(elas_Final SI))
+							 (modify ?d2 (imp_Musculacio POC) (imp_Cardio ALTA)(elas_Final SI))
+							 (modify ?d3 (imp_Musculacio NORMAL) (imp_Cardio NORMAL)(elas_Final SI))
+							 (modify ?d4 (imp_Musculacio POC) (imp_Cardio ALTA)(elas_Final SI))
+							 (modify ?d5 (imp_Musculacio NUL) (imp_Cardio ALTA)(elas_Final SI))
 							)
 
 							(defrule defFP
-								(objectiu (valors Elasticitat Perdre_pes | Perdre_pes Elasticitat))
+								(objectiu (valors Elasticitat Perdre_pes))
 								?d1 <- (dia (numDia 1)(imp_Musculacio NUL)(imp_Cardio NUL))
 								?d2 <- (dia (numDia 2)(imp_Musculacio NUL)(imp_Cardio NUL))
 								?d3 <- (dia (numDia 3)(imp_Musculacio NUL)(imp_Cardio NUL))
 								?d4 <- (dia (numDia 4)(imp_Musculacio NUL)(imp_Cardio NUL))
 								?d5 <- (dia (numDia 5)(imp_Musculacio NUL)(imp_Cardio NUL))
 								=>
-								 (modify ?d1 (imp_Cardio ALTA) (imp_Elas NORMAL) )
-								 (modify ?d2 (imp_Cardio NORMAL) (imp_Elas ALTA) )
-								 (modify ?d3 (imp_Cardio ALTA) (imp_Elas NORMAL) )
-								 (modify ?d4 (imp_Cardio NORMAL) (imp_Elas ALTA)  )
-								 (modify ?d5 (imp_Cardio ALTA) (imp_Elas NORMAL) )
+								 (modify ?d1 (imp_Cardio ALTA) (imp_Elas NORMAL) (elas_Final SI))
+								 (modify ?d2 (imp_Cardio NORMAL) (imp_Elas ALTA) (cardio_Final SI))
+								 (modify ?d3 (imp_Cardio ALTA) (imp_Elas NORMAL) (elas_Final SI))
+								 (modify ?d4 (imp_Cardio NORMAL) (imp_Elas ALTA) (cardio_Final SI) )
+								 (modify ?d5 (imp_Cardio ALTA) (imp_Elas NORMAL) (elas_Final SI))
 								)
 
 								(defrule defFC
-									(objectiu (valors Elasticitat condicio_fisica_general | condicio_fisica_general Elasticitat))
+									(objectiu (valors Elasticitat condicio_fisica_general))
 									?d1 <- (dia (numDia 1)(imp_Musculacio NUL)(imp_Cardio NUL))
 									?d2 <- (dia (numDia 2)(imp_Musculacio NUL)(imp_Cardio NUL))
 									?d3 <- (dia (numDia 3)(imp_Musculacio NUL)(imp_Cardio NUL))
 									?d4 <- (dia (numDia 4)(imp_Musculacio NUL)(imp_Cardio NUL))
 									?d5 <- (dia (numDia 5)(imp_Musculacio NUL)(imp_Cardio NUL))
 									=>
-									 (modify ?d1 (imp_Musculacio POC) (imp_Cardio ALTA) (imp_Elas NORMAL) )
-									 (modify ?d2 (imp_Musculacio NORMAL) (imp_Cardio NORMAL) (imp_Elas NORMAL) )
-									 (modify ?d3 (imp_Musculacio ALTA) (imp_Cardio POC) (imp_Elas NORMAL)  )
-									 (modify ?d4 (imp_Musculacio NORMAL) (imp_Cardio NORMAL) (imp_Elas NORMAL)   )
-									 (modify ?d5 (imp_Musculacio POC) (imp_Cardio ALTA) (imp_Elas NORMAL) )
+									 (modify ?d1 (imp_Musculacio POC) (imp_Cardio ALTA) (imp_Elas NORMAL) (elas_Final SI))
+									 (modify ?d2 (imp_Musculacio NORMAL) (imp_Cardio NORMAL) (imp_Elas NORMAL) (elas_Final SI))
+									 (modify ?d3 (imp_Musculacio ALTA) (imp_Cardio POC) (imp_Elas NORMAL)  (cardio_Final SI))
+									 (modify ?d4 (imp_Musculacio NORMAL) (imp_Cardio NORMAL) (imp_Elas NORMAL) (elas_Final SI)  )
+									 (modify ?d5 (imp_Musculacio POC) (imp_Cardio ALTA) (imp_Elas NORMAL) (elas_Final SI))
 									)
 
 
-;-----------REGES FORMA FISICA-----------------------------------
+;-----------REGLES FORMA FISICA-----------------------------------
 ;--------------------------------MODUL:SOL_ABSTR-------------------------------------------------------
