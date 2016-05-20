@@ -1,4 +1,4 @@
-; Thu May 19 19:18:32 CEST 2016
+; Fri May 20 19:07:14 CEST 2016
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -163,7 +163,7 @@
 		(create-accessor read-write))
 	(multislot Objectiu
 		(type SYMBOL)
-		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general)
+		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general Elasticitat)
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write))
 	(single-slot hores_exercici_feina
@@ -290,7 +290,7 @@
 		(create-accessor read-write))
 	(multislot Objectiu
 		(type SYMBOL)
-		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general)
+		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general Elasticitat)
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write))
 	(single-slot Problema_Cardiorespiratori
@@ -426,7 +426,7 @@
 	(multislot Objectiu
 ;+		(comment "objectiu fisic pel qual es adequat")
 		(type SYMBOL)
-		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general)
+		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general Elasticitat)
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write))
 	(single-slot Menors
@@ -445,7 +445,7 @@
 	(multislot Objectiu
 ;+		(comment "objectiu fisic pel qual es adequat")
 		(type SYMBOL)
-		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general)
+		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general Elasticitat)
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write)))
 
@@ -455,7 +455,7 @@
 	(multislot Objectiu
 ;+		(comment "objectiu fisic pel qual es adequat")
 		(type SYMBOL)
-		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general)
+		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general Elasticitat)
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write)))
 
@@ -470,7 +470,7 @@
 	(multislot Objectiu
 ;+		(comment "objectiu fisic pel qual es adequat")
 		(type SYMBOL)
-		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general)
+		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general Elasticitat)
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write)))
 
@@ -480,7 +480,7 @@
 	(multislot Objectiu
 ;+		(comment "objectiu fisic pel qual es adequat")
 		(type SYMBOL)
-		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general)
+		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general Elasticitat)
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write)))
 
@@ -490,7 +490,7 @@
 	(multislot Objectiu
 ;+		(comment "objectiu fisic pel qual es adequat")
 		(type SYMBOL)
-		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general)
+		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general Elasticitat)
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write)))
 
@@ -500,7 +500,7 @@
 	(multislot Objectiu
 ;+		(comment "objectiu fisic pel qual es adequat")
 		(type SYMBOL)
-		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general)
+		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general Elasticitat)
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write)))
 
@@ -533,11 +533,6 @@
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Dificultat
-		(type SYMBOL)
-		(allowed-values Facil Moderada Alta Molt_alta)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot Exercici_Assignat
 		(type INSTANCE)
 ;+		(allowed-classes Musculacio)
@@ -555,11 +550,6 @@
 (defclass Assignacio_Exercici_Terra
 	(is-a Assignacio_Exercici)
 	(role concrete)
-	(single-slot Dificultat
-		(type SYMBOL)
-		(allowed-values Facil Moderada Alta Molt_alta)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot Exercici_Assignat
 		(type INSTANCE)
 ;+		(allowed-classes Terra)
@@ -573,11 +563,6 @@
 (defclass Assignacio_exercici_terra_Duracio
 	(is-a Assignacio_Exercici_Terra)
 	(role concrete)
-	(single-slot Dificultat
-		(type SYMBOL)
-		(allowed-values Facil Moderada Alta Molt_alta)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot Exercici_Assignat
 		(type INSTANCE)
 ;+		(allowed-classes Terra_Duracio)
@@ -595,11 +580,6 @@
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Dificultat
-		(type SYMBOL)
-		(allowed-values Facil Moderada Alta Molt_alta)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot Exercici_Assignat
 		(type INSTANCE)
 ;+		(allowed-classes Terra)
@@ -613,11 +593,6 @@
 (defclass Assignacio_exercici_cardio
 	(is-a Assignacio_Exercici)
 	(role concrete)
-	(single-slot Dificultat
-		(type SYMBOL)
-		(allowed-values Facil Moderada Alta Molt_alta)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot Exercici_Assignat
 		(type INSTANCE)
 ;+		(allowed-classes Cardio)
@@ -643,11 +618,6 @@
 (defclass Assignacio_exercici_cinta
 	(is-a Assignacio_exercici_cardio)
 	(role concrete)
-	(single-slot Dificultat
-		(type SYMBOL)
-		(allowed-values Facil Moderada Alta Molt_alta)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot Velocitat_min
 		(type FLOAT)
 ;+		(cardinality 1 1)

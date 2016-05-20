@@ -3,7 +3,6 @@
 
 
 
-
 (defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
 	(is-a USER)
 	(role abstract)
@@ -163,7 +162,7 @@
 		(create-accessor read-write))
 	(multislot Objectiu
 		(type SYMBOL)
-		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general)
+		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general Elasticitat)
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write))
 	(single-slot hores_exercici_feina
@@ -290,7 +289,7 @@
 		(create-accessor read-write))
 	(multislot Objectiu
 		(type SYMBOL)
-		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general)
+		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general Elasticitat)
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write))
 	(single-slot Problema_Cardiorespiratori
@@ -426,7 +425,7 @@
 	(multislot Objectiu
 ;+		(comment "objectiu fisic pel qual es adequat")
 		(type SYMBOL)
-		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general)
+		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general Elasticitat)
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write))
 	(single-slot Menors
@@ -445,7 +444,7 @@
 	(multislot Objectiu
 ;+		(comment "objectiu fisic pel qual es adequat")
 		(type SYMBOL)
-		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general)
+		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general Elasticitat)
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write)))
 
@@ -455,7 +454,7 @@
 	(multislot Objectiu
 ;+		(comment "objectiu fisic pel qual es adequat")
 		(type SYMBOL)
-		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general)
+		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general Elasticitat)
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write)))
 
@@ -470,7 +469,7 @@
 	(multislot Objectiu
 ;+		(comment "objectiu fisic pel qual es adequat")
 		(type SYMBOL)
-		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general)
+		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general Elasticitat)
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write)))
 
@@ -480,7 +479,7 @@
 	(multislot Objectiu
 ;+		(comment "objectiu fisic pel qual es adequat")
 		(type SYMBOL)
-		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general)
+		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general Elasticitat)
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write)))
 
@@ -490,7 +489,7 @@
 	(multislot Objectiu
 ;+		(comment "objectiu fisic pel qual es adequat")
 		(type SYMBOL)
-		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general)
+		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general Elasticitat)
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write)))
 
@@ -500,7 +499,7 @@
 	(multislot Objectiu
 ;+		(comment "objectiu fisic pel qual es adequat")
 		(type SYMBOL)
-		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general)
+		(allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general Elasticitat)
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write)))
 
@@ -533,11 +532,6 @@
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Dificultat
-		(type SYMBOL)
-		(allowed-values Facil Moderada Alta Molt_alta)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot Exercici_Assignat
 		(type INSTANCE)
 ;+		(allowed-classes Musculacio)
@@ -555,11 +549,6 @@
 (defclass Assignacio_Exercici_Terra
 	(is-a Assignacio_Exercici)
 	(role concrete)
-	(single-slot Dificultat
-		(type SYMBOL)
-		(allowed-values Facil Moderada Alta Molt_alta)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot Exercici_Assignat
 		(type INSTANCE)
 ;+		(allowed-classes Terra)
@@ -573,11 +562,6 @@
 (defclass Assignacio_exercici_terra_Duracio
 	(is-a Assignacio_Exercici_Terra)
 	(role concrete)
-	(single-slot Dificultat
-		(type SYMBOL)
-		(allowed-values Facil Moderada Alta Molt_alta)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot Exercici_Assignat
 		(type INSTANCE)
 ;+		(allowed-classes Terra_Duracio)
@@ -595,11 +579,6 @@
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Dificultat
-		(type SYMBOL)
-		(allowed-values Facil Moderada Alta Molt_alta)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot Exercici_Assignat
 		(type INSTANCE)
 ;+		(allowed-classes Terra)
@@ -613,11 +592,6 @@
 (defclass Assignacio_exercici_cardio
 	(is-a Assignacio_Exercici)
 	(role concrete)
-	(single-slot Dificultat
-		(type SYMBOL)
-		(allowed-values Facil Moderada Alta Molt_alta)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot Exercici_Assignat
 		(type INSTANCE)
 ;+		(allowed-classes Cardio)
@@ -643,11 +617,6 @@
 (defclass Assignacio_exercici_cinta
 	(is-a Assignacio_exercici_cardio)
 	(role concrete)
-	(single-slot Dificultat
-		(type SYMBOL)
-		(allowed-values Facil Moderada Alta Molt_alta)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot Velocitat_min
 		(type FLOAT)
 ;+		(cardinality 1 1)
@@ -1211,7 +1180,7 @@
 	)
 
 	(deftemplate objectiu
-		(multislot valors (type SYMBOL) (allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general))
+		(multislot valors (type SYMBOL) (allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general Elasticitat))
 	)
 ;------------templates per a la solucio abstracta----------------
 
@@ -1342,10 +1311,12 @@
 				?client_actual <- (object (is-a Client))
 				=>
 				(bind ?lista (create$ Musculacio Perdre_pes condicio_fisica_general))
-				(printout t "Quins dels seguents objectius es el teu? [Manteniment],[Musculacio],[Perdre_pes],[condicio_fisica_general]" crlf)
+				(printout t "Quins dels seguents objectius es el teu? [Manteniment],[Musculacio],[Perdre_pes],[condicio_fisica_general], [Elasticitat]" crlf)
+				(printout t "Les combinacions possibles son: [Musculacio,condicio_fisica_general],[condicio_fisica_general,Perdre_pes]" crlf)
+				(printout t "[Musculacio,Perdre_pes], [Elasticitat,Perdre_pes], [Elasticitat,condicio_fisica_general],[Elasticitat,Musculacio].")
 				(bind ?obj (readline))
 				(bind ?obj (str-explode ?obj ))
-				;(bind ?obj (str-explode ?obj ))
+
 				(send ?client_actual put-Objectiu ?obj)
 				(assert (objectiuOk))
 			)
@@ -1593,7 +1564,7 @@
 	(defrule defMant
 		(objectiu (valors Manteniment))
 		?d1 <- (dia (numDia 1)(imp_Musculacio NUL)(imp_Cardio NUL))
-		?d2 <- (dia (numDia 2)(imp_Musculacio NUL)((imp_Cardio NUL)))
+		?d2 <- (dia (numDia 2)(imp_Musculacio NUL)(imp_Cardio NUL))
 		?d3 <- (dia (numDia 3)(imp_Musculacio NUL)(imp_Cardio NUL))
 		?d4 <- (dia (numDia 4)(imp_Musculacio NUL)(imp_Cardio NUL))
 		?d5 <- (dia (numDia 5)(imp_Musculacio NUL)(imp_Cardio NUL))
@@ -1601,13 +1572,14 @@
 		 (modify ?d1 (imp_Musculacio NORMAL) (imp_Cardio NORMAL))
 		 (modify ?d2 (imp_Musculacio ALTA) (imp_Cardio NORMAL))
 		 (modify ?d3 (imp_Musculacio NORMAL) (imp_Cardio NORMAL))
-		 (modify ?d4 (imp_Musculacio BAIXA) (imp_Cardio NORMAL))
+		 (modify ?d4 (imp_Musculacio POC) (imp_Cardio NORMAL))
 		 (modify ?d5 (imp_Musculacio NORMAL) (imp_Cardio NORMAL))
 		)
+
 		(defrule defCondF
 			(objectiu (valors condicio_fisica_general))
 			?d1 <- (dia (numDia 1)(imp_Musculacio NUL)(imp_Cardio NUL))
-			?d2 <- (dia (numDia 2)(imp_Musculacio NUL)((imp_Cardio NUL)))
+			?d2 <- (dia (numDia 2)(imp_Musculacio NUL)(imp_Cardio NUL))
 			?d3 <- (dia (numDia 3)(imp_Musculacio NUL)(imp_Cardio NUL))
 			?d4 <- (dia (numDia 4)(imp_Musculacio NUL)(imp_Cardio NUL))
 			?d5 <- (dia (numDia 5)(imp_Musculacio NUL)(imp_Cardio NUL))
@@ -1615,13 +1587,14 @@
 			 (modify ?d1 (imp_Musculacio NORMAL) (imp_Cardio NORMAL))
 			 (modify ?d2 (imp_Musculacio ALTA) (imp_Cardio NORMAL))
 			 (modify ?d3 (imp_Musculacio NORMAL) (imp_Cardio NORMAL))
-			 (modify ?d4 (imp_Musculacio BAIXA) (imp_Cardio NORMAL))
+			 (modify ?d4 (imp_Musculacio POC) (imp_Cardio NORMAL))
 			 (modify ?d5 (imp_Musculacio NORMAL) (imp_Cardio NORMAL))
 			)
+
 			(defrule defPerdrePes
 				(objectiu (valors Perdre_pes))
 				?d1 <- (dia (numDia 1)(imp_Musculacio NUL)(imp_Cardio NUL))
-				?d2 <- (dia (numDia 2)(imp_Musculacio NUL)((imp_Cardio NUL)))
+				?d2 <- (dia (numDia 2)(imp_Musculacio NUL)(imp_Cardio NUL))
 				?d3 <- (dia (numDia 3)(imp_Musculacio NUL)(imp_Cardio NUL))
 				?d4 <- (dia (numDia 4)(imp_Musculacio NUL)(imp_Cardio NUL))
 				?d5 <- (dia (numDia 5)(imp_Musculacio NUL)(imp_Cardio NUL))
@@ -1632,6 +1605,96 @@
 				 (modify ?d4 (imp_Musculacio NUL) (imp_Cardio ALTA))
 				 (modify ?d5 (imp_Musculacio NUL) (imp_Cardio ALTA))
 				)
+
+					(defrule defFlexibilitat
+							(objectiu (valors Elasticitat))
+							?d1 <- (dia (numDia 1)(imp_Musculacio NUL)(imp_Cardio NUL))
+							?d2 <- (dia (numDia 2)(imp_Musculacio NUL)(imp_Cardio NUL))
+							?d3 <- (dia (numDia 3)(imp_Musculacio NUL)(imp_Cardio NUL))
+							?d4 <- (dia (numDia 4)(imp_Musculacio NUL)(imp_Cardio NUL))
+							?d5 <- (dia (numDia 5)(imp_Musculacio NUL)(imp_Cardio NUL))
+							=>
+							 (modify ?d1 (imp_Elas ALTA))
+							 (modify ?d2 (imp_Elas ALTA))
+							 (modify ?d3 (imp_Elas ALTA))
+							 (modify ?d4 (imp_Elas ALTA))
+							 (modify ?d5 (imp_Elas ALTA))
+							)
+
+				(defrule defPC
+					(objectiu (valors Perdre_pes condicio_fisica_general | condicio_fisica_general Perdre_pes))
+					?d1 <- (dia (numDia 1)(imp_Musculacio NUL)(imp_Cardio NUL))
+					?d2 <- (dia (numDia 2)(imp_Musculacio NUL)(imp_Cardio NUL))
+					?d3 <- (dia (numDia 3)(imp_Musculacio NUL)(imp_Cardio NUL))
+					?d4 <- (dia (numDia 4)(imp_Musculacio NUL)(imp_Cardio NUL))
+					?d5 <- (dia (numDia 5)(imp_Musculacio NUL)(imp_Cardio NUL))
+					=>
+					 (modify ?d1 (imp_Musculacio POC) (imp_Cardio ALTA))
+					 (modify ?d2 (imp_Musculacio NORMAL) (imp_Cardio NORMAL))
+					 (modify ?d3 (imp_Musculacio POC) (imp_Cardio ALTA))
+					 (modify ?d4 (imp_Musculacio POC) (imp_Cardio ALTA))
+					 (modify ?d5 (imp_Musculacio NORMAL) (imp_Cardio NORMAL))
+					)
+					(defrule defMC
+						(objectiu (valors Musculacio condicio_fisica_general | condicio_fisica_general Musculacio))
+						?d1 <- (dia (numDia 1)(imp_Musculacio NUL)(imp_Cardio NUL))
+						?d2 <- (dia (numDia 2)(imp_Musculacio NUL)(imp_Cardio NUL))
+						?d3 <- (dia (numDia 3)(imp_Musculacio NUL)(imp_Cardio NUL))
+						?d4 <- (dia (numDia 4)(imp_Musculacio NUL)(imp_Cardio NUL))
+						?d5 <- (dia (numDia 5)(imp_Musculacio NUL)(imp_Cardio NUL))
+						=>
+						 (modify ?d1 (imp_Musculacio POC) (imp_Cardio ALTA))
+						 (modify ?d2 (imp_Musculacio NORMAL) (imp_Cardio NORMAL))
+						 (modify ?d3 (imp_Musculacio ALTA) (imp_Cardio POC))
+						 (modify ?d4 (imp_Musculacio NORMAL) (imp_Cardio NORMAL))
+						 (modify ?d5 (imp_Musculacio ALTA) (imp_Cardio POC))
+						)
+
+						(defrule defMP
+							(objectiu (valors Musculacio Perdre_pes | Perdre_pes Musculacio))
+							?d1 <- (dia (numDia 1)(imp_Musculacio NUL)(imp_Cardio NUL))
+							?d2 <- (dia (numDia 2)(imp_Musculacio NUL)(imp_Cardio NUL))
+							?d3 <- (dia (numDia 3)(imp_Musculacio NUL)(imp_Cardio NUL))
+							?d4 <- (dia (numDia 4)(imp_Musculacio NUL)(imp_Cardio NUL))
+							?d5 <- (dia (numDia 5)(imp_Musculacio NUL)(imp_Cardio NUL))
+							=>
+							 (modify ?d1 (imp_Musculacio NUL) (imp_Cardio ALTA))
+							 (modify ?d2 (imp_Musculacio POC) (imp_Cardio ALTA))
+							 (modify ?d3 (imp_Musculacio NORMAL) (imp_Cardio NORMAL))
+							 (modify ?d4 (imp_Musculacio POC) (imp_Cardio ALTA))
+							 (modify ?d5 (imp_Musculacio NUL) (imp_Cardio ALTA))
+							)
+
+							(defrule defFP
+								(objectiu (valors Elasticitat Perdre_pes | Perdre_pes Elasticitat))
+								?d1 <- (dia (numDia 1)(imp_Musculacio NUL)(imp_Cardio NUL))
+								?d2 <- (dia (numDia 2)(imp_Musculacio NUL)(imp_Cardio NUL))
+								?d3 <- (dia (numDia 3)(imp_Musculacio NUL)(imp_Cardio NUL))
+								?d4 <- (dia (numDia 4)(imp_Musculacio NUL)(imp_Cardio NUL))
+								?d5 <- (dia (numDia 5)(imp_Musculacio NUL)(imp_Cardio NUL))
+								=>
+								 (modify ?d1 (imp_Cardio ALTA) (imp_Elas NORMAL) )
+								 (modify ?d2 (imp_Cardio NORMAL) (imp_Elas ALTA) )
+								 (modify ?d3 (imp_Cardio ALTA) (imp_Elas NORMAL) )
+								 (modify ?d4 (imp_Cardio NORMAL) (imp_Elas ALTA)  )
+								 (modify ?d5 (imp_Cardio ALTA) (imp_Elas NORMAL) )
+								)
+
+								(defrule defFC
+									(objectiu (valors Elasticitat condicio_fisica_general | condicio_fisica_general Elasticitat))
+									?d1 <- (dia (numDia 1)(imp_Musculacio NUL)(imp_Cardio NUL))
+									?d2 <- (dia (numDia 2)(imp_Musculacio NUL)(imp_Cardio NUL))
+									?d3 <- (dia (numDia 3)(imp_Musculacio NUL)(imp_Cardio NUL))
+									?d4 <- (dia (numDia 4)(imp_Musculacio NUL)(imp_Cardio NUL))
+									?d5 <- (dia (numDia 5)(imp_Musculacio NUL)(imp_Cardio NUL))
+									=>
+									 (modify ?d1 (imp_Musculacio POC) (imp_Cardio ALTA) (imp_Elas NORMAL) )
+									 (modify ?d2 (imp_Musculacio NORMAL) (imp_Cardio NORMAL) (imp_Elas NORMAL) )
+									 (modify ?d3 (imp_Musculacio ALTA) (imp_Cardio POC) (imp_Elas NORMAL)  )
+									 (modify ?d4 (imp_Musculacio NORMAL) (imp_Cardio NORMAL) (imp_Elas NORMAL)   )
+									 (modify ?d5 (imp_Musculacio POC) (imp_Cardio ALTA) (imp_Elas NORMAL) )
+									)
+
 
 ;-----------REGES FORMA FISICA-----------------------------------
 ;--------------------------------MODUL:SOL_ABSTR-------------------------------------------------------
