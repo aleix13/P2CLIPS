@@ -1802,6 +1802,7 @@
 	(assert (dia (numDia 3)))
 	(assert (dia (numDia 4)))
 	(assert (dia (numDia 5)))
+	(assert malaltiesOK)
 )
 
 ;?d <- (dia (numDia 2))
@@ -2017,28 +2018,48 @@
 	)
 )
 
-(defrule int_imc_ma
+(defrule aux1
 	(int_ff)
-	?d <- (dia (int_Entrenament MOLT_ALTA))
+	?f <-(int_ff)
+	(not(exists (dia(int_Entrenament NORMAL))))
+
+	=>
+	(retract ?f)
+	(assert (int_imc_n))
+	)
+
+(defrule int_imc_n
+ (int_ff)
+ ?f <-(int_ff)
+ ?d <- (dia (int_Entrenament NORMAL))
 	?nv <- (nivell_Massa (valors ?v))
 	=>
+	(retract ?f)
 (switch ?v
-	(case Insuf then
-		(modify ?d (int_Entrenament ALTA))
-	)
 	(case Sobrepes then
-		(modify ?d (int_Entrenament NORMAL)))
-	(case Obesitat then
 		(modify ?d (int_Entrenament BAIXA)))
+	(case Obesitat then
+		(modify ?d (int_Entrenament MOLT_BAIXA)))
 	)
-	(assert (int_imc_ma))
+	(assert (int_imc_n))
 )
 
+(defrule aux2
+	(int_imc_n)
+	?f <- (int_imc_n)
+	(not(exists (dia(int_Entrenament ALTA))))
+	=>
+	(retract ?f)
+	(assert (int_imc_a))
+	)
+
 (defrule int_imc_a
-	(int_ff)
+	(int_imc_n)
+	?f <- (int_imc_n)
 	?d <- (dia (int_Entrenament ALTA))
 	?nv <- (nivell_Massa (valors ?v))
 	=>
+(retract ?f)
 (switch ?v
 	(case Insuf then
 		(modify ?d (int_Entrenament NORMAL))
@@ -2051,31 +2072,51 @@
 	(assert (int_imc_a))
 )
 
-(defrule int_imc_n
-	(int_ff)
-	?d <- (dia (int_Entrenament NORMAL))
+(defrule aux3
+	(int_imc_a)
+	?f <- (int_imc_a)
+	(not(exists (dia(int_Entrenament MOLT_ALTA))))
+	=>
+	(retract ?f)
+	(assert (int_imc_ma))
+	)
+
+
+(defrule int_imc_ma
+	(int_imc_a)
+	?f <- (int_imc_a)
+	?d <- (dia (int_Entrenament MOLT_ALTA))
 	?nv <- (nivell_Massa (valors ?v))
 	=>
+	(retract ?f)
 (switch ?v
 	(case Insuf then
-		(modify ?d (int_Entrenament NORMAL))
+		(modify ?d (int_Entrenament ALTA))
 	)
 	(case Sobrepes then
-		(modify ?d (int_Entrenament BAIXA)))
+		(modify ?d (int_Entrenament NORMAL)))
 	(case Obesitat then
-		(modify ?d (int_Entrenament MOLT_BAIXA)))
+		(modify ?d (int_Entrenament BAIXA)))
 	)
-	(assert (int_imc_n))
+	(assert (int_imc_ma))
 )
 
+(defrule aux4
+	(int_imc_ma)
+	?f <- (int_imc_ma)
+	?m <- (malalties (pcardio NO))
+	=>
+	(retract ?f)
+	(assert (int_cardio))
+	)
 
 (defrule int_cardio
-	(int_imc_n)
-	(int_imc_a)
 	(int_imc_ma)
+	?f <- (int_imc_ma)
 	?m <- (malalties (pcardio SI))
 	?d <- (dia (int_Entrenament ?v))
 	=>
+	(retract ?f)
 	(switch ?v
 		(case MOLT_ALTA then
 			(modify ?d (int_Entrenament ALTA))
@@ -2093,9 +2134,11 @@
 
 	(defrule int_art
 		(int_cardio)
+	  ?f <- (int_cardio)
 		?m <- (malalties (part SI))
 		?d <- (dia (int_Entrenament ?v))
 		=>
+		(retract ?f)
 		(switch ?v
 			(case MOLT_ALTA then
 				(modify ?d (int_Entrenament ALTA))

@@ -1,0 +1,84 @@
+digraph Ontologia {
+	node [label="\N"];
+	graph [bb="0,0,1295.3,2094"];
+	Assignacio_exercici_cardio [label="{Assignacio_exercici_cardio|{Exercici_Assignat|Instance|{Cardio}}|{Resistencia_max|Integer}|{Durada_min|Integer}|{Resistencia_min\
+|Integer}|{Durada_max|Integer}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="164.27,917", rects="46.773,963,281.77,986 46.773,940,163.77,963 163.77,940,226.77,963 226.77,940,281.77,963 46.773,917,191.77,940 191.77,917,281.77,\
+940 46.773,894,178.77,917 178.77,894,281.77,917 46.773,871,189.77,894 189.77,871,281.77,894 46.773,848,180.77,871 180.77,848,281.77\
+,871", width="3.2569", height="1.9306"];
+	Assignacio_Exercici [label="{Assignacio_Exercici|{Dificultat|Symbol|{Facil|Moderada|Alta|Molt_alta}}|{Exercici_Assignat|Instance|{Exercici}}|{Series|Integer\
+}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="608.27,1315", rects="487.27,1372.5,729.27,1395.5 487.27,1280.5,567.27,1372.5 567.27,1280.5,641.27,1372.5 641.27,1349.5,729.27,1372.5 641.27,1326.5,729.27\
+,1349.5 641.27,1303.5,729.27,1326.5 641.27,1280.5,729.27,1303.5 487.27,1257.5,604.27,1280.5 604.27,1257.5,667.27,1280.5 667.27\
+,1257.5,729.27,1280.5 487.27,1234.5,605.27,1257.5 605.27,1234.5,729.27,1257.5", width="3.3611", height="2.25"];
+	Cardio [label="{Cardio|{Objectiu|Symbol*|{Manteniment|Musculacio|Perdre_pes|condicio_fisica_general|Elasticitat}}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="250.27,284", rects="110.27,330,390.27,353 110.27,215,174.27,330 174.27,215,241.27,330 241.27,307,390.27,330 241.27,284,390.27,307 241.27,261,390.27,\
+284 241.27,238,390.27,261 241.27,215,390.27,238", width="3.8889", height="1.9306"];
+	Exercici [label="{Exercici|{Contraindicacions|Symbol*|{pressio_alta|problemes_esquena|obesitat_morbida}}|{Nom|String}|{Grups_musculars|Symbol*|{coll\
+|espatlles|avantbrac|brac|part_superior_cama|part_inferior_cama|abdominals|glutis|esquena|Pectoral}}|{Majors|Boolean}|{Objectiu\
+|Symbol*|{Manteniment|Musculacio|Perdre_pes|condicio_fisica_general|Elasticitat}}|{Menors|Boolean}|{Descripcio|String}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="456.27,917", rects="299.77,1158.5,612.77,1181.5 299.77,1089.5,417.77,1158.5 417.77,1089.5,484.77,1158.5 484.77,1135.5,612.77,1158.5 484.77,1112.5,612.77\
+,1135.5 484.77,1089.5,612.77,1112.5 299.77,1066.5,452.77,1089.5 452.77,1066.5,612.77,1089.5 299.77,836.5,415.77,1066.5 415.77\
+,836.5,483.77,1066.5 483.77,1043.5,612.77,1066.5 483.77,1020.5,612.77,1043.5 483.77,997.5,612.77,1020.5 483.77,974.5,612.77,997.5\
+ 483.77,951.5,612.77,974.5 483.77,928.5,612.77,951.5 483.77,905.5,612.77,928.5 483.77,882.5,612.77,905.5 483.77,859.5,612.77,882.5\
+ 483.77,836.5,612.77,859.5 299.77,813.5,452.77,836.5 452.77,813.5,612.77,836.5 299.77,698.5,374.77,813.5 374.77,698.5,452.77\
+,813.5 452.77,790.5,612.77,813.5 452.77,767.5,612.77,790.5 452.77,744.5,612.77,767.5 452.77,721.5,612.77,744.5 452.77,698.5,612.77\
+,721.5 299.77,675.5,454.77,698.5 454.77,675.5,612.77,698.5 299.77,652.5,469.77,675.5 469.77,652.5,612.77,675.5", width="4.3403", height="7.3611"];
+	Client [label="{Client|{Problemes_esquena|Boolean}|{Habits_salut|Instance|{Habit_Salut}}|{IMC|Float}|{Habits|Instance|{Habit_Fisic}}|{Objectiu|\
+Symbol*|{Manteniment|Musculacio|Perdre_pes|condicio_fisica_general|Elasticitat}}|{Problema_Cardiorespiratori|Boolean}|{Parts_Afectades\
+|Symbol*|{Coll|Esquena|Avantbrac|Brac|Part_superior_cama|part_inferior_cama|Abdominals|espatlles|Pectoral}}|{Problemes_articulars\
+|Boolean}|{Nom|String}|{Pressio_Sanguinea|Float*}|{Alcada|Integer}|{Edat|Integer}|{Massa|Integer}|{Exercicis_Assignats|Instance\
+*|{Assignacio_Exercici}}|{Temps_Disponible_Diari|Integer}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="837.27,1771", rects="672.27,2070,1002.3,2093 672.27,2047,870.27,2070 870.27,2047,1002.3,2070 672.27,2024,791.27,2047 791.27,2024,887.27,2047 887.27,2024\
+,1002.3,2047 672.27,2001,836.27,2024 836.27,2001,1002.3,2024 672.27,1978,769.27,2001 769.27,1978,876.27,2001 876.27,1978,1002.3\
+,2001 672.27,1863,752.27,1978 752.27,1863,836.27,1978 836.27,1955,1002.3,1978 836.27,1932,1002.3,1955 836.27,1909,1002.3,1932 \
+836.27,1886,1002.3,1909 836.27,1863,1002.3,1886 672.27,1840,892.27,1863 892.27,1840,1002.3,1863 672.27,1633,789.27,1840 789.27,1633\
+,864.27,1840 864.27,1817,1002.3,1840 864.27,1794,1002.3,1817 864.27,1771,1002.3,1794 864.27,1748,1002.3,1771 864.27,1725,1002.3\
+,1748 864.27,1702,1002.3,1725 864.27,1679,1002.3,1702 864.27,1656,1002.3,1679 864.27,1633,1002.3,1656 672.27,1610,873.27,1633 \
+873.27,1610,1002.3,1633 672.27,1587,834.27,1610 834.27,1587,1002.3,1610 672.27,1564,872.27,1587 872.27,1564,1002.3,1587 672.27,1541\
+,837.27,1564 837.27,1541,1002.3,1564 672.27,1518,830.27,1541 830.27,1518,1002.3,1541 672.27,1495,836.27,1518 836.27,1495,1002.3\
+,1518 672.27,1472,801.27,1495 801.27,1472,871.27,1495 871.27,1472,1002.3,1495 672.27,1449,888.27,1472 888.27,1449,1002.3,1472", width="4.5833", height="8.9583"];
+	Habit_Salut [label="{Habit_Salut|{picar_entre_hores|Boolean}|{Nombre_cigarretes|Integer}|{Copes|Integer}|{Peces_fruita|Integer}|{Abus_sal|Boolean}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="837.27,1315", rects="747.77,1361,926.77,1384 747.77,1338,864.77,1361 864.77,1338,926.77,1361 747.77,1315,870.77,1338 870.77,1315,926.77,1338 747.77,1292\
+,835.77,1315 835.77,1292,926.77,1315 747.77,1269,852.77,1292 852.77,1269,926.77,1292 747.77,1246,840.77,1269 840.77,1246,926.77\
+,1269", width="2.4792", height="1.9306"];
+	Habit_Fisic [label="{Habit_Fisic|{hores_exercici_feina|String}|{Puntuacio|Integer}|{hores_sedentari|Integer}|{hores_despl|String}|{hores_domestiques\
+|Integer}|{hores_esport_extra|Integer}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1035.3,1315", rects="944.77,1372.5,1125.8,1395.5 944.77,1349.5,1075.8,1372.5 1075.8,1349.5,1125.8,1372.5 944.77,1326.5,1043.8,1349.5 1043.8,1326.5,1125.8\
+,1349.5 944.77,1303.5,1059.8,1326.5 1059.8,1303.5,1125.8,1326.5 944.77,1280.5,1052.8,1303.5 1052.8,1280.5,1125.8,1303.5 944.77\
+,1257.5,1069.8,1280.5 1069.8,1257.5,1125.8,1280.5 944.77,1234.5,1069.8,1257.5 1069.8,1234.5,1125.8,1257.5", width="2.5069", height="2.25"];
+	Terra_Duracio [label="{Terra_Duracio|{Objectiu|Symbol*|{Manteniment|Musculacio|Perdre_pes|condicio_fisica_general|Elasticitat}}|{Flexibilitat|Boolean}\
+}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1020.3,81", rects="880.27,138.5,1160.3,161.5 880.27,23.5,944.27,138.5 944.27,23.5,1011.3,138.5 1011.3,115.5,1160.3,138.5 1011.3,92.5,1160.3,115.5 1011.3\
+,69.5,1160.3,92.5 1011.3,46.5,1160.3,69.5 1011.3,23.5,1160.3,46.5 880.27,0.5,1026.3,23.5 1026.3,0.5,1160.3,23.5", width="3.8889", height="2.25"];
+	Terra [label="{Terra|{Objectiu|Symbol*|{Manteniment|Musculacio|Perdre_pes|condicio_fisica_general|Elasticitat}}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="846.27,284", rects="706.27,330,986.27,353 706.27,215,770.27,330 770.27,215,837.27,330 837.27,307,986.27,330 837.27,284,986.27,307 837.27,261,986.27,\
+284 837.27,238,986.27,261 837.27,215,986.27,238", width="3.8889", height="1.9306"];
+	Assignacio_exercici_cinta [label="{Assignacio_exercici_cinta|{Exercici_Assignat|Instance|{Cardio}}|{Velocitat_min|Float}|{Velocitat_max|Float}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="250.27,530", rects="132.77,553,367.77,576 132.77,530,249.77,553 249.77,530,312.77,553 312.77,530,367.77,553 132.77,507,274.77,530 274.77,507,367.77,\
+530 132.77,484,275.77,507 275.77,484,367.77,507", width="3.2569", height="1.2917"];
+	Assignacio_exercici_terra_Duracio [label="{Assignacio_exercici_terra_Duracio|{Exercici_Assignat|Instance|{Terra_Duracio}}|{Durada_max|Integer}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1156.3,407", rects="1017.3,418.5,1295.3,441.5 1017.3,395.5,1134.3,418.5 1134.3,395.5,1197.3,418.5 1197.3,395.5,1295.3,418.5 1017.3,372.5,1172.3,395.5\
+ 1172.3,372.5,1295.3,395.5", width="3.8611", height="0.97222"];
+	Assignacio_Exercici_Terra [label="{Assignacio_Exercici_Terra|{Exercici_Assignat|Instance|{Terra}}|{Durada_min|Integer}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1027.3,917", rects="913.77,928.5,1140.8,951.5 913.77,905.5,1030.8,928.5 1030.8,905.5,1093.8,928.5 1093.8,905.5,1140.8,928.5 913.77,882.5,1041.8,905.5\
+ 1041.8,882.5,1140.8,905.5", width="3.1458", height="0.97222"];
+	Assignacio_Exercici_Musculacio [label="{Assignacio_Exercici_Musculacio|{Exercici_Assignat|Instance|{Musculacio}}|{Pes_max|Float}|{Repeticions_min|Integer}|{Pes_min|Float\
+}|{Repeticions_max|Integer}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="761.27,917", rects="630.77,963,891.77,986 630.77,940,747.77,963 747.77,940,810.77,963 810.77,940,891.77,963 630.77,917,772.77,940 772.77,917,891.77,\
+940 630.77,894,788.77,917 788.77,894,891.77,917 630.77,871,770.77,894 770.77,871,891.77,894 630.77,848,789.77,871 789.77,848,891.77\
+,871", width="3.6181", height="1.9306"];
+	Musculacio [label="{Musculacio|{Objectiu|Symbol*|{Manteniment|Musculacio|Perdre_pes|condicio_fisica_general|Elasticitat}}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="630.27,530", rects="490.27,576,770.27,599 490.27,461,554.27,576 554.27,461,621.27,576 621.27,553,770.27,576 621.27,530,770.27,553 621.27,507,770.27,\
+530 621.27,484,770.27,507 621.27,461,770.27,484", width="3.8889", height="1.9306"];
+	Exercicis_terra_repeticions [label="{Exercicis_terra_repeticions|{Exercici_Assignat|Instance|{Terra}}|{Repeticions_min|Integer}|{Repeticions_max|Integer}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1039.3,530", rects="925.77,553,1152.8,576 925.77,530,1042.8,553 1042.8,530,1105.8,553 1105.8,530,1152.8,553 925.77,507,1066.8,530 1066.8,507,1152.8,\
+530 925.77,484,1067.8,507 1067.8,484,1152.8,507", width="3.1458", height="1.2917"];
+	Assignacio_Exercici -> Assignacio_exercici_cardio [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,487.03,1286.3 477.44,1283.3 414.65,1263.1 342.02,1231.1 290.27,1182 234.01,1128.6 200.03,1044.9 181.77,986.13", lp="334.27,1208"];
+	Assignacio_exercici_cardio -> Cardio [label=Exercici_Assignat, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,121.04,353 111.89,847.8 48.538,756.39 -42.08,590.52 22.273,460 42.275,419.43 76.697,385.65 112.82,358.94", lp="72.773,530"];
+	Exercici -> Cardio [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,425.7,652.32 424.19,642.28 407.36,531.33 384.18,418.46 355.27,372 351.21,365.47 346.48,359.19 341.33,353.21", lp="424.27,530"];
+	Client -> Habit_Salut [label=Habits_salut, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,837.27,1384.2 837.27,1448.8 837.27,1429.3 837.27,1410.8 837.27,1394.3", lp="872.27,1422"];
+	Client -> Habit_Fisic [label=Habits, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,1000.5,1395.8 977.34,1448.8 984.06,1433.4 990.47,1418.7 996.42,1405.1", lp="1010.8,1422"];
+	Client -> Assignacio_Exercici [label="Exercicis_Assignats*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,648.54,1395.8 675.28,1448.8 667.51,1433.4 660.09,1418.7 653.21,1405.1", lp="723.27,1422"];
+	Terra -> Terra_Duracio [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,905.18,214.95 911.84,207.26 924.7,192.4 938.23,176.77 951.21,161.78", lp="941.27,188"];
+	Assignacio_exercici_cardio -> Assignacio_exercici_cinta [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,179.55,847.61 181.75,837.74 199.33,759.04 225.83,640.41 240.18,576.18", lp="238.27,626"];
+	Assignacio_exercici_cinta -> Cardio [label=Exercici_Assignat, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,250.27,353.29 250.27,483.96 250.27,450.27 250.27,403.33 250.27,363.51", lp="300.77,407"];
+	Assignacio_Exercici_Terra -> Assignacio_exercici_terra_Duracio [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,1046.9,882.4 1051.9,873.38 1084.5,814.29 1140.3,703.1 1161.3,600 1172.4,545.43 1166.9,480.35 1161.7,441.7", lp="1164.3,626"];
+	Assignacio_exercici_terra_Duracio -> Terra_Duracio [label=Exercici_Assignat, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,1053.7,161.72 1142.1,372.24 1122.3,325.03 1085.6,237.59 1057.6,170.98", lp="1183.8,284"];
+	Assignacio_Exercici -> Assignacio_Exercici_Terra [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,729.42,1238.7 738.66,1234.3 738.86,1234.2 739.07,1234.1 739.27,1234 807.61,1202.6 843.61,1231.4 900.27,1182 971.94,1119.5 1006.7\
+,1007.4 1020.2,951.57", lp="882.27,1208"];
+	Assignacio_Exercici_Terra -> Terra [label=Exercici_Assignat, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,818.41,353.22 1017.9,882.49 1001.5,828.68 963.19,721.96 900.27,652 870.91,619.35 837.64,638.36 816.27,600 775.69,527.16 793.78\
+,429.96 815.23,362.89", lp="866.77,530"];
+	Assignacio_Exercici -> Assignacio_Exercici_Musculacio [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,663.83,1234.4 668.61,1225.5 670.24,1222.3 671.8,1219.1 673.27,1216 708.44,1140.6 733.18,1047.9 747.29,986.07", lp="687.27,1208"];
+	Assignacio_Exercici_Musculacio -> Musculacio [label=Exercici_Assignat, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,653.44,599.07 738,847.61 715.22,780.64 680.54,678.74 656.72,608.73", lp="711.77,626"];
+	Assignacio_Exercici -> Exercici [label=Exercici_Assignat, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,557.49,1181.7 577.7,1234.3 572.56,1221 566.99,1206.5 561.16,1191.2", lp="618.77,1208"];
+	Assignacio_Exercici_Terra -> Exercicis_terra_repeticions [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,1028.3,882.17 1028.6,871.83 1030.9,798.02 1035.6,650.38 1037.9,576.01", lp="1044.3,626"];
+	Exercicis_terra_repeticions -> Terra [label=Exercici_Assignat, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,862.68,353.17 953.68,483.8 936.67,471.93 920.12,457.91 907.27,442 888.78,419.1 875.4,389.95 865.97,362.99", lp="957.77,407"];
+	Exercici -> Terra [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,438.07,652.49 438.02,642.46 437.92,564.43 444.36,491.92 465.27,460 518.82,378.26 620.99,334.12 706.05,310.63", lp="473.27,530"];
+	Exercici -> Musculacio [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,575.46,652.29 579.66,642.98 586.73,627.34 593.41,612.56 599.46,599.18", lp="596.27,626"];
+}
