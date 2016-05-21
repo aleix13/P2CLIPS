@@ -1170,7 +1170,7 @@
 		(slot valors (type SYMBOL) (allowed-values Molt_Baixa Baixa Normal Alta Molt_Alta))
 	)
 	(deftemplate nivell_Massa
-		(slot valors (type SYMBOL) (allowed-values Insuf Normal Sobrepes Obsesitat ObsesitatMorbida ))
+		(slot valors (type SYMBOL) (allowed-values Insuf Normal Sobrepes Obesitat ObesitatMorbida ))
 	)
 	(deftemplate temps_disp
 		(slot valors (type SYMBOL) (allowed-values POC NORMAL MOLT))
@@ -1184,6 +1184,13 @@
 	)
 ;------------templates per a la solucio abstracta----------------
 
+(deftemplate malalties
+	(slot pesq (type SYMBOL) (allowed-values NO SI))
+	(slot part (type SYMBOL) (allowed-values NO SI))
+	(slot pcardio (type SYMBOL) (allowed-values NO SI))
+	(slot palta (type SYMBOL) (allowed-values  NO SI))
+	(slot obes-morbid (type SYMBOL) (allowed-values NO SI))
+)
  (deftemplate dia
 	 (slot numDia (type INTEGER) (range 1 5))
 	 ;escalfament
@@ -1270,15 +1277,12 @@
 	(printout t "Introdueix el teu nom:" crlf)
 	(bind ?nom (readline))
 	(send ?client_actual put-Nom ?nom)
-	(assert (askedNom))
 	)
 
 	(defrule pregunta-edat "preguntem edat"
-	(askedNom)
 	(notInFile)
 	?client_actual <- (object (is-a Client))
 		=>
-		(assert (askedEdat))
 		(printout t "Introdueix la teva edat:" crlf)
 		(bind ?edat (read))
 		(while (neq (integerp ?edat) TRUE)
@@ -1290,11 +1294,9 @@
 		)
 
 		(defrule pregunta-alcada "preguntem alcada"
-		(askedEdat)
 		(notInFile)
 		?client_actual <- (object (is-a Client))
 			=>
-		  (assert (askedAlcada))
 			(printout t "Introdueix la teva alcada(en cm):" crlf)
 			(bind ?alc (read))
 			(while (neq (integerp ?alc) TRUE)
@@ -1306,11 +1308,9 @@
 			(assert (alcada))
 			)
 			(defrule pregunta-massa "preguntem massa"
-			(askedAlcada)
 			(notInFile)
 			?client_actual <- (object (is-a Client))
 				=>
-				(assert (askedMassa))
 				(printout t "Introdueix la teva massa(en kg):" crlf)
 				(bind ?mass (read))
 				(while (neq (integerp ?mass) TRUE)
@@ -1322,11 +1322,9 @@
 				(assert (pes))
 				)
 			(defrule pregunta-temps "preguntem temps disponible diari"
-			  (askedMassa)
 				?client_actual <- (object (is-a Client))
 				(notInFile)
 					=>
-					(assert (askedTemps))
 					(printout t "Quant temps tens disponible al dia?(en minuts):" crlf)
 					(bind ?temps (read))
 					(while (neq (integerp ?temps) TRUE)
@@ -1338,11 +1336,9 @@
 					(assert (temps-disp))
 					)
 			(defrule pregunta-objectiu
-				(askedTemps)
 				(notInFile)
 				?client_actual <- (object (is-a Client))
 				=>
-				(assert (askedObjectiu))
 				(bind ?lista (create$ Musculacio Perdre_pes condicio_fisica_general))
 				(printout t "Quins dels seguents objectius es el teu? [Manteniment],[Musculacio],[Perdre_pes],[condicio_fisica_general], [Elasticitat]" crlf)
 				(printout t "Les combinacions possibles son: [Musculacio,condicio_fisica_general],[condicio_fisica_general,Perdre_pes]" crlf)
@@ -1354,11 +1350,9 @@
 				(assert (objectiuOk))
 			)
 			(defrule pregunta-pressio "preguntem pressio min i max"
-			  (askedObjectiu)
 				?client_actual <- (object (is-a Client))
 				(notInFile)
 					=>
-					(assert (askedPressio))
 					(printout t "Introdueix la pressio sanguinea minima i maxima en estat de repos:" crlf)
 					(printout t "Minima(mmHg):" crlf)
 					(bind ?pmin (read))
@@ -1378,11 +1372,9 @@
 					(assert (pressio_Q))
 				)
 				(defrule pregunta-habits "Preguntes pels habits cootidians"
-				  (askedPressio)
 					?client_actual <- (object (is-a Client))
 					(notInFile)
 					=>
-					(assert (askedHabits))
 					(printout t "A continuacio et realitzarem unes preguntes per determinar el teu dia a dia:" crlf)
 					(printout t "Per a cadascuna de les seguents preguntes, introdueix una de les opcions donades.")
 					(printout t "Cuantes hores setmanals dediques als desplacacaments(anar a la feina, anat a l'escola etc.) a peu ?" crlf)
@@ -1467,28 +1459,18 @@
 			(printout t "A continuacio et demanem que ens diguis els teus problemes de salut:" crlf)
 			(printout t "Tens problemes d'esquena?(si/no)" crlf)
 			(bind ?esq (read))
-			(if (eq ?esq si) then (bind ?esq TRUE) else (bind ?esq FALSE) )
+			(if (eq ?esq si) then (bind ?esq TRUE) (assert (pesq OK)) else (bind ?esq FALSE) )
 			(send ?client_actual put-Problemes_esquena ?esq)
 
 			(printout t "Tens problemes articulars?(si/no)" crlf)
 			(bind ?art (read))
-			(if (eq ?art si) then (bind ?art TRUE) else (bind ?art FALSE) )
+			(if (eq ?art si) then (bind ?art TRUE) (assert (part OK)) else (bind ?art FALSE) )
 			(send ?client_actual put-Problemes_articulars ?art)
 
 			(printout t "Tens problemes cardiorespiratoris?(si/no)" crlf)
 			(bind ?cardio (read))
-			(if (eq ?cardio si) then (bind ?cardio TRUE) else (bind ?cardio FALSE) )
+			(if (eq ?cardio si) then (bind ?cardio TRUE) (assert (pcardio OK)) else (bind ?cardio FALSE) )
 			(send ?client_actual put-Problema_Cardiorespiratori ?cardio)
-
-			(printout t "Tens problemes musculo-esqueletics?(si/no)" crlf)
-			(bind ?pme (read))
-			(if (eq ?pme si)
-			then
-			(printout t "Quines de les següent parts t'afecten els problemes: [coll, espatlles, avantbrac, brac, part_superior_cama, part_inferior_cama, abdominals, glutis, esquena, Pectoral, abdominals_superiors, abdominals_inferiors,abdominals_laterals]" crlf)
-			(bind ?parts (readline))
-			(bind ?parts_aux (str-explode ?parts))
-			(send ?client_actual put-Parts_Afectades ?parts_aux)
-			)
 			(assert (last-q))
 		)
 
@@ -1514,7 +1496,6 @@
 				)
 
 				(defrule pregunta-alcada-F "preguntem alcada"
-				(askedEdat)
 				(inFile)
 				?client_actual <- (object (is-a Client))
 					=>
@@ -1673,29 +1654,19 @@
 					(assert (askedMalalties))
 					(printout t "A continuacio et demanem que ens diguis els teus problemes de salut:" crlf)
 					(printout t "Tens problemes d'esquena?(si/no)" crlf)
-					(bind ?esq (readline jocs))
-					(if (eq ?esq si) then (bind ?esq TRUE) else (bind ?esq FALSE) )
+					(bind ?esq (read jocs))
+					(if (eq ?esq si) then (bind ?esq TRUE) (assert (p_esq)) else (bind ?esq FALSE) )
 					(send ?client_actual put-Problemes_esquena ?esq)
 
 					(printout t "Tens problemes articulars?(si/no)" crlf)
-					(bind ?art (readline jocs))
-					(if (eq ?art si) then (bind ?art TRUE) else (bind ?art FALSE) )
+					(bind ?art (read jocs))
+					(if (eq ?art si) then (bind ?art TRUE) (assert (p_art)) else (bind ?art FALSE) )
 					(send ?client_actual put-Problemes_articulars ?art)
 
 					(printout t "Tens problemes cardiorespiratoris?(si/no)" crlf)
-					(bind ?cardio (readline jocs))
-					(if (eq ?cardio si) then (bind ?cardio TRUE) else (bind ?cardio FALSE) )
+					(bind ?cardio (read jocs))
+					(if (eq ?cardio si) then (bind ?cardio TRUE) (assert (p_cardio)) else (bind ?cardio FALSE) )
 					(send ?client_actual put-Problema_Cardiorespiratori ?cardio)
-
-					(printout t "Tens problemes musculo-esqueletics?(si/no)" crlf)
-					(bind ?pme (readline jocs))
-					(if (eq ?pme si)
-					then
-					(printout t "Quines de les següent parts t'afecten els problemes: [coll, espatlles, avantbrac, brac, part_superior_cama, part_inferior_cama, abdominals, glutis, esquena, Pectoral, abdominals_superiors, abdominals_inferiors,abdominals_laterals]" crlf)
-					(bind ?parts (readline jocs))
-					(bind ?parts_aux (str-explode ?parts))
-					(send ?client_actual put-Parts_Afectades ?parts_aux)
-					)
 					(assert (last-q))
 				)
 		;Regles auxiliars derivades de preguntes
@@ -1741,8 +1712,9 @@
 	(if (< ?imc 18) then (assert (nivell_Massa (valors Insuf))))
 	(if (and (>= ?imc 18) (< ?imc 25)) then (assert (nivell_Massa (valors Normal))))
 	(if (and (>= ?imc 25) (< ?imc 30)) then (assert (nivell_Massa (valors Sobrepes))))
-	(if (and (>= ?imc 30) (< ?imc 40)) then (assert (nivell_Massa (valors Obsesitat))))
-  (if (>= ?imc 40) then (assert (nivell_Massa (valors ObsesitatMorbida))))
+	(if (and (>= ?imc 30) (< ?imc 40)) then (assert (nivell_Massa (valors Obesitat))))
+  (if (>= ?imc 40) then (assert (nivell_Massa (valors ObesitatMorbida)))
+	(assert (obes_morbid OK)))
 )
 (defrule calcul-Temps
 	(temps-disp)
@@ -1780,8 +1752,9 @@
 ;--------------------------------MODUL:ABSTR-----------------------------------------------------------
 ;--------------------------------MODUL:SOL_ABSTR-------------------------------------------------------
 (defmodule SOL_ABSTR (import MAIN ?ALL) (import PREGUNTES ?ALL)(import ABSTRACCIO ?ALL) (export ?ALL))
-(defrule activa-dies
+(defrule activa-facts-sol
 	=>
+	(assert (malalties))
 	(assert (dia (numDia 1)))
 	(assert (dia (numDia 2)))
 	(assert (dia (numDia 3)))
@@ -1945,5 +1918,40 @@
 									)
 
 
+
+
 ;-----------REGLES FORMA FISICA-----------------------------------
+
+
+;-----------REGLES MALALTIES--------------------------------------
+(defrule put-pesq
+	(p_esq)
+	?mal <-(malalties)
+	=>
+	(modify ?mal (pesq SI))
+)
+(defrule put-part
+	(p_art)
+	?mal <-(malalties)
+	=>
+	(modify ?mal (part SI))
+)
+(defrule put-pcardio
+	(p_cardio)
+	?mal <-(malalties)
+	=>
+	(modify ?mal (pcardio SI))
+)
+(defrule put-pressio-alta
+	(pressio (valors HIPER))
+	?mal <-(malalties)
+	=>
+	(modify ?mal (palta SI))
+)
+(defrule put-obes-morbid
+	(obes_morbid OK)
+	?mal <-(malalties)
+	=>
+	(modify ?mal (obes-morbid SI))
+)
 ;--------------------------------MODUL:SOL_ABSTR-------------------------------------------------------

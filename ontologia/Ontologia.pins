@@ -1,4 +1,4 @@
-; Fri May 20 19:07:14 CEST 2016
+; Fri May 20 22:44:43 CEST 2016
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -63,7 +63,7 @@
 
 ([Ontologia_Class10004] of  Cardio
 
-	(Contraindicacions pressio_alta mobilitat_nula_extremitats_inferiors)
+	(Contraindicacions pressio_alta)
 	(Descripcio "Bicicleta estatica on es va assentat en un seient que te respatller")
 	(Grups_musculars glutis part_superior_cama part_inferior_cama)
 	(Majors TRUE)
@@ -73,7 +73,7 @@
 
 ([Ontologia_Class10005] of  Cardio
 
-	(Contraindicacions pressio_alta mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors)
+	(Contraindicacions pressio_alta)
 	(Descripcio "Bicicleta eliptica")
 	(Grups_musculars part_superior_cama espatlles brac esquena glutis part_inferior_cama)
 	(Majors TRUE)
@@ -83,7 +83,7 @@
 
 ([Ontologia_Class10009] of  Cardio
 
-	(Contraindicacions pressio_alta mobilitat_nula_extremitats_inferiors)
+	(Contraindicacions pressio_alta)
 	(Descripcio "Maquina que recrea una bicicleta on es pot ajustar la intensitat")
 	(Grups_musculars part_superior_cama part_inferior_cama glutis)
 	(Majors TRUE)
@@ -93,7 +93,7 @@
 
 ([Ontologia_Class10010] of  Cardio
 
-	(Contraindicacions pressio_alta mobilitat_nula_extremitats_superiors mobilitat_nula_extremitats_inferiors)
+	(Contraindicacions pressio_alta)
 	(Descripcio "Maquina que simula el moviment de rem on es pot modificar la resistencia de la remada")
 	(Grups_musculars espatlles brac avantbrac part_superior_cama glutis esquena Pectoral abdominals)
 	(Majors TRUE)
@@ -103,7 +103,7 @@
 
 ([Ontologia_Class10011] of  Cardio
 
-	(Contraindicacions pressio_alta mobilitat_nula_extremitats_inferiors)
+	(Contraindicacions pressio_alta)
 	(Descripcio "Maquina que simula el moviment de pujar escales")
 	(Grups_musculars part_superior_cama part_inferior_cama glutis)
 	(Majors TRUE)
@@ -113,7 +113,7 @@
 
 ([Ontologia_Class10017] of  Cardio
 
-	(Contraindicacions pressio_alta mobilitat_nula_extremitats_superiors)
+	(Contraindicacions pressio_alta)
 	(Descripcio "Maquina que simula el moviment de esquiar")
 	(Grups_musculars brac espatlles esquena abdominals glutis part_superior_cama part_inferior_cama)
 	(Majors TRUE)
@@ -346,7 +346,6 @@
 
 ([Ontologia_Class20024] of  Musculacio
 
-	(Contraindicacions mobilitat_nula_extremitats_superiors)
 	(Descripcio "Posant l'avantbrac sobre una superficie plana de manera que les mans quedin a l'aire, pujar i baixar una barra amb peses, movent els canells amb els palmells amunt.")
 	(Grups_musculars avantbrac)
 	(Majors TRUE)
@@ -364,7 +363,6 @@
 
 ([Ontologia_Class20026] of  Musculacio
 
-	(Contraindicacions mobilitat_nula_extremitats_superiors)
 	(Descripcio "Assegut en un banc inclinant el cos endavant amb els colzes doblats sostenint una barra amb pes, tenint els palmells mirant amunt, pujar i baixar la barra obrint i tancant els dits de la ma.")
 	(Grups_musculars avantbrac)
 	(Majors TRUE)
