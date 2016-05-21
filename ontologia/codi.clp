@@ -1979,11 +1979,9 @@
 
 )
 (defrule put-obes-morbid
-	(obes_morbid)
+	(nivell_Massa (valors ObesitatMorbida))
 	?mal <-(malalties)
-	?v <-(obes_morbid)
 	=>
 	(modify ?mal (obes-morbid SI))
-	(retract ?v)
 )
 ;--------------------------------MODUL:SOL_ABSTR-------------------------------------------------------
