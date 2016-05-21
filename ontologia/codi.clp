@@ -1190,6 +1190,7 @@
 	(slot es-ancia (type SYMBOL)(allowed-values NO SI))
 )
 (deftemplate malalties
+	(slot activat (type SYMBOL)(allowed-values NO SI))
 	(slot pesq (type SYMBOL) (allowed-values NO SI))
 	(slot part (type SYMBOL) (allowed-values NO SI))
 	(slot pcardio (type SYMBOL) (allowed-values NO SI))
@@ -1298,7 +1299,9 @@
 			(printout t "Edat incorrecte, torna-la a introduir: ")
 			(bind ?edat (read))
 		)
+		(if (> ?edat 65) then (assert (ancia)))
 		(send ?client_actual put-Edat ?edat)
+		(assert (edat))
 		)
 
 		(defrule pregunta-alcada "preguntem alcada"
@@ -1511,8 +1514,10 @@
 				=>
 				(assert (askedEdat))
 				(bind ?edat (read jocs))
+				(if (> ?edat 65) then (assert (ancia)))
 				(printout t "Edat: " ?edat " anys" crlf)
 				(send ?client_actual put-Edat ?edat)
+				(assert (edat))
 				)
 
 				(defrule pregunta-alcada-F "preguntem alcada"
@@ -1723,6 +1728,7 @@
 	(if (and (>= ?punt 0.62) (< ?punt 1.18)) then (assert (forma_Fisica (valors Normal))))
 	(if (and (>= ?punt 1.18) (< ?punt 1.74)) then (assert (forma_Fisica (valors Alta))))
 	(if (>= ?punt 1.74) then (assert (forma_Fisica (valors Molt_Alta))))
+	(assert (calcul-forma))
 )
 (defrule calcul-Estat-Fisic "Abstraiem l'imc de les persones"
 	(imc)
@@ -1735,6 +1741,7 @@
 	(if (and (>= ?imc 30) (< ?imc 40)) then (assert (nivell_Massa (valors Obesitat))))
   (if (>= ?imc 40) then (assert (nivell_Massa (valors ObesitatMorbida)))
 	(assert (obes_morbid)))
+	(assert (calcul-Estat-Fisic))
 )
 (defrule calcul-Temps
 	(temps-disp)
@@ -1744,6 +1751,7 @@
 	(if (< ?temps 45) then (assert (temps_disp (valors POC))))
 	(if (and (>= ?temps 45)(< ?temps 90)) then (assert (temps_disp (valors NORMAL))))
 	(if (>= ?temps 120) then (assert (temps_disp(valors MOLT))))
+	(assert (calcul-Temps))
 )
 (defrule calcul-Pressio
 	(pressio_Q)
@@ -1755,26 +1763,43 @@
 	(if (and (< ?pmax 90) (< ?pmin 60)) then (assert (pressio (valors HIPO))))
 	(if (and (>= ?pmax 90) (< ?pmax 139) (>= ?pmin 60) (< ?pmin 89)) then (assert (pressio (valors NORMAL))))
 	(if (and (>= ?pmax 140) (>= ?pmin 90)) then (assert (pressio (valors HIPER))))
+(assert (calcul-Pressio))
+)
+(defrule calcul-edat
+	(edat)
+	?client_actual <- (object (is-a Client))
+	=>
+	(bind ?edat (send ?client_actual get-Edat))
+	(if (< ?edat 18) then (assert (edat (valors MENOR))))
+	(if (and (>= ?edat 18) (< ?edat 65)) then (assert (edat (valors ADULT))))
+	(if (>= ?edat 65) then (assert (edat (valors ANCIA))))
+	(assert (calcul-edat))
 )
 (defrule passa-objectiu
-	?client_actual <- (object (is-a Client))
 	(objectiuOk)
+	?client_actual <- (object (is-a Client))
 	=>
 	(bind ?objs (send  ?client_actual get-Objectiu))
 	(assert (objectiu (valors ?objs)))
-	(assert (last-abstr))
+	(assert (passa-objectiu))
 )
 (defrule focus-SolAbstr
-	(last-abstr)
+	(calcul-edat)
+	(calcul-Pressio)
+	(calcul-Temps)
+	(calcul-Estat-Fisic)
+	(calcul-forma)
 	=>
 	(focus SOL_ABSTR)
+	(assert (creaFacts))
 )
 ;--------------------------------MODUL:ABSTR-----------------------------------------------------------
 ;--------------------------------MODUL:SOL_ABSTR-------------------------------------------------------
 (defmodule SOL_ABSTR (import MAIN ?ALL) (import PREGUNTES ?ALL)(import ABSTRACCIO ?ALL) (export ?ALL))
+
 (defrule activa-facts-sol
 	=>
-	(assert (malalties))
+	(assert (malalties (activat SI)))
 	(assert (dia (numDia 1)))
 	(assert (dia (numDia 2)))
 	(assert (dia (numDia 3)))
@@ -1942,11 +1967,16 @@
 
 ;-----------REGLES FORMA FISICA-----------------------------------
 ;-----------REGLES MALALTIES--------------------------------------
+(defrule put-ancia
+(edat (valors ANCIA))
+	=>
+	(assert (ancia (es-ancia SI)))
+)
 (defrule put-pesq
 	(p_esq)
 	(np_esq)
 	?np <-(np_esq)
-	?mal <-(malalties)
+	?mal <-(malalties (activat SI))
 	=>
 	(modify ?mal (pesq SI))
 	(retract ?np)
@@ -1954,7 +1984,7 @@
 (defrule put-part
 	(p_art)
 	(np_art)
-	?mal <-(malalties)
+	?mal <-(malalties (activat SI))
 	?np <-(np_art)
 	=>
 	(modify ?mal (part SI))
@@ -1963,7 +1993,7 @@
 (defrule put-pcardio
 	(p_cardio)
 	(np_cardio)
-	?mal <-(malalties)
+	?mal <-(malalties (activat SI))
 	?np <-(np_cardio)
 	=>
 	(modify ?mal (pcardio SI))
@@ -1971,7 +2001,7 @@
 )
 (defrule put-pressio-alta
 	(pressio (valors HIPER))
-	?mal <-(malalties)
+	?mal <-(malalties (activat SI))
 	?v <-(pressio(valors HIPER))
 	=>
 	(modify ?mal (palta SI))
@@ -1979,9 +2009,11 @@
 
 )
 (defrule put-obes-morbid
-	(nivell_Massa (valors ObesitatMorbida))
-	?mal <-(malalties)
+	(obes_morbid)
+	?mal <-(malalties (activat SI))
+	?v <- (obes_morbid)
 	=>
 	(modify ?mal (obes-morbid SI))
+	(retract ?v)
 )
 ;--------------------------------MODUL:SOL_ABSTR-------------------------------------------------------
