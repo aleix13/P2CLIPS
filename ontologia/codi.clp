@@ -1479,17 +1479,17 @@
 			(printout t "A continuacio et demanem que ens diguis els teus problemes de salut:" crlf)
 			(printout t "Tens problemes d'esquena?(si/no)" crlf)
 			(bind ?esq (read))
-			(if (eq ?esq si) then (bind ?esq TRUE) (assert (pesq OK)) else (bind ?esq FALSE) )
+			(if (eq ?esq si) then (bind ?esq TRUE) (assert (p_esq)) else (bind ?esq FALSE) )
 			(send ?client_actual put-Problemes_esquena ?esq)
 
 			(printout t "Tens problemes articulars?(si/no)" crlf)
 			(bind ?art (read))
-			(if (eq ?art si) then (bind ?art TRUE) (assert (part OK)) else (bind ?art FALSE) )
+			(if (eq ?art si) then (bind ?art TRUE) (assert (p_art)) else (bind ?art FALSE) )
 			(send ?client_actual put-Problemes_articulars ?art)
 
 			(printout t "Tens problemes cardiorespiratoris?(si/no)" crlf)
 			(bind ?cardio (read))
-			(if (eq ?cardio si) then (bind ?cardio TRUE) (assert (pcardio OK)) else (bind ?cardio FALSE) )
+			(if (eq ?cardio si) then (bind ?cardio TRUE) (assert (p_cardio)) else (bind ?cardio FALSE) )
 			(send ?client_actual put-Problema_Cardiorespiratori ?cardio)
 			(assert (last-q))
 		)
@@ -1675,17 +1675,17 @@
 				  (readline jocs)
 					(bind ?esq (readline jocs))
 					(printout t "Problemes esquena " ?esq crlf)
-					(if (eq ?esq si) then (bind ?esq TRUE) (assert (pesq OK)) else (bind ?esq FALSE) )
+					(if (eq ?esq si) then (bind ?esq TRUE) (assert (p_esq)) else (bind ?esq FALSE) )
 					(send ?client_actual put-Problemes_esquena ?esq)
 
 					(bind ?art (readline jocs))
 					(printout t "Problemes esquena " ?art crlf)
-				  (if (eq ?art si) then (bind ?art TRUE) (assert (part OK)) else (bind ?art FALSE) )
+				  (if (eq ?art si) then (bind ?art TRUE) (assert (p_art)) else (bind ?art FALSE) )
 					(send ?client_actual put-Problemes_articulars ?art)
 
 					(bind ?cardio (read jocs))
 					(printout t "Problemes cardio " ?cardio crlf)
-					(if (eq ?cardio si) then (bind ?cardio TRUE) (assert (pcardio OK)) else (bind ?cardio FALSE) )
+					(if (eq ?cardio si) then (bind ?cardio TRUE) (assert (p_cardio)) else (bind ?cardio FALSE) )
 					(send ?client_actual put-Problema_Cardiorespiratori ?cardio)
 					(assert (last-q))
 				)
@@ -1941,7 +1941,6 @@
 
 
 ;-----------REGLES FORMA FISICA-----------------------------------
-(def)
 ;-----------REGLES MALALTIES--------------------------------------
 (defrule put-pesq
 	(p_esq)
@@ -1968,7 +1967,7 @@
 	(modify ?mal (palta SI))
 )
 (defrule put-obes-morbid
-	(obes_morbid OK)
+	(obes_morbid)
 	?mal <-(malalties)
 	=>
 	(modify ?mal (obes-morbid SI))
