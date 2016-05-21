@@ -1198,8 +1198,8 @@
 )
  (deftemplate dia
 	 (slot numDia (type INTEGER) (range 1 5))
+	(slot int_Entrenament (type SYMBOL) (allowed-values NUL MOLT_BAIXA BAIXA NORMAL ALTA MOLT_ALTA))
 	 ;escalfament
-	 (slot intensitatEscalfament (type SYMBOL) (allowed-values BAIXA MITJA ALTA))
 	 (slot temps (type SYMBOL) (allowed-values POC NORMAL MOLT))
 
 	 ;part principal
@@ -1208,11 +1208,8 @@
 	 (slot imp_Musculacio (type SYMBOL) (allowed-values NUL POC NORMAL ALTA))
 	 (slot imp_Cardio (type SYMBOL) (allowed-values NUL POC NORMAL ALTA))
 
-	 (slot int_Elas (type SYMBOL) (allowed-values BAIXA MITJA ALTA))
-	 (slot int_Musculacio (type SYMBOL) (allowed-values BAIXA MITJA ALTA))
-	 (slot int_Cardio (type SYMBOL) (allowed-values BAIXA MITJA ALTA))
+
 	 ;part_final
-	 (slot intensitatPartFinal (type SYMBOL) (allowed-values BAIXA MITJA ALTA))
 	 (slot elas_Final (type SYMBOL) (allowed-values NO SI))
 	 (slot cardio_Final (type SYMBOL) (allowed-values NO SI))
  )
@@ -1966,6 +1963,164 @@
 
 
 ;-----------REGLES FORMA FISICA-----------------------------------
+(defrule intensitatFormaFisica
+	?f <- (forma_Fisica (valors ?v))
+	?d1 <- (dia (numDia 1)(int_Entrenament NUL))
+	?d2 <- (dia (numDia 2)(int_Entrenament NUL))
+	?d3 <- (dia (numDia 3)(int_Entrenament NUL))
+	?d4 <- (dia (numDia 4)(int_Entrenament NUL))
+	?d5 <- (dia (numDia 5)(int_Entrenament NUL))
+	=>
+	(switch ?v
+		(case Molt_Baixa then
+			(modify ?d1 (int_Entrenament MOLT_BAIXA))
+			(modify ?d2 (int_Entrenament BAIXA))
+		  (modify ?d3 (int_Entrenament  MOLT_BAIXA))
+		  (modify ?d4 (int_Entrenament  BAIXA))
+	 		(modify ?d5 (int_Entrenament  MOLT_BAIXA))
+	)
+	(case Baixa then
+		(modify ?d1 (int_Entrenament BAIXA ))
+		(modify ?d2 (int_Entrenament NORMAL ))
+		(modify ?d3 (int_Entrenament BAIXA ))
+		(modify ?d4 (int_Entrenament NORMAL ))
+		(modify ?d5 (int_Entrenament BAIXA ))
+				)
+
+	(case Normal then
+		(modify ?d1 (int_Entrenament NORMAL))
+		(modify ?d2 (int_Entrenament ALTA))
+		(modify ?d3 (int_Entrenament NORMAL))
+		(modify ?d4 (int_Entrenament ALTA))
+		(modify ?d5 (int_Entrenament NORMAL))
+
+		)
+
+	(case Alta then
+		(modify ?d1 (int_Entrenament ALTA))
+		(modify ?d2 (int_Entrenament MOLT_ALTA))
+		(modify ?d3 (int_Entrenament ALTA))
+		(modify ?d4 (int_Entrenament MOLT_ALTA))
+		(modify ?d5 (int_Entrenament ALTA))
+
+		)
+
+	(case Molt_Alta then
+		(modify ?d1 (int_Entrenament MOLT_ALTA))
+		(modify ?d2 (int_Entrenament MOLT_ALTA))
+		(modify ?d3 (int_Entrenament MOLT_ALTA))
+		(modify ?d4 (int_Entrenament MOLT_ALTA))
+		(modify ?d5 (int_Entrenament MOLT_ALTA))
+	)
+	)
+	(assert (int_ff)
+	)
+)
+
+(defrule int_imc_ma
+	(int_ff)
+	?d <- (dia (int_Entrenament MOLT_ALTA))
+	?nv <- (nivell_Massa (valors ?v))
+	=>
+(switch ?v
+	(case Insuf then
+		(modify ?d (int_Entrenament ALTA))
+	)
+	(case Sobrepes then
+		(modify ?d (int_Entrenament NORMAL)))
+	(case Obesitat then
+		(modify ?d (int_Entrenament BAIXA)))
+	)
+	(assert (int_imc_ma))
+)
+
+(defrule int_imc_a
+	(int_ff)
+	?d <- (dia (int_Entrenament ALTA))
+	?nv <- (nivell_Massa (valors ?v))
+	=>
+(switch ?v
+	(case Insuf then
+		(modify ?d (int_Entrenament NORMAL))
+	)
+	(case Sobrepes then
+		(modify ?d (int_Entrenament NORMAL)))
+	(case Obesitat then
+		(modify ?d (int_Entrenament BAIXA)))
+	)
+	(assert (int_imc_a))
+)
+
+(defrule int_imc_n
+	(int_ff)
+	?d <- (dia (int_Entrenament NORMAL))
+	?nv <- (nivell_Massa (valors ?v))
+	=>
+(switch ?v
+	(case Insuf then
+		(modify ?d (int_Entrenament NORMAL))
+	)
+	(case Sobrepes then
+		(modify ?d (int_Entrenament BAIXA)))
+	(case Obesitat then
+		(modify ?d (int_Entrenament MOLT_BAIXA)))
+	)
+	(assert (int_imc_n))
+)
+
+
+(defrule int_cardio
+	(int_imc_n)
+	(int_imc_a)
+	(int_imc_ma)
+	?m <- (malalties (pcardio SI))
+	?d <- (dia (int_Entrenament ?v))
+	=>
+	(switch ?v
+		(case MOLT_ALTA then
+			(modify ?d (int_Entrenament ALTA))
+		)
+		(case ALTA then
+			(modify ?d (int_Entrenament NORMAL)))
+		(case NORMAL then
+			(modify ?d (int_Entrenament BAIXA)))
+		(case BAIXA then
+			(modify ?d (int_Entrenament MOLT_BAIXA)))
+
+			)
+			(assert (int_cardio))
+	)
+
+	(defrule int_art
+		(int_cardio)
+		?m <- (malalties (part SI))
+		?d <- (dia (int_Entrenament ?v))
+		=>
+		(switch ?v
+			(case MOLT_ALTA then
+				(modify ?d (int_Entrenament ALTA))
+			)
+			(case ALTA then
+				(modify ?d (int_Entrenament NORMAL)))
+			(case NORMAL then
+				(modify ?d (int_Entrenament BAIXA)))
+			(case BAIXA then
+				(modify ?d (int_Entrenament MOLT_BAIXA)))
+
+				)
+				(assert (int_art))
+	)
+
+
+
+
+
+
+
+
+
+
+
 ;-----------REGLES MALALTIES--------------------------------------
 (defrule put-ancia
 (edat (valors ANCIA))
