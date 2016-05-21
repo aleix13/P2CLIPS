@@ -1212,6 +1212,9 @@
 	 ;part_final
 	 (slot elas_Final (type SYMBOL) (allowed-values NO SI))
 	 (slot cardio_Final (type SYMBOL) (allowed-values NO SI))
+
+	(slot modC (type SYMBOL) (allowed-values NO SI))
+	(slot modA (type SYMBOL) (allowed-values NO SI))
  )
 ;--------------------------------TEMPLATES-----------------------------------------------------------
 
@@ -1802,7 +1805,7 @@
 	(assert (dia (numDia 3)))
 	(assert (dia (numDia 4)))
 	(assert (dia (numDia 5)))
-	(assert malaltiesOK)
+	(assert (malaltiesOK))
 )
 
 ;?d <- (dia (numDia 2))
@@ -1965,6 +1968,8 @@
 
 ;-----------REGLES FORMA FISICA-----------------------------------
 (defrule intensitatFormaFisica
+	(cardioTOins)
+	(artTOins)
 	?f <- (forma_Fisica (valors ?v))
 	?d1 <- (dia (numDia 1)(int_Entrenament NUL))
 	?d2 <- (dia (numDia 2)(int_Entrenament NUL))
@@ -2106,7 +2111,6 @@
 	?f <- (int_imc_ma)
 	?m <- (malalties (pcardio NO))
 	=>
-	(retract ?f)
 	(assert (int_cardio))
 	)
 
@@ -2114,19 +2118,18 @@
 	(int_imc_ma)
 	?f <- (int_imc_ma)
 	?m <- (malalties (pcardio SI))
-	?d <- (dia (int_Entrenament ?v))
+	?d <- (dia (int_Entrenament ?v)(modC NO))
 	=>
-	(retract ?f)
 	(switch ?v
 		(case MOLT_ALTA then
-			(modify ?d (int_Entrenament ALTA))
+			(modify ?d (int_Entrenament ALTA) (modC SI))
 		)
 		(case ALTA then
-			(modify ?d (int_Entrenament NORMAL)))
+			(modify ?d (int_Entrenament NORMAL)(modC SI)))
 		(case NORMAL then
-			(modify ?d (int_Entrenament BAIXA)))
+			(modify ?d (int_Entrenament BAIXA) (modC SI)))
 		(case BAIXA then
-			(modify ?d (int_Entrenament MOLT_BAIXA)))
+			(modify ?d (int_Entrenament MOLT_BAIXA) (modC SI)))
 
 			)
 			(assert (int_cardio))
@@ -2136,19 +2139,18 @@
 		(int_cardio)
 	  ?f <- (int_cardio)
 		?m <- (malalties (part SI))
-		?d <- (dia (int_Entrenament ?v))
+		?d <- (dia (int_Entrenament ?v) (modA NO))
 		=>
-		(retract ?f)
 		(switch ?v
 			(case MOLT_ALTA then
-				(modify ?d (int_Entrenament ALTA))
+				(modify ?d (int_Entrenament ALTA) (modA SI))
 			)
 			(case ALTA then
-				(modify ?d (int_Entrenament NORMAL)))
+				(modify ?d (int_Entrenament NORMAL) (modA SI)))
 			(case NORMAL then
-				(modify ?d (int_Entrenament BAIXA)))
+				(modify ?d (int_Entrenament BAIXA) (modA SI)))
 			(case BAIXA then
-				(modify ?d (int_Entrenament MOLT_BAIXA)))
+				(modify ?d (int_Entrenament MOLT_BAIXA) (modA SI)))
 
 				)
 				(assert (int_art))
@@ -2177,16 +2179,20 @@
 	(modify ?mal (pesq SI))
 )
 (defrule put-part
+	(malaltiesOK)
 	(p_art)
 	?mal <-(malalties (part NO))
 	=>
 	(modify ?mal (part SI))
+	(assert (artTOins))
 )
 (defrule put-pcardio
 	(p_cardio)
+	(malaltiesOK)
 	?mal <-(malalties (pcardio NO))
 	=>
 	(modify ?mal (pcardio SI))
+	(assert (cardioTOins))
 )
 (defrule put-pressio-alta
 	(pressio (valors HIPER))
