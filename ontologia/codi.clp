@@ -1170,7 +1170,7 @@
 		(slot valors (type SYMBOL) (allowed-values Molt_Baixa Baixa Normal Alta Molt_Alta))
 	)
 	(deftemplate nivell_Massa
-		(slot valors (type SYMBOL) (allowed-values Insuf Normal Sobrepes Obsesitat ObsesitatMorbida ))
+		(slot valors (type SYMBOL) (allowed-values Insuf Normal Sobrepes Obesitat ObesitatMorbida ))
 	)
 	(deftemplate temps_disp
 		(slot valors (type SYMBOL) (allowed-values POC NORMAL MOLT))
@@ -1184,6 +1184,13 @@
 	)
 ;------------templates per a la solucio abstracta----------------
 
+(deftemplate malalties
+	(slot pesq (type SYMBOL) (allowed-values NO SI))
+	(slot part (type SYMBOL) (allowed-values NO SI))
+	(slot pcardio (type SYMBOL) (allowed-values NO SI))
+	(slot palta (type SYMBOL) (allowed-values  NO SI))
+	(slot obes-morbid (type SYMBOL) (allowed-values NO SI))
+)
  (deftemplate dia
 	 (slot numDia (type INTEGER) (range 1 5))
 	 ;escalfament
@@ -1443,26 +1450,25 @@
 					(send ?client_actual put-Habits ?Habit_Fisic)
 					(assert (puntuacio))
 				)
-		(defrule pregunta-malaties
+		(defrule pregunta-malalties
 			(notInFile)
 			?client_actual <- (object (is-a Client))
 			=>
 			(printout t "A continuacio et demanem que ens diguis els teus problemes de salut:" crlf)
 			(printout t "Tens problemes d'esquena?(si/no)" crlf)
 			(bind ?esq (read))
-			(if (eq ?esq si) then (bind ?esq TRUE) else (bind ?esq FALSE) )
+			(if (eq ?esq si) then (bind ?esq TRUE) (assert (pesq OK)) else (bind ?esq FALSE) )
 			(send ?client_actual put-Problemes_esquena ?esq)
 
 			(printout t "Tens problemes articulars?(si/no)" crlf)
 			(bind ?art (read))
-			(if (eq ?art si) then (bind ?art TRUE) else (bind ?art FALSE) )
+			(if (eq ?art si) then (bind ?art TRUE) (assert (part OK)) else (bind ?art FALSE) )
 			(send ?client_actual put-Problemes_articulars ?art)
 
 			(printout t "Tens problemes cardiorespiratoris?(si/no)" crlf)
 			(bind ?cardio (read))
-			(if (eq ?cardio si) then (bind ?cardio TRUE) else (bind ?cardio FALSE) )
+			(if (eq ?cardio si) then (bind ?cardio TRUE) (assert (pcardio OK)) else (bind ?cardio FALSE) )
 			(send ?client_actual put-Problema_Cardiorespiratori ?cardio)
-			)
 			(assert (last-q))
 		)
 
@@ -1653,19 +1659,18 @@
 					(printout t "A continuacio et demanem que ens diguis els teus problemes de salut:" crlf)
 					(printout t "Tens problemes d'esquena?(si/no)" crlf)
 					(bind ?esq (read jocs))
-					(if (eq ?esq si) then (bind ?esq TRUE) else (bind ?esq FALSE) )
+					(if (eq ?esq si) then (bind ?esq TRUE) (assert (p_esq)) else (bind ?esq FALSE) )
 					(send ?client_actual put-Problemes_esquena ?esq)
 
 					(printout t "Tens problemes articulars?(si/no)" crlf)
 					(bind ?art (read jocs))
-					(if (eq ?art si) then (bind ?art TRUE) else (bind ?art FALSE) )
+					(if (eq ?art si) then (bind ?art TRUE) (assert (p_art)) else (bind ?art FALSE) )
 					(send ?client_actual put-Problemes_articulars ?art)
 
 					(printout t "Tens problemes cardiorespiratoris?(si/no)" crlf)
 					(bind ?cardio (read jocs))
-					(if (eq ?cardio si) then (bind ?cardio TRUE) else (bind ?cardio FALSE) )
+					(if (eq ?cardio si) then (bind ?cardio TRUE) (assert (p_cardio)) else (bind ?cardio FALSE) )
 					(send ?client_actual put-Problema_Cardiorespiratori ?cardio)
-					)
 					(assert (last-q))
 				)
 		;Regles auxiliars derivades de preguntes
@@ -1711,8 +1716,9 @@
 	(if (< ?imc 18) then (assert (nivell_Massa (valors Insuf))))
 	(if (and (>= ?imc 18) (< ?imc 25)) then (assert (nivell_Massa (valors Normal))))
 	(if (and (>= ?imc 25) (< ?imc 30)) then (assert (nivell_Massa (valors Sobrepes))))
-	(if (and (>= ?imc 30) (< ?imc 40)) then (assert (nivell_Massa (valors Obsesitat))))
-  (if (>= ?imc 40) then (assert (nivell_Massa (valors ObsesitatMorbida))))
+	(if (and (>= ?imc 30) (< ?imc 40)) then (assert (nivell_Massa (valors Obesitat))))
+  (if (>= ?imc 40) then (assert (nivell_Massa (valors ObesitatMorbida)))
+	(assert (obes_morbid OK)))
 )
 (defrule calcul-Temps
 	(temps-disp)
@@ -1750,8 +1756,9 @@
 ;--------------------------------MODUL:ABSTR-----------------------------------------------------------
 ;--------------------------------MODUL:SOL_ABSTR-------------------------------------------------------
 (defmodule SOL_ABSTR (import MAIN ?ALL) (import PREGUNTES ?ALL)(import ABSTRACCIO ?ALL) (export ?ALL))
-(defrule activa-dies
+(defrule activa-facts-sol
 	=>
+	(assert (malalties))
 	(assert (dia (numDia 1)))
 	(assert (dia (numDia 2)))
 	(assert (dia (numDia 3)))
@@ -1915,10 +1922,40 @@
 									)
 
 
-									(defrule def
-
-									)
 
 
 ;-----------REGLES FORMA FISICA-----------------------------------
+
+
+;-----------REGLES MALALTIES--------------------------------------
+(defrule put-pesq
+	(p_esq)
+	?mal <-(malalties)
+	=>
+	(modify ?mal (pesq SI))
+)
+(defrule put-part
+	(p_art)
+	?mal <-(malalties)
+	=>
+	(modify ?mal (part SI))
+)
+(defrule put-pcardio
+	(p_cardio)
+	?mal <-(malalties)
+	=>
+	(modify ?mal (pcardio SI))
+)
+(defrule put-pressio-alta
+	(pressio (valors HIPER))
+	?mal <-(malalties)
+	=>
+	(modify ?mal (palta SI))
+)
+(defrule put-obes-morbid
+	(obes_morbid OK)
+	?mal <-(malalties)
+	=>
+	(modify ?mal (obes-morbid SI))
+)
 ;--------------------------------MODUL:SOL_ABSTR-------------------------------------------------------
