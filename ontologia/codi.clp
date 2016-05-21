@@ -1178,12 +1178,17 @@
 	(deftemplate pressio
 		(slot valors (type SYMBOL) (allowed-values HIPO NORMAL HIPER))
 	)
-
 	(deftemplate objectiu
 		(multislot valors (type SYMBOL) (allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general Elasticitat))
 	)
+	(deftemplate edat
+		(slot valors (type SYMBOL) (allowed-values MENOR ADULT ANCIA))
+	)
 ;------------templates per a la solucio abstracta----------------
 
+(deftemplate ancia
+	(slot es-ancia (type SYMBOL)(allowed-values NO SI))
+)
 (deftemplate malalties
 	(slot pesq (type SYMBOL) (allowed-values NO SI))
 	(slot part (type SYMBOL) (allowed-values NO SI))
@@ -1780,7 +1785,8 @@
 	?d4 <- (dia (numDia 4)(imp_Musculacio NUL))
 	?d5 <- (dia (numDia 5)(imp_Musculacio NUL))
 	=>
-	 (modify ?d1 (imp_Musculacio ALTA)(elas_Final SI))
+	 (modify ?d1 (imp_Musculacio ALTA)(elas_Final SI)
+	 )
 	 (modify ?d2 (imp_Musculacio ALTA)(cardio_Final SI))
 	 (modify ?d3 (imp_Musculacio ALTA)(elas_Final SI))
 	 (modify ?d4 (imp_Musculacio ALTA)(cardio_Final SI))
@@ -1925,7 +1931,6 @@
 
 
 ;-----------REGLES FORMA FISICA-----------------------------------
-
 
 ;-----------REGLES MALALTIES--------------------------------------
 (defrule put-pesq
