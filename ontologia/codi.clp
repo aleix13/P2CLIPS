@@ -1470,7 +1470,7 @@
 					(send ?client_actual put-Habits ?Habit_Fisic)
 					(assert (puntuacio))
 				)
-		(defrule pregunta-malaties
+		(defrule pregunta-malalties
 			(askedHabits)
 			(notInFile)
 			?client_actual <- (object (is-a Client))
@@ -1479,17 +1479,17 @@
 			(printout t "A continuacio et demanem que ens diguis els teus problemes de salut:" crlf)
 			(printout t "Tens problemes d'esquena?(si/no)" crlf)
 			(bind ?esq (read))
-			(if (eq ?esq si) then (bind ?esq TRUE) (assert (p_esq)) else (bind ?esq FALSE) )
+			(if (eq ?esq si) then (bind ?esq TRUE) (assert (p_esq))(assert (np_esq)) else (bind ?esq FALSE) )
 			(send ?client_actual put-Problemes_esquena ?esq)
 
 			(printout t "Tens problemes articulars?(si/no)" crlf)
 			(bind ?art (read))
-			(if (eq ?art si) then (bind ?art TRUE) (assert (p_art)) else (bind ?art FALSE) )
+			(if (eq ?art si) then (bind ?art TRUE) (assert (p_art)) (assert (np_art))  else (bind ?art FALSE) )
 			(send ?client_actual put-Problemes_articulars ?art)
 
 			(printout t "Tens problemes cardiorespiratoris?(si/no)" crlf)
 			(bind ?cardio (read))
-			(if (eq ?cardio si) then (bind ?cardio TRUE) (assert (p_cardio)) else (bind ?cardio FALSE) )
+			(if (eq ?cardio si) then (bind ?cardio TRUE) (assert (p_cardio)) (assert (np_cardio))  else (bind ?cardio FALSE) )
 			(send ?client_actual put-Problema_Cardiorespiratori ?cardio)
 			(assert (last-q))
 		)
@@ -1675,17 +1675,17 @@
 				  (readline jocs)
 					(bind ?esq (readline jocs))
 					(printout t "Problemes esquena " ?esq crlf)
-					(if (eq ?esq si) then (bind ?esq TRUE) (assert (p_esq)) else (bind ?esq FALSE) )
+					(if (eq ?esq si) then (bind ?esq TRUE) (assert (p_esq)) (assert (np_esq)) else (bind ?esq FALSE) )
 					(send ?client_actual put-Problemes_esquena ?esq)
 
 					(bind ?art (readline jocs))
 					(printout t "Problemes esquena " ?art crlf)
-				  (if (eq ?art si) then (bind ?art TRUE) (assert (p_art)) else (bind ?art FALSE) )
+				  (if (eq ?art si) then (bind ?art TRUE) (assert (p_art)) (assert (np_art)) else (bind ?art FALSE) )
 					(send ?client_actual put-Problemes_articulars ?art)
 
 					(bind ?cardio (read jocs))
 					(printout t "Problemes cardio " ?cardio crlf)
-					(if (eq ?cardio si) then (bind ?cardio TRUE) (assert (p_cardio)) else (bind ?cardio FALSE) )
+					(if (eq ?cardio si) then (bind ?cardio TRUE) (assert (p_cardio)) (assert (np_cardio)) else (bind ?cardio FALSE) )
 					(send ?client_actual put-Problema_Cardiorespiratori ?cardio)
 					(assert (last-q))
 				)
@@ -1734,7 +1734,7 @@
 	(if (and (>= ?imc 25) (< ?imc 30)) then (assert (nivell_Massa (valors Sobrepes))))
 	(if (and (>= ?imc 30) (< ?imc 40)) then (assert (nivell_Massa (valors Obesitat))))
   (if (>= ?imc 40) then (assert (nivell_Massa (valors ObesitatMorbida)))
-	(assert (obes_morbid OK)))
+	(assert (obes_morbid)))
 )
 (defrule calcul-Temps
 	(temps-disp)
@@ -1944,32 +1944,46 @@
 ;-----------REGLES MALALTIES--------------------------------------
 (defrule put-pesq
 	(p_esq)
+	(np_esq)
+	?np <-(np_esq)
 	?mal <-(malalties)
 	=>
 	(modify ?mal (pesq SI))
+	(retract ?np)
 )
 (defrule put-part
 	(p_art)
+	(np_art)
 	?mal <-(malalties)
+	?np <-(np_art)
 	=>
 	(modify ?mal (part SI))
+	(retract ?np)
 )
 (defrule put-pcardio
 	(p_cardio)
+	(np_cardio)
 	?mal <-(malalties)
+	?np <-(np_cardio)
 	=>
 	(modify ?mal (pcardio SI))
+	(retract ?np)
 )
 (defrule put-pressio-alta
 	(pressio (valors HIPER))
 	?mal <-(malalties)
+	?v <-(pressio(valors HIPER))
 	=>
 	(modify ?mal (palta SI))
+	(retract ?v)
+
 )
 (defrule put-obes-morbid
 	(obes_morbid)
 	?mal <-(malalties)
+	?v <-(obes_morbid)
 	=>
 	(modify ?mal (obes-morbid SI))
+	(retract ?v)
 )
 ;--------------------------------MODUL:SOL_ABSTR-------------------------------------------------------
