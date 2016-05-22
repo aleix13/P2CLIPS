@@ -1299,6 +1299,33 @@
 	(return ?ins)
 )
 
+(deffunction tornaTemps(?temps-disp ?ic ?im ?ie)
+	(switch ?ic
+		(case NUL then (bind ?ic 0))
+		(case POC then (bind ?ic 1))
+		(case NORMAL then (bind ?ic 2))
+		(case ALTA then (bind ?ic 3))
+	)
+	(switch ?im
+		(case NUL then (bind ?im 0))
+		(case POC then (bind ?im 1))
+		(case NORMAL then (bind ?im 2))
+		(case ALTA then (bind ?im 3))
+	)
+	(switch ?ie
+		(case NUL then (bind ?ie 0))
+		(case POC then (bind ?ie 1))
+		(case NORMAL then (bind ?ie 2))
+		(case ALTA then (bind ?ie 3))
+	)
+	(bind ?sum (+ ?ic ?im ?ie))
+
+	(bind ?tc (* ?temps-disp (/ ?ic ?sum)))
+	(bind ?tm (* ?temps-disp (/ ?im ?sum)))
+	(bind ?te (* ?temps-disp (/ ?ie ?sum)))
+	(return (create$ ?tc ?tm ?te))
+)
+
 ;--------------------------------TEMPLATES-----------------------------------------------------------
 
 ;(defmessage-handler Exercici printa primary ()
@@ -3095,6 +3122,7 @@
 	?d <- (dia (numDia 5) (int_Entrenament ?int) (elas_Final ?ef) (cardio_Final ?cf) )
 	?ad <- (assignacio-dia (numDia 5) (temps-final ?te) )
 	=>
+
   (if (eq ?cf TRUE) then
 
 	(bind ?li (find-all-instances ((?inst Cardio)) TRUE))
@@ -3173,3 +3201,105 @@
 
 	(assert (finDia5))
 )
+;-------------------Assignacions part final-----------------------------
+
+
+
+;-------------------Assignacions part principal-----------------------------
+
+(defrule assigna-principal
+	(init-assigOK)
+	(not (prinDia1))
+	?d <- (dia (numDia 1) (int_Entrenament ?int) (imp_Cardio ?ic)(imp_Musculacio ?im) (imp_Elas ?ie) )
+	?ad <- (assignacio-dia (numDia 1) (temps-principal ?tp) )
+	=>
+	(bind ?temps (tornaTemps ?tp ?ic ?im ?ie))
+	(bind ?tc (nth$ 1 ?temps))
+	(bind ?tm (nth$ 2 ?temps))
+	(bind ?te (nth$ 3 ?temps))
+	;part cardio..............
+	(bind ?assprin (create$ ))
+ (if (not(eq ?tc 0)) then
+		(bind ?li (find-all-instances ((?inst Cardio)) TRUE))
+		(bind ?ex (random-slot ?li))
+		(if (eq (class ?ex) Cardio) then
+					(bind ?assignacio (make-instance assig-cardio of Assignacio_exercici_cardio))
+					(send ?assignacio put-Exercici_Assignat ?ex)
+					(send ?assignacio put-Durada ?tc)
+					(switch ?int
+						(case MOLT_BAIXA then
+							(send ?assignacio put-Resistencia 25)
+						)
+						(case BAIXA then
+							(send ?assignacio put-Resistencia 35)
+						)
+						(case NORMAL then
+							(send ?assignacio put-Resistencia 50)
+						)
+						(case ALTA then
+							(send ?assignacio put-Resistencia 70)
+						)
+						(case MOLT_ALTA then
+							(send ?assignacio put-Resistencia 90)
+						)
+					)
+	        (bind ?assprin (insert$ ?assprin (+ (length$ ?af) 1) ?assignacio))
+			else
+			(bind ?assignacio (make-instance assig-cinta of Assignacio_exercici_cinta))
+			(send ?assignacio put-Exercici_Assignat ?ex)
+			(send ?assignacio put-Durada ?te)
+			(switch ?int
+				(case MOLT_BAIXA then
+					(send ?assignacio put-Resistencia 25)
+					(send ?assignacio put-Velocitat 25)
+				)
+				(case BAIXA then
+					(send ?assignacio put-Resistencia 35)
+					(send ?assignacio put-Velocitat 30)
+				)
+				(case NORMAL then
+					(send ?assignacio put-Resistencia 50)
+					(send ?assignacio put-Velocitat 40)
+				)
+				(case ALTA then
+					(send ?assignacio put-Resistencia 70)
+					(send ?assignacio put-Velocitat 60)
+				)
+				(case MOLT_ALTA then
+					(send ?assignacio put-Resistencia 90)
+					(send ?assignacio put-Velocitat 80)
+				)
+			)
+			(bind ?assprin (insert$ ?assprin (+ (length$ ?af) 1) ?assignacio))
+     )
+		)
+
+		;part elasticitat-----------------------------------------------------
+		(if (not(eq ?te 0)) then
+		(bind ?assignats (create$ ))
+		(bind ?af (create$ ))
+		;AQUÍ HEM ASSIGNAT EXERCICI CARDIO
+		(bind ?taux 0)
+		(bind ?lf (find-all-instances ((?inst Terra_Duracio)) (eq ?inst:Flexibilitat TRUE)))
+		(while (< ?taux ?te) do
+		(bind ?exF (random-slot ?lf))
+				(if (not(member ?exF ?assignats)) then
+				(bind ?taux (+ 4 ?taux))
+				(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_terra_Duracio))
+				(send ?assignacio put-Durada 4)
+				(send ?assignacio put-Series 1)
+				(send ?assignacio put-Exercici_Assignat ?exF)
+				(bind ?assignats (insert$ ?assignats (+ (length$ ?assignats) 1) ?exF))
+				(bind ?af (insert$ ?af (+ (length$ ?af) 1) ?assignacio))
+				)
+		)
+		(bind ?assprin (insert$ ?assprin (+ (length$ ?af) 1) ?af))
+		)
+
+
+
+
+	(assert (prinDia1))
+)
+
+;-------------------Assignacions part principal-----------------------------
