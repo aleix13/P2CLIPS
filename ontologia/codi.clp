@@ -6,10 +6,6 @@
 (defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
 	(is-a USER)
 	(role abstract)
-	(single-slot Pes_max
-		(type FLOAT)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot picar_entre_hores
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
@@ -20,10 +16,6 @@
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Resistencia_max
-		(type INTEGER)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot Problema_salut_associat
 		(type INSTANCE)
 ;+		(allowed-classes)
@@ -32,10 +24,6 @@
 	(single-slot Menors
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Repeticions_max
-		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(multislot Pressio_Sanguinea
@@ -85,6 +73,10 @@
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot Resistencia
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot Series
 		(type INTEGER)
 ;+		(cardinality 1 1)
@@ -94,6 +86,10 @@
 ;+		(allowed-classes Habit_Fisic)
 		(default [Ontologia_Class1])
 ;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Pes
+		(type FLOAT)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot Durada_min
 		(type INTEGER)
@@ -129,6 +125,10 @@
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(single-slot Repeticions
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot Peces_fruita
 		(type INTEGER)
 ;+		(cardinality 1 1)
@@ -148,7 +148,7 @@
 		(create-accessor read-write))
 	(multislot Contraindicacions
 		(type SYMBOL)
-		(allowed-values pressio_alta problemes_cardiorespiratoris mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors problemes_articulars problemes_esquena)
+		(allowed-values pressio_alta problemes_esquena obesitat_morbida)
 		(create-accessor read-write))
 	(single-slot IMC
 ;+		(comment "Pes/alcada^2")
@@ -167,10 +167,6 @@
 		(create-accessor read-write))
 	(single-slot hores_exercici_feina
 		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Velocitat_max
-		(type FLOAT)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot Puntuacio
@@ -193,6 +189,10 @@
 	(single-slot Ontologia_Class10022
 		(type STRING)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Velocitat
+		(type INTEGER)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot Alcada
 ;+		(comment "Alcada en centimetres")
@@ -232,7 +232,7 @@
 		(create-accessor read-write))
 	(multislot Grups_musculars
 		(type SYMBOL)
-		(allowed-values coll espatlles avantbrac brac part_superior_cama part_inferior_cama abdominals glutis esquena Pectoral abdominals_superiors abdominals_inferiors abdominals_laterals)
+		(allowed-values coll espatlles avantbrac brac part_superior_cama part_inferior_cama abdominals glutis esquena Pectoral)
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write))
 	(multislot Parts_Afectades
@@ -405,7 +405,7 @@
 	(role concrete)
 	(multislot Contraindicacions
 		(type SYMBOL)
-		(allowed-values pressio_alta problemes_cardiorespiratoris mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors problemes_articulars problemes_esquena)
+		(allowed-values pressio_alta problemes_esquena obesitat_morbida)
 		(create-accessor read-write))
 	(single-slot Nom
 ;+		(comment "Nom de l'usuari")
@@ -414,7 +414,7 @@
 		(create-accessor read-write))
 	(multislot Grups_musculars
 		(type SYMBOL)
-		(allowed-values coll espatlles avantbrac brac part_superior_cama part_inferior_cama abdominals glutis esquena Pectoral abdominals_superiors abdominals_inferiors abdominals_laterals)
+		(allowed-values coll espatlles avantbrac brac part_superior_cama part_inferior_cama abdominals glutis esquena Pectoral)
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write))
 	(single-slot Majors
@@ -524,24 +524,16 @@
 (defclass Assignacio_Exercici_Musculacio
 	(is-a Assignacio_Exercici)
 	(role concrete)
-	(single-slot Pes_max
-		(type FLOAT)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Repeticions_min
-		(type INTEGER)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot Exercici_Assignat
 		(type INSTANCE)
 ;+		(allowed-classes Musculacio)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Pes_min
+	(single-slot Pes
 		(type FLOAT)
-;+		(cardinality 1 1)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot Repeticions_max
+	(single-slot Repeticions
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
@@ -554,8 +546,10 @@
 ;+		(allowed-classes Terra)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Durada_min
+	(single-slot Durada
+;+		(comment "En minuts setmanals")
 		(type INTEGER)
+		(range 0 1440)
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
@@ -566,25 +560,17 @@
 		(type INSTANCE)
 ;+		(allowed-classes Terra_Duracio)
 ;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Durada_max
-		(type INTEGER)
-;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
 (defclass Exercicis_terra_repeticions
 	(is-a Assignacio_Exercici_Terra)
 	(role concrete)
-	(single-slot Repeticions_min
-		(type INTEGER)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot Exercici_Assignat
 		(type INSTANCE)
 ;+		(allowed-classes Terra)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Repeticions_max
+	(single-slot Repeticions
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
@@ -597,37 +583,27 @@
 ;+		(allowed-classes Cardio)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Resistencia_max
+	(single-slot Resistencia
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Durada_min
+	(single-slot Durada
+;+		(comment "En minuts setmanals")
 		(type INTEGER)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Resistencia_min
-		(type INTEGER)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Durada_max
-		(type INTEGER)
+		(range 0 1440)
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
 (defclass Assignacio_exercici_cinta
 	(is-a Assignacio_exercici_cardio)
 	(role concrete)
-	(single-slot Velocitat_min
-		(type FLOAT)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot Exercici_Assignat
 		(type INSTANCE)
 ;+		(allowed-classes Cardio)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Velocitat_max
-		(type FLOAT)
+	(single-slot Velocitat
+		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
 ;--------------------------------CLASSES-----------------------------------------------------------
@@ -637,11 +613,8 @@
 (definstances instancies
 
 
-
-
 	([Ontologia_Class0] of  Musculacio
 
-		(Contraindicacions mobilitat_nula_extremitats_superiors)
 		(Descripcio "Estirarse cara avall a sobre d'un banc i, amb una pesa o sense al clatell, fer un moviment amb el coll d'amunt cap avall.")
 		(Grups_musculars coll espatlles)
 		(Majors TRUE)
@@ -660,7 +633,7 @@
 
 	([Ontologia_Class10000] of  Musculacio
 
-		(Contraindicacions mobilitat_nula_extremitats_superiors)
+		(Contraindicacions problemes_esquena)
 		(Descripcio "Seure a la maquina i estirar dels llocs adients fent forca amb el dorsal per aixecar el pes desitjat.")
 		(Grups_musculars coll espatlles esquena)
 		(Majors TRUE)
@@ -669,7 +642,6 @@
 
 	([Ontologia_Class10001] of  Musculacio
 
-		(Contraindicacions mobilitat_nula_extremitats_superiors)
 		(Descripcio "Estirarse a sobre dun banc cara amunt i fer un moviment des de avall, cap amunt, com dient \"si\".")
 		(Grups_musculars coll espatlles)
 		(Majors TRUE)
@@ -679,7 +651,6 @@
 
 	([Ontologia_Class10002] of  Musculacio
 
-		(Contraindicacions mobilitat_nula_extremitats_superiors)
 		(Descripcio "Posarse una ma al costat del cap que es vulgui exercitar i fer forca amb el coll en direccio contraria a la que es fa amb la ma.")
 		(Grups_musculars coll)
 		(Majors TRUE)
@@ -689,7 +660,7 @@
 
 	([Ontologia_Class10003] of  Cinta
 
-		(Contraindicacions pressio_alta mobilitat_nula_extremitats_inferiors)
+		(Contraindicacions pressio_alta)
 		(Descripcio "Maquina que s'usa per correr on es pot graduar la velocitat i el pendent de la marxa.")
 		(Grups_musculars abdominals glutis part_superior_cama part_inferior_cama)
 		(Majors TRUE)
@@ -699,7 +670,7 @@
 
 	([Ontologia_Class10004] of  Cardio
 
-		(Contraindicacions pressio_alta mobilitat_nula_extremitats_inferiors)
+		(Contraindicacions pressio_alta)
 		(Descripcio "Bicicleta estatica on es va assentat en un seient que te respatller")
 		(Grups_musculars glutis part_superior_cama part_inferior_cama)
 		(Majors TRUE)
@@ -709,7 +680,7 @@
 
 	([Ontologia_Class10005] of  Cardio
 
-		(Contraindicacions pressio_alta mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors)
+		(Contraindicacions pressio_alta obesitat_morbida)
 		(Descripcio "Bicicleta eliptica")
 		(Grups_musculars part_superior_cama espatlles brac esquena glutis part_inferior_cama)
 		(Majors TRUE)
@@ -719,17 +690,17 @@
 
 	([Ontologia_Class10009] of  Cardio
 
-		(Contraindicacions pressio_alta mobilitat_nula_extremitats_inferiors)
+		(Contraindicacions pressio_alta obesitat_morbida)
 		(Descripcio "Maquina que recrea una bicicleta on es pot ajustar la intensitat")
 		(Grups_musculars part_superior_cama part_inferior_cama glutis)
 		(Majors TRUE)
 		(Menors TRUE)
-		(Nom "Bicileta estatica")
+		(Nom "Bicicleta estatica")
 		(Objectiu Manteniment Perdre_pes condicio_fisica_general))
 
 	([Ontologia_Class10010] of  Cardio
 
-		(Contraindicacions pressio_alta mobilitat_nula_extremitats_superiors mobilitat_nula_extremitats_inferiors)
+		(Contraindicacions pressio_alta obesitat_morbida)
 		(Descripcio "Maquina que simula el moviment de rem on es pot modificar la resistencia de la remada")
 		(Grups_musculars espatlles brac avantbrac part_superior_cama glutis esquena Pectoral abdominals)
 		(Majors TRUE)
@@ -739,7 +710,7 @@
 
 	([Ontologia_Class10011] of  Cardio
 
-		(Contraindicacions pressio_alta mobilitat_nula_extremitats_inferiors)
+		(Contraindicacions pressio_alta)
 		(Descripcio "Maquina que simula el moviment de pujar escales")
 		(Grups_musculars part_superior_cama part_inferior_cama glutis)
 		(Majors TRUE)
@@ -749,7 +720,7 @@
 
 	([Ontologia_Class10017] of  Cardio
 
-		(Contraindicacions pressio_alta mobilitat_nula_extremitats_superiors)
+		(Contraindicacions pressio_alta obesitat_morbida)
 		(Descripcio "Maquina que simula el moviment de esquiar")
 		(Grups_musculars brac espatlles esquena abdominals glutis part_superior_cama part_inferior_cama)
 		(Majors TRUE)
@@ -761,7 +732,7 @@
 
 		(Contraindicacions pressio_alta)
 		(Descripcio "Abdominals convencionals, estirat al terra i amb les mans juntes darrere del coll, elevar fins als genolls")
-		(Grups_musculars abdominals_superiors)
+		(Grups_musculars abdominals)
 		(Majors TRUE)
 		(Menors TRUE)
 		(Nom "Abdominals")
@@ -769,9 +740,9 @@
 
 	([Ontologia_Class10019] of  Terra_Repeticions
 
-		(Contraindicacions pressio_alta mobilitat_nula_extremitats_inferiors)
+		(Contraindicacions pressio_alta)
 		(Descripcio "Estirat al terra amb les mans cara avall al terra, aixecar les cames rectes i la cintura fins que estiguin perpendiculars al terra i tornar a la posicio")
-		(Grups_musculars abdominals_superiors abdominals_inferiors)
+		(Grups_musculars abdominals)
 		(Majors TRUE)
 		(Menors TRUE)
 		(Nom "Bottoms up")
@@ -781,7 +752,7 @@
 
 		(Contraindicacions pressio_alta)
 		(Descripcio "Estirat al terra de panxa enlaire, amb les mans al clatell i amb les cames flexionades però perpendicualrs al terra, portar el colze dret al genoll esquerre i viceversa.")
-		(Grups_musculars abdominals_laterals abdominals_superiors)
+		(Grups_musculars abdominals)
 		(Majors TRUE)
 		(Menors TRUE)
 		(Nom "Abdominals Laterals")
@@ -789,9 +760,9 @@
 
 	([Ontologia_Class10024] of  Terra_Duracio
 
-		(Contraindicacions pressio_alta mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors)
+		(Contraindicacions pressio_alta)
 		(Descripcio "Estirat amb els bracos doblats de panxa a terra aguantant amb els avantbracos i la punta del peu mantenirse recte sense tocar el terra.")
-		(Grups_musculars abdominals_superiors abdominals_inferiors)
+		(Grups_musculars abdominals)
 		(Majors TRUE)
 		(Menors TRUE)
 		(Nom "Planxa")
@@ -799,9 +770,9 @@
 
 	([Ontologia_Class20000] of  Terra_Duracio
 
-		(Contraindicacions problemes_esquena mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors)
+		(Contraindicacions problemes_esquena)
 		(Descripcio "Amb el cos lateral i amb l'avantbrac recolzat al semi esferic, mantenirse amb el cos totalment estirat.")
-		(Grups_musculars abdominals abdominals_laterals)
+		(Grups_musculars abdominals)
 		(Majors TRUE)
 		(Menors TRUE)
 		(Nom "Planxa lateral en el Semi esferic")
@@ -819,7 +790,6 @@
 
 	([Ontologia_Class20003] of  Musculacio
 
-		(Contraindicacions mobilitat_nula_extremitats_superiors)
 		(Descripcio "Posarse una ma a darrere o a davant del cap i fer forca amb el coll en direccio contraria a la que es fa amb la ma.")
 		(Grups_musculars coll)
 		(Majors TRUE)
@@ -829,7 +799,7 @@
 
 	([Ontologia_Class20004] of  Musculacio
 
-		(Contraindicacions mobilitat_nula_extremitats_superiors mobilitat_nula_extremitats_inferiors)
+		(Contraindicacions problemes_esquena)
 		(Descripcio "Aguantant una barra amb peses o unes manuelles amb els bracos totalment extesos cap avall, mourels cap amunt encongint les espatlles.")
 		(Grups_musculars espatlles coll esquena)
 		(Majors TRUE)
@@ -839,7 +809,7 @@
 
 	([Ontologia_Class20006] of  Musculacio
 
-		(Contraindicacions mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors)
+		(Contraindicacions problemes_esquena)
 		(Descripcio "Aguantant una barra duna maquina amb cable amb els bracos totalment extesos cap avall, mourels cap amunt encongint les espatlles.")
 		(Grups_musculars espatlles coll esquena)
 		(Majors TRUE)
@@ -849,7 +819,7 @@
 
 	([Ontologia_Class20007] of  Musculacio
 
-		(Contraindicacions mobilitat_nula_extremitats_superiors mobilitat_nula_extremitats_inferiors)
+		(Contraindicacions problemes_esquena)
 		(Descripcio "Agafarse a una barra alta i fer un exercici semblant al de \"dominades\" amb la diferencia que no cal pujar gaire, sino que es tracta dinclinar el cos enrere per fer forca amb lesquena i les espatlles.")
 		(Grups_musculars espatlles coll esquena)
 		(Majors TRUE)
@@ -859,7 +829,7 @@
 
 	([Ontologia_Class20009] of  Musculacio
 
-		(Contraindicacions mobilitat_nula_extremitats_inferiors mobilitat_nula_extremitats_superiors)
+		(Contraindicacions problemes_esquena)
 		(Descripcio "Aixecar una pesa amb nansa, des del terra fins al pit, agafantla amb les dues mans i mantenint lesquena recta.")
 		(Grups_musculars espatlles coll esquena)
 		(Majors TRUE)
@@ -869,7 +839,7 @@
 
 	([Ontologia_Class20010] of  Musculacio
 
-		(Contraindicacions mobilitat_nula_extremitats_superiors mobilitat_nula_extremitats_inferiors)
+		(Contraindicacions problemes_esquena)
 		(Descripcio "Amb una manuella a cada ma, aixecarles lateralment, o una mica per davant, fins a l'alcada de les espatlles.")
 		(Grups_musculars coll espatlles esquena)
 		(Majors TRUE)
@@ -879,7 +849,7 @@
 
 	([Ontologia_Class20011] of  Musculacio
 
-		(Contraindicacions mobilitat_nula_extremitats_superiors mobilitat_nula_extremitats_inferiors)
+		(Contraindicacions problemes_esquena)
 		(Descripcio "Estirat cara avall a sobre d'un banc inclinat cap amunt, aixecar una manuella amb cada ma lateralment.")
 		(Grups_musculars coll espatlles esquena)
 		(Majors TRUE)
@@ -889,7 +859,6 @@
 
 	([Ontologia_Class20012] of  Musculacio
 
-		(Contraindicacions mobilitat_nula_extremitats_superiors)
 		(Descripcio "Seure en un banc inclinat cap enrere, amb una manuella a cada ma, fer un moviment d'estirar els bracos cap amunt, des del pit.")
 		(Grups_musculars Pectoral brac)
 		(Majors TRUE)
@@ -909,7 +878,6 @@
 
 	([Ontologia_Class20015] of  Musculacio
 
-		(Contraindicacions mobilitat_nula_extremitats_superiors)
 		(Descripcio "Fer forca amb els bracos estirant-los des del pit cap a fora.")
 		(Grups_musculars Pectoral)
 		(Majors TRUE)
@@ -919,7 +887,6 @@
 
 	([Ontologia_Class20016] of  Musculacio
 
-		(Contraindicacions mobilitat_nula_extremitats_superiors)
 		(Descripcio "Fer forca amb els bracos, inicialment oberts portant-los cap endavant mantenint-los estirats en tot moment.")
 		(Grups_musculars Pectoral)
 		(Majors TRUE)
@@ -928,7 +895,7 @@
 
 	([Ontologia_Class20017] of  Musculacio
 
-		(Contraindicacions mobilitat_nula_extremitats_superiors)
+		(Contraindicacions problemes_esquena)
 		(Descripcio "Amb una manuella a cada brac, amb els bracos estirats, alcar-les alternadament doblant els colzes de manera que es treballi el biceps.")
 		(Grups_musculars brac)
 		(Majors TRUE)
@@ -937,7 +904,6 @@
 
 	([Ontologia_Class20018] of  Musculacio
 
-		(Contraindicacions mobilitat_nula_extremitats_superiors)
 		(Descripcio "Amb una manuella a cada brac, alcar-les alternadament des de l'alcada de les espatlles, estirant els bracos cap amunt, amb els palmells de les mans mirant cap a la cara, i acabant amb les mans en la posicio contraria.")
 		(Grups_musculars brac)
 		(Majors TRUE)
@@ -946,7 +912,7 @@
 
 	([Ontologia_Class20019] of  Musculacio
 
-		(Contraindicacions mobilitat_nula_extremitats_superiors)
+		(Contraindicacions problemes_esquena)
 		(Descripcio "Aixecar una barra amb peses, amb els bracos inicialment estirats i portant-los cap al pit doblant els colzes.")
 		(Grups_musculars brac)
 		(Majors TRUE)
@@ -955,7 +921,6 @@
 
 	([Ontologia_Class20021] of  Musculacio
 
-		(Contraindicacions mobilitat_nula_extremitats_superiors)
 		(Descripcio "Aixecar el pes de la maquina fent forca amb tots dos bracos.")
 		(Grups_musculars brac)
 		(Majors TRUE)
@@ -964,7 +929,6 @@
 
 	([Ontologia_Class20022] of  Musculacio
 
-		(Contraindicacions mobilitat_nula_extremitats_superiors)
 		(Descripcio "Assegut en un banc i amb cada manuella per separat, aixecar la manuella comencant amb el brac estirat cap avall, doblant el colze i portant la ma cap al pit, de manera que treballi el biceps.")
 		(Grups_musculars brac)
 		(Majors TRUE)
@@ -973,7 +937,6 @@
 
 	([Ontologia_Class20023] of  Musculacio
 
-		(Contraindicacions mobilitat_nula_extremitats_superiors)
 		(Descripcio "Amb una manuella a cada brac, amb els bracos estirats, alcar-les alhora fent un moviment com de colpejar amb un martell.")
 		(Grups_musculars brac)
 		(Majors TRUE)
@@ -982,7 +945,6 @@
 
 	([Ontologia_Class20024] of  Musculacio
 
-		(Contraindicacions mobilitat_nula_extremitats_superiors)
 		(Descripcio "Posant l'avantbrac sobre una superficie plana de manera que les mans quedin a l'aire, pujar i baixar una barra amb peses, movent els canells amb els palmells amunt.")
 		(Grups_musculars avantbrac)
 		(Majors TRUE)
@@ -991,7 +953,6 @@
 
 	([Ontologia_Class20025] of  Musculacio
 
-		(Contraindicacions mobilitat_nula_extremitats_superiors)
 		(Descripcio "Posant l'avantbrac sobre una superficie plana de manera que les mans quedin a l'aire, pujar i baixar una barra amb peses, movent els canells amb els palmells avall.")
 		(Grups_musculars avantbrac)
 		(Majors TRUE)
@@ -1000,7 +961,6 @@
 
 	([Ontologia_Class20026] of  Musculacio
 
-		(Contraindicacions mobilitat_nula_extremitats_superiors)
 		(Descripcio "Assegut en un banc inclinant el cos endavant amb els colzes doblats sostenint una barra amb pes, tenint els palmells mirant amunt, pujar i baixar la barra obrint i tancant els dits de la ma.")
 		(Grups_musculars avantbrac)
 		(Majors TRUE)
@@ -1010,7 +970,6 @@
 
 	([Ontologia_Class20027] of  Musculacio
 
-		(Contraindicacions mobilitat_nula_extremitats_inferiors)
 		(Descripcio "En una maquina per a quadriceps estant estirat inclinat cap enrere, fer forca cap amunt amb les cames per tal d'aixecar el pes que s'hi posi.")
 		(Grups_musculars part_superior_cama)
 		(Majors TRUE)
@@ -1019,7 +978,6 @@
 
 	([Ontologia_Class20028] of  Musculacio
 
-		(Contraindicacions mobilitat_nula_extremitats_inferiors)
 		(Descripcio "En una maquina per quadriceps assegut, posar els peus darrere les barres i fer forca amb les cames per aixecar el pes requerit.")
 		(Grups_musculars part_superior_cama)
 		(Majors TRUE)
@@ -1028,7 +986,7 @@
 
 	([Ontologia_Class20029] of  Musculacio
 
-		(Contraindicacions mobilitat_nula_extremitats_inferiors)
+		(Contraindicacions problemes_esquena)
 		(Descripcio "Sostenint una barra amb pes a l'esquena estant dempeus, flexionar els genolls intentant mantenir l'esquena bastant recta.")
 		(Grups_musculars part_superior_cama)
 		(Majors TRUE)
@@ -1037,7 +995,7 @@
 
 	([Ontologia_Class20030] of  Musculacio
 
-		(Contraindicacions mobilitat_nula_extremitats_inferiors)
+		(Contraindicacions problemes_esquena)
 		(Descripcio "Sostenint una barra amb pes a l'esquena estant dempeus, fer passes caminant lentament i flexionant els genolls intentant mantenir l'esquena bastant recta.")
 		(Grups_musculars part_superior_cama)
 		(Majors TRUE)
@@ -1046,7 +1004,6 @@
 
 	([Ontologia_Class20031] of  Musculacio
 
-		(Contraindicacions mobilitat_nula_extremitats_inferiors)
 		(Descripcio "Posant una capsa al terra, impulsar-se sobre la capsa fent un salt cap amunt alternant les cames.")
 		(Grups_musculars part_superior_cama)
 		(Majors TRUE)
@@ -1055,7 +1012,6 @@
 
 	([Ontologia_Class20032] of  Musculacio
 
-		(Contraindicacions mobilitat_nula_extremitats_inferiors)
 		(Descripcio "Saltar amb ambdues cames alhora tant amunt com es pugui i tocant-se el cul amb els talons.")
 		(Grups_musculars part_superior_cama)
 		(Majors TRUE)
@@ -1064,7 +1020,7 @@
 
 	([Ontologia_Class20033] of  Musculacio
 
-		(Contraindicacions mobilitat_nula_extremitats_inferiors)
+		(Contraindicacions problemes_esquena)
 		(Descripcio "Sostenint una barra amb pes a l'esquena i posant la punta dels peus en una capsa, fer moviments d'estirar i arronsar els talons.")
 		(Grups_musculars part_inferior_cama)
 		(Majors TRUE)
@@ -1073,7 +1029,6 @@
 
 	([Ontologia_Class20034] of  Musculacio
 
-		(Contraindicacions mobilitat_nula_extremitats_inferiors)
 		(Descripcio "Assegut en una maquina per treballar bessons, estirar i arronsar els talons aixecant el pes requerit.")
 		(Grups_musculars part_inferior_cama)
 		(Majors TRUE)
@@ -1082,7 +1037,7 @@
 
 	([Ontologia_Class20035] of  Musculacio
 
-		(Contraindicacions mobilitat_nula_extremitats_inferiors)
+		(Contraindicacions problemes_esquena)
 		(Descripcio "Estant dempeus sostenint una barra amb pes sobre l'esquena, moure's d'endavant cap endarrere recolzant-se nomes amb la punta dels peus per, despres, recolzar-se nomes amb els talons (i les puntes del peu aixecades).")
 		(Grups_musculars part_inferior_cama)
 		(Majors TRUE)
@@ -1091,7 +1046,6 @@
 
 	([Ontologia_Class20037] of  Terra_Repeticions
 
-		(Contraindicacions mobilitat_nula_extremitats_superiors mobilitat_nula_extremitats_inferiors)
 		(Descripcio "Estirar-se al terra cara amunt amb una barra amb peses a sobre dels malucs i fer forca amb ells per aixecar-la.")
 		(Grups_musculars glutis)
 		(Majors TRUE)
@@ -1101,8 +1055,8 @@
 
 	([Ontologia_Class20038] of  Musculacio
 
-		(Contraindicacions mobilitat_nula_extremitats_inferiors)
-		(Descripcio "Lligar-se una cable amb pes al turmell i estibar amb la cam cap enrere aixecant-la, de manera que es treballi el glutis.")
+		(Contraindicacions problemes_esquena)
+		(Descripcio "Lligar-se una cable amb pes al turmell i estibar amb la cama cap enrere aixecant-la, de manera que es treballi el glutis.")
 		(Grups_musculars glutis)
 		(Majors TRUE)
 		(Nom "Cama enrere amb cable")
@@ -1110,7 +1064,6 @@
 
 	([Ontologia_Class20039] of  Terra_Repeticions
 
-		(Contraindicacions mobilitat_nula_extremitats_superiors mobilitat_nula_extremitats_inferiors)
 		(Descripcio "Estirar-se al terra cara amunt i aixecar els malucs fent un pont amb el cos.")
 		(Grups_musculars glutis)
 		(Majors TRUE)
@@ -1120,7 +1073,6 @@
 
 	([Ontologia_Class20040] of  Terra_Repeticions
 
-		(Contraindicacions mobilitat_nula_extremitats_superiors mobilitat_nula_extremitats_inferiors)
 		(Descripcio "Posar-se de quatre grapes (amb genolls i mans) al terra i aixecar, alternadament, cada cama cap enrere i cap amunt, amb el genoll flexionat.")
 		(Grups_musculars glutis)
 		(Majors TRUE)
@@ -1130,7 +1082,7 @@
 
 	([Ontologia_Class30003] of  Musculacio
 
-		(Contraindicacions mobilitat_nula_extremitats_superiors)
+		(Contraindicacions problemes_esquena)
 		(Descripcio "Agafar-se a una barra alta amb tots dos bracos, inicialment estirats, i aixecar el pres del propi cos doblant els colzes alcant el cos sencer.")
 		(Grups_musculars coll espatlles esquena)
 		(Majors TRUE)
@@ -1139,7 +1091,7 @@
 
 	([Ontologia_Class30004] of  Musculacio
 
-		(Contraindicacions mobilitat_nula_extremitats_superiors)
+		(Contraindicacions problemes_esquena)
 		(Descripcio "Posar una barra amb peses al terra i aixecarla amb els bracos nomes inclinant lesquena i mantenint els bracos estirats avall en tot moment fins a tenir el cos recte.")
 		(Grups_musculars coll espatlles esquena)
 		(Majors TRUE)
@@ -1148,7 +1100,7 @@
 
 	([Ontologia_Class30005] of  Musculacio
 
-		(Contraindicacions mobilitat_nula_extremitats_superiors)
+		(Contraindicacions problemes_esquena)
 		(Descripcio "Recolzar-se inclinat en un banc que sostingui el cos fins als malucs i inclinar el tors cap avall i despres cap amunt simulant el moviment d'abdominals.")
 		(Grups_musculars coll espatlles esquena)
 		(Majors TRUE)
@@ -1181,13 +1133,14 @@
 	(deftemplate objectiu
 		(multislot valors (type SYMBOL) (allowed-values Manteniment Musculacio Perdre_pes condicio_fisica_general Elasticitat))
 	)
-	(deftemplate edat
+	(deftemplate edatP
 		(slot valors (type SYMBOL) (allowed-values MENOR ADULT ANCIA))
 	)
 ;------------templates per a la solucio abstracta----------------
 
-(deftemplate ancia
+(deftemplate edat
 	(slot es-ancia (type SYMBOL)(allowed-values NO SI))
+	(slot es-menor (type SYMBOL) (allowed-values NO SI))
 )
 (deftemplate malalties
 	(slot pesq (type SYMBOL) (allowed-values NO SI))
@@ -1198,9 +1151,8 @@
 )
  (deftemplate dia
 	 (slot numDia (type INTEGER) (range 1 5))
+
 	(slot int_Entrenament (type SYMBOL) (allowed-values NUL MOLT_BAIXA BAIXA NORMAL ALTA MOLT_ALTA))
-	 ;escalfament
-	 (slot temps (type SYMBOL) (allowed-values POC NORMAL MOLT))
 
 	 ;part principal
 	 (multislot grups_musc_prio (type SYMBOL) (allowed-values  Coll Esquena Avantbrac Brac Part_superior_cama Part_inferior_cama Abdominals Espatlles Pectoral Glutis))
@@ -1770,9 +1722,9 @@
 	?client_actual <- (object (is-a Client))
 	=>
 	(bind ?edat (send ?client_actual get-Edat))
-	(if (< ?edat 18) then (assert (edat (valors MENOR))))
-	(if (and (>= ?edat 18) (< ?edat 65)) then (assert (edat (valors ADULT))))
-	(if (>= ?edat 65) then (assert (edat (valors ANCIA))))
+	(if (< ?edat 18) then (assert (edatP (valors MENOR))))
+	(if (and (>= ?edat 18) (< ?edat 65)) then (assert (edatP (valors ADULT))))
+	(if (>= ?edat 65) then (assert (edatP (valors ANCIA))))
 	(assert (calcul-edat))
 )
 (defrule passa-objectiu
@@ -1966,6 +1918,80 @@
 
 
 
+
+
+
+
+
+
+
+;-----------REGLES MALALTIES--------------------------------------
+
+
+(defrule put-edat
+	(calcul-edat)
+	(edatP (valors ?v))
+			=>
+	(switch ?v
+		(case MENOR then (assert (edat (es-menor SI))))
+		(case ANCIA then (assert (edat (es-ancia SI))))
+	)
+	(assert (edatTOins))
+)
+
+	(defrule put-pesq
+		(p_esq)
+		?mal <- (malalties (pesq NO))
+		=>
+	  (modify ?mal (pesq SI))
+		(assert (esqTOins))
+	)
+
+	(defrule n2
+		(not (p_art))
+		=>
+		(assert (artTOins))
+	)
+
+  (defrule put-part
+		(malaltiesOK)
+		(p_art)
+		?mal <-(malalties (part NO))
+				=>
+			(modify ?mal (part SI))
+			(assert (artTOins))
+		)
+		(defrule n3
+			(not (p_cardio))
+			=>
+			(assert (cardioTOins))
+		)
+
+	 (defrule put-pcardio
+		 (p_cardio)
+		 (malaltiesOK)
+		 ?mal <-(malalties (pcardio NO))
+	     =>
+		(modify ?mal (pcardio SI))
+		(assert (cardioTOins))
+		)
+
+		(defrule put-pressio-alta
+			(pressio (valors HIPER))
+			 ?mal <-(malalties (palta NO))
+					=>
+				(modify ?mal (palta SI))
+				(assert (paTOins))
+			)
+
+
+		(defrule put-obes-morbid
+				(obes_morbid)
+				?mal <-(malalties(obes-morbid NO))
+					=>
+				(modify ?mal (obes-morbid SI))
+				(assert (obesTOins))
+		)
 ;-----------REGLES FORMA FISICA-----------------------------------
 (defrule intensitatFormaFisica
 	(cardioTOins)
@@ -2134,7 +2160,13 @@
 			)
 			(assert (int_cardio))
 	)
-
+	(defrule aux5
+		(int_cardio)
+		?f <- (int_imc_ma)
+		?m <- (malalties (part NO))
+		=>
+		(assert (int_art))
+		)
 	(defrule int_art
 		(int_cardio)
 	  ?f <- (int_cardio)
@@ -2156,55 +2188,90 @@
 				(assert (int_art))
 	)
 
+	(defrule salta-elimina
+		(int_art)
+		=>
+		(focus ELIMINA-INST)
+	)
 
-
-
-
-
-
-
-
-
-
-;-----------REGLES MALALTIES--------------------------------------
-(defrule put-ancia
-(edat (valors ANCIA))
-	=>
-	(assert (ancia (es-ancia SI)))
-)
-(defrule put-pesq
-	(p_esq)
-	?mal <- (malalties (pesq NO))
-	=>
-	(modify ?mal (pesq SI))
-)
-(defrule put-part
-	(malaltiesOK)
-	(p_art)
-	?mal <-(malalties (part NO))
-	=>
-	(modify ?mal (part SI))
-	(assert (artTOins))
-)
-(defrule put-pcardio
-	(p_cardio)
-	(malaltiesOK)
-	?mal <-(malalties (pcardio NO))
-	=>
-	(modify ?mal (pcardio SI))
-	(assert (cardioTOins))
-)
-(defrule put-pressio-alta
-	(pressio (valors HIPER))
-	?mal <-(malalties (palta NO))
-	=>
-	(modify ?mal (palta SI))
-)
-
-(defrule put-obes-morbid
-	(obes_morbid)
-	?mal <-(malalties(obes-morbid NO))
-	=>
-	(modify ?mal (obes-morbid SI))
-)
 ;--------------------------------MODUL:SOL_ABSTR-------------------------------------------------------
+
+
+
+;-----------------------------MODUL:ELIMINA INSTANCIES-------------------------------------------------
+(defmodule ELIMINA-INST (import MAIN ?ALL) (import SOL_ABSTR ?ALL ) (import PREGUNTES ?ALL)(import ABSTRACCIO ?ALL) (export ?ALL))
+
+;-----REGLES de cerca
+(defrule cerca-menor
+	(edat (es-menor SI))
+	=>
+	(bind ?list (find-all-instances ((?inst Exercici)) (eq ?inst:Menors TRUE)))
+	(loop-for-count (?i 1 (length$ ?list)) do
+		(bind ?aux (nth$ ?i ?list))
+		(assert (elimina-inst ?aux))
+		)
+)
+
+(defrule cerca-ancia
+	(edat (es-ancia SI))
+	=>
+	(bind ?list (find-all-instances ((?inst Exercici)) (eq ?inst:Majors TRUE)))
+	(loop-for-count (?i 1 (length$ ?list)) do
+		(bind ?aux (nth$ ?i ?list))
+		(assert (elimina-inst ?aux))
+		)
+)
+
+(defrule cerca-pressio-alta
+	(malalties (palta SI))
+	=>
+	(bind ?list (find-all-instances ((?inst Exercici)) TRUE))
+	(loop-for-count (?i 1 (length$ ?list)) do
+		(bind ?aux (nth$ ?i ?list))
+		(bind ?contra (send ?aux get-Contraindicacions))
+		(if (member pressio_alta ?contra) then  (assert (elimina-inst ?aux)))
+	)
+)
+
+(defrule cerca-pesq
+	(malalties (pesq SI))
+	=>
+	(bind ?list (find-all-instances ((?inst Exercici)) TRUE))
+	(loop-for-count (?i 1 (length$ ?list)) do
+		(bind ?aux (nth$ ?i ?list))
+		(bind ?contra (send ?aux get-Contraindicacions))
+		(if (member problemes_esquena ?contra) then  (assert (elimina-inst ?aux)))
+	)
+)
+
+(defrule cerca-obes-morbida
+	(malalties (obes-morbid SI))
+	=>
+	(bind ?list (find-all-instances ((?inst Exercici)) TRUE))
+	(loop-for-count (?i 1 (length$ ?list)) do
+		(bind ?aux (nth$ ?i ?list))
+		(bind ?contra (send ?aux get-Contraindicacions))
+		(if (member obesitat_morbida ?contra) then  (assert (elimina-inst ?aux)))
+	)
+)
+
+(defrule elimina-instancies
+	(declare (salience 10))
+	?elimina-fact <- (elimina-inst ?inst)
+	=>
+	(send ?inst delete)
+	(retract ?elimina-fact)
+)
+
+(defrule salta-sol-concr
+	(declare (salience -1000))
+	(not (elimina-inst))
+	=>
+	(focus SOL_CONCR)
+)
+
+
+
+;---------------------------SOLUCIO CONCRETA------------------------------
+
+(defmodule SOL-CONCR (import MAIN ?ALL)(import ELIMINA-INST ?ALL) (import SOL_ABSTR ?ALL ) (import PREGUNTES ?ALL)(import ABSTRACCIO ?ALL) (export ?ALL))
