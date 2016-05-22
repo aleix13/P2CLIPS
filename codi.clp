@@ -612,13 +612,12 @@
 
 (definstances instancies
 
-
 	([Ontologia_Class0] of  Musculacio
 
 		(Descripcio "Estirarse cara avall a sobre d'un banc i, amb una pesa o sense al clatell, fer un moviment amb el coll d'amunt cap avall.")
 		(Grups_musculars coll espatlles)
-		(Majors TRUE)
-		(Menors TRUE)
+		(Majors FALSE)
+		(Menors FALSE)
 		(Nom "Resistencia de coll cara avall")
 		(Objectiu Musculacio condicio_fisica_general Manteniment))
 
@@ -636,7 +635,8 @@
 		(Contraindicacions problemes_esquena)
 		(Descripcio "Seure a la maquina i estirar dels llocs adients fent forca amb el dorsal per aixecar el pes desitjat.")
 		(Grups_musculars coll espatlles esquena)
-		(Majors TRUE)
+		(Majors FALSE)
+		(Menors FALSE)
 		(Nom "Maquina esquena estirar")
 		(Objectiu Manteniment Musculacio))
 
@@ -644,19 +644,20 @@
 
 		(Descripcio "Estirarse a sobre dun banc cara amunt i fer un moviment des de avall, cap amunt, com dient \"si\".")
 		(Grups_musculars coll espatlles)
-		(Majors TRUE)
-		(Menors TRUE)
+		(Majors FALSE)
+		(Menors FALSE)
 		(Nom "Resistencia coll cara amunt")
 		(Objectiu Manteniment Musculacio condicio_fisica_general))
 
-	([Ontologia_Class10002] of  Musculacio
+	([Ontologia_Class10002] of  Terra_Duracio
 
 		(Descripcio "Posarse una ma al costat del cap que es vulgui exercitar i fer forca amb el coll en direccio contraria a la que es fa amb la ma.")
+		(Flexibilitat TRUE)
 		(Grups_musculars coll)
-		(Majors TRUE)
-		(Menors TRUE)
+		(Majors FALSE)
+		(Menors FALSE)
 		(Nom "Forca coll lateral")
-		(Objectiu Manteniment))
+		(Objectiu Elasticitat))
 
 	([Ontologia_Class10003] of  Cinta
 
@@ -673,8 +674,8 @@
 		(Contraindicacions pressio_alta)
 		(Descripcio "Bicicleta estatica on es va assentat en un seient que te respatller")
 		(Grups_musculars glutis part_superior_cama part_inferior_cama)
-		(Majors TRUE)
-		(Menors TRUE)
+		(Majors FALSE)
+		(Menors FALSE)
 		(Nom "Bicicleta reclinable")
 		(Objectiu Manteniment Perdre_pes condicio_fisica_general))
 
@@ -683,8 +684,8 @@
 		(Contraindicacions pressio_alta obesitat_morbida)
 		(Descripcio "Bicicleta eliptica")
 		(Grups_musculars part_superior_cama espatlles brac esquena glutis part_inferior_cama)
-		(Majors TRUE)
-		(Menors TRUE)
+		(Majors FALSE)
+		(Menors FALSE)
 		(Nom "Eliptica")
 		(Objectiu Manteniment Perdre_pes condicio_fisica_general))
 
@@ -693,8 +694,8 @@
 		(Contraindicacions pressio_alta obesitat_morbida)
 		(Descripcio "Maquina que recrea una bicicleta on es pot ajustar la intensitat")
 		(Grups_musculars part_superior_cama part_inferior_cama glutis)
-		(Majors TRUE)
-		(Menors TRUE)
+		(Majors FALSE)
+		(Menors FALSE)
 		(Nom "Bicicleta estatica")
 		(Objectiu Manteniment Perdre_pes condicio_fisica_general))
 
@@ -703,8 +704,8 @@
 		(Contraindicacions pressio_alta obesitat_morbida)
 		(Descripcio "Maquina que simula el moviment de rem on es pot modificar la resistencia de la remada")
 		(Grups_musculars espatlles brac avantbrac part_superior_cama glutis esquena Pectoral abdominals)
-		(Majors TRUE)
-		(Menors TRUE)
+		(Majors FALSE)
+		(Menors FALSE)
 		(Nom "Maquina de remar")
 		(Objectiu Manteniment Perdre_pes condicio_fisica_general))
 
@@ -713,8 +714,8 @@
 		(Contraindicacions pressio_alta)
 		(Descripcio "Maquina que simula el moviment de pujar escales")
 		(Grups_musculars part_superior_cama part_inferior_cama glutis)
-		(Majors TRUE)
-		(Menors TRUE)
+		(Majors FALSE)
+		(Menors FALSE)
 		(Nom "Stepper")
 		(Objectiu Manteniment Perdre_pes condicio_fisica_general))
 
@@ -723,8 +724,8 @@
 		(Contraindicacions pressio_alta obesitat_morbida)
 		(Descripcio "Maquina que simula el moviment de esquiar")
 		(Grups_musculars brac espatlles esquena abdominals glutis part_superior_cama part_inferior_cama)
-		(Majors TRUE)
-		(Menors TRUE)
+		(Majors FALSE)
+		(Menors FALSE)
 		(Nom "Esqui")
 		(Objectiu Manteniment Perdre_pes condicio_fisica_general))
 
@@ -788,22 +789,23 @@
 		(Nom "Planxa lateral a la pilota de fitness")
 		(Objectiu Manteniment condicio_fisica_general Musculacio))
 
-	([Ontologia_Class20003] of  Musculacio
+	([Ontologia_Class20003] of  Terra_Duracio
 
 		(Descripcio "Posarse una ma a darrere o a davant del cap i fer forca amb el coll en direccio contraria a la que es fa amb la ma.")
+		(Flexibilitat TRUE)
 		(Grups_musculars coll)
-		(Majors TRUE)
-		(Menors TRUE)
+		(Majors FALSE)
+		(Menors FALSE)
 		(Nom "Forca coll davant i darrere")
-		(Objectiu Manteniment))
+		(Objectiu Elasticitat))
 
 	([Ontologia_Class20004] of  Musculacio
 
 		(Contraindicacions problemes_esquena)
 		(Descripcio "Aguantant una barra amb peses o unes manuelles amb els bracos totalment extesos cap avall, mourels cap amunt encongint les espatlles.")
 		(Grups_musculars espatlles coll esquena)
-		(Majors TRUE)
-		(Menors TRUE)
+		(Majors FALSE)
+		(Menors FALSE)
 		(Nom "Encongiment de trapezi amb barra o manuelles")
 		(Objectiu Manteniment Musculacio condicio_fisica_general))
 
@@ -812,8 +814,8 @@
 		(Contraindicacions problemes_esquena)
 		(Descripcio "Aguantant una barra duna maquina amb cable amb els bracos totalment extesos cap avall, mourels cap amunt encongint les espatlles.")
 		(Grups_musculars espatlles coll esquena)
-		(Majors TRUE)
-		(Menors TRUE)
+		(Majors FALSE)
+		(Menors FALSE)
 		(Nom "Encongiment de trapezi amb maquina")
 		(Objectiu Manteniment Musculacio condicio_fisica_general))
 
@@ -822,8 +824,8 @@
 		(Contraindicacions problemes_esquena)
 		(Descripcio "Agafarse a una barra alta i fer un exercici semblant al de \"dominades\" amb la diferencia que no cal pujar gaire, sino que es tracta dinclinar el cos enrere per fer forca amb lesquena i les espatlles.")
 		(Grups_musculars espatlles coll esquena)
-		(Majors TRUE)
-		(Menors TRUE)
+		(Majors FALSE)
+		(Menors FALSE)
 		(Nom "Dominades per a trapezi")
 		(Objectiu Manteniment Musculacio condicio_fisica_general))
 
@@ -832,8 +834,8 @@
 		(Contraindicacions problemes_esquena)
 		(Descripcio "Aixecar una pesa amb nansa, des del terra fins al pit, agafantla amb les dues mans i mantenint lesquena recta.")
 		(Grups_musculars espatlles coll esquena)
-		(Majors TRUE)
-		(Menors TRUE)
+		(Majors FALSE)
+		(Menors FALSE)
 		(Nom "Aixecament de pesa amb nansa")
 		(Objectiu Manteniment Musculacio condicio_fisica_general))
 
@@ -842,8 +844,8 @@
 		(Contraindicacions problemes_esquena)
 		(Descripcio "Amb una manuella a cada ma, aixecarles lateralment, o una mica per davant, fins a l'alcada de les espatlles.")
 		(Grups_musculars coll espatlles esquena)
-		(Majors TRUE)
-		(Menors TRUE)
+		(Majors FALSE)
+		(Menors FALSE)
 		(Nom "Aixecament lateral de manuelles")
 		(Objectiu Manteniment Musculacio condicio_fisica_general))
 
@@ -852,8 +854,8 @@
 		(Contraindicacions problemes_esquena)
 		(Descripcio "Estirat cara avall a sobre d'un banc inclinat cap amunt, aixecar una manuella amb cada ma lateralment.")
 		(Grups_musculars coll espatlles esquena)
-		(Majors TRUE)
-		(Menors TRUE)
+		(Majors FALSE)
+		(Menors FALSE)
 		(Nom "Aixecament lateral de manuelles sobre banc")
 		(Objectiu Manteniment Musculacio condicio_fisica_general))
 
@@ -861,7 +863,7 @@
 
 		(Descripcio "Seure en un banc inclinat cap enrere, amb una manuella a cada ma, fer un moviment d'estirar els bracos cap amunt, des del pit.")
 		(Grups_musculars Pectoral brac)
-		(Majors TRUE)
+		(Majors FALSE)
 		(Menors FALSE)
 		(Nom "Press pes lliure amb manuelles")
 		(Objectiu Manteniment Musculacio condicio_fisica_general))
@@ -880,7 +882,7 @@
 
 		(Descripcio "Fer forca amb els bracos estirant-los des del pit cap a fora.")
 		(Grups_musculars Pectoral)
-		(Majors TRUE)
+		(Majors FALSE)
 		(Menors FALSE)
 		(Nom "Maquina de pit press")
 		(Objectiu Manteniment Musculacio))
@@ -889,7 +891,7 @@
 
 		(Descripcio "Fer forca amb els bracos, inicialment oberts portant-los cap endavant mantenint-los estirats en tot moment.")
 		(Grups_musculars Pectoral)
-		(Majors TRUE)
+		(Majors FALSE)
 		(Nom "Maquina pit papallona")
 		(Objectiu Manteniment Musculacio condicio_fisica_general))
 
@@ -898,7 +900,7 @@
 		(Contraindicacions problemes_esquena)
 		(Descripcio "Amb una manuella a cada brac, amb els bracos estirats, alcar-les alternadament doblant els colzes de manera que es treballi el biceps.")
 		(Grups_musculars brac)
-		(Majors TRUE)
+		(Majors FALSE)
 		(Nom "Aixecament manuelles")
 		(Objectiu Musculacio Manteniment))
 
@@ -906,7 +908,7 @@
 
 		(Descripcio "Amb una manuella a cada brac, alcar-les alternadament des de l'alcada de les espatlles, estirant els bracos cap amunt, amb els palmells de les mans mirant cap a la cara, i acabant amb les mans en la posicio contraria.")
 		(Grups_musculars brac)
-		(Majors TRUE)
+		(Majors FALSE)
 		(Nom "Aixecament manuelles superior")
 		(Objectiu Musculacio Manteniment))
 
@@ -915,7 +917,7 @@
 		(Contraindicacions problemes_esquena)
 		(Descripcio "Aixecar una barra amb peses, amb els bracos inicialment estirats i portant-los cap al pit doblant els colzes.")
 		(Grups_musculars brac)
-		(Majors TRUE)
+		(Majors FALSE)
 		(Nom "Aixecament barra lliure")
 		(Objectiu Musculacio Manteniment))
 
@@ -923,7 +925,7 @@
 
 		(Descripcio "Aixecar el pes de la maquina fent forca amb tots dos bracos.")
 		(Grups_musculars brac)
-		(Majors TRUE)
+		(Majors FALSE)
 		(Nom "Aixecament maquina biceps")
 		(Objectiu Musculacio Manteniment))
 
@@ -931,7 +933,7 @@
 
 		(Descripcio "Assegut en un banc i amb cada manuella per separat, aixecar la manuella comencant amb el brac estirat cap avall, doblant el colze i portant la ma cap al pit, de manera que treballi el biceps.")
 		(Grups_musculars brac)
-		(Majors TRUE)
+		(Majors FALSE)
 		(Nom "Aixecament manuelles assegut")
 		(Objectiu Musculacio Manteniment))
 
@@ -939,7 +941,7 @@
 
 		(Descripcio "Amb una manuella a cada brac, amb els bracos estirats, alcar-les alhora fent un moviment com de colpejar amb un martell.")
 		(Grups_musculars brac)
-		(Majors TRUE)
+		(Majors FALSE)
 		(Nom "Aixecament manuelles variat")
 		(Objectiu Musculacio Manteniment))
 
@@ -947,7 +949,7 @@
 
 		(Descripcio "Posant l'avantbrac sobre una superficie plana de manera que les mans quedin a l'aire, pujar i baixar una barra amb peses, movent els canells amb els palmells amunt.")
 		(Grups_musculars avantbrac)
-		(Majors TRUE)
+		(Majors FALSE)
 		(Nom "Aixecament barra avantbrac amunt")
 		(Objectiu Manteniment Musculacio))
 
@@ -955,7 +957,7 @@
 
 		(Descripcio "Posant l'avantbrac sobre una superficie plana de manera que les mans quedin a l'aire, pujar i baixar una barra amb peses, movent els canells amb els palmells avall.")
 		(Grups_musculars avantbrac)
-		(Majors TRUE)
+		(Majors FALSE)
 		(Nom "Aixecament barra avantbrac avall")
 		(Objectiu Manteniment Musculacio))
 
@@ -963,7 +965,7 @@
 
 		(Descripcio "Assegut en un banc inclinant el cos endavant amb els colzes doblats sostenint una barra amb pes, tenint els palmells mirant amunt, pujar i baixar la barra obrint i tancant els dits de la ma.")
 		(Grups_musculars avantbrac)
-		(Majors TRUE)
+		(Majors FALSE)
 		(Menors FALSE)
 		(Nom "Aixecament barra amb dits")
 		(Objectiu Manteniment Musculacio))
@@ -972,7 +974,7 @@
 
 		(Descripcio "En una maquina per a quadriceps estant estirat inclinat cap enrere, fer forca cap amunt amb les cames per tal d'aixecar el pes que s'hi posi.")
 		(Grups_musculars part_superior_cama)
-		(Majors TRUE)
+		(Majors FALSE)
 		(Nom "Quadricep amb maquina estirat enrere")
 		(Objectiu Manteniment Musculacio condicio_fisica_general))
 
@@ -980,7 +982,7 @@
 
 		(Descripcio "En una maquina per quadriceps assegut, posar els peus darrere les barres i fer forca amb les cames per aixecar el pes requerit.")
 		(Grups_musculars part_superior_cama)
-		(Majors TRUE)
+		(Majors FALSE)
 		(Nom "Quadricep amb maquina assegut")
 		(Objectiu Manteniment Musculacio condicio_fisica_general))
 
@@ -989,7 +991,7 @@
 		(Contraindicacions problemes_esquena)
 		(Descripcio "Sostenint una barra amb pes a l'esquena estant dempeus, flexionar els genolls intentant mantenir l'esquena bastant recta.")
 		(Grups_musculars part_superior_cama)
-		(Majors TRUE)
+		(Majors FALSE)
 		(Nom "Quadricep amb barra a l'esquena")
 		(Objectiu Manteniment Musculacio condicio_fisica_general))
 
@@ -998,7 +1000,7 @@
 		(Contraindicacions problemes_esquena)
 		(Descripcio "Sostenint una barra amb pes a l'esquena estant dempeus, fer passes caminant lentament i flexionant els genolls intentant mantenir l'esquena bastant recta.")
 		(Grups_musculars part_superior_cama)
-		(Majors TRUE)
+		(Majors FALSE)
 		(Nom "Quadricep amb barra a l'esquena caminant")
 		(Objectiu Manteniment Musculacio condicio_fisica_general))
 
@@ -1006,7 +1008,7 @@
 
 		(Descripcio "Posant una capsa al terra, impulsar-se sobre la capsa fent un salt cap amunt alternant les cames.")
 		(Grups_musculars part_superior_cama)
-		(Majors TRUE)
+		(Majors FALSE)
 		(Nom "Salts amb capsa")
 		(Objectiu Manteniment Musculacio condicio_fisica_general))
 
@@ -1014,7 +1016,7 @@
 
 		(Descripcio "Saltar amb ambdues cames alhora tant amunt com es pugui i tocant-se el cul amb els talons.")
 		(Grups_musculars part_superior_cama)
-		(Majors TRUE)
+		(Majors FALSE)
 		(Nom "Salts picant cul")
 		(Objectiu Manteniment Musculacio condicio_fisica_general))
 
@@ -1023,7 +1025,7 @@
 		(Contraindicacions problemes_esquena)
 		(Descripcio "Sostenint una barra amb pes a l'esquena i posant la punta dels peus en una capsa, fer moviments d'estirar i arronsar els talons.")
 		(Grups_musculars part_inferior_cama)
-		(Majors TRUE)
+		(Majors FALSE)
 		(Nom "Bessons amb barra i capsa")
 		(Objectiu Manteniment Musculacio condicio_fisica_general))
 
@@ -1031,7 +1033,7 @@
 
 		(Descripcio "Assegut en una maquina per treballar bessons, estirar i arronsar els talons aixecant el pes requerit.")
 		(Grups_musculars part_inferior_cama)
-		(Majors TRUE)
+		(Majors FALSE)
 		(Nom "Bessons amb maquina assegut")
 		(Objectiu Manteniment Musculacio condicio_fisica_general))
 
@@ -1040,7 +1042,7 @@
 		(Contraindicacions problemes_esquena)
 		(Descripcio "Estant dempeus sostenint una barra amb pes sobre l'esquena, moure's d'endavant cap endarrere recolzant-se nomes amb la punta dels peus per, despres, recolzar-se nomes amb els talons (i les puntes del peu aixecades).")
 		(Grups_musculars part_inferior_cama)
-		(Majors TRUE)
+		(Majors FALSE)
 		(Nom "Bessons amb barra")
 		(Objectiu Manteniment Musculacio condicio_fisica_general))
 
@@ -1058,7 +1060,7 @@
 		(Contraindicacions problemes_esquena)
 		(Descripcio "Lligar-se una cable amb pes al turmell i estibar amb la cama cap enrere aixecant-la, de manera que es treballi el glutis.")
 		(Grups_musculars glutis)
-		(Majors TRUE)
+		(Majors FALSE)
 		(Nom "Cama enrere amb cable")
 		(Objectiu Manteniment condicio_fisica_general Perdre_pes Musculacio))
 
@@ -1080,12 +1082,29 @@
 		(Nom "Cama enrere al terra")
 		(Objectiu Manteniment Musculacio condicio_fisica_general))
 
+	([Ontologia_Class30000] of  Terra_Duracio
+
+		(Descripcio "Agenollar-se al terra i doblar l'esquena endavant estirant els bracos cap enfora")
+		(Flexibilitat TRUE)
+		(Grups_musculars esquena)
+		(Nom "Estirament d'esquena")
+		(Objectiu Elasticitat))
+
+	([Ontologia_Class30001] of  Terra_Duracio
+
+		(Descripcio "Posar la ma a una paret i girar el cos en direccio contraria amb el brac estirat")
+		(Flexibilitat TRUE)
+		(Grups_musculars Pectoral)
+		(Menors FALSE)
+		(Nom "Estirament de pectoral")
+		(Objectiu Elasticitat))
+
 	([Ontologia_Class30003] of  Musculacio
 
 		(Contraindicacions problemes_esquena)
 		(Descripcio "Agafar-se a una barra alta amb tots dos bracos, inicialment estirats, i aixecar el pres del propi cos doblant els colzes alcant el cos sencer.")
 		(Grups_musculars coll espatlles esquena)
-		(Majors TRUE)
+		(Majors FALSE)
 		(Nom "Dominades")
 		(Objectiu Manteniment Musculacio))
 
@@ -1094,7 +1113,7 @@
 		(Contraindicacions problemes_esquena)
 		(Descripcio "Posar una barra amb peses al terra i aixecarla amb els bracos nomes inclinant lesquena i mantenint els bracos estirats avall en tot moment fins a tenir el cos recte.")
 		(Grups_musculars coll espatlles esquena)
-		(Majors TRUE)
+		(Majors FALSE)
 		(Nom "Aixecar pes mort")
 		(Objectiu Manteniment Musculacio))
 
@@ -1107,6 +1126,95 @@
 		(Nom "Inclinacio en banc")
 		(Objectiu Manteniment Musculacio))
 
+	([Ontologia_Class40003] of  Terra_Duracio
+
+		(Descripcio "Passar-se els bracos (primer un i despres l'altre) per darrere l'esquena amb el colze alcat i fer forca cap avall.")
+		(Flexibilitat TRUE)
+		(Grups_musculars brac espatlles)
+		(Menors FALSE)
+		(Nom "Estirament de triceps i espatlla")
+		(Objectiu Elasticitat))
+
+	([Ontologia_Class40004] of  Terra_Duracio
+
+		(Descripcio "Estirar-se cara enlaire i estibar-se les cames cap al pit mantenint-les estirades.")
+		(Flexibilitat TRUE)
+		(Grups_musculars part_superior_cama part_inferior_cama)
+		(Menors FALSE)
+		(Nom "Estirament d'isquiotibials")
+		(Objectiu Elasticitat))
+
+	([Ontologia_Class40005] of  Terra_Duracio
+
+		(Descripcio "Posar-se a peu coix i doblar la cama cap al cul agafant-se la punta del peu.")
+		(Flexibilitat TRUE)
+		(Grups_musculars part_superior_cama)
+		(Menors FALSE)
+		(Nom "Estirament de quadriceps")
+		(Objectiu Elasticitat))
+
+	([Ontologia_Class40006] of  Terra_Duracio
+
+		(Descripcio "Asseure's i flexionar les cames tocant-se les plantes del peu (l'una a l'altra) i baixar els genolls en direccio al terra.")
+		(Flexibilitat TRUE)
+		(Grups_musculars part_superior_cama)
+		(Menors FALSE)
+		(Nom "Estirament d'abductors")
+		(Objectiu Elasticitat))
+
+	([Ontologia_Class40007] of  Terra_Duracio
+
+		(Descripcio "Posar-se empenyent una paret i posar una cama mes enrere que l'altra de manera que s'estiri el besso de la cama.")
+		(Flexibilitat TRUE)
+		(Grups_musculars part_inferior_cama)
+		(Menors FALSE)
+		(Nom "Estirament de besso")
+		(Objectiu Elasticitat))
+
+	([Ontologia_Class40008] of  Terra_Duracio
+
+		(Descripcio "Estirar-se cara enlaire i doblar ambdues cames acostant-nos els genolls contra el pit")
+		(Flexibilitat TRUE)
+		(Grups_musculars esquena)
+		(Menors FALSE)
+		(Nom "Estirament de lumbars")
+		(Objectiu Elasticitat))
+
+	([Ontologia_Class40009] of  Terra_Duracio
+
+		(Descripcio "Estant dempeus, estirar els bracos amunt agafant-se les mans i inclinar l'esquena lateralment cap a tots dos costats.")
+		(Flexibilitat TRUE)
+		(Grups_musculars esquena)
+		(Menors FALSE)
+		(Nom "Estirament de dorsal")
+		(Objectiu Elasticitat))
+
+	([Ontologia_Class40010] of  Terra_Duracio
+
+		(Descripcio "Mantenir un brac estirat horitzontalment per davant del pit i, amb l'altre brac, fer forca per dur-lo cap al pit.")
+		(Flexibilitat TRUE)
+		(Grups_musculars brac espatlles)
+		(Menors FALSE)
+		(Nom "Estirament d'espatlla")
+		(Objectiu Elasticitat))
+
+	([Ontologia_Class40011] of  Terra_Duracio
+
+		(Descripcio "Estirar el brac cap enfora i doblar-se, amb l'altra ma, el canell cap amunt o cap avall.")
+		(Flexibilitat TRUE)
+		(Grups_musculars avantbrac)
+		(Menors FALSE)
+		(Nom "Estirament d'avantbrac")
+		(Objectiu Elasticitat))
+
+	([Ontologia_Class40012] of  Terra_Duracio
+
+		(Descripcio "Estirar-se de bocaterrosa")
+		(Flexibilitat TRUE)
+		(Grups_musculars Pectoral)
+		(Menors FALSE)
+		(Nom "Estirament de pectoral 2")
+		(Objectiu Elasticitat))
 
 
 )
@@ -1168,6 +1276,28 @@
 	(slot modC (type SYMBOL) (allowed-values NO SI))
 	(slot modA (type SYMBOL) (allowed-values NO SI))
  )
+
+
+ ;------------templates per a la solucio abstracte----------------
+
+ (deftemplate assignacio-dia
+	(slot numDia (type INTEGER) (range 1 5))
+ 	(multislot assignacions-escalfament)
+	(slot temps-escalfament (type INTEGER))
+	(multislot assignacions-principal)
+	(slot temps-principal (type INTEGER))
+	(multislot assignacions-final)
+	(slot temps-final (type INTEGER))
+ )
+
+;------------------------------ FUNCIONS -----------------------------------
+(deffunction random-slot ( ?li )
+	(bind ?li (create$ ?li))
+	(bind ?max (length ?li))
+	(bind ?r (random 1 ?max))
+	(bind ?ins (nth$ ?r ?li))
+	(return ?ins)
+)
 ;--------------------------------TEMPLATES-----------------------------------------------------------
 
 ;(defmessage-handler Exercici printa primary ()
@@ -2204,26 +2334,31 @@
 ;-----REGLES de cerca
 (defrule cerca-menor
 	(edat (es-menor SI))
+	(not (cm))
 	=>
 	(bind ?list (find-all-instances ((?inst Exercici)) (eq ?inst:Menors TRUE)))
 	(loop-for-count (?i 1 (length$ ?list)) do
 		(bind ?aux (nth$ ?i ?list))
 		(assert (elimina-inst ?aux))
 		)
+		(assert (cm))
 )
 
 (defrule cerca-ancia
 	(edat (es-ancia SI))
+	(not (ca))
 	=>
 	(bind ?list (find-all-instances ((?inst Exercici)) (eq ?inst:Majors TRUE)))
 	(loop-for-count (?i 1 (length$ ?list)) do
 		(bind ?aux (nth$ ?i ?list))
 		(assert (elimina-inst ?aux))
 		)
+		(assert (ca))
 )
 
 (defrule cerca-pressio-alta
 	(malalties (palta SI))
+	(not (cpa))
 	=>
 	(bind ?list (find-all-instances ((?inst Exercici)) TRUE))
 	(loop-for-count (?i 1 (length$ ?list)) do
@@ -2231,10 +2366,12 @@
 		(bind ?contra (send ?aux get-Contraindicacions))
 		(if (member pressio_alta ?contra) then  (assert (elimina-inst ?aux)))
 	)
+	(assert (cpa))
 )
 
 (defrule cerca-pesq
 	(malalties (pesq SI))
+	(not (cpe))
 	=>
 	(bind ?list (find-all-instances ((?inst Exercici)) TRUE))
 	(loop-for-count (?i 1 (length$ ?list)) do
@@ -2242,10 +2379,12 @@
 		(bind ?contra (send ?aux get-Contraindicacions))
 		(if (member problemes_esquena ?contra) then  (assert (elimina-inst ?aux)))
 	)
+	(assert (cpe))
 )
 
 (defrule cerca-obes-morbida
 	(malalties (obes-morbid SI))
+	(not (obm))
 	=>
 	(bind ?list (find-all-instances ((?inst Exercici)) TRUE))
 	(loop-for-count (?i 1 (length$ ?list)) do
@@ -2253,6 +2392,7 @@
 		(bind ?contra (send ?aux get-Contraindicacions))
 		(if (member obesitat_morbida ?contra) then  (assert (elimina-inst ?aux)))
 	)
+	(assert (obm))
 )
 
 (defrule elimina-instancies
@@ -2274,4 +2414,98 @@
 
 ;---------------------------SOLUCIO CONCRETA------------------------------
 
-(defmodule SOL-CONCR (import MAIN ?ALL)(import ELIMINA-INST ?ALL) (import SOL_ABSTR ?ALL ) (import PREGUNTES ?ALL)(import ABSTRACCIO ?ALL) (export ?ALL))
+(defmodule SOL_CONCR (import MAIN ?ALL) (export ?ALL))
+
+(defrule inicialitza-assignacions
+	(not (assignacio-dia))
+	?client_actual <- (object (is-a Client))
+	=>
+	(bind ?temps-disp (send ?client_actual get-Temps_Disponible_Diari))
+	(bind ?temps-e (* 0.1 ?temps-disp))
+	(bind ?temps-p (* 0.8 ?temps-disp))
+	(bind ?temps-f (* 0.1 ?temps-disp))
+	(assert (assignacio-dia (numDia 1)(temps-escalfament ?temps-e) (temps-principal ?temps-p) (temps-final ?temps-f)))
+	(assert (assignacio-dia (numDia 2)(temps-escalfament ?temps-e) (temps-principal ?temps-p) (temps-final ?temps-f)))
+	(assert (assignacio-dia (numDia 3)(temps-escalfament ?temps-e) (temps-principal ?temps-p) (temps-final ?temps-f)))
+	(assert (assignacio-dia (numDia 4)(temps-escalfament ?temps-e) (temps-principal ?temps-p) (temps-final ?temps-f)))
+	(assert (assignacio-dia (numDia 5)(temps-escalfament ?temps-e) (temps-principal ?temps-p) (temps-final ?temps-f)))
+	(assert (init-assigOK2))
+)
+
+
+(defrule assigna-escalfament2
+	(init-assigOK2)
+	(dia (numDia ?num))
+	?ad <- (assignacio-dia (numDia ?num)(assignacions-escalfament nil))
+	=>
+	(bind ?li (find-all-instances ((?inst Cardio)) TRUE))
+	(bind ?ex (nth$ 1 ?li))
+	(bind ?assignacio (make-instance assig-cardio of Assignacio_exercici_cardio))
+	(send ?assignacio put-Exercici_Assignat ?ex)
+	(modify ?ad (assignacions-escalfament ?assignacio))
+	)
+
+(defrule assigna-escalfament
+	(init-assigOK2)
+	(not (escDia1))
+	;(dia (numDia ?))
+	;(bind ?aux ?num)
+	?d <- (dia (numDia 1) (int_Entrenament ?int))
+	?ad <- (assignacio-dia (numDia 1) (temps-escalfament ?te) )
+	=>
+	(bind ?li (find-all-instances ((?inst Cardio)) TRUE))
+	(bind ?ex (random-slot ?li))
+	(printout t "Class of ex: " (class ?ex))
+	(if (eq (class ?ex) Cardio) then
+				(bind ?assignacio (make-instance assig-cardio of Assignacio_exercici_cardio))
+				(send ?assignacio put-Exercici_Assignat ?ex)
+				(send ?assignacio put-Durada ?te)
+				(switch ?int
+					(case MOLT_BAIXA then
+						(send ?assignacio put-Resistencia 15)
+					)
+					(case BAIXA then
+						(send ?assignacio put-Resistencia 20)
+					)
+					(case NORMAL then
+						(send ?assignacio put-Resistencia 25)
+					)
+					(case ALTA then
+						(send ?assignacio put-Resistencia 30)
+					)
+					(case MOLT_ALTA then
+						(send ?assignacio put-Resistencia 40)
+					)
+				)
+			(modify ?ad (assignacions-escalfament ?assignacio))
+		else
+		(bind ?assignacio (make-instance assig-cinta of Assignacio_exercici_cinta))
+		(send ?assignacio put-Exercici_Assignat ?ex)
+		(send ?assignacio put-Durada ?te)
+		(switch ?int
+			(case MOLT_BAIXA then
+				(send ?assignacio put-Resistencia 15)
+				(send ?assignacio put-Velocitat 10)
+			)
+			(case BAIXA then
+				(send ?assignacio put-Resistencia 20)
+				(send ?assignacio put-Velocitat 15)
+			)
+			(case NORMAL then
+				(send ?assignacio put-Resistencia 25)
+				(send ?assignacio put-Velocitat 20)
+			)
+			(case ALTA then
+				(send ?assignacio put-Resistencia 30)
+				(send ?assignacio put-Velocitat 25)
+			)
+			(case MOLT_ALTA then
+				(send ?assignacio put-Resistencia 40)
+				(send ?assignacio put-Velocitat 30)
+			)
+		)
+		(modify ?ad (assignacions-escalfament ?assignacio))
+	)
+	(assert (escDia1))
+	(focus SOL_CONCR)
+)
