@@ -1,4 +1,4 @@
-; Sat May 21 18:00:10 CEST 2016
+; Sat May 21 22:59:37 CEST 2016
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -7,10 +7,6 @@
 (defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
 	(is-a USER)
 	(role abstract)
-	(single-slot Pes_max
-		(type FLOAT)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot picar_entre_hores
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
@@ -21,10 +17,6 @@
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Resistencia_max
-		(type INTEGER)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot Problema_salut_associat
 		(type INSTANCE)
 ;+		(allowed-classes)
@@ -33,10 +25,6 @@
 	(single-slot Menors
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Repeticions_max
-		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(multislot Pressio_Sanguinea
@@ -86,6 +74,10 @@
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot Resistencia
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot Series
 		(type INTEGER)
 ;+		(cardinality 1 1)
@@ -95,6 +87,10 @@
 ;+		(allowed-classes Habit_Fisic)
 		(default [Ontologia_Class1])
 ;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Pes
+		(type FLOAT)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot Durada_min
 		(type INTEGER)
@@ -128,6 +124,10 @@
 	(single-slot Flexibilitat
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Repeticions
+		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot Peces_fruita
@@ -170,10 +170,6 @@
 		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Velocitat_max
-		(type FLOAT)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot Puntuacio
 		(type INTEGER)
 ;+		(cardinality 0 1)
@@ -194,6 +190,10 @@
 	(single-slot Ontologia_Class10022
 		(type STRING)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Velocitat
+		(type INTEGER)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot Alcada
 ;+		(comment "Alcada en centimetres")
@@ -525,24 +525,16 @@
 (defclass Assignacio_Exercici_Musculacio
 	(is-a Assignacio_Exercici)
 	(role concrete)
-	(single-slot Pes_max
-		(type FLOAT)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Repeticions_min
-		(type INTEGER)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot Exercici_Assignat
 		(type INSTANCE)
 ;+		(allowed-classes Musculacio)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Pes_min
+	(single-slot Pes
 		(type FLOAT)
-;+		(cardinality 1 1)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot Repeticions_max
+	(single-slot Repeticions
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
@@ -555,8 +547,10 @@
 ;+		(allowed-classes Terra)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Durada_min
+	(single-slot Durada
+;+		(comment "En minuts setmanals")
 		(type INTEGER)
+		(range 0 1440)
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
@@ -567,25 +561,17 @@
 		(type INSTANCE)
 ;+		(allowed-classes Terra_Duracio)
 ;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Durada_max
-		(type INTEGER)
-;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
 (defclass Exercicis_terra_repeticions
 	(is-a Assignacio_Exercici_Terra)
 	(role concrete)
-	(single-slot Repeticions_min
-		(type INTEGER)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot Exercici_Assignat
 		(type INSTANCE)
 ;+		(allowed-classes Terra)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Repeticions_max
+	(single-slot Repeticions
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
@@ -598,36 +584,26 @@
 ;+		(allowed-classes Cardio)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Resistencia_max
+	(single-slot Resistencia
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Durada_min
+	(single-slot Durada
+;+		(comment "En minuts setmanals")
 		(type INTEGER)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Resistencia_min
-		(type INTEGER)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Durada_max
-		(type INTEGER)
+		(range 0 1440)
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
 (defclass Assignacio_exercici_cinta
 	(is-a Assignacio_exercici_cardio)
 	(role concrete)
-	(single-slot Velocitat_min
-		(type FLOAT)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot Exercici_Assignat
 		(type INSTANCE)
 ;+		(allowed-classes Cardio)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Velocitat_max
-		(type FLOAT)
+	(single-slot Velocitat
+		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
