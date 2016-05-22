@@ -20,9 +20,56 @@ No només tenim informació del client sinó que també tenim informació sobre 
     
 \end{itemize}
 
-El sistema ha de generar un programa d'entrenament pel client. Aquest ha de ser complet, és a dir, ha de generar exercicis que satisfacin l'objectiu del client i que treballin en completesa tot el cos. També han de ser variats, s'ha d'evitar la monotonia ja que s'ha d'aconseguir una experiència divertida per l'usuari, que es diverteixi mentre faci esport. Això implica molts i diferents exercicis per dia i també per setmana.
+El sistema ha de generar un programa d'entrenament pel client.
+Aquest ha de ser complet, és a dir, ha de generar exercicis que satisfacin l'objectiu del client i que treballin en completesa tot el cos. 
+També han de ser variats, s'ha d'evitar la monotonia ja que s'ha d'aconseguir una experiència divertida per l'usuari, que es diverteixi mentre faci esport. 
+Això implica molts i diferents exercicis per dia i també per setmana.
 
 \subsection{Viabilitat d'abordar el problema amb un SBC}
+Aquesta secció té l'objectiu d'avaluar l'opció d'un SBC per resoldre el problema del programa d'entrenament. 
+Perquè un problema sigui abordable amb un SBC s'han de complir bàsicament tres requisits: que el problema no es pugui resoldre de forma algorítmica ja que no tindria sentit desplegar tot l'arsenal d'un SBC que és molt costós i laboriós, poder tenir accés a fonts de coneixement suficients per completar la tasca i que el problema tingui una mida adequada, que no abasti massa coneixement i que no tingui massa complexitat ja que la tasca de dissenyar l'SBC seria impracticable.
+\\\\
+Pel que fa el primer dels criteris el nostre problema té aquesta naturalesa que fa que els mètodes algorísmics sigui poc o gens viable de resoldre. Estem parlant de planificar un entrenament de molts exercicis diferents on hi ha moltes variables en joc, l'espai de possibles solucions és immens i a priori és difícil de podar ja que no es poden descartar gaires solucions.
+Així doncs en aquest sentit podem considerar la creació d'un SBC.
+\\\\
+Pel que fa el segon dels criteris el problema que tenim entre mans té a disposició vàries fonts de coneixement. 
+un tema molt comú actualment i moltes pàgines tenen bases de dades d'exercicis diferents, l'energia que sol utilitzar l'usuari al usar-les, els grups musculars que treballen, les contraindicacions... 
+A més la pròpia experiència en gimnasos també ens serveix de font de coneixement. 
+Pel que fa aquest criteri també disposem de tot allò necessari per crear un SBC.
+\\\\
+L'últim dels criteris també es compleix ja que el problema no abasta massa coneixement, si tractés sobre hàbits saludables en general la complexitat seria molt superior però estem parlant d'un àmbit i amb unes restriccions que ens permeten poder treballar sense preocupar-nos de la impracticabilitat del procés d'enginyeria d'un SBC.
+
+
 
 \subsection{Fonts de coneixement}
+Les fonts de coneixement conformen tota font que s'utilitza per obtenir el coneixement expert del domini del problema. Si seguíssim un rol enginyer de SBC - expert , les fonts d'informació són les fonts expertes. En el nostre cas les fonts d'informació es formen per:
+
+\begin{itemize}
+    \item \textbf{Internet i llibres}. S'utilitzen varies fonts sobre hàbits de salut\cite{health}\cite{fitnesspal} i bases de dades sobre exercisis, algunes d'elles són pàgines web\cite{bodybuild}\cite{fitnesspal} i també en llibre\cite{strech}.
+    Aquestes fonts contenen exercicis amb les seves contraindicacions, el seu ús, els grups musculars que treballen... també la incidència que tenen els hàbits de salut en la forma física.
+    
+    \item \textbf{Experiència personal i sentit comú}. Tenim experiència en gimnasos i en exercici de forma personal per poder aportar coneixement a l'SBC, també el sentit comú sobre fets d'hàbits saludables.
+    
+\end{itemize}
+
 \subsection{Objectius del problema i resultats del sistema}
+En aquest punt definirem els objectius que ha de complir el nostre SBC, les seves característiques i els seus resultats, indicant com seran aquests i quins trets tindran. Els Objectius i parts del nostre SBC seran els següents:
+
+\begin{itemize}
+    
+    \item Obtenir el coneixement de l'usuari pel que fa les seves dades i els seus hàbits i malalties que puguin influir en el desenvolupament de la seva rutina d'entrenament.
+    
+    \item Inferir tota la informació possible sobre el seu estat físic i els seus objectius ja que serà important per poder ajustar la intensitat i el punt de partida.
+    
+    \item Descartar els exercicis que no siguin adequats o bé per la forma física del client, o bé perquè no s'ajusten als seus objectius o bé per les contraindicacions que suposa.
+    
+    \item Avaluar els exercicis restants per assignar-los en una planificació setmanal on es treballi completament i variadament.
+    
+    \item Presentar la rutina a mode d'exercicis setmanals amb les corresponents repeticions en el cas de tractar-se d'un exercici que funciona amb repeticions o bé la seva duració altrament. També es mostrarà un percentatge d'esforç que ha de donar l'usuari de la seva capacitat, tant en el pes de les màquines de pes com en la velocitat o la intensitat de certs exercicis.
+    
+    
+\end{itemize}
+
+Pel que fa la sortida de dades, es presentarà una rutina per els cinc dies de la setmana on es mostraran els exercicis que es poden fer cada dia segons el temps que té l'usuari.
+Aquests es mostraran amb una petita explicació que explica el funcionament d'ells i també es mostraran els diferents grups musculars que es treballaran.
+Per a cada exercici també es mostrarà amb un percentatge quin és la intensitat que l'usuari ha d'aplicar. Aquest punt és subjectiu ja que es mostra en percentatge de la capacitat que té un usuari, per exemple, si l'usuari vol córrer en una cinta se li dirà que ha de córrer a una velocitat i pendent que apliqui el 50\% de la seva capacitat, per exemple, i l'usuari ja podrà regular la cinta segons el que ell consideri que és el 50\% de la seva capacitat.
