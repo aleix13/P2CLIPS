@@ -1298,6 +1298,7 @@
 	(bind ?ins (nth$ ?r ?li))
 	(return ?ins)
 )
+
 ;--------------------------------TEMPLATES-----------------------------------------------------------
 
 ;(defmessage-handler Exercici printa primary ()
@@ -2429,33 +2430,19 @@
 	(assert (assignacio-dia (numDia 3)(temps-escalfament ?temps-e) (temps-principal ?temps-p) (temps-final ?temps-f)))
 	(assert (assignacio-dia (numDia 4)(temps-escalfament ?temps-e) (temps-principal ?temps-p) (temps-final ?temps-f)))
 	(assert (assignacio-dia (numDia 5)(temps-escalfament ?temps-e) (temps-principal ?temps-p) (temps-final ?temps-f)))
-	(assert (init-assigOK2))
+	(assert (init-assigOK))
 )
 
-
-(defrule assigna-escalfament2
-	(init-assigOK2)
-	(dia (numDia ?num))
-	?ad <- (assignacio-dia (numDia ?num)(assignacions-escalfament nil))
-	=>
-	(bind ?li (find-all-instances ((?inst Cardio)) TRUE))
-	(bind ?ex (nth$ 1 ?li))
-	(bind ?assignacio (make-instance assig-cardio of Assignacio_exercici_cardio))
-	(send ?assignacio put-Exercici_Assignat ?ex)
-	(modify ?ad (assignacions-escalfament ?assignacio))
-	)
+;-------------------Assignacions d'escalfament--------------------------
 
 (defrule assigna-escalfament
-	(init-assigOK2)
+	(init-assigOK)
 	(not (escDia1))
-	;(dia (numDia ?))
-	;(bind ?aux ?num)
 	?d <- (dia (numDia 1) (int_Entrenament ?int))
 	?ad <- (assignacio-dia (numDia 1) (temps-escalfament ?te) )
 	=>
 	(bind ?li (find-all-instances ((?inst Cardio)) TRUE))
 	(bind ?ex (random-slot ?li))
-	(printout t "Class of ex: " (class ?ex))
 	(if (eq (class ?ex) Cardio) then
 				(bind ?assignacio (make-instance assig-cardio of Assignacio_exercici_cardio))
 				(send ?assignacio put-Exercici_Assignat ?ex)
@@ -2507,5 +2494,343 @@
 		(modify ?ad (assignacions-escalfament ?assignacio))
 	)
 	(assert (escDia1))
-	(focus SOL_CONCR)
+)
+
+(defrule assigna-escalfament2
+	(init-assigOK)
+	(not (escDia2))
+	?d <- (dia (numDia 2) (int_Entrenament ?int))
+	?ad <- (assignacio-dia (numDia 2) (temps-escalfament ?te) )
+	=>
+	(bind ?li (find-all-instances ((?inst Cardio)) TRUE))
+	(bind ?ex (random-slot ?li))
+	(if (eq (class ?ex) Cardio) then
+				(bind ?assignacio (make-instance assig-cardio2 of Assignacio_exercici_cardio))
+				(send ?assignacio put-Exercici_Assignat ?ex)
+				(send ?assignacio put-Durada ?te)
+				(switch ?int
+					(case MOLT_BAIXA then
+						(send ?assignacio put-Resistencia 15)
+					)
+					(case BAIXA then
+						(send ?assignacio put-Resistencia 20)
+					)
+					(case NORMAL then
+						(send ?assignacio put-Resistencia 25)
+					)
+					(case ALTA then
+						(send ?assignacio put-Resistencia 30)
+					)
+					(case MOLT_ALTA then
+						(send ?assignacio put-Resistencia 40)
+					)
+				)
+			(modify ?ad (assignacions-escalfament ?assignacio))
+		else
+		(bind ?assignacio (make-instance assig-cinta2 of Assignacio_exercici_cinta))
+		(send ?assignacio put-Exercici_Assignat ?ex)
+		(send ?assignacio put-Durada ?te)
+		(switch ?int
+			(case MOLT_BAIXA then
+				(send ?assignacio put-Resistencia 15)
+				(send ?assignacio put-Velocitat 10)
+			)
+			(case BAIXA then
+				(send ?assignacio put-Resistencia 20)
+				(send ?assignacio put-Velocitat 15)
+			)
+			(case NORMAL then
+				(send ?assignacio put-Resistencia 25)
+				(send ?assignacio put-Velocitat 20)
+			)
+			(case ALTA then
+				(send ?assignacio put-Resistencia 30)
+				(send ?assignacio put-Velocitat 25)
+			)
+			(case MOLT_ALTA then
+				(send ?assignacio put-Resistencia 40)
+				(send ?assignacio put-Velocitat 30)
+			)
+		)
+		(modify ?ad (assignacions-escalfament ?assignacio))
+	)
+	(assert (escDia2))
+)
+
+(defrule assigna-escalfament3
+	(init-assigOK)
+	(not (escDia3))
+	?d <- (dia (numDia 3) (int_Entrenament ?int))
+	?ad <- (assignacio-dia (numDia 3) (temps-escalfament ?te) )
+	=>
+	(bind ?li (find-all-instances ((?inst Cardio)) TRUE))
+	(bind ?ex (random-slot ?li))
+	(if (eq (class ?ex) Cardio) then
+				(bind ?assignacio (make-instance assig-cardio3 of Assignacio_exercici_cardio))
+				(send ?assignacio put-Exercici_Assignat ?ex)
+				(send ?assignacio put-Durada ?te)
+				(switch ?int
+					(case MOLT_BAIXA then
+						(send ?assignacio put-Resistencia 15)
+					)
+					(case BAIXA then
+						(send ?assignacio put-Resistencia 20)
+					)
+					(case NORMAL then
+						(send ?assignacio put-Resistencia 25)
+					)
+					(case ALTA then
+						(send ?assignacio put-Resistencia 30)
+					)
+					(case MOLT_ALTA then
+						(send ?assignacio put-Resistencia 40)
+					)
+				)
+			(modify ?ad (assignacions-escalfament ?assignacio))
+		else
+		(bind ?assignacio (make-instance assig-cinta3 of Assignacio_exercici_cinta))
+		(send ?assignacio put-Exercici_Assignat ?ex)
+		(send ?assignacio put-Durada ?te)
+		(switch ?int
+			(case MOLT_BAIXA then
+				(send ?assignacio put-Resistencia 15)
+				(send ?assignacio put-Velocitat 10)
+			)
+			(case BAIXA then
+				(send ?assignacio put-Resistencia 20)
+				(send ?assignacio put-Velocitat 15)
+			)
+			(case NORMAL then
+				(send ?assignacio put-Resistencia 25)
+				(send ?assignacio put-Velocitat 20)
+			)
+			(case ALTA then
+				(send ?assignacio put-Resistencia 30)
+				(send ?assignacio put-Velocitat 25)
+			)
+			(case MOLT_ALTA then
+				(send ?assignacio put-Resistencia 40)
+				(send ?assignacio put-Velocitat 30)
+			)
+		)
+		(modify ?ad (assignacions-escalfament ?assignacio))
+	)
+	(assert (escDia3))
+)
+
+(defrule assigna-escalfament4
+	(init-assigOK)
+	(not (escDia4))
+	?d <- (dia (numDia 4) (int_Entrenament ?int))
+	?ad <- (assignacio-dia (numDia 4) (temps-escalfament ?te) )
+	=>
+	(bind ?li (find-all-instances ((?inst Cardio)) TRUE))
+	(bind ?ex (random-slot ?li))
+
+	(if (eq (class ?ex) Cardio) then
+				(bind ?assignacio (make-instance assig-cardio4 of Assignacio_exercici_cardio))
+				(send ?assignacio put-Exercici_Assignat ?ex)
+				(send ?assignacio put-Durada ?te)
+				(switch ?int
+					(case MOLT_BAIXA then
+						(send ?assignacio put-Resistencia 15)
+					)
+					(case BAIXA then
+						(send ?assignacio put-Resistencia 20)
+					)
+					(case NORMAL then
+						(send ?assignacio put-Resistencia 25)
+					)
+					(case ALTA then
+						(send ?assignacio put-Resistencia 30)
+					)
+					(case MOLT_ALTA then
+						(send ?assignacio put-Resistencia 40)
+					)
+				)
+			(modify ?ad (assignacions-escalfament ?assignacio))
+		else
+		(bind ?assignacio (make-instance assig-cinta4 of Assignacio_exercici_cinta))
+		(send ?assignacio put-Exercici_Assignat ?ex)
+		(send ?assignacio put-Durada ?te)
+		(switch ?int
+			(case MOLT_BAIXA then
+				(send ?assignacio put-Resistencia 15)
+				(send ?assignacio put-Velocitat 10)
+			)
+			(case BAIXA then
+				(send ?assignacio put-Resistencia 20)
+				(send ?assignacio put-Velocitat 15)
+			)
+			(case NORMAL then
+				(send ?assignacio put-Resistencia 25)
+				(send ?assignacio put-Velocitat 20)
+			)
+			(case ALTA then
+				(send ?assignacio put-Resistencia 30)
+				(send ?assignacio put-Velocitat 25)
+			)
+			(case MOLT_ALTA then
+				(send ?assignacio put-Resistencia 40)
+				(send ?assignacio put-Velocitat 30)
+			)
+		)
+		(modify ?ad (assignacions-escalfament ?assignacio))
+	)
+	(assert (escDia4))
+)
+
+(defrule assigna-escalfament5
+	(init-assigOK)
+	(not (escDia5))
+	?d <- (dia (numDia 5) (int_Entrenament ?int))
+	?ad <- (assignacio-dia (numDia 5) (temps-escalfament ?te) )
+	=>
+	(bind ?li (find-all-instances ((?inst Cardio)) TRUE))
+	(bind ?ex (random-slot ?li))
+	(if (eq (class ?ex) Cardio) then
+				(bind ?assignacio (make-instance assig-cardio5 of Assignacio_exercici_cardio))
+				(send ?assignacio put-Exercici_Assignat ?ex)
+				(send ?assignacio put-Durada ?te)
+				(switch ?int
+					(case MOLT_BAIXA then
+						(send ?assignacio put-Resistencia 15)
+					)
+					(case BAIXA then
+						(send ?assignacio put-Resistencia 20)
+					)
+					(case NORMAL then
+						(send ?assignacio put-Resistencia 25)
+					)
+					(case ALTA then
+						(send ?assignacio put-Resistencia 30)
+					)
+					(case MOLT_ALTA then
+						(send ?assignacio put-Resistencia 40)
+					)
+				)
+			(modify ?ad (assignacions-escalfament ?assignacio))
+		else
+		(bind ?assignacio (make-instance assig-cinta5 of Assignacio_exercici_cinta))
+		(send ?assignacio put-Exercici_Assignat ?ex)
+		(send ?assignacio put-Durada ?te)
+		(switch ?int
+			(case MOLT_BAIXA then
+				(send ?assignacio put-Resistencia 15)
+				(send ?assignacio put-Velocitat 10)
+			)
+			(case BAIXA then
+				(send ?assignacio put-Resistencia 20)
+				(send ?assignacio put-Velocitat 15)
+			)
+			(case NORMAL then
+				(send ?assignacio put-Resistencia 25)
+				(send ?assignacio put-Velocitat 20)
+			)
+			(case ALTA then
+				(send ?assignacio put-Resistencia 30)
+				(send ?assignacio put-Velocitat 25)
+			)
+			(case MOLT_ALTA then
+				(send ?assignacio put-Resistencia 40)
+				(send ?assignacio put-Velocitat 30)
+			)
+		)
+		(modify ?ad (assignacions-escalfament ?assignacio))
+	)
+	(assert (escDia5))
+)
+
+;-------------------Assignacions d'escalfament--------------------------
+
+
+
+;-------------------Assignacions part final-----------------------------
+
+(defrule assigna-final1
+	(init-assigOK)
+	(not (finDia1))
+	?d <- (dia (numDia 1) (int_Entrenament ?int) (elas_Final ?ef) (cardio_Final ?cf) )
+	?ad <- (assignacio-dia (numDia 1) (temps-final ?te) )
+	=>
+  (if (eq ?cf TRUE) then
+  (bind ?af (create$ ?af))
+  (bind ?assignats (create$ ?assignats))
+	(bind ?li (find-all-instances ((?inst Cardio)) TRUE))
+	(bind ?ex (random-slot ?li))
+  (insert$ ?assignats 1 ?ex)
+	(if (eq (class ?ex) Cardio) then
+				(bind ?assignacio (make-instance assig-cardio of Assignacio_exercici_cardio))
+				(send ?assignacio put-Exercici_Assignat ?ex)
+				(send ?assignacio put-Durada ?te)
+				(switch ?int
+					(case MOLT_BAIXA then
+						(send ?assignacio put-Resistencia 15)
+					)
+					(case BAIXA then
+						(send ?assignacio put-Resistencia 20)
+					)
+					(case NORMAL then
+						(send ?assignacio put-Resistencia 25)
+					)
+					(case ALTA then
+						(send ?assignacio put-Resistencia 30)
+					)
+					(case MOLT_ALTA then
+						(send ?assignacio put-Resistencia 40)
+					)
+				)
+        (insert$ ?af 1 ?assignacio)
+			;(modify ?ad (assignacions-final ?assignacio))
+		else
+		(bind ?assignacio (make-instance assig-cinta of Assignacio_exercici_cinta))
+		(send ?assignacio put-Exercici_Assignat ?ex)
+		(send ?assignacio put-Durada ?te)
+		(switch ?int
+			(case MOLT_BAIXA then
+				(send ?assignacio put-Resistencia 15)
+				(send ?assignacio put-Velocitat 10)
+			)
+			(case BAIXA then
+				(send ?assignacio put-Resistencia 20)
+				(send ?assignacio put-Velocitat 15)
+			)
+			(case NORMAL then
+				(send ?assignacio put-Resistencia 25)
+				(send ?assignacio put-Velocitat 20)
+			)
+			(case ALTA then
+				(send ?assignacio put-Resistencia 30)
+				(send ?assignacio put-Velocitat 25)
+			)
+			(case MOLT_ALTA then
+				(send ?assignacio put-Resistencia 40)
+				(send ?assignacio put-Velocitat 30)
+			)
+		)
+    (insert$ ?af 1 ?assignacio)
+		;(modify ?ad (assignacions-escalfament ?assignacio))
+	)
+  else
+  ;AQUÍ HEM ASSIGNAT EXERCICI CARDIO
+  (bind ?taux 0)
+  (bind ?lf (find-all-instances ((?inst Terra_Duracio)) (eq ?inst:Flexibilitat TRUE)))
+  (loop-for-count (?i 1 (length ?lf))
+  (printout t "-->" (nth$ ?i ?lf) "<--" crlf))
+  (while (< ?taux ?te) do
+  (printout t "taux: " ?taux "   te: " ?te crlf)
+  (bind ?exF (random-slot ?lf))
+      (if (not(member ?exF ?assignats)) then
+      (bind ?taux (+ 2 ?taux))
+      (bind ?assignacio (make-instance (gensym) of Assignacio_exercici_terra_Duracio))
+      (send ?assignacio put-Durada 2)
+      (send ?assignacio put-Series 1)
+      (send ?assignacio put-Exercici_Assignat ?exF)
+      (insert$ ?assignats 1 ?exF)
+      (insert$ ?af 1 ?assignacio)
+      )
+  )
+  )
+  (modify ?ad (assignacions-escalfament ?af))
+	(assert (finDia1))
 )
