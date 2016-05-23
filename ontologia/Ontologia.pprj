@@ -1,4 +1,4 @@
-; Sun May 22 11:01:36 CEST 2016
+; Mon May 23 11:11:24 CEST 2016
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -21,13 +21,13 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[Ontologia_ProjectKB_Class20059]
-		[Ontologia_ProjectKB_Class20060]
-		[Ontologia_ProjectKB_Class20061]
-		[Ontologia_ProjectKB_Class20062]
-		[Ontologia_ProjectKB_Class20063]
-		[Ontologia_ProjectKB_Class20064]
-		[Ontologia_ProjectKB_Class20065]))
+		[Ontologia_ProjectKB_Class10040]
+		[Ontologia_ProjectKB_Class10041]
+		[Ontologia_ProjectKB_Class10042]
+		[Ontologia_ProjectKB_Class10043]
+		[Ontologia_ProjectKB_Class10044]
+		[Ontologia_ProjectKB_Class10045]
+		[Ontologia_ProjectKB_Class10046]))
 
 ([CLSES_TAB] of  Widget
 
@@ -72,6 +72,9 @@
 	(is_hidden FALSE)
 	(widget_class_name "edu.stanford.smi.protege.widget.InstancesTab"))
 
+([KB_218276_Class5] of  Map
+)
+
 ([KB_291316_Class0] of  String
 
 	(name "factory_class_name")
@@ -80,11 +83,11 @@
 ([KB_291316_Class1] of  Map
 
 	(entries
-		[Ontologia_ProjectKB_Class20067]
-		[Ontologia_ProjectKB_Class20068]
-		[Ontologia_ProjectKB_Class20069]
-		[Ontologia_ProjectKB_Class20070])
-	(referenced_maps [Ontologia_ProjectKB_Class20066]))
+		[Ontologia_ProjectKB_Class10048]
+		[Ontologia_ProjectKB_Class10049]
+		[Ontologia_ProjectKB_Class10050]
+		[Ontologia_ProjectKB_Class10051])
+	(referenced_maps [Ontologia_ProjectKB_Class10047]))
 
 ([KB_291316_Class100] of  Property_List
 )
@@ -178,9 +181,6 @@
 ([KB_291316_Class99] of  Property_List
 )
 
-([KB_846216_Class5] of  Map
-)
-
 ([LAYOUT_PROPERTIES] of  Property_List
 
 	(name "layout properties")
@@ -188,6 +188,72 @@
 
 ([Ontologia_ProjectKB_Class10] of  Property_List
 )
+
+([Ontologia_ProjectKB_Class10040] of  String
+
+	(name "Cardio")
+	(string_value "Nom"))
+
+([Ontologia_ProjectKB_Class10041] of  String
+
+	(name ":INSTANCE-ANNOTATION")
+	(string_value "%3AANNOTATION-TEXT"))
+
+([Ontologia_ProjectKB_Class10042] of  String
+
+	(name "Terra_Duracio")
+	(string_value "Nom{-}Grups_musculars"))
+
+([Ontologia_ProjectKB_Class10043] of  String
+
+	(name "Musculacio")
+	(string_value "Nom"))
+
+([Ontologia_ProjectKB_Class10044] of  String
+
+	(name "Terra_Repeticions")
+	(string_value "Nom"))
+
+([Ontologia_ProjectKB_Class10045] of  String
+
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
+
+([Ontologia_ProjectKB_Class10046] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
+
+([Ontologia_ProjectKB_Class10047] of  Map
+)
+
+([Ontologia_ProjectKB_Class10048] of  Map_Entry
+
+	(key "InstanceDisplay.yellow_stickies")
+	(key_class "java.lang.String")
+	(value "Ontologia_ProjectKB_Class10047")
+	(value_class "java.util.Map"))
+
+([Ontologia_ProjectKB_Class10049] of  Map_Entry
+
+	(key "suppress_instance_counting")
+	(key_class "java.lang.String")
+	(value "false")
+	(value_class "java.lang.String"))
+
+([Ontologia_ProjectKB_Class10050] of  Map_Entry
+
+	(key "add_name_on_instance_form")
+	(key_class "java.lang.String")
+	(value "false")
+	(value_class "java.lang.String"))
+
+([Ontologia_ProjectKB_Class10051] of  Map_Entry
+
+	(key "change_tracking_active")
+	(key_class "java.lang.String")
+	(value "false")
+	(value_class "java.lang.String"))
 
 ([Ontologia_ProjectKB_Class107] of  String
 
@@ -237,72 +303,6 @@
 
 ([Ontologia_ProjectKB_Class20] of  Property_List
 )
-
-([Ontologia_ProjectKB_Class20059] of  String
-
-	(name "Cardio")
-	(string_value "Nom"))
-
-([Ontologia_ProjectKB_Class20060] of  String
-
-	(name ":INSTANCE-ANNOTATION")
-	(string_value "%3AANNOTATION-TEXT"))
-
-([Ontologia_ProjectKB_Class20061] of  String
-
-	(name "Terra_Duracio")
-	(string_value "Nom{-}Grups_musculars"))
-
-([Ontologia_ProjectKB_Class20062] of  String
-
-	(name "Musculacio")
-	(string_value "Grups_musculars"))
-
-([Ontologia_ProjectKB_Class20063] of  String
-
-	(name "Terra_Repeticions")
-	(string_value "Nom"))
-
-([Ontologia_ProjectKB_Class20064] of  String
-
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
-
-([Ontologia_ProjectKB_Class20065] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
-
-([Ontologia_ProjectKB_Class20066] of  Map
-)
-
-([Ontologia_ProjectKB_Class20067] of  Map_Entry
-
-	(key "InstanceDisplay.yellow_stickies")
-	(key_class "java.lang.String")
-	(value "Ontologia_ProjectKB_Class20066")
-	(value_class "java.util.Map"))
-
-([Ontologia_ProjectKB_Class20068] of  Map_Entry
-
-	(key "suppress_instance_counting")
-	(key_class "java.lang.String")
-	(value "false")
-	(value_class "java.lang.String"))
-
-([Ontologia_ProjectKB_Class20069] of  Map_Entry
-
-	(key "add_name_on_instance_form")
-	(key_class "java.lang.String")
-	(value "false")
-	(value_class "java.lang.String"))
-
-([Ontologia_ProjectKB_Class20070] of  Map_Entry
-
-	(key "change_tracking_active")
-	(key_class "java.lang.String")
-	(value "false")
-	(value_class "java.lang.String"))
 
 ([Ontologia_ProjectKB_Class21] of  Widget
 

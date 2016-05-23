@@ -1,4 +1,4 @@
-; Sun May 22 11:01:36 CEST 2016
+; Mon May 23 11:11:24 CEST 2016
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -80,7 +80,7 @@
 		(create-accessor read-write))
 	(single-slot Series
 		(type INTEGER)
-;+		(cardinality 1 1)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot Habits
 		(type INSTANCE)
@@ -109,7 +109,7 @@
 		(create-accessor read-write))
 	(single-slot Dificultat
 		(type SYMBOL)
-		(allowed-values Facil Moderada Alta Molt_alta)
+		(allowed-values Moderada Normal Dificil)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot Nombre_cigarretes
@@ -297,10 +297,6 @@
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(multislot Parts_Afectades
-		(type SYMBOL)
-		(allowed-values Coll Esquena Avantbrac Brac Part_superior_cama part_inferior_cama Abdominals espatlles Pectoral)
 		(create-accessor read-write))
 	(single-slot Problemes_articulars
 		(type SYMBOL)
@@ -507,11 +503,6 @@
 (defclass Assignacio_Exercici
 	(is-a USER)
 	(role concrete)
-	(single-slot Dificultat
-		(type SYMBOL)
-		(allowed-values Facil Moderada Alta Molt_alta)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot Exercici_Assignat
 		(type INSTANCE)
 ;+		(allowed-classes Exercici)
@@ -519,7 +510,7 @@
 		(create-accessor read-write))
 	(single-slot Series
 		(type INTEGER)
-;+		(cardinality 1 1)
+;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
 (defclass Assignacio_Exercici_Musculacio

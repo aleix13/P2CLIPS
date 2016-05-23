@@ -1,4 +1,4 @@
-; Sun May 22 11:01:36 CEST 2016
+; Mon May 23 11:11:24 CEST 2016
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -82,7 +82,7 @@
 
 ([Ontologia_Class10009] of  Cardio
 
-	(Contraindicacions pressio_alta obesitat_morbida)
+	(Contraindicacions pressio_alta obesitat_morbida problemes_esquena)
 	(Descripcio "Maquina que recrea una bicicleta on es pot ajustar la intensitat")
 	(Grups_musculars part_superior_cama part_inferior_cama glutis)
 	(Majors FALSE)
@@ -513,7 +513,7 @@
 	(Contraindicacions problemes_esquena)
 	(Descripcio "Recolzar-se inclinat en un banc que sostingui el cos fins als malucs i inclinar el tors cap avall i despres cap amunt simulant el moviment d'abdominals.")
 	(Grups_musculars coll espatlles esquena)
-	(Majors TRUE)
+	(Majors FALSE)
 	(Nom "Inclinacio en banc")
 	(Objectiu Manteniment Musculacio))
 
@@ -600,9 +600,99 @@
 
 ([Ontologia_Class40012] of  Terra_Duracio
 
-	(Descripcio "Estirar-se de bocaterrosa")
+	(Descripcio "Estirar-se de bocaterrosa i alcar el tronc recolzant-se amb els bracos sobre el terra i estibar el coll cap enrere.")
 	(Flexibilitat TRUE)
-	(Grups_musculars Pectoral)
+	(Grups_musculars Pectoral abdominals coll espatlles)
 	(Menors FALSE)
-	(Nom "Estirament de pectoral 2")
+	(Nom "Estirament de tronc")
+	(Objectiu Elasticitat))
+
+([Ontologia_Class40013] of  Terra_Duracio
+
+	(Descripcio "Flexionar les cames paralelament i estirar-ne una lateralment mentre s'inclina el tronc en sentit contrari.")
+	(Flexibilitat TRUE)
+	(Grups_musculars esquena Pectoral part_superior_cama part_inferior_cama)
+	(Menors FALSE)
+	(Nom "Estirament tronc i cames")
+	(Objectiu Elasticitat))
+
+([Ontologia_Class40014] of  Terra_Duracio
+
+	(Descripcio "Asseure's al terra, doblar una cama i creuar-la per sobre de l'altra i fer forca amb el brac del mateix costat per dur la cama doblada cap a l'exterior d'aquesta.")
+	(Flexibilitat TRUE)
+	(Grups_musculars esquena)
+	(Menors FALSE)
+	(Nom "Estirament de dorsal 2")
+	(Objectiu Elasticitat))
+
+([Ontologia_Class40015] of  Terra_Duracio
+
+	(Descripcio "Ajupir-se intentant acostar el cul al terra i agafar-se els turmells amb les cames obertes mantenint-se dempeus.")
+	(Flexibilitat TRUE)
+	(Grups_musculars part_superior_cama esquena)
+	(Menors FALSE)
+	(Nom "Estirament d'abductors")
+	(Objectiu Elasticitat))
+
+([Ontologia_Class40017] of  Terra_Duracio
+
+	(Descripcio "Asseure's amb les cames creuades i estibar la cama cap al pit sostenint-la pel genoll i pels turmells.")
+	(Flexibilitat TRUE)
+	(Grups_musculars part_superior_cama part_inferior_cama glutis)
+	(Menors FALSE)
+	(Nom "Estirament d'isquiotibials 2")
+	(Objectiu Elasticitat))
+
+([Ontologia_Class40018] of  Terra_Duracio
+
+	(Descripcio "Asseure's amb les cames creuades amb les plantes dels peus tocant-se i inclinar-se cap enrere aguantant-se amb les mans, portant els talons cap a les cuixes.")
+	(Flexibilitat TRUE)
+	(Grups_musculars part_superior_cama esquena esquena glutis)
+	(Menors FALSE)
+	(Nom "Estirament d'abductors 2")
+	(Objectiu Elasticitat))
+
+([Ontologia_Class40019] of  Terra_Duracio
+
+	(Descripcio "Agenollar una cama, l'altra mantenir-la amb el peu al terra doblant el genoll i inclinar el tors cap endavant.")
+	(Flexibilitat TRUE)
+	(Grups_musculars part_superior_cama esquena)
+	(Menors FALSE)
+	(Nom "Estirament de quadriceps 2")
+	(Objectiu Elasticitat))
+
+([Ontologia_Class40020] of  Terra_Duracio
+
+	(Descripcio "Estant dempeus, doblar el tors cap avall estirant els bracos per tocar-se els peus mantenint les cames rectes.")
+	(Flexibilitat TRUE)
+	(Grups_musculars part_superior_cama esquena glutis)
+	(Menors FALSE)
+	(Nom "Estirament tocar-se els peus")
+	(Objectiu Elasticitat))
+
+([Ontologia_Class40021] of  Terra_Duracio
+
+	(Descripcio "Posar-se a quatre potes amb els bracos a l'alcada de les espatlles, estirar les cames per quedar-se de puntetes i baixar el cap.")
+	(Flexibilitat TRUE)
+	(Grups_musculars part_superior_cama esquena part_inferior_cama)
+	(Menors FALSE)
+	(Nom "Estirament a quatre potes")
+	(Objectiu Elasticitat))
+
+([Ontologia_Class40022] of  Terra_Duracio
+
+	(Descripcio "Estirar-se cara enlaire amb els bracos en creu, flexionar una cama i girar els malucs sense aixecar les espatlles del terra fins que es toqui el terra amb el genoll.")
+	(Flexibilitat TRUE)
+	(Grups_musculars esquena glutis)
+	(Menors FALSE)
+	(Nom "Estirament de glutis")
+	(Objectiu Elasticitat))
+
+([Ontologia_Class40023] of  Terra_Duracio
+
+	(Descripcio "Estirar-se cara enlaire, aixecar les cames i portar els peus cap al cap sense doblar els genolls.")
+	(Flexibilitat TRUE)
+	(Grups_musculars esquena part_superior_cama)
+	(Menors FALSE)
+	(Nom "Estirament de lumbars 2")
 	(Objectiu Elasticitat))
