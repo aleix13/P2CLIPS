@@ -2,7 +2,6 @@
 
 
 
-
 (defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
 	(is-a USER)
 	(role abstract)
@@ -534,11 +533,6 @@
 ;+		(allowed-classes Musculacio)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Series
-		(type INTEGER)
-		(default 3)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot Pes
 		(type FLOAT)
 ;+		(cardinality 0 1)
@@ -556,11 +550,6 @@
 ;+		(allowed-classes Terra)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Series
-		(type INTEGER)
-		(default 3)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot Durada
 ;+		(comment "En minuts setmanals")
 		(type INTEGER)
@@ -575,17 +564,6 @@
 		(type INSTANCE)
 ;+		(allowed-classes Terra_Duracio)
 ;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Series
-		(type INTEGER)
-		(default 3)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Durada
-;+		(comment "En minuts setmanals")
-		(type INTEGER)
-		(range 0 1440)
-;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
 (defclass Exercicis_terra_repeticions
@@ -594,17 +572,6 @@
 	(single-slot Exercici_Assignat
 		(type INSTANCE)
 ;+		(allowed-classes Terra)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Series
-		(type INTEGER)
-		(default 3)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Durada
-;+		(comment "En minuts setmanals")
-		(type INTEGER)
-		(range 0 1440)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot Repeticions
@@ -624,11 +591,6 @@
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Series
-		(type INTEGER)
-		(default 3)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot Durada
 ;+		(comment "En minuts setmanals")
 		(type INTEGER)
@@ -642,21 +604,6 @@
 	(single-slot Exercici_Assignat
 		(type INSTANCE)
 ;+		(allowed-classes Cardio)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Series
-		(type INTEGER)
-		(default 3)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Resistencia
-		(type INTEGER)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Durada
-;+		(comment "En minuts setmanals")
-		(type INTEGER)
-		(range 0 1440)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot Velocitat
@@ -1461,7 +1408,7 @@
  )
 
 
- ;------------templates per a la solucio abstracte----------------
+ ;------------templates per a la solucio concreta----------------
 
  (deftemplate assignacio-dia
 	(slot numDia (type INTEGER) (range 1 5))
@@ -1509,98 +1456,31 @@
 	(return (create$ ?tc ?tm ?te))
 )
 
-(deffunction imprimir-exercicis(?exercicis)
-	(loop-for-count (?i 1 (length ?exercicis))
-	(bind ?ass (nth$ ?i ?exercicis))
-	(bind ?tipus (class ?ass))
-		(switch ?tipus
-			(case Assignacio_exercici_cardio then
-				(send ?ass printaCardio)
-			)
-			(case Assignacio_exercici_cinta then
-				(send ?ass printaCinta)
-			)
-			(case Assignacio_Exercici_Musculacio then
-				(send ?ass printaMusc)
-			)
-			(case Assignacio_exercici_terra_Duracio then
-				(send ?ass printaDur)
-			)
-			(case Exercicis_terra_repeticions then
-				(send ?ass printaRep)
-			)
-		)
-		(printout t crlf)
-	)
-)
-(deffunction imprimir-dia(?numDia ?ae ?ap ?af)
-	;?d <- (assignacio-dia (numDia ?numDia) (assignacions-escalfament ?ae) (assignacions-principal ?ap) (assignacions-final ?af))
-	(printout t "-------------------------------->  DIA: " ?numDia " <-----------------------------------------"crlf)
-	(printout t crlf)
-	(printout t "-------------------------------->  ESCALFAMENT:" crlf)
-	(printout t crlf)
-	(imprimir-exercicis ?ae)
-	(printout t crlf)
-	(printout t "-------------------------------->  PART PRINCIPAL:" crlf)
-	(printout t crlf)
-	(imprimir-exercicis ?ap)
-	(printout t crlf)
-	(printout t "-------------------------------->  PART FINAL:" crlf)
-	(printout t crlf)
-	(imprimir-exercicis ?af)
-	(printout t crlf)
-	(printout t "---------------------------------------------------------------------------------------"crlf)
-	(printout t crlf)
-)
 ;--------------------------------TEMPLATES-----------------------------------------------------------
 
-;---------------------------------MESSAGES HANDLER ----------------------------------------------------
+;(defmessage-handler Exercici printa primary ()
+	;(printout t "-----Nom:" ?self:Nom crlf)
+	;(printout t "Descripcio: " ?self:Descripcio crlf)
+	;(bind ?llista (implode$ ?self:Grups_musculars))
+	;(printout t "Grups musculars que treballa: " crlf)
+	;(loop-for-count (?i 1 (length$ ?llista)) do
+	;(bind ?aux (nth$ ?i ?llista))
+	;(printout t "-->" ?aux crlf)
+	;)
+;)
 
-(defmessage-handler Exercici printaEx primary()
-	(printout t "------------ Exercici: " ?self:Nom " --------------" crlf)
-	(printout t "                - Descripcio: " ?self:Descripcio crlf)
-	(printout t "                - Grups musculars que treballa:" crlf)
-	(bind $?gm  ?self:Grups_musculars )
-	(loop-for-count (?i 1 (length$ ?gm))
-		(bind ?aux (nth$ ?i $?gm))
-		(printout t "                          ->" ?aux crlf)
-	)
-	(printout t crlf)
-)
+;(defmessage-handler Assignacio_exercici_cinta printa primary ()
+;bind ?ex ?self:Exercici_Assignat)
+;;send ?ex printa)
+;;printout t "Dificultat: " ?self:Dificultat)
+;;printout t "Durada: [ " ?self:Durada_min "," ?self:Durada_max "] minuts." crlf)
+;;printout t "Velocitat: [ " ?self:Velocitat_min "," ?self:Velocitat_max "] kn/h." crlf)
+;;printout t "Resistencia: [ " ?self:Resistencia_min "," ?self:Resistencia_max "]." crlf)
+;)
 
-(defmessage-handler Assignacio_exercici_cardio printaCardio primary()
-	(send ?self:Exercici_Assignat printaEx)
-	(printout t "                - Resistencia: " ?self:Resistencia "% de la capacitat de la maquina." crlf)
-	(printout t "                - Durada: " ?self:Durada "minuts." crlf)
-)
+;-----------------------------------MISSATGES---------------------------------------------------------
 
-(defmessage-handler Assignacio_exercici_cinta printaCinta primary()
-	(send ?self:Exercici_Assignat printaEx)
-	(printout t "                - Resistencia: " ?self:Resistencia "% de la capacitat total de la maquina." crlf)
-  (printout t "                - Velocitat: " ?self:Velocitat "% de la capacitat total de la maquina." crlf)
-	(printout t "                - Durada: " ?self:Durada "minuts." crlf)
-)
-
-(defmessage-handler Assignacio_Exercici_Musculacio printaMusc primary()
-	(send ?self:Exercici_Assignat printaEx)
-	(printout t "                - Series: " ?self:Series  crlf)
-	(printout t "                - Repeticions: " ?self:Repeticions " per serie" crlf)
-	(printout t "                - Pes: " ?self:Pes "% del pes maxim possible." crlf)
-)
-
-(defmessage-handler Assignacio_exercici_terra_Duracio printaDur primary()
-	(send ?self:Exercici_Assignat printaEx)
-	(printout t "                - Series: " ?self:Series  crlf)
-	(printout t "                - Durada: " ?self:Durada "minuts per serie." crlf)
-)
-
-(defmessage-handler Exercicis_terra_repeticions printaRep primary()
-	(send ?self:Exercici_Assignat printaEx)
-	(printout t "                - Series: " ?self:Series  crlf)
-	(printout t "                - Repeticions: " ?self:Repeticions " per serie." crlf)
-)
-;---------------------------------MESSAGES HANDLER ----------------------------------------------------
-
+;-----------------------------------MISSATGES---------------------------------------------------------
 ;--------------------------------MODUL:MAIN-----------------------------------------------------------
 (defmodule MAIN (export ?ALL))
 
@@ -2003,8 +1883,7 @@
 							(printout t "				4: [11-15]" crlf)
 							(printout t "				5: mes de 15" crlf)
 
-              (readline jocs)
-							(bind ?f (readline jocs))
+							(bind ?f (read jocs))
 							(if (eq ?f no) then (bind ?nc 0) (printout t "fumar: no" crlf)
 							else (printout t "fumar: si" crlf)
 							(bind ?nc (read jocs))
@@ -2702,7 +2581,6 @@
 	(not (assignacio-dia))
 	?client_actual <- (object (is-a Client))
 	=>
-	(printout t "------------> Preparant solucio... <------------ " crlf)
 	(bind ?temps-disp (send ?client_actual get-Temps_Disponible_Diari))
 	(bind ?temps-e (* 0.1 ?temps-disp))
 	(bind ?temps-p (* 0.8 ?temps-disp))
@@ -3549,7 +3427,6 @@
 						(bind ?taux (+ ?taux ?tex))
 						(bind ?assignacio (make-instance (gensym) of Assignacio_Exercici_Musculacio))
 						(send ?assignacio put-Exercici_Assignat ?exF)
-				    (send ?assignacio put-Repeticions ?rep)
 									(switch ?int
 										(case MOLT_BAIXA then
 											(send ?assignacio put-Pes 15)
@@ -3757,7 +3634,6 @@
 						(bind ?taux (+ ?taux ?tex))
 						(bind ?assignacio (make-instance (gensym) of Assignacio_Exercici_Musculacio))
 						(send ?assignacio put-Exercici_Assignat ?exF)
-						(send ?assignacio put-Repeticions ?rep)
 									(switch ?int
 										(case MOLT_BAIXA then
 											(send ?assignacio put-Pes 15)
@@ -3965,7 +3841,6 @@
 						(bind ?taux (+ ?taux ?tex))
 						(bind ?assignacio (make-instance (gensym) of Assignacio_Exercici_Musculacio))
 						(send ?assignacio put-Exercici_Assignat ?exF)
-						(send ?assignacio put-Repeticions ?rep)
 									(switch ?int
 										(case MOLT_BAIXA then
 											(send ?assignacio put-Pes 15)
@@ -4173,7 +4048,6 @@
 						(bind ?taux (+ ?taux ?tex))
 						(bind ?assignacio (make-instance (gensym) of Assignacio_Exercici_Musculacio))
 						(send ?assignacio put-Exercici_Assignat ?exF)
-						(send ?assignacio put-Repeticions ?rep)
 									(switch ?int
 										(case MOLT_BAIXA then
 											(send ?assignacio put-Pes 15)
@@ -4381,7 +4255,6 @@
 						(bind ?taux (+ ?taux ?tex))
 						(bind ?assignacio (make-instance (gensym) of Assignacio_Exercici_Musculacio))
 						(send ?assignacio put-Exercici_Assignat ?exF)
-						(send ?assignacio put-Repeticions ?rep)
 									(switch ?int
 										(case MOLT_BAIXA then
 											(send ?assignacio put-Pes 15)
@@ -4501,66 +4374,4 @@
 		(modify ?ad (assignacions-principal ?assprin))
 	(assert (prinDia5))
 )
-
-(defrule focus-imprimir
-	(escDia1) (escDia2) (escDia3) (escDia4) (escDia5)
-	(finDia1) (finDia2) (finDia3) (finDia4) (finDia5)
-	(prinDia1) (prinDia2) (prinDia3) (prinDia4) (prinDia5)
-	=>
-	(focus IMPRIMIR_SOL)
-)
 ;-------------------Assignacions part principal-----------------------------
-
-(defmodule IMPRIMIR_SOL (import MAIN ?ALL) (import SOL_CONCR ?ALL) (import PREGUNTES ?ALL)(import ABSTRACCIO ?ALL) (import SOL_ABSTR ?ALL)(export ?ALL))
-(defrule inici-impressio
-	(not (inici-imp))
-	?client_actual <-(object (is-a Client))
-	=>
-	(printout t "------------> Rutina d'entrenament de 5 dies per a l'usuari amb nom: " (send ?client_actual get-Nom) " <------------" crlf)
-	(assert (inici-imp))
-)
-
-(defrule imprimeix-dia1
-	(inici-imp)
-	(not (imprimeix-dia1))
-	?d <- (assignacio-dia (numDia 1) (assignacions-escalfament $?ae) (assignacions-principal $?ap) (assignacions-final $?af))
-	=>
-		(imprimir-dia 1 $?ae $?ap $?af)
-		(assert (imprimeix-dia1))
-)
-
-(defrule imprimeix-dia2
-	(imprimeix-dia1)
-	(not (imprimeix-dia2))
-	?d <- (assignacio-dia (numDia 2) (assignacions-escalfament $?ae) (assignacions-principal $?ap) (assignacions-final $?af))
-	=>
-		(imprimir-dia 2 $?ae $?ap $?af)
-		(assert (imprimeix-dia2))
-)
-
-(defrule imprimeix-dia3
-	(imprimeix-dia2)
-	(not (imprimeix-dia3))
-	?d <- (assignacio-dia (numDia 3) (assignacions-escalfament $?ae) (assignacions-principal $?ap) (assignacions-final $?af))
-	=>
-		(imprimir-dia 3 $?ae $?ap $?af)
-		(assert (imprimeix-dia3))
-)
-
-(defrule imprimeix-dia4
-	(imprimeix-dia3)
-	(not (imprimeix-dia4))
-	?d <- (assignacio-dia (numDia 4) (assignacions-escalfament $?ae) (assignacions-principal $?ap) (assignacions-final $?af))
-	=>
-		(imprimir-dia 4 $?ae $?ap $?af)
-		(assert (imprimeix-dia4))
-)
-
-(defrule imprimeix-dia5
-	(imprimeix-dia4)
-	(not (imprimeix-dia5))
-	?d <- (assignacio-dia (numDia 5) (assignacions-escalfament $?ae) (assignacions-principal $?ap) (assignacions-final $?af))
-	=>
-		(imprimir-dia 5 $?ae $?ap $?af)
-		(assert (imprimeix-dia5))
-)
