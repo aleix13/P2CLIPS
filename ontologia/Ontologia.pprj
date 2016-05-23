@@ -1,4 +1,4 @@
-; Mon May 23 19:51:46 CEST 2016
+; Mon May 23 20:06:10 CEST 2016
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -21,13 +21,13 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[Ontologia_ProjectKB_Class10116]
-		[Ontologia_ProjectKB_Class10117]
-		[Ontologia_ProjectKB_Class10118]
-		[Ontologia_ProjectKB_Class10119]
-		[Ontologia_ProjectKB_Class10120]
-		[Ontologia_ProjectKB_Class10121]
-		[Ontologia_ProjectKB_Class10122]))
+		[Ontologia_ProjectKB_Class10128]
+		[Ontologia_ProjectKB_Class10129]
+		[Ontologia_ProjectKB_Class10130]
+		[Ontologia_ProjectKB_Class10131]
+		[Ontologia_ProjectKB_Class10132]
+		[Ontologia_ProjectKB_Class10133]
+		[Ontologia_ProjectKB_Class10134]))
 
 ([CLSES_TAB] of  Widget
 
@@ -83,11 +83,11 @@
 ([KB_291316_Class1] of  Map
 
 	(entries
-		[Ontologia_ProjectKB_Class10124]
-		[Ontologia_ProjectKB_Class10125]
-		[Ontologia_ProjectKB_Class10126]
-		[Ontologia_ProjectKB_Class10127])
-	(referenced_maps [Ontologia_ProjectKB_Class10123]))
+		[Ontologia_ProjectKB_Class10136]
+		[Ontologia_ProjectKB_Class10137]
+		[Ontologia_ProjectKB_Class10138]
+		[Ontologia_ProjectKB_Class10139])
+	(referenced_maps [Ontologia_ProjectKB_Class10135]))
 
 ([KB_291316_Class100] of  Property_List
 )
@@ -253,66 +253,66 @@
 ([Ontologia_ProjectKB_Class10017] of  Property_List
 )
 
-([Ontologia_ProjectKB_Class10116] of  String
+([Ontologia_ProjectKB_Class10128] of  String
 
 	(name "Cardio")
 	(string_value "Nom"))
 
-([Ontologia_ProjectKB_Class10117] of  String
+([Ontologia_ProjectKB_Class10129] of  String
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))
 
-([Ontologia_ProjectKB_Class10118] of  String
+([Ontologia_ProjectKB_Class10130] of  String
 
 	(name "Terra_Duracio")
 	(string_value "Nom{-}Grups_musculars"))
 
-([Ontologia_ProjectKB_Class10119] of  String
+([Ontologia_ProjectKB_Class10131] of  String
 
 	(name "Musculacio")
 	(string_value "Nom"))
 
-([Ontologia_ProjectKB_Class10120] of  String
+([Ontologia_ProjectKB_Class10132] of  String
 
 	(name "Terra_Repeticions")
 	(string_value "Nom"))
 
-([Ontologia_ProjectKB_Class10121] of  String
+([Ontologia_ProjectKB_Class10133] of  String
 
 	(name ":PAL-CONSTRAINT")
 	(string_value "%3APAL-NAME"))
 
-([Ontologia_ProjectKB_Class10122] of  String
+([Ontologia_ProjectKB_Class10134] of  String
 
 	(name ":META-CLASS")
 	(string_value "%3ANAME"))
 
-([Ontologia_ProjectKB_Class10123] of  Map
+([Ontologia_ProjectKB_Class10135] of  Map
 )
 
-([Ontologia_ProjectKB_Class10124] of  Map_Entry
+([Ontologia_ProjectKB_Class10136] of  Map_Entry
 
 	(key "InstanceDisplay.yellow_stickies")
 	(key_class "java.lang.String")
-	(value "Ontologia_ProjectKB_Class10123")
+	(value "Ontologia_ProjectKB_Class10135")
 	(value_class "java.util.Map"))
 
-([Ontologia_ProjectKB_Class10125] of  Map_Entry
+([Ontologia_ProjectKB_Class10137] of  Map_Entry
 
 	(key "suppress_instance_counting")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([Ontologia_ProjectKB_Class10126] of  Map_Entry
+([Ontologia_ProjectKB_Class10138] of  Map_Entry
 
 	(key "add_name_on_instance_form")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([Ontologia_ProjectKB_Class10127] of  Map_Entry
+([Ontologia_ProjectKB_Class10139] of  Map_Entry
 
 	(key "change_tracking_active")
 	(key_class "java.lang.String")

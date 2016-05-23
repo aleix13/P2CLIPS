@@ -740,7 +740,6 @@
 
 	([Ontologia_Class10005] of  Cardio
 
-		(Contraindicacions pressio_alta obesitat_morbida)
 		(Descripcio "Bicicleta eliptica")
 		(Grups_musculars part_superior_cama espatlles brac esquena glutis part_inferior_cama)
 		(Majors FALSE)
@@ -1397,6 +1396,7 @@
 		(Menors FALSE)
 		(Nom "Estirament de lumbars 2")
 		(Objectiu Elasticitat))
+
 
 
 )
