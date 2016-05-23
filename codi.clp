@@ -2475,7 +2475,7 @@
 	(bind ?li (find-all-instances ((?inst Cardio)) TRUE))
 	(bind ?ex (random-slot ?li))
 	(if (eq (class ?ex) Cardio) then
-				(bind ?assignacio (make-instance assig-cardio of Assignacio_exercici_cardio))
+				(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_cardio))
 				(send ?assignacio put-Exercici_Assignat ?ex)
 				(send ?assignacio put-Durada ?te)
 				(switch ?int
@@ -2497,7 +2497,7 @@
 				)
 			(modify ?ad (assignacions-escalfament ?assignacio))
 		else
-		(bind ?assignacio (make-instance assig-cinta of Assignacio_exercici_cinta))
+		(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_cinta))
 		(send ?assignacio put-Exercici_Assignat ?ex)
 		(send ?assignacio put-Durada ?te)
 		(switch ?int
@@ -2536,7 +2536,7 @@
 	(bind ?li (find-all-instances ((?inst Cardio)) TRUE))
 	(bind ?ex (random-slot ?li))
 	(if (eq (class ?ex) Cardio) then
-				(bind ?assignacio (make-instance assig-cardio2 of Assignacio_exercici_cardio))
+				(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_cardio))
 				(send ?assignacio put-Exercici_Assignat ?ex)
 				(send ?assignacio put-Durada ?te)
 				(switch ?int
@@ -2558,7 +2558,7 @@
 				)
 			(modify ?ad (assignacions-escalfament ?assignacio))
 		else
-		(bind ?assignacio (make-instance assig-cinta2 of Assignacio_exercici_cinta))
+		(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_cinta))
 		(send ?assignacio put-Exercici_Assignat ?ex)
 		(send ?assignacio put-Durada ?te)
 		(switch ?int
@@ -2597,7 +2597,7 @@
 	(bind ?li (find-all-instances ((?inst Cardio)) TRUE))
 	(bind ?ex (random-slot ?li))
 	(if (eq (class ?ex) Cardio) then
-				(bind ?assignacio (make-instance assig-cardio3 of Assignacio_exercici_cardio))
+				(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_cardio))
 				(send ?assignacio put-Exercici_Assignat ?ex)
 				(send ?assignacio put-Durada ?te)
 				(switch ?int
@@ -2619,7 +2619,7 @@
 				)
 			(modify ?ad (assignacions-escalfament ?assignacio))
 		else
-		(bind ?assignacio (make-instance assig-cinta3 of Assignacio_exercici_cinta))
+		(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_cinta))
 		(send ?assignacio put-Exercici_Assignat ?ex)
 		(send ?assignacio put-Durada ?te)
 		(switch ?int
@@ -2659,7 +2659,7 @@
 	(bind ?ex (random-slot ?li))
 
 	(if (eq (class ?ex) Cardio) then
-				(bind ?assignacio (make-instance assig-cardio4 of Assignacio_exercici_cardio))
+				(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_cardio))
 				(send ?assignacio put-Exercici_Assignat ?ex)
 				(send ?assignacio put-Durada ?te)
 				(switch ?int
@@ -2681,7 +2681,7 @@
 				)
 			(modify ?ad (assignacions-escalfament ?assignacio))
 		else
-		(bind ?assignacio (make-instance assig-cinta4 of Assignacio_exercici_cinta))
+		(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_cinta))
 		(send ?assignacio put-Exercici_Assignat ?ex)
 		(send ?assignacio put-Durada ?te)
 		(switch ?int
@@ -2720,7 +2720,7 @@
 	(bind ?li (find-all-instances ((?inst Cardio)) TRUE))
 	(bind ?ex (random-slot ?li))
 	(if (eq (class ?ex) Cardio) then
-				(bind ?assignacio (make-instance assig-cardio5 of Assignacio_exercici_cardio))
+				(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_cardio))
 				(send ?assignacio put-Exercici_Assignat ?ex)
 				(send ?assignacio put-Durada ?te)
 				(switch ?int
@@ -2742,7 +2742,7 @@
 				)
 			(modify ?ad (assignacions-escalfament ?assignacio))
 		else
-		(bind ?assignacio (make-instance assig-cinta5 of Assignacio_exercici_cinta))
+		(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_cinta))
 		(send ?assignacio put-Exercici_Assignat ?ex)
 		(send ?assignacio put-Durada ?te)
 		(switch ?int
@@ -2789,7 +2789,7 @@
 	(bind ?li (find-all-instances ((?inst Cardio)) TRUE))
 	(bind ?ex (random-slot ?li))
 	(if (eq (class ?ex) Cardio) then
-				(bind ?assignacio (make-instance assig-cardio of Assignacio_exercici_cardio))
+				(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_cardio))
 				(send ?assignacio put-Exercici_Assignat ?ex)
 				(send ?assignacio put-Durada ?te)
 				(switch ?int
@@ -2812,7 +2812,7 @@
         (insert$ ?af 1 ?assignacio)
 			;(modify ?ad (assignacions-final ?assignacio))
 		else
-		(bind ?assignacio (make-instance assig-cinta of Assignacio_exercici_cinta))
+		(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_cinta))
 		(send ?assignacio put-Exercici_Assignat ?ex)
 		(send ?assignacio put-Durada ?te)
 		(switch ?int
@@ -2874,7 +2874,7 @@
 	(bind ?li (find-all-instances ((?inst Cardio)) TRUE))
 	(bind ?ex (random-slot ?li))
 	(if (eq (class ?ex) Cardio) then
-				(bind ?assignacio (make-instance assig-cardio of Assignacio_exercici_cardio))
+				(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_cardio))
 				(send ?assignacio put-Exercici_Assignat ?ex)
 				(send ?assignacio put-Durada ?te)
 				(switch ?int
@@ -2897,7 +2897,7 @@
         (insert$ ?af 1 ?assignacio)
 			;(modify ?ad (assignacions-final ?assignacio))
 		else
-		(bind ?assignacio (make-instance assig-cinta of Assignacio_exercici_cinta))
+		(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_cinta))
 		(send ?assignacio put-Exercici_Assignat ?ex)
 		(send ?assignacio put-Durada ?te)
 		(switch ?int
@@ -2959,7 +2959,7 @@
 	(bind ?li (find-all-instances ((?inst Cardio)) TRUE))
 	(bind ?ex (random-slot ?li))
 	(if (eq (class ?ex) Cardio) then
-				(bind ?assignacio (make-instance assig-cardio of Assignacio_exercici_cardio))
+				(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_cardio))
 				(send ?assignacio put-Exercici_Assignat ?ex)
 				(send ?assignacio put-Durada ?te)
 				(switch ?int
@@ -2982,7 +2982,7 @@
         (insert$ ?af 1 ?assignacio)
 			;(modify ?ad (assignacions-final ?assignacio))
 		else
-		(bind ?assignacio (make-instance assig-cinta of Assignacio_exercici_cinta))
+		(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_cinta))
 		(send ?assignacio put-Exercici_Assignat ?ex)
 		(send ?assignacio put-Durada ?te)
 		(switch ?int
@@ -3045,7 +3045,7 @@
 	(bind ?li (find-all-instances ((?inst Cardio)) TRUE))
 	(bind ?ex (random-slot ?li))
 	(if (eq (class ?ex) Cardio) then
-				(bind ?assignacio (make-instance assig-cardio of Assignacio_exercici_cardio))
+				(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_cardio))
 				(send ?assignacio put-Exercici_Assignat ?ex)
 				(send ?assignacio put-Durada ?te)
 				(switch ?int
@@ -3068,7 +3068,7 @@
         (insert$ ?af 1 ?assignacio)
 			;(modify ?ad (assignacions-final ?assignacio))
 		else
-		(bind ?assignacio (make-instance assig-cinta of Assignacio_exercici_cinta))
+		(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_cinta))
 		(send ?assignacio put-Exercici_Assignat ?ex)
 		(send ?assignacio put-Durada ?te)
 		(switch ?int
@@ -3132,7 +3132,7 @@
 	(bind ?li (find-all-instances ((?inst Cardio)) TRUE))
 	(bind ?ex (random-slot ?li))
 	(if (eq (class ?ex) Cardio) then
-				(bind ?assignacio (make-instance assig-cardio of Assignacio_exercici_cardio))
+				(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_cardio))
 				(send ?assignacio put-Exercici_Assignat ?ex)
 				(send ?assignacio put-Durada ?te)
 				(switch ?int
@@ -3155,7 +3155,7 @@
         (insert$ ?af 1 ?assignacio)
 			;(modify ?ad (assignacions-final ?assignacio))
 		else
-		(bind ?assignacio (make-instance assig-cinta of Assignacio_exercici_cinta))
+		(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_cinta))
 		(send ?assignacio put-Exercici_Assignat ?ex)
 		(send ?assignacio put-Durada ?te)
 		(switch ?int
@@ -3223,11 +3223,12 @@
 	(bind ?te (nth$ 3 ?temps))
 	;part cardio..............
 	(bind ?assprin (create$ ))
- (if (not(eq ?tc 0)) then
+
+ (if (not(= ?tc 0)) then
 		(bind ?li (find-all-instances ((?inst Cardio)) TRUE))
 		(bind ?ex (random-slot ?li))
 		(if (eq (class ?ex) Cardio) then
-					(bind ?assignacio (make-instance assig-cardio of Assignacio_exercici_cardio))
+					(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_cardio))
 					(send ?assignacio put-Exercici_Assignat ?ex)
 					(send ?assignacio put-Durada ?tc)
 					(switch ?int
@@ -3249,7 +3250,7 @@
 					)
 	        (bind ?assprin (insert$ ?assprin (+ (length$ ?assprin) 1) ?assignacio))
 			else
-			(bind ?assignacio (make-instance assig-cinta of Assignacio_exercici_cinta))
+			(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_cinta))
 			(send ?assignacio put-Exercici_Assignat ?ex)
 			(send ?assignacio put-Durada ?te)
 			(switch ?int
@@ -3279,7 +3280,7 @@
 		)
 
 		;part elasticitat-----------------------------------------------------
-		(if (not(eq ?te 0)) then
+		(if (not(= ?te 0)) then
 		(bind ?assignats (create$ ))
 		(bind ?af (create$ ))
 		;AQUÍ HEM ASSIGNAT EXERCICI CARDIO
@@ -3297,12 +3298,9 @@
 				(bind ?af (insert$ ?af (+ (length$ ?af) 1) ?assignacio))
 				)
 		)
-		(bind ?assprin (insert$ ?assprin (+ (length$ ?af) 1) ?af))
+		(bind ?assprin (insert$ ?assprin (+ (length$ ?assprin) 1) ?af))
 		)
-
-
-
-
+		(modify ?ad (assignacions-principal ?assprin))
 	(assert (prinDia1))
 )
 
