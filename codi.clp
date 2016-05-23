@@ -2,7 +2,6 @@
 
 
 
-
 (defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
 	(is-a USER)
 	(role abstract)
@@ -69,6 +68,10 @@
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(single-slot Repeticions_rec
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot Ontologia_Class10021
 		(type STRING)
 ;+		(cardinality 0 1)
@@ -79,6 +82,7 @@
 		(create-accessor read-write))
 	(single-slot Series
 		(type INTEGER)
+		(default 3)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot Habits
@@ -108,7 +112,7 @@
 		(create-accessor read-write))
 	(single-slot Dificultat
 		(type SYMBOL)
-		(allowed-values Facil Moderada Alta Molt_alta)
+		(allowed-values Moderada Normal Dificil)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot Nombre_cigarretes
@@ -136,6 +140,10 @@
 	(single-slot hores_esport_extra
 		(type INTEGER)
 ;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Ontologia_Class40001
+		(type STRING)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot Problemes_mobilitat
 		(type SYMBOL)
@@ -297,10 +305,6 @@
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(multislot Parts_Afectades
-		(type SYMBOL)
-		(allowed-values Coll Esquena Avantbrac Brac Part_superior_cama part_inferior_cama Abdominals espatlles Pectoral)
-		(create-accessor read-write))
 	(single-slot Problemes_articulars
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
@@ -441,6 +445,10 @@
 (defclass Musculacio
 	(is-a Exercici)
 	(role concrete)
+	(single-slot Repeticions_rec
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(multislot Objectiu
 ;+		(comment "objectiu fisic pel qual es adequat")
 		(type SYMBOL)
@@ -506,11 +514,6 @@
 (defclass Assignacio_Exercici
 	(is-a USER)
 	(role concrete)
-	(single-slot Dificultat
-		(type SYMBOL)
-		(allowed-values Facil Moderada Alta Molt_alta)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot Exercici_Assignat
 		(type INSTANCE)
 ;+		(allowed-classes Exercici)
@@ -518,6 +521,7 @@
 		(create-accessor read-write))
 	(single-slot Series
 		(type INTEGER)
+		(default 3)
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
@@ -612,6 +616,7 @@
 
 (definstances instancies
 
+
 	([Ontologia_Class0] of  Musculacio
 
 		(Descripcio "Estirarse cara avall a sobre d'un banc i, amb una pesa o sense al clatell, fer un moviment amb el coll d'amunt cap avall.")
@@ -619,7 +624,8 @@
 		(Majors FALSE)
 		(Menors FALSE)
 		(Nom "Resistencia de coll cara avall")
-		(Objectiu Musculacio condicio_fisica_general Manteniment))
+		(Objectiu Musculacio condicio_fisica_general Manteniment)
+		(Repeticions_rec 8))
 
 	([Ontologia_Class1] of  Habit_Fisic
 
@@ -638,16 +644,18 @@
 		(Majors FALSE)
 		(Menors FALSE)
 		(Nom "Maquina esquena estirar")
-		(Objectiu Manteniment Musculacio))
+		(Objectiu Manteniment Musculacio)
+		(Repeticions_rec 12))
 
 	([Ontologia_Class10001] of  Musculacio
 
-		(Descripcio "Estirarse a sobre dun banc cara amunt i fer un moviment des de avall, cap amunt, com dient \"si\".")
+		(Descripcio "Estirarse a sobre dun banc cara amunt sense recolzar la part superior del tronc i fer un moviment des d'avall, cap amunt, com dient \"si\".")
 		(Grups_musculars coll espatlles)
 		(Majors FALSE)
 		(Menors FALSE)
 		(Nom "Resistencia coll cara amunt")
-		(Objectiu Manteniment Musculacio condicio_fisica_general))
+		(Objectiu Manteniment Musculacio condicio_fisica_general)
+		(Repeticions_rec 8))
 
 	([Ontologia_Class10002] of  Terra_Duracio
 
@@ -691,7 +699,7 @@
 
 	([Ontologia_Class10009] of  Cardio
 
-		(Contraindicacions pressio_alta obesitat_morbida)
+		(Contraindicacions pressio_alta obesitat_morbida problemes_esquena)
 		(Descripcio "Maquina que recrea una bicicleta on es pot ajustar la intensitat")
 		(Grups_musculars part_superior_cama part_inferior_cama glutis)
 		(Majors FALSE)
@@ -744,8 +752,8 @@
 		(Contraindicacions pressio_alta)
 		(Descripcio "Estirat al terra amb les mans cara avall al terra, aixecar les cames rectes i la cintura fins que estiguin perpendiculars al terra i tornar a la posicio")
 		(Grups_musculars abdominals)
-		(Majors TRUE)
-		(Menors TRUE)
+		(Majors FALSE)
+		(Menors FALSE)
 		(Nom "Bottoms up")
 		(Objectiu Musculacio))
 
@@ -807,7 +815,8 @@
 		(Majors FALSE)
 		(Menors FALSE)
 		(Nom "Encongiment de trapezi amb barra o manuelles")
-		(Objectiu Manteniment Musculacio condicio_fisica_general))
+		(Objectiu Manteniment Musculacio condicio_fisica_general)
+		(Repeticions_rec 12))
 
 	([Ontologia_Class20006] of  Musculacio
 
@@ -817,7 +826,8 @@
 		(Majors FALSE)
 		(Menors FALSE)
 		(Nom "Encongiment de trapezi amb maquina")
-		(Objectiu Manteniment Musculacio condicio_fisica_general))
+		(Objectiu Manteniment Musculacio condicio_fisica_general)
+		(Repeticions_rec 12))
 
 	([Ontologia_Class20007] of  Musculacio
 
@@ -827,7 +837,8 @@
 		(Majors FALSE)
 		(Menors FALSE)
 		(Nom "Dominades per a trapezi")
-		(Objectiu Manteniment Musculacio condicio_fisica_general))
+		(Objectiu Manteniment Musculacio condicio_fisica_general)
+		(Repeticions_rec 12))
 
 	([Ontologia_Class20009] of  Musculacio
 
@@ -837,7 +848,8 @@
 		(Majors FALSE)
 		(Menors FALSE)
 		(Nom "Aixecament de pesa amb nansa")
-		(Objectiu Manteniment Musculacio condicio_fisica_general))
+		(Objectiu Manteniment Musculacio condicio_fisica_general)
+		(Repeticions_rec 12))
 
 	([Ontologia_Class20010] of  Musculacio
 
@@ -847,7 +859,8 @@
 		(Majors FALSE)
 		(Menors FALSE)
 		(Nom "Aixecament lateral de manuelles")
-		(Objectiu Manteniment Musculacio condicio_fisica_general))
+		(Objectiu Manteniment Musculacio condicio_fisica_general)
+		(Repeticions_rec 10))
 
 	([Ontologia_Class20011] of  Musculacio
 
@@ -857,7 +870,8 @@
 		(Majors FALSE)
 		(Menors FALSE)
 		(Nom "Aixecament lateral de manuelles sobre banc")
-		(Objectiu Manteniment Musculacio condicio_fisica_general))
+		(Objectiu Manteniment Musculacio condicio_fisica_general)
+		(Repeticions_rec 10))
 
 	([Ontologia_Class20012] of  Musculacio
 
@@ -866,15 +880,16 @@
 		(Majors FALSE)
 		(Menors FALSE)
 		(Nom "Press pes lliure amb manuelles")
-		(Objectiu Manteniment Musculacio condicio_fisica_general))
+		(Objectiu Manteniment Musculacio condicio_fisica_general)
+		(Repeticions_rec 10))
 
 	([Ontologia_Class20014] of  Terra_Repeticions
 
 		(Contraindicacions problemes_esquena)
 		(Descripcio "Posar-se cara avall, tocar el terra nomes amb les puntes dels peus i amb les mans plantades al terra, estirar els bracos, perpendicularment al terra, aixecant el pes del cos.")
 		(Grups_musculars brac Pectoral)
-		(Majors TRUE)
-		(Menors TRUE)
+		(Majors FALSE)
+		(Menors FALSE)
 		(Nom "Flexions")
 		(Objectiu Manteniment condicio_fisica_general Musculacio))
 
@@ -885,7 +900,8 @@
 		(Majors FALSE)
 		(Menors FALSE)
 		(Nom "Maquina de pit press")
-		(Objectiu Manteniment Musculacio))
+		(Objectiu Manteniment Musculacio)
+		(Repeticions_rec 10))
 
 	([Ontologia_Class20016] of  Musculacio
 
@@ -893,7 +909,8 @@
 		(Grups_musculars Pectoral)
 		(Majors FALSE)
 		(Nom "Maquina pit papallona")
-		(Objectiu Manteniment Musculacio condicio_fisica_general))
+		(Objectiu Manteniment Musculacio condicio_fisica_general)
+		(Repeticions_rec 10))
 
 	([Ontologia_Class20017] of  Musculacio
 
@@ -902,7 +919,8 @@
 		(Grups_musculars brac)
 		(Majors FALSE)
 		(Nom "Aixecament manuelles")
-		(Objectiu Musculacio Manteniment))
+		(Objectiu Musculacio Manteniment)
+		(Repeticions_rec 10))
 
 	([Ontologia_Class20018] of  Musculacio
 
@@ -910,7 +928,8 @@
 		(Grups_musculars brac)
 		(Majors FALSE)
 		(Nom "Aixecament manuelles superior")
-		(Objectiu Musculacio Manteniment))
+		(Objectiu Musculacio Manteniment)
+		(Repeticions_rec 10))
 
 	([Ontologia_Class20019] of  Musculacio
 
@@ -919,7 +938,8 @@
 		(Grups_musculars brac)
 		(Majors FALSE)
 		(Nom "Aixecament barra lliure")
-		(Objectiu Musculacio Manteniment))
+		(Objectiu Musculacio Manteniment)
+		(Repeticions_rec 10))
 
 	([Ontologia_Class20021] of  Musculacio
 
@@ -927,7 +947,8 @@
 		(Grups_musculars brac)
 		(Majors FALSE)
 		(Nom "Aixecament maquina biceps")
-		(Objectiu Musculacio Manteniment))
+		(Objectiu Musculacio Manteniment)
+		(Repeticions_rec 10))
 
 	([Ontologia_Class20022] of  Musculacio
 
@@ -935,7 +956,8 @@
 		(Grups_musculars brac)
 		(Majors FALSE)
 		(Nom "Aixecament manuelles assegut")
-		(Objectiu Musculacio Manteniment))
+		(Objectiu Musculacio Manteniment)
+		(Repeticions_rec 10))
 
 	([Ontologia_Class20023] of  Musculacio
 
@@ -943,7 +965,8 @@
 		(Grups_musculars brac)
 		(Majors FALSE)
 		(Nom "Aixecament manuelles variat")
-		(Objectiu Musculacio Manteniment))
+		(Objectiu Musculacio Manteniment)
+		(Repeticions_rec 10))
 
 	([Ontologia_Class20024] of  Musculacio
 
@@ -951,7 +974,8 @@
 		(Grups_musculars avantbrac)
 		(Majors FALSE)
 		(Nom "Aixecament barra avantbrac amunt")
-		(Objectiu Manteniment Musculacio))
+		(Objectiu Manteniment Musculacio)
+		(Repeticions_rec 8))
 
 	([Ontologia_Class20025] of  Musculacio
 
@@ -959,7 +983,8 @@
 		(Grups_musculars avantbrac)
 		(Majors FALSE)
 		(Nom "Aixecament barra avantbrac avall")
-		(Objectiu Manteniment Musculacio))
+		(Objectiu Manteniment Musculacio)
+		(Repeticions_rec 8))
 
 	([Ontologia_Class20026] of  Musculacio
 
@@ -968,7 +993,8 @@
 		(Majors FALSE)
 		(Menors FALSE)
 		(Nom "Aixecament barra amb dits")
-		(Objectiu Manteniment Musculacio))
+		(Objectiu Manteniment Musculacio)
+		(Repeticions_rec 8))
 
 	([Ontologia_Class20027] of  Musculacio
 
@@ -976,7 +1002,8 @@
 		(Grups_musculars part_superior_cama)
 		(Majors FALSE)
 		(Nom "Quadricep amb maquina estirat enrere")
-		(Objectiu Manteniment Musculacio condicio_fisica_general))
+		(Objectiu Manteniment Musculacio condicio_fisica_general)
+		(Repeticions_rec 15))
 
 	([Ontologia_Class20028] of  Musculacio
 
@@ -984,7 +1011,8 @@
 		(Grups_musculars part_superior_cama)
 		(Majors FALSE)
 		(Nom "Quadricep amb maquina assegut")
-		(Objectiu Manteniment Musculacio condicio_fisica_general))
+		(Objectiu Manteniment Musculacio condicio_fisica_general)
+		(Repeticions_rec 15))
 
 	([Ontologia_Class20029] of  Musculacio
 
@@ -993,7 +1021,8 @@
 		(Grups_musculars part_superior_cama)
 		(Majors FALSE)
 		(Nom "Quadricep amb barra a l'esquena")
-		(Objectiu Manteniment Musculacio condicio_fisica_general))
+		(Objectiu Manteniment Musculacio condicio_fisica_general)
+		(Repeticions_rec 15))
 
 	([Ontologia_Class20030] of  Musculacio
 
@@ -1002,23 +1031,28 @@
 		(Grups_musculars part_superior_cama)
 		(Majors FALSE)
 		(Nom "Quadricep amb barra a l'esquena caminant")
-		(Objectiu Manteniment Musculacio condicio_fisica_general))
+		(Objectiu Manteniment Musculacio condicio_fisica_general)
+		(Repeticions_rec 15))
 
 	([Ontologia_Class20031] of  Musculacio
 
+		(Contraindicacions problemes_esquena obesitat_morbida)
 		(Descripcio "Posant una capsa al terra, impulsar-se sobre la capsa fent un salt cap amunt alternant les cames.")
 		(Grups_musculars part_superior_cama)
 		(Majors FALSE)
 		(Nom "Salts amb capsa")
-		(Objectiu Manteniment Musculacio condicio_fisica_general))
+		(Objectiu Manteniment Musculacio condicio_fisica_general)
+		(Repeticions_rec 15))
 
 	([Ontologia_Class20032] of  Musculacio
 
+		(Contraindicacions problemes_esquena obesitat_morbida)
 		(Descripcio "Saltar amb ambdues cames alhora tant amunt com es pugui i tocant-se el cul amb els talons.")
 		(Grups_musculars part_superior_cama)
 		(Majors FALSE)
 		(Nom "Salts picant cul")
-		(Objectiu Manteniment Musculacio condicio_fisica_general))
+		(Objectiu Manteniment Musculacio condicio_fisica_general)
+		(Repeticions_rec 15))
 
 	([Ontologia_Class20033] of  Musculacio
 
@@ -1027,7 +1061,8 @@
 		(Grups_musculars part_inferior_cama)
 		(Majors FALSE)
 		(Nom "Bessons amb barra i capsa")
-		(Objectiu Manteniment Musculacio condicio_fisica_general))
+		(Objectiu Manteniment Musculacio condicio_fisica_general)
+		(Repeticions_rec 12))
 
 	([Ontologia_Class20034] of  Musculacio
 
@@ -1035,7 +1070,8 @@
 		(Grups_musculars part_inferior_cama)
 		(Majors FALSE)
 		(Nom "Bessons amb maquina assegut")
-		(Objectiu Manteniment Musculacio condicio_fisica_general))
+		(Objectiu Manteniment Musculacio condicio_fisica_general)
+		(Repeticions_rec 12))
 
 	([Ontologia_Class20035] of  Musculacio
 
@@ -1044,7 +1080,8 @@
 		(Grups_musculars part_inferior_cama)
 		(Majors FALSE)
 		(Nom "Bessons amb barra")
-		(Objectiu Manteniment Musculacio condicio_fisica_general))
+		(Objectiu Manteniment Musculacio condicio_fisica_general)
+		(Repeticions_rec 12))
 
 	([Ontologia_Class20037] of  Terra_Repeticions
 
@@ -1062,13 +1099,14 @@
 		(Grups_musculars glutis)
 		(Majors FALSE)
 		(Nom "Cama enrere amb cable")
-		(Objectiu Manteniment condicio_fisica_general Perdre_pes Musculacio))
+		(Objectiu Manteniment condicio_fisica_general Perdre_pes Musculacio)
+		(Repeticions_rec 12))
 
 	([Ontologia_Class20039] of  Terra_Repeticions
 
 		(Descripcio "Estirar-se al terra cara amunt i aixecar els malucs fent un pont amb el cos.")
 		(Grups_musculars glutis)
-		(Majors TRUE)
+		(Majors FALSE)
 		(Menors FALSE)
 		(Nom "Pont glutis terra")
 		(Objectiu Manteniment Musculacio condicio_fisica_general))
@@ -1077,7 +1115,7 @@
 
 		(Descripcio "Posar-se de quatre grapes (amb genolls i mans) al terra i aixecar, alternadament, cada cama cap enrere i cap amunt, amb el genoll flexionat.")
 		(Grups_musculars glutis)
-		(Majors TRUE)
+		(Majors FALSE)
 		(Menors FALSE)
 		(Nom "Cama enrere al terra")
 		(Objectiu Manteniment Musculacio condicio_fisica_general))
@@ -1106,7 +1144,8 @@
 		(Grups_musculars coll espatlles esquena)
 		(Majors FALSE)
 		(Nom "Dominades")
-		(Objectiu Manteniment Musculacio))
+		(Objectiu Manteniment Musculacio)
+		(Repeticions_rec 12))
 
 	([Ontologia_Class30004] of  Musculacio
 
@@ -1115,16 +1154,18 @@
 		(Grups_musculars coll espatlles esquena)
 		(Majors FALSE)
 		(Nom "Aixecar pes mort")
-		(Objectiu Manteniment Musculacio))
+		(Objectiu Manteniment Musculacio)
+		(Repeticions_rec 12))
 
 	([Ontologia_Class30005] of  Musculacio
 
 		(Contraindicacions problemes_esquena)
 		(Descripcio "Recolzar-se inclinat en un banc que sostingui el cos fins als malucs i inclinar el tors cap avall i despres cap amunt simulant el moviment d'abdominals.")
 		(Grups_musculars coll espatlles esquena)
-		(Majors TRUE)
+		(Majors FALSE)
 		(Nom "Inclinacio en banc")
-		(Objectiu Manteniment Musculacio))
+		(Objectiu Manteniment Musculacio)
+		(Repeticions_rec 12))
 
 	([Ontologia_Class40003] of  Terra_Duracio
 
@@ -1209,13 +1250,102 @@
 
 	([Ontologia_Class40012] of  Terra_Duracio
 
-		(Descripcio "Estirar-se de bocaterrosa")
+		(Descripcio "Estirar-se de bocaterrosa i alcar el tronc recolzant-se amb els bracos sobre el terra i estibar el coll cap enrere.")
 		(Flexibilitat TRUE)
-		(Grups_musculars Pectoral)
+		(Grups_musculars Pectoral abdominals coll espatlles)
 		(Menors FALSE)
-		(Nom "Estirament de pectoral 2")
+		(Nom "Estirament de tronc")
 		(Objectiu Elasticitat))
 
+	([Ontologia_Class40013] of  Terra_Duracio
+
+		(Descripcio "Flexionar les cames paralelament i estirar-ne una lateralment mentre s'inclina el tronc en sentit contrari.")
+		(Flexibilitat TRUE)
+		(Grups_musculars esquena Pectoral part_superior_cama part_inferior_cama)
+		(Menors FALSE)
+		(Nom "Estirament tronc i cames")
+		(Objectiu Elasticitat))
+
+	([Ontologia_Class40014] of  Terra_Duracio
+
+		(Descripcio "Asseure's al terra, doblar una cama i creuar-la per sobre de l'altra i fer forca amb el brac del mateix costat per dur la cama doblada cap a l'exterior d'aquesta.")
+		(Flexibilitat TRUE)
+		(Grups_musculars esquena)
+		(Menors FALSE)
+		(Nom "Estirament de dorsal 2")
+		(Objectiu Elasticitat))
+
+	([Ontologia_Class40015] of  Terra_Duracio
+
+		(Descripcio "Ajupir-se intentant acostar el cul al terra i agafar-se els turmells amb les cames obertes mantenint-se dempeus.")
+		(Flexibilitat TRUE)
+		(Grups_musculars part_superior_cama esquena)
+		(Menors FALSE)
+		(Nom "Estirament d'abductors")
+		(Objectiu Elasticitat))
+
+	([Ontologia_Class40017] of  Terra_Duracio
+
+		(Descripcio "Asseure's amb les cames creuades i estibar la cama cap al pit sostenint-la pel genoll i pels turmells.")
+		(Flexibilitat TRUE)
+		(Grups_musculars part_superior_cama part_inferior_cama glutis)
+		(Menors FALSE)
+		(Nom "Estirament d'isquiotibials 2")
+		(Objectiu Elasticitat))
+
+	([Ontologia_Class40018] of  Terra_Duracio
+
+		(Descripcio "Asseure's amb les cames creuades amb les plantes dels peus tocant-se i inclinar-se cap enrere aguantant-se amb les mans, portant els talons cap a les cuixes.")
+		(Flexibilitat TRUE)
+		(Grups_musculars part_superior_cama esquena esquena glutis)
+		(Menors FALSE)
+		(Nom "Estirament d'abductors 2")
+		(Objectiu Elasticitat))
+
+	([Ontologia_Class40019] of  Terra_Duracio
+
+		(Descripcio "Agenollar una cama, l'altra mantenir-la amb el peu al terra doblant el genoll i inclinar el tors cap endavant.")
+		(Flexibilitat TRUE)
+		(Grups_musculars part_superior_cama esquena)
+		(Menors FALSE)
+		(Nom "Estirament de quadriceps 2")
+		(Objectiu Elasticitat))
+
+	([Ontologia_Class40020] of  Terra_Duracio
+
+		(Descripcio "Estant dempeus, doblar el tors cap avall estirant els bracos per tocar-se els peus mantenint les cames rectes.")
+		(Flexibilitat TRUE)
+		(Grups_musculars part_superior_cama esquena glutis)
+		(Menors FALSE)
+		(Nom "Estirament tocar-se els peus")
+		(Objectiu Elasticitat))
+
+	([Ontologia_Class40021] of  Terra_Duracio
+
+		(Descripcio "Posar-se a quatre potes amb els bracos a l'alcada de les espatlles, estirar les cames per quedar-se de puntetes i baixar el cap.")
+		(Flexibilitat TRUE)
+		(Grups_musculars part_superior_cama esquena part_inferior_cama)
+		(Menors FALSE)
+		(Nom "Estirament a quatre potes")
+		(Objectiu Elasticitat))
+
+	([Ontologia_Class40022] of  Terra_Duracio
+
+		(Descripcio "Estirar-se cara enlaire amb els bracos en creu, flexionar una cama i girar els malucs sense aixecar les espatlles del terra fins que es toqui el terra amb el genoll.")
+		(Flexibilitat TRUE)
+		(Grups_musculars esquena glutis)
+		(Menors FALSE)
+		(Nom "Estirament de glutis")
+		(Objectiu Elasticitat))
+
+	([Ontologia_Class40023] of  Terra_Duracio
+
+		(Descripcio "Estirar-se cara enlaire, aixecar les cames i portar els peus cap al cap sense doblar els genolls.")
+		(Flexibilitat TRUE)
+		(Grups_musculars esquena part_superior_cama)
+		(Menors FALSE)
+		(Nom "Estirament de lumbars 2")
+		(Objectiu Elasticitat))
 
 )
 ;--------------------------------INSTANCIES-----------------------------------------------------------
@@ -2845,7 +2975,7 @@
   ;AQUÍ HEM ASSIGNAT EXERCICI CARDIO
   (bind ?taux 0)
   (bind ?lf (find-all-instances ((?inst Terra_Duracio)) (eq ?inst:Flexibilitat TRUE)))
-  (while (< ?taux ?te) do
+  (while (and (< ?taux ?te) (> (length$ ?lf) (length$ ?assignats))) do
   (bind ?exF (random-slot ?lf))
       (if (not(member ?exF ?assignats)) then
       (bind ?taux (+ 2 ?taux))
@@ -2930,7 +3060,7 @@
   ;AQUÍ HEM ASSIGNAT EXERCICI CARDIO
   (bind ?taux 0)
   (bind ?lf (find-all-instances ((?inst Terra_Duracio)) (eq ?inst:Flexibilitat TRUE)))
-  (while (< ?taux ?te) do
+  (while (and (< ?taux ?te) (> (length$ ?lf) (length$ ?assignats))) do
   (bind ?exF (random-slot ?lf))
       (if (not(member ?exF ?assignats)) then
       (bind ?taux (+ 2 ?taux))
@@ -3015,7 +3145,7 @@
   ;AQUÍ HEM ASSIGNAT EXERCICI CARDIO
   (bind ?taux 0)
   (bind ?lf (find-all-instances ((?inst Terra_Duracio)) (eq ?inst:Flexibilitat TRUE)))
-  (while (< ?taux ?te) do
+  (while (and (< ?taux ?te) (> (length$ ?lf) (length$ ?assignats))) do
   (bind ?exF (random-slot ?lf))
       (if (not(member ?exF ?assignats)) then
       (bind ?taux (+ 2 ?taux))
@@ -3101,7 +3231,7 @@
   ;AQUÍ HEM ASSIGNAT EXERCICI CARDIO
   (bind ?taux 0)
   (bind ?lf (find-all-instances ((?inst Terra_Duracio)) (eq ?inst:Flexibilitat TRUE)))
-  (while (< ?taux ?te) do
+  (while (and (< ?taux ?te) (> (length$ ?lf) (length$ ?assignats))) do
   (bind ?exF (random-slot ?lf))
       (if (not(member ?exF ?assignats)) then
       (bind ?taux (+ 2 ?taux))
@@ -3188,7 +3318,7 @@
   ;AQUÍ HEM ASSIGNAT EXERCICI CARDIO
   (bind ?taux 0)
   (bind ?lf (find-all-instances ((?inst Terra_Duracio)) (eq ?inst:Flexibilitat TRUE)))
-  (while (< ?taux ?te) do
+  (while (and (< ?taux ?te) (> (length$ ?lf) (length$ ?assignats))) do
   (bind ?exF (random-slot ?lf))
       (if (not(member ?exF ?assignats)) then
       (bind ?taux (+ 2 ?taux))
@@ -3211,7 +3341,7 @@
 
 ;-------------------Assignacions part principal-----------------------------
 
-(defrule assigna-principal
+(defrule assigna-principal1
 	(init-assigOK)
 	(not (prinDia1))
 	?d <- (dia (numDia 1) (int_Entrenament ?int) (imp_Cardio ?ic)(imp_Musculacio ?im) (imp_Elas ?ie) )
@@ -3281,15 +3411,123 @@
 
 
 		;----------------part musculacio------------------------------
+		(if (not (= ?tm 0))then
+			(bind ?assignats (create$ )) ;llista dels assignats
+			(bind ?af (create$ )) ;llista dels afegits
+			(bind ?possibles (find-all-instances ((?inst Exercici)) (member Musculacio ?inst:Objectiu))) ;llista dels possibles exercicis assignats
+			(bind ?taux 0)
+			(while (and (< ?taux ?tm) (> (length$ ?possibles) (length$ ?assignats))) do
+				(bind ?exF (random-slot ?possibles)) ;agafem un exercici random
+				(if (not (member ?exF ?assignats))then
+					(bind ?tipusEx (class ?exF)) ;agafem el nom de la classe de l'exercicis
+					(bind ?assignats (insert$ ?assignats (+ (length$ ?assignats) 1) ?exF)) ;fiquem l'exercici seleccionat als assignats
+					(switch ?tipusEx
+						(case Musculacio then
+						(bind ?rep (send ?exF get-Repeticions_rec)) ;repeticions recomanades
+						(bind ?tex (/ (+ (* 15 ?rep )  180) 60))
+						(bind ?taux (+ ?taux ?tex))
+						(bind ?assignacio (make-instance (gensym) of Assignacio_Exercici_Musculacio))
+						(send ?assignacio put-Exercici_Assignat ?exF)
+									(switch ?int
+										(case MOLT_BAIXA then
+											(send ?assignacio put-Pes 15)
+										)
+										(case BAIXA then
+												(send ?assignacio put-Pes 25)
+										)
+										(case NORMAL then
+												(send ?assignacio put-Pes 40)
+										)
+										(case ALTA then
+												(send ?assignacio put-Pes 55)
+										)
+										(case MOLT_ALTA then
+											(send ?assignacio put-Pes 75)
+										)
+									)
+									(bind ?af (insert$ ?af (+ (length$ ?af) 1) ?assignacio)) ;fem l'assignacio de musculacio
+						)
+
+						(case Terra_Repeticions then
+
+							(bind ?assignacio (make-instance (gensym) of Exercicis_terra_repeticions))
+							(send ?assignacio put-Exercici_Assignat ?exF)
+							(bind ?rep 0)
+										(switch ?int
+											(case MOLT_BAIXA then
+												(send ?assignacio put-Repeticions 5)
+												(bind ?rep 5)
+											)
+											(case BAIXA then
+													(send ?assignacio put-Repeticions 10)
+													(bind ?rep 10)
+											)
+											(case NORMAL then
+													(send ?assignacio put-Repeticions 15)
+													(bind ?rep 15)
+											)
+											(case ALTA then
+													(send ?assignacio put-Repeticions 25)
+													(bind ?rep 25)
+											)
+											(case MOLT_ALTA then
+												(send ?assignacio put-Repeticions 35)
+												(bind ?rep 35)
+											)
+										)
+										(bind ?tex (/ (+ (* 12 ?rep )  180) 60))
+										(bind ?taux (+ ?taux ?tex))
+
+										(bind ?af (insert$ ?af (+ (length$ ?af) 1) ?assignacio)) ;fem l'assignacio de musculacio
+						)
+						(case Terra_Duracio then
+							(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_terra_Duracio))
+							(send ?assignacio put-Exercici_Assignat ?exF)
+							(bind ?dur 0) ;durada per serie
+										(switch ?int
+											(case MOLT_BAIXA then
+												(send ?assignacio put-Durada 10)
+												(bind ?dur 10)
+											)
+											(case BAIXA then
+														(send ?assignacio put-Durada 20)
+													(bind ?dur 20)
+											)
+											(case NORMAL then
+														(send ?assignacio put-Durada 30)
+													(bind ?dur 30)
+											)
+											(case ALTA then
+														(send ?assignacio put-Durada 45)
+													(bind ?dur 45)
+											)
+											(case MOLT_ALTA then
+													(send ?assignacio put-Durada 60)
+												(bind ?dur 60)
+											)
+										)
+										(bind ?tex (/ (+ (* 3 ?dur )  200) 60))
+										(bind ?taux (+ ?taux ?tex))
+
+										(bind ?af (insert$ ?af (+ (length$ ?af) 1) ?assignacio)) ;fem l'assignacio de musculacio
+						)
+
+					) ;switch del tipus
+
+				)
+			)
+
+      (bind ?assprin (insert$ ?assprin (+ (length$ ?assprin) 1) ?af))
+		)
+
 		;---------------part musculacio------------------------------
 		;--------------part elasticitat------------------------------
 		(if (not(= ?te 0)) then
 		(bind ?assignats (create$ ))
 		(bind ?af (create$ ))
-		;AQUÍ HEM ASSIGNAT EXERCICI CARDIO
-		(bind ?taux 0)
+		(bind ?taux 4)
 		(bind ?lf (find-all-instances ((?inst Terra_Duracio)) (eq ?inst:Flexibilitat TRUE)))
-		(while (< ?taux ?te) do
+		(while (and (< ?taux ?te) (> (length$ ?lf) (length$ ?assignats))) do
 		(bind ?exF (random-slot ?lf))
 				(if (not(member ?exF ?assignats)) then
 				(bind ?taux (+ 4 ?taux))
@@ -3303,8 +3541,838 @@
 		)
 		(bind ?assprin (insert$ ?assprin (+ (length$ ?assprin) 1) ?af))
 		)
+
+
+
 		(modify ?ad (assignacions-principal ?assprin))
 	(assert (prinDia1))
 )
 
+(defrule assigna-principal2
+	(init-assigOK)
+	(not (prinDia2))
+	?d <- (dia (numDia 2) (int_Entrenament ?int) (imp_Cardio ?ic)(imp_Musculacio ?im) (imp_Elas ?ie) )
+	?ad <- (assignacio-dia (numDia 2) (temps-principal ?tp) )
+	=>
+	(bind ?temps (tornaTemps ?tp ?ic ?im ?ie))
+	(bind ?tc (nth$ 1 ?temps))
+	(bind ?tm (nth$ 2 ?temps))
+	(bind ?te (nth$ 3 ?temps))
+	;part cardio..............
+	(bind ?assprin (create$ ))
+
+ (if (not(= ?tc 0)) then
+		(bind ?li (find-all-instances ((?inst Cardio)) TRUE))
+		(bind ?ex (random-slot ?li))
+		(if (eq (class ?ex) Cardio) then
+					(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_cardio))
+					(send ?assignacio put-Exercici_Assignat ?ex)
+					(send ?assignacio put-Durada ?tc)
+					(switch ?int
+						(case MOLT_BAIXA then
+							(send ?assignacio put-Resistencia 25)
+						)
+						(case BAIXA then
+							(send ?assignacio put-Resistencia 35)
+						)
+						(case NORMAL then
+							(send ?assignacio put-Resistencia 50)
+						)
+						(case ALTA then
+							(send ?assignacio put-Resistencia 70)
+						)
+						(case MOLT_ALTA then
+							(send ?assignacio put-Resistencia 90)
+						)
+					)
+	        (bind ?assprin (insert$ ?assprin (+ (length$ ?assprin) 1) ?assignacio))
+			else
+			(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_cinta))
+			(send ?assignacio put-Exercici_Assignat ?ex)
+			(send ?assignacio put-Durada ?te)
+			(switch ?int
+				(case MOLT_BAIXA then
+					(send ?assignacio put-Resistencia 25)
+					(send ?assignacio put-Velocitat 25)
+				)
+				(case BAIXA then
+					(send ?assignacio put-Resistencia 35)
+					(send ?assignacio put-Velocitat 30)
+				)
+				(case NORMAL then
+					(send ?assignacio put-Resistencia 50)
+					(send ?assignacio put-Velocitat 40)
+				)
+				(case ALTA then
+					(send ?assignacio put-Resistencia 70)
+					(send ?assignacio put-Velocitat 60)
+				)
+				(case MOLT_ALTA then
+					(send ?assignacio put-Resistencia 90)
+					(send ?assignacio put-Velocitat 80)
+				)
+			)
+			(bind ?assprin (insert$ ?assprin (+ (length$ ?assprin) 1) ?assignacio))
+     )
+		)
+
+
+		;----------------part musculacio------------------------------
+		(if (not (= ?tm 0))then
+			(bind ?assignats (create$ )) ;llista dels assignats
+			(bind ?af (create$ )) ;llista dels afegits
+			(bind ?possibles (find-all-instances ((?inst Exercici)) (member Musculacio ?inst:Objectiu))) ;llista dels possibles exercicis assignats
+			(bind ?taux 0)
+			(while (and (< ?taux ?tm) (> (length$ ?possibles) (length$ ?assignats))) do
+				(bind ?exF (random-slot ?possibles)) ;agafem un exercici random
+				(if (not (member ?exF ?assignats))then
+					(bind ?tipusEx (class ?exF)) ;agafem el nom de la classe de l'exercicis
+					(bind ?assignats (insert$ ?assignats (+ (length$ ?assignats) 1) ?exF)) ;fiquem l'exercici seleccionat als assignats
+					(switch ?tipusEx
+						(case Musculacio then
+						(bind ?rep (send ?exF get-Repeticions_rec)) ;repeticions recomanades
+						(bind ?tex (/ (+ (* 15 ?rep )  180) 60))
+						(bind ?taux (+ ?taux ?tex))
+						(bind ?assignacio (make-instance (gensym) of Assignacio_Exercici_Musculacio))
+						(send ?assignacio put-Exercici_Assignat ?exF)
+									(switch ?int
+										(case MOLT_BAIXA then
+											(send ?assignacio put-Pes 15)
+										)
+										(case BAIXA then
+												(send ?assignacio put-Pes 25)
+										)
+										(case NORMAL then
+												(send ?assignacio put-Pes 40)
+										)
+										(case ALTA then
+												(send ?assignacio put-Pes 55)
+										)
+										(case MOLT_ALTA then
+											(send ?assignacio put-Pes 75)
+										)
+									)
+									(bind ?af (insert$ ?af (+ (length$ ?af) 1) ?assignacio)) ;fem l'assignacio de musculacio
+						)
+
+						(case Terra_Repeticions then
+
+							(bind ?assignacio (make-instance (gensym) of Exercicis_terra_repeticions))
+							(send ?assignacio put-Exercici_Assignat ?exF)
+							(bind ?rep 0)
+										(switch ?int
+											(case MOLT_BAIXA then
+												(send ?assignacio put-Repeticions 5)
+												(bind ?rep 5)
+											)
+											(case BAIXA then
+													(send ?assignacio put-Repeticions 10)
+													(bind ?rep 10)
+											)
+											(case NORMAL then
+													(send ?assignacio put-Repeticions 15)
+													(bind ?rep 15)
+											)
+											(case ALTA then
+													(send ?assignacio put-Repeticions 25)
+													(bind ?rep 25)
+											)
+											(case MOLT_ALTA then
+												(send ?assignacio put-Repeticions 35)
+												(bind ?rep 35)
+											)
+										)
+										(bind ?tex (/ (+ (* 12 ?rep )  180) 60))
+										(bind ?taux (+ ?taux ?tex))
+
+										(bind ?af (insert$ ?af (+ (length$ ?af) 1) ?assignacio)) ;fem l'assignacio de musculacio
+						)
+						(case Terra_Duracio then
+							(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_terra_Duracio))
+							(send ?assignacio put-Exercici_Assignat ?exF)
+							(bind ?dur 0) ;durada per serie
+										(switch ?int
+											(case MOLT_BAIXA then
+												(send ?assignacio put-Durada 10)
+												(bind ?dur 10)
+											)
+											(case BAIXA then
+														(send ?assignacio put-Durada 20)
+													(bind ?dur 20)
+											)
+											(case NORMAL then
+														(send ?assignacio put-Durada 30)
+													(bind ?dur 30)
+											)
+											(case ALTA then
+														(send ?assignacio put-Durada 45)
+													(bind ?dur 45)
+											)
+											(case MOLT_ALTA then
+													(send ?assignacio put-Durada 60)
+												(bind ?dur 60)
+											)
+										)
+										(bind ?tex (/ (+ (* 3 ?dur )  200) 60))
+										(bind ?taux (+ ?taux ?tex))
+
+										(bind ?af (insert$ ?af (+ (length$ ?af) 1) ?assignacio)) ;fem l'assignacio de musculacio
+						)
+
+					) ;switch del tipus
+
+				)
+			)
+
+      (bind ?assprin (insert$ ?assprin (+ (length$ ?assprin) 1) ?af))
+		)
+
+		;---------------part musculacio------------------------------
+		;--------------part elasticitat------------------------------
+		(if (not(= ?te 0)) then
+		(bind ?assignats (create$ ))
+		(bind ?af (create$ ))
+		(bind ?taux 4)
+		(bind ?lf (find-all-instances ((?inst Terra_Duracio)) (eq ?inst:Flexibilitat TRUE)))
+		(while (and (< ?taux ?te) (> (length$ ?lf) (length$ ?assignats))) do
+		(bind ?exF (random-slot ?lf))
+				(if (not(member ?exF ?assignats)) then
+				(bind ?taux (+ 4 ?taux))
+				(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_terra_Duracio))
+				(send ?assignacio put-Durada 4)
+				(send ?assignacio put-Series 1)
+				(send ?assignacio put-Exercici_Assignat ?exF)
+				(bind ?assignats (insert$ ?assignats (+ (length$ ?assignats) 1) ?exF))
+				(bind ?af (insert$ ?af (+ (length$ ?af) 1) ?assignacio))
+				)
+		)
+		(bind ?assprin (insert$ ?assprin (+ (length$ ?assprin) 1) ?af))
+		)
+
+
+
+		(modify ?ad (assignacions-principal ?assprin))
+	(assert (prinDia2))
+)
+
+(defrule assigna-principal3
+	(init-assigOK)
+	(not (prinDia3))
+	?d <- (dia (numDia 3) (int_Entrenament ?int) (imp_Cardio ?ic)(imp_Musculacio ?im) (imp_Elas ?ie) )
+	?ad <- (assignacio-dia (numDia 3) (temps-principal ?tp) )
+	=>
+	(bind ?temps (tornaTemps ?tp ?ic ?im ?ie))
+	(bind ?tc (nth$ 1 ?temps))
+	(bind ?tm (nth$ 2 ?temps))
+	(bind ?te (nth$ 3 ?temps))
+	;part cardio..............
+	(bind ?assprin (create$ ))
+
+ (if (not(= ?tc 0)) then
+		(bind ?li (find-all-instances ((?inst Cardio)) TRUE))
+		(bind ?ex (random-slot ?li))
+		(if (eq (class ?ex) Cardio) then
+					(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_cardio))
+					(send ?assignacio put-Exercici_Assignat ?ex)
+					(send ?assignacio put-Durada ?tc)
+					(switch ?int
+						(case MOLT_BAIXA then
+							(send ?assignacio put-Resistencia 25)
+						)
+						(case BAIXA then
+							(send ?assignacio put-Resistencia 35)
+						)
+						(case NORMAL then
+							(send ?assignacio put-Resistencia 50)
+						)
+						(case ALTA then
+							(send ?assignacio put-Resistencia 70)
+						)
+						(case MOLT_ALTA then
+							(send ?assignacio put-Resistencia 90)
+						)
+					)
+	        (bind ?assprin (insert$ ?assprin (+ (length$ ?assprin) 1) ?assignacio))
+			else
+			(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_cinta))
+			(send ?assignacio put-Exercici_Assignat ?ex)
+			(send ?assignacio put-Durada ?te)
+			(switch ?int
+				(case MOLT_BAIXA then
+					(send ?assignacio put-Resistencia 25)
+					(send ?assignacio put-Velocitat 25)
+				)
+				(case BAIXA then
+					(send ?assignacio put-Resistencia 35)
+					(send ?assignacio put-Velocitat 30)
+				)
+				(case NORMAL then
+					(send ?assignacio put-Resistencia 50)
+					(send ?assignacio put-Velocitat 40)
+				)
+				(case ALTA then
+					(send ?assignacio put-Resistencia 70)
+					(send ?assignacio put-Velocitat 60)
+				)
+				(case MOLT_ALTA then
+					(send ?assignacio put-Resistencia 90)
+					(send ?assignacio put-Velocitat 80)
+				)
+			)
+			(bind ?assprin (insert$ ?assprin (+ (length$ ?assprin) 1) ?assignacio))
+     )
+		)
+
+
+		;----------------part musculacio------------------------------
+		(if (not (= ?tm 0))then
+			(bind ?assignats (create$ )) ;llista dels assignats
+			(bind ?af (create$ )) ;llista dels afegits
+			(bind ?possibles (find-all-instances ((?inst Exercici)) (member Musculacio ?inst:Objectiu))) ;llista dels possibles exercicis assignats
+			(bind ?taux 0)
+			(while (and (< ?taux ?tm) (> (length$ ?possibles) (length$ ?assignats))) do
+				(bind ?exF (random-slot ?possibles)) ;agafem un exercici random
+				(if (not (member ?exF ?assignats))then
+					(bind ?tipusEx (class ?exF)) ;agafem el nom de la classe de l'exercicis
+					(bind ?assignats (insert$ ?assignats (+ (length$ ?assignats) 1) ?exF)) ;fiquem l'exercici seleccionat als assignats
+					(switch ?tipusEx
+						(case Musculacio then
+						(bind ?rep (send ?exF get-Repeticions_rec)) ;repeticions recomanades
+						(bind ?tex (/ (+ (* 15 ?rep )  180) 60))
+						(bind ?taux (+ ?taux ?tex))
+						(bind ?assignacio (make-instance (gensym) of Assignacio_Exercici_Musculacio))
+						(send ?assignacio put-Exercici_Assignat ?exF)
+									(switch ?int
+										(case MOLT_BAIXA then
+											(send ?assignacio put-Pes 15)
+										)
+										(case BAIXA then
+												(send ?assignacio put-Pes 25)
+										)
+										(case NORMAL then
+												(send ?assignacio put-Pes 40)
+										)
+										(case ALTA then
+												(send ?assignacio put-Pes 55)
+										)
+										(case MOLT_ALTA then
+											(send ?assignacio put-Pes 75)
+										)
+									)
+									(bind ?af (insert$ ?af (+ (length$ ?af) 1) ?assignacio)) ;fem l'assignacio de musculacio
+						)
+
+						(case Terra_Repeticions then
+
+							(bind ?assignacio (make-instance (gensym) of Exercicis_terra_repeticions))
+							(send ?assignacio put-Exercici_Assignat ?exF)
+							(bind ?rep 0)
+										(switch ?int
+											(case MOLT_BAIXA then
+												(send ?assignacio put-Repeticions 5)
+												(bind ?rep 5)
+											)
+											(case BAIXA then
+													(send ?assignacio put-Repeticions 10)
+													(bind ?rep 10)
+											)
+											(case NORMAL then
+													(send ?assignacio put-Repeticions 15)
+													(bind ?rep 15)
+											)
+											(case ALTA then
+													(send ?assignacio put-Repeticions 25)
+													(bind ?rep 25)
+											)
+											(case MOLT_ALTA then
+												(send ?assignacio put-Repeticions 35)
+												(bind ?rep 35)
+											)
+										)
+										(bind ?tex (/ (+ (* 12 ?rep )  180) 60))
+										(bind ?taux (+ ?taux ?tex))
+
+										(bind ?af (insert$ ?af (+ (length$ ?af) 1) ?assignacio)) ;fem l'assignacio de musculacio
+						)
+						(case Terra_Duracio then
+							(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_terra_Duracio))
+							(send ?assignacio put-Exercici_Assignat ?exF)
+							(bind ?dur 0) ;durada per serie
+										(switch ?int
+											(case MOLT_BAIXA then
+												(send ?assignacio put-Durada 10)
+												(bind ?dur 10)
+											)
+											(case BAIXA then
+														(send ?assignacio put-Durada 20)
+													(bind ?dur 20)
+											)
+											(case NORMAL then
+														(send ?assignacio put-Durada 30)
+													(bind ?dur 30)
+											)
+											(case ALTA then
+														(send ?assignacio put-Durada 45)
+													(bind ?dur 45)
+											)
+											(case MOLT_ALTA then
+													(send ?assignacio put-Durada 60)
+												(bind ?dur 60)
+											)
+										)
+										(bind ?tex (/ (+ (* 3 ?dur )  200) 60))
+										(bind ?taux (+ ?taux ?tex))
+
+										(bind ?af (insert$ ?af (+ (length$ ?af) 1) ?assignacio)) ;fem l'assignacio de musculacio
+						)
+
+					) ;switch del tipus
+
+				)
+			)
+
+      (bind ?assprin (insert$ ?assprin (+ (length$ ?assprin) 1) ?af))
+		)
+
+		;---------------part musculacio------------------------------
+		;--------------part elasticitat------------------------------
+		(if (not(= ?te 0)) then
+		(bind ?assignats (create$ ))
+		(bind ?af (create$ ))
+		(bind ?taux 4)
+		(bind ?lf (find-all-instances ((?inst Terra_Duracio)) (eq ?inst:Flexibilitat TRUE)))
+		(while (and (< ?taux ?te) (> (length$ ?lf) (length$ ?assignats))) do
+		(bind ?exF (random-slot ?lf))
+				(if (not(member ?exF ?assignats)) then
+				(bind ?taux (+ 4 ?taux))
+				(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_terra_Duracio))
+				(send ?assignacio put-Durada 4)
+				(send ?assignacio put-Series 1)
+				(send ?assignacio put-Exercici_Assignat ?exF)
+				(bind ?assignats (insert$ ?assignats (+ (length$ ?assignats) 1) ?exF))
+				(bind ?af (insert$ ?af (+ (length$ ?af) 1) ?assignacio))
+				)
+		)
+		(bind ?assprin (insert$ ?assprin (+ (length$ ?assprin) 1) ?af))
+		)
+
+
+
+		(modify ?ad (assignacions-principal ?assprin))
+	(assert (prinDia3))
+)
+
+(defrule assigna-principal4
+	(init-assigOK)
+	(not (prinDia4))
+	?d <- (dia (numDia 4) (int_Entrenament ?int) (imp_Cardio ?ic)(imp_Musculacio ?im) (imp_Elas ?ie) )
+	?ad <- (assignacio-dia (numDia 4) (temps-principal ?tp) )
+	=>
+	(bind ?temps (tornaTemps ?tp ?ic ?im ?ie))
+	(bind ?tc (nth$ 1 ?temps))
+	(bind ?tm (nth$ 2 ?temps))
+	(bind ?te (nth$ 3 ?temps))
+	;part cardio..............
+	(bind ?assprin (create$ ))
+
+ (if (not(= ?tc 0)) then
+		(bind ?li (find-all-instances ((?inst Cardio)) TRUE))
+		(bind ?ex (random-slot ?li))
+		(if (eq (class ?ex) Cardio) then
+					(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_cardio))
+					(send ?assignacio put-Exercici_Assignat ?ex)
+					(send ?assignacio put-Durada ?tc)
+					(switch ?int
+						(case MOLT_BAIXA then
+							(send ?assignacio put-Resistencia 25)
+						)
+						(case BAIXA then
+							(send ?assignacio put-Resistencia 35)
+						)
+						(case NORMAL then
+							(send ?assignacio put-Resistencia 50)
+						)
+						(case ALTA then
+							(send ?assignacio put-Resistencia 70)
+						)
+						(case MOLT_ALTA then
+							(send ?assignacio put-Resistencia 90)
+						)
+					)
+	        (bind ?assprin (insert$ ?assprin (+ (length$ ?assprin) 1) ?assignacio))
+			else
+			(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_cinta))
+			(send ?assignacio put-Exercici_Assignat ?ex)
+			(send ?assignacio put-Durada ?te)
+			(switch ?int
+				(case MOLT_BAIXA then
+					(send ?assignacio put-Resistencia 25)
+					(send ?assignacio put-Velocitat 25)
+				)
+				(case BAIXA then
+					(send ?assignacio put-Resistencia 35)
+					(send ?assignacio put-Velocitat 30)
+				)
+				(case NORMAL then
+					(send ?assignacio put-Resistencia 50)
+					(send ?assignacio put-Velocitat 40)
+				)
+				(case ALTA then
+					(send ?assignacio put-Resistencia 70)
+					(send ?assignacio put-Velocitat 60)
+				)
+				(case MOLT_ALTA then
+					(send ?assignacio put-Resistencia 90)
+					(send ?assignacio put-Velocitat 80)
+				)
+			)
+			(bind ?assprin (insert$ ?assprin (+ (length$ ?assprin) 1) ?assignacio))
+     )
+		)
+
+
+		;----------------part musculacio------------------------------
+		(if (not (= ?tm 0))then
+			(bind ?assignats (create$ )) ;llista dels assignats
+			(bind ?af (create$ )) ;llista dels afegits
+			(bind ?possibles (find-all-instances ((?inst Exercici)) (member Musculacio ?inst:Objectiu))) ;llista dels possibles exercicis assignats
+			(bind ?taux 0)
+			(while (and (< ?taux ?tm) (> (length$ ?possibles) (length$ ?assignats))) do
+				(bind ?exF (random-slot ?possibles)) ;agafem un exercici random
+				(if (not (member ?exF ?assignats))then
+					(bind ?tipusEx (class ?exF)) ;agafem el nom de la classe de l'exercicis
+					(bind ?assignats (insert$ ?assignats (+ (length$ ?assignats) 1) ?exF)) ;fiquem l'exercici seleccionat als assignats
+					(switch ?tipusEx
+						(case Musculacio then
+						(bind ?rep (send ?exF get-Repeticions_rec)) ;repeticions recomanades
+						(bind ?tex (/ (+ (* 15 ?rep )  180) 60))
+						(bind ?taux (+ ?taux ?tex))
+						(bind ?assignacio (make-instance (gensym) of Assignacio_Exercici_Musculacio))
+						(send ?assignacio put-Exercici_Assignat ?exF)
+									(switch ?int
+										(case MOLT_BAIXA then
+											(send ?assignacio put-Pes 15)
+										)
+										(case BAIXA then
+												(send ?assignacio put-Pes 25)
+										)
+										(case NORMAL then
+												(send ?assignacio put-Pes 40)
+										)
+										(case ALTA then
+												(send ?assignacio put-Pes 55)
+										)
+										(case MOLT_ALTA then
+											(send ?assignacio put-Pes 75)
+										)
+									)
+									(bind ?af (insert$ ?af (+ (length$ ?af) 1) ?assignacio)) ;fem l'assignacio de musculacio
+						)
+
+						(case Terra_Repeticions then
+
+							(bind ?assignacio (make-instance (gensym) of Exercicis_terra_repeticions))
+							(send ?assignacio put-Exercici_Assignat ?exF)
+							(bind ?rep 0)
+										(switch ?int
+											(case MOLT_BAIXA then
+												(send ?assignacio put-Repeticions 5)
+												(bind ?rep 5)
+											)
+											(case BAIXA then
+													(send ?assignacio put-Repeticions 10)
+													(bind ?rep 10)
+											)
+											(case NORMAL then
+													(send ?assignacio put-Repeticions 15)
+													(bind ?rep 15)
+											)
+											(case ALTA then
+													(send ?assignacio put-Repeticions 25)
+													(bind ?rep 25)
+											)
+											(case MOLT_ALTA then
+												(send ?assignacio put-Repeticions 35)
+												(bind ?rep 35)
+											)
+										)
+										(bind ?tex (/ (+ (* 12 ?rep )  180) 60))
+										(bind ?taux (+ ?taux ?tex))
+
+										(bind ?af (insert$ ?af (+ (length$ ?af) 1) ?assignacio)) ;fem l'assignacio de musculacio
+						)
+						(case Terra_Duracio then
+							(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_terra_Duracio))
+							(send ?assignacio put-Exercici_Assignat ?exF)
+							(bind ?dur 0) ;durada per serie
+										(switch ?int
+											(case MOLT_BAIXA then
+												(send ?assignacio put-Durada 10)
+												(bind ?dur 10)
+											)
+											(case BAIXA then
+														(send ?assignacio put-Durada 20)
+													(bind ?dur 20)
+											)
+											(case NORMAL then
+														(send ?assignacio put-Durada 30)
+													(bind ?dur 30)
+											)
+											(case ALTA then
+														(send ?assignacio put-Durada 45)
+													(bind ?dur 45)
+											)
+											(case MOLT_ALTA then
+													(send ?assignacio put-Durada 60)
+												(bind ?dur 60)
+											)
+										)
+										(bind ?tex (/ (+ (* 3 ?dur )  200) 60))
+										(bind ?taux (+ ?taux ?tex))
+
+										(bind ?af (insert$ ?af (+ (length$ ?af) 1) ?assignacio)) ;fem l'assignacio de musculacio
+						)
+
+					) ;switch del tipus
+
+				)
+			)
+
+      (bind ?assprin (insert$ ?assprin (+ (length$ ?assprin) 1) ?af))
+		)
+
+		;---------------part musculacio------------------------------
+		;--------------part elasticitat------------------------------
+		(if (not(= ?te 0)) then
+		(bind ?assignats (create$ ))
+		(bind ?af (create$ ))
+		(bind ?taux 4)
+		(bind ?lf (find-all-instances ((?inst Terra_Duracio)) (eq ?inst:Flexibilitat TRUE)))
+		(while (and (< ?taux ?te) (> (length$ ?lf) (length$ ?assignats))) do
+		(bind ?exF (random-slot ?lf))
+				(if (not(member ?exF ?assignats)) then
+				(bind ?taux (+ 4 ?taux))
+				(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_terra_Duracio))
+				(send ?assignacio put-Durada 4)
+				(send ?assignacio put-Series 1)
+				(send ?assignacio put-Exercici_Assignat ?exF)
+				(bind ?assignats (insert$ ?assignats (+ (length$ ?assignats) 1) ?exF))
+				(bind ?af (insert$ ?af (+ (length$ ?af) 1) ?assignacio))
+				)
+		)
+		(bind ?assprin (insert$ ?assprin (+ (length$ ?assprin) 1) ?af))
+		)
+
+
+
+		(modify ?ad (assignacions-principal ?assprin))
+	(assert (prinDia4))
+)
+
+(defrule assigna-principal5
+	(init-assigOK)
+	(not (prinDia5))
+	?d <- (dia (numDia 5) (int_Entrenament ?int) (imp_Cardio ?ic)(imp_Musculacio ?im) (imp_Elas ?ie) )
+	?ad <- (assignacio-dia (numDia 5) (temps-principal ?tp) )
+	=>
+	(bind ?temps (tornaTemps ?tp ?ic ?im ?ie))
+	(bind ?tc (nth$ 1 ?temps))
+	(bind ?tm (nth$ 2 ?temps))
+	(bind ?te (nth$ 3 ?temps))
+	;part cardio..............
+	(bind ?assprin (create$ ))
+
+ (if (not(= ?tc 0)) then
+		(bind ?li (find-all-instances ((?inst Cardio)) TRUE))
+		(bind ?ex (random-slot ?li))
+		(if (eq (class ?ex) Cardio) then
+					(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_cardio))
+					(send ?assignacio put-Exercici_Assignat ?ex)
+					(send ?assignacio put-Durada ?tc)
+					(switch ?int
+						(case MOLT_BAIXA then
+							(send ?assignacio put-Resistencia 25)
+						)
+						(case BAIXA then
+							(send ?assignacio put-Resistencia 35)
+						)
+						(case NORMAL then
+							(send ?assignacio put-Resistencia 50)
+						)
+						(case ALTA then
+							(send ?assignacio put-Resistencia 70)
+						)
+						(case MOLT_ALTA then
+							(send ?assignacio put-Resistencia 90)
+						)
+					)
+	        (bind ?assprin (insert$ ?assprin (+ (length$ ?assprin) 1) ?assignacio))
+			else
+			(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_cinta))
+			(send ?assignacio put-Exercici_Assignat ?ex)
+			(send ?assignacio put-Durada ?te)
+			(switch ?int
+				(case MOLT_BAIXA then
+					(send ?assignacio put-Resistencia 25)
+					(send ?assignacio put-Velocitat 25)
+				)
+				(case BAIXA then
+					(send ?assignacio put-Resistencia 35)
+					(send ?assignacio put-Velocitat 30)
+				)
+				(case NORMAL then
+					(send ?assignacio put-Resistencia 50)
+					(send ?assignacio put-Velocitat 40)
+				)
+				(case ALTA then
+					(send ?assignacio put-Resistencia 70)
+					(send ?assignacio put-Velocitat 60)
+				)
+				(case MOLT_ALTA then
+					(send ?assignacio put-Resistencia 90)
+					(send ?assignacio put-Velocitat 80)
+				)
+			)
+			(bind ?assprin (insert$ ?assprin (+ (length$ ?assprin) 1) ?assignacio))
+     )
+		)
+
+
+		;----------------part musculacio------------------------------
+		(if (not (= ?tm 0))then
+			(bind ?assignats (create$ )) ;llista dels assignats
+			(bind ?af (create$ )) ;llista dels afegits
+			(bind ?possibles (find-all-instances ((?inst Exercici)) (member Musculacio ?inst:Objectiu))) ;llista dels possibles exercicis assignats
+			(bind ?taux 0)
+			(while (and (< ?taux ?tm) (> (length$ ?possibles) (length$ ?assignats))) do
+				(bind ?exF (random-slot ?possibles)) ;agafem un exercici random
+				(if (not (member ?exF ?assignats))then
+					(bind ?tipusEx (class ?exF)) ;agafem el nom de la classe de l'exercicis
+					(bind ?assignats (insert$ ?assignats (+ (length$ ?assignats) 1) ?exF)) ;fiquem l'exercici seleccionat als assignats
+					(switch ?tipusEx
+						(case Musculacio then
+						(bind ?rep (send ?exF get-Repeticions_rec)) ;repeticions recomanades
+						(bind ?tex (/ (+ (* 15 ?rep )  180) 60))
+						(bind ?taux (+ ?taux ?tex))
+						(bind ?assignacio (make-instance (gensym) of Assignacio_Exercici_Musculacio))
+						(send ?assignacio put-Exercici_Assignat ?exF)
+									(switch ?int
+										(case MOLT_BAIXA then
+											(send ?assignacio put-Pes 15)
+										)
+										(case BAIXA then
+												(send ?assignacio put-Pes 25)
+										)
+										(case NORMAL then
+												(send ?assignacio put-Pes 40)
+										)
+										(case ALTA then
+												(send ?assignacio put-Pes 55)
+										)
+										(case MOLT_ALTA then
+											(send ?assignacio put-Pes 75)
+										)
+									)
+									(bind ?af (insert$ ?af (+ (length$ ?af) 1) ?assignacio)) ;fem l'assignacio de musculacio
+						)
+
+						(case Terra_Repeticions then
+
+							(bind ?assignacio (make-instance (gensym) of Exercicis_terra_repeticions))
+							(send ?assignacio put-Exercici_Assignat ?exF)
+							(bind ?rep 0)
+										(switch ?int
+											(case MOLT_BAIXA then
+												(send ?assignacio put-Repeticions 5)
+												(bind ?rep 5)
+											)
+											(case BAIXA then
+													(send ?assignacio put-Repeticions 10)
+													(bind ?rep 10)
+											)
+											(case NORMAL then
+													(send ?assignacio put-Repeticions 15)
+													(bind ?rep 15)
+											)
+											(case ALTA then
+													(send ?assignacio put-Repeticions 25)
+													(bind ?rep 25)
+											)
+											(case MOLT_ALTA then
+												(send ?assignacio put-Repeticions 35)
+												(bind ?rep 35)
+											)
+										)
+										(bind ?tex (/ (+ (* 12 ?rep )  180) 60))
+										(bind ?taux (+ ?taux ?tex))
+
+										(bind ?af (insert$ ?af (+ (length$ ?af) 1) ?assignacio)) ;fem l'assignacio de musculacio
+						)
+						(case Terra_Duracio then
+							(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_terra_Duracio))
+							(send ?assignacio put-Exercici_Assignat ?exF)
+							(bind ?dur 0) ;durada per serie
+										(switch ?int
+											(case MOLT_BAIXA then
+												(send ?assignacio put-Durada 10)
+												(bind ?dur 10)
+											)
+											(case BAIXA then
+														(send ?assignacio put-Durada 20)
+													(bind ?dur 20)
+											)
+											(case NORMAL then
+														(send ?assignacio put-Durada 30)
+													(bind ?dur 30)
+											)
+											(case ALTA then
+														(send ?assignacio put-Durada 45)
+													(bind ?dur 45)
+											)
+											(case MOLT_ALTA then
+													(send ?assignacio put-Durada 60)
+												(bind ?dur 60)
+											)
+										)
+										(bind ?tex (/ (+ (* 3 ?dur )  200) 60))
+										(bind ?taux (+ ?taux ?tex))
+
+										(bind ?af (insert$ ?af (+ (length$ ?af) 1) ?assignacio)) ;fem l'assignacio de musculacio
+						)
+
+					) ;switch del tipus
+
+				)
+			)
+
+      (bind ?assprin (insert$ ?assprin (+ (length$ ?assprin) 1) ?af))
+		)
+
+		;---------------part musculacio------------------------------
+		;--------------part elasticitat------------------------------
+		(if (not(= ?te 0)) then
+		(bind ?assignats (create$ ))
+		(bind ?af (create$ ))
+		(bind ?taux 4)
+		(bind ?lf (find-all-instances ((?inst Terra_Duracio)) (eq ?inst:Flexibilitat TRUE)))
+		(while (and (< ?taux ?te) (> (length$ ?lf) (length$ ?assignats))) do
+		(bind ?exF (random-slot ?lf))
+				(if (not(member ?exF ?assignats)) then
+				(bind ?taux (+ 4 ?taux))
+				(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_terra_Duracio))
+				(send ?assignacio put-Durada 4)
+				(send ?assignacio put-Series 1)
+				(send ?assignacio put-Exercici_Assignat ?exF)
+				(bind ?assignats (insert$ ?assignats (+ (length$ ?assignats) 1) ?exF))
+				(bind ?af (insert$ ?af (+ (length$ ?af) 1) ?assignacio))
+				)
+		)
+		(bind ?assprin (insert$ ?assprin (+ (length$ ?assprin) 1) ?af))
+		)
+
+
+
+		(modify ?ad (assignacions-principal ?assprin))
+	(assert (prinDia5))
+)
 ;-------------------Assignacions part principal-----------------------------
