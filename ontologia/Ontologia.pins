@@ -1,4 +1,4 @@
-; Mon May 23 11:11:24 CEST 2016
+; Mon May 23 12:51:21 CEST 2016
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -10,7 +10,8 @@
 	(Majors FALSE)
 	(Menors FALSE)
 	(Nom "Resistencia de coll cara avall")
-	(Objectiu Musculacio condicio_fisica_general Manteniment))
+	(Objectiu Musculacio condicio_fisica_general Manteniment)
+	(Repeticions_rec 8))
 
 ([Ontologia_Class1] of  Habit_Fisic
 
@@ -29,16 +30,18 @@
 	(Majors FALSE)
 	(Menors FALSE)
 	(Nom "Maquina esquena estirar")
-	(Objectiu Manteniment Musculacio))
+	(Objectiu Manteniment Musculacio)
+	(Repeticions_rec 12))
 
 ([Ontologia_Class10001] of  Musculacio
 
-	(Descripcio "Estirarse a sobre dun banc cara amunt i fer un moviment des de avall, cap amunt, com dient \"si\".")
+	(Descripcio "Estirarse a sobre dun banc cara amunt sense recolzar la part superior del tronc i fer un moviment des d'avall, cap amunt, com dient \"si\".")
 	(Grups_musculars coll espatlles)
 	(Majors FALSE)
 	(Menors FALSE)
 	(Nom "Resistencia coll cara amunt")
-	(Objectiu Manteniment Musculacio condicio_fisica_general))
+	(Objectiu Manteniment Musculacio condicio_fisica_general)
+	(Repeticions_rec 8))
 
 ([Ontologia_Class10002] of  Terra_Duracio
 
@@ -135,8 +138,8 @@
 	(Contraindicacions pressio_alta)
 	(Descripcio "Estirat al terra amb les mans cara avall al terra, aixecar les cames rectes i la cintura fins que estiguin perpendiculars al terra i tornar a la posicio")
 	(Grups_musculars abdominals)
-	(Majors TRUE)
-	(Menors TRUE)
+	(Majors FALSE)
+	(Menors FALSE)
 	(Nom "Bottoms up")
 	(Objectiu Musculacio))
 
@@ -198,7 +201,8 @@
 	(Majors FALSE)
 	(Menors FALSE)
 	(Nom "Encongiment de trapezi amb barra o manuelles")
-	(Objectiu Manteniment Musculacio condicio_fisica_general))
+	(Objectiu Manteniment Musculacio condicio_fisica_general)
+	(Repeticions_rec 12))
 
 ([Ontologia_Class20006] of  Musculacio
 
@@ -208,7 +212,8 @@
 	(Majors FALSE)
 	(Menors FALSE)
 	(Nom "Encongiment de trapezi amb maquina")
-	(Objectiu Manteniment Musculacio condicio_fisica_general))
+	(Objectiu Manteniment Musculacio condicio_fisica_general)
+	(Repeticions_rec 12))
 
 ([Ontologia_Class20007] of  Musculacio
 
@@ -218,7 +223,8 @@
 	(Majors FALSE)
 	(Menors FALSE)
 	(Nom "Dominades per a trapezi")
-	(Objectiu Manteniment Musculacio condicio_fisica_general))
+	(Objectiu Manteniment Musculacio condicio_fisica_general)
+	(Repeticions_rec 12))
 
 ([Ontologia_Class20009] of  Musculacio
 
@@ -228,7 +234,8 @@
 	(Majors FALSE)
 	(Menors FALSE)
 	(Nom "Aixecament de pesa amb nansa")
-	(Objectiu Manteniment Musculacio condicio_fisica_general))
+	(Objectiu Manteniment Musculacio condicio_fisica_general)
+	(Repeticions_rec 12))
 
 ([Ontologia_Class20010] of  Musculacio
 
@@ -238,7 +245,8 @@
 	(Majors FALSE)
 	(Menors FALSE)
 	(Nom "Aixecament lateral de manuelles")
-	(Objectiu Manteniment Musculacio condicio_fisica_general))
+	(Objectiu Manteniment Musculacio condicio_fisica_general)
+	(Repeticions_rec 10))
 
 ([Ontologia_Class20011] of  Musculacio
 
@@ -248,7 +256,8 @@
 	(Majors FALSE)
 	(Menors FALSE)
 	(Nom "Aixecament lateral de manuelles sobre banc")
-	(Objectiu Manteniment Musculacio condicio_fisica_general))
+	(Objectiu Manteniment Musculacio condicio_fisica_general)
+	(Repeticions_rec 10))
 
 ([Ontologia_Class20012] of  Musculacio
 
@@ -257,15 +266,16 @@
 	(Majors FALSE)
 	(Menors FALSE)
 	(Nom "Press pes lliure amb manuelles")
-	(Objectiu Manteniment Musculacio condicio_fisica_general))
+	(Objectiu Manteniment Musculacio condicio_fisica_general)
+	(Repeticions_rec 10))
 
 ([Ontologia_Class20014] of  Terra_Repeticions
 
 	(Contraindicacions problemes_esquena)
 	(Descripcio "Posar-se cara avall, tocar el terra nomes amb les puntes dels peus i amb les mans plantades al terra, estirar els bracos, perpendicularment al terra, aixecant el pes del cos.")
 	(Grups_musculars brac Pectoral)
-	(Majors TRUE)
-	(Menors TRUE)
+	(Majors FALSE)
+	(Menors FALSE)
 	(Nom "Flexions")
 	(Objectiu Manteniment condicio_fisica_general Musculacio))
 
@@ -276,7 +286,8 @@
 	(Majors FALSE)
 	(Menors FALSE)
 	(Nom "Maquina de pit press")
-	(Objectiu Manteniment Musculacio))
+	(Objectiu Manteniment Musculacio)
+	(Repeticions_rec 10))
 
 ([Ontologia_Class20016] of  Musculacio
 
@@ -284,7 +295,8 @@
 	(Grups_musculars Pectoral)
 	(Majors FALSE)
 	(Nom "Maquina pit papallona")
-	(Objectiu Manteniment Musculacio condicio_fisica_general))
+	(Objectiu Manteniment Musculacio condicio_fisica_general)
+	(Repeticions_rec 10))
 
 ([Ontologia_Class20017] of  Musculacio
 
@@ -293,7 +305,8 @@
 	(Grups_musculars brac)
 	(Majors FALSE)
 	(Nom "Aixecament manuelles")
-	(Objectiu Musculacio Manteniment))
+	(Objectiu Musculacio Manteniment)
+	(Repeticions_rec 10))
 
 ([Ontologia_Class20018] of  Musculacio
 
@@ -301,7 +314,8 @@
 	(Grups_musculars brac)
 	(Majors FALSE)
 	(Nom "Aixecament manuelles superior")
-	(Objectiu Musculacio Manteniment))
+	(Objectiu Musculacio Manteniment)
+	(Repeticions_rec 10))
 
 ([Ontologia_Class20019] of  Musculacio
 
@@ -310,7 +324,8 @@
 	(Grups_musculars brac)
 	(Majors FALSE)
 	(Nom "Aixecament barra lliure")
-	(Objectiu Musculacio Manteniment))
+	(Objectiu Musculacio Manteniment)
+	(Repeticions_rec 10))
 
 ([Ontologia_Class20021] of  Musculacio
 
@@ -318,7 +333,8 @@
 	(Grups_musculars brac)
 	(Majors FALSE)
 	(Nom "Aixecament maquina biceps")
-	(Objectiu Musculacio Manteniment))
+	(Objectiu Musculacio Manteniment)
+	(Repeticions_rec 10))
 
 ([Ontologia_Class20022] of  Musculacio
 
@@ -326,7 +342,8 @@
 	(Grups_musculars brac)
 	(Majors FALSE)
 	(Nom "Aixecament manuelles assegut")
-	(Objectiu Musculacio Manteniment))
+	(Objectiu Musculacio Manteniment)
+	(Repeticions_rec 10))
 
 ([Ontologia_Class20023] of  Musculacio
 
@@ -334,7 +351,8 @@
 	(Grups_musculars brac)
 	(Majors FALSE)
 	(Nom "Aixecament manuelles variat")
-	(Objectiu Musculacio Manteniment))
+	(Objectiu Musculacio Manteniment)
+	(Repeticions_rec 10))
 
 ([Ontologia_Class20024] of  Musculacio
 
@@ -342,7 +360,8 @@
 	(Grups_musculars avantbrac)
 	(Majors FALSE)
 	(Nom "Aixecament barra avantbrac amunt")
-	(Objectiu Manteniment Musculacio))
+	(Objectiu Manteniment Musculacio)
+	(Repeticions_rec 8))
 
 ([Ontologia_Class20025] of  Musculacio
 
@@ -350,7 +369,8 @@
 	(Grups_musculars avantbrac)
 	(Majors FALSE)
 	(Nom "Aixecament barra avantbrac avall")
-	(Objectiu Manteniment Musculacio))
+	(Objectiu Manteniment Musculacio)
+	(Repeticions_rec 8))
 
 ([Ontologia_Class20026] of  Musculacio
 
@@ -359,7 +379,8 @@
 	(Majors FALSE)
 	(Menors FALSE)
 	(Nom "Aixecament barra amb dits")
-	(Objectiu Manteniment Musculacio))
+	(Objectiu Manteniment Musculacio)
+	(Repeticions_rec 8))
 
 ([Ontologia_Class20027] of  Musculacio
 
@@ -367,7 +388,8 @@
 	(Grups_musculars part_superior_cama)
 	(Majors FALSE)
 	(Nom "Quadricep amb maquina estirat enrere")
-	(Objectiu Manteniment Musculacio condicio_fisica_general))
+	(Objectiu Manteniment Musculacio condicio_fisica_general)
+	(Repeticions_rec 15))
 
 ([Ontologia_Class20028] of  Musculacio
 
@@ -375,7 +397,8 @@
 	(Grups_musculars part_superior_cama)
 	(Majors FALSE)
 	(Nom "Quadricep amb maquina assegut")
-	(Objectiu Manteniment Musculacio condicio_fisica_general))
+	(Objectiu Manteniment Musculacio condicio_fisica_general)
+	(Repeticions_rec 15))
 
 ([Ontologia_Class20029] of  Musculacio
 
@@ -384,7 +407,8 @@
 	(Grups_musculars part_superior_cama)
 	(Majors FALSE)
 	(Nom "Quadricep amb barra a l'esquena")
-	(Objectiu Manteniment Musculacio condicio_fisica_general))
+	(Objectiu Manteniment Musculacio condicio_fisica_general)
+	(Repeticions_rec 15))
 
 ([Ontologia_Class20030] of  Musculacio
 
@@ -393,23 +417,28 @@
 	(Grups_musculars part_superior_cama)
 	(Majors FALSE)
 	(Nom "Quadricep amb barra a l'esquena caminant")
-	(Objectiu Manteniment Musculacio condicio_fisica_general))
+	(Objectiu Manteniment Musculacio condicio_fisica_general)
+	(Repeticions_rec 15))
 
 ([Ontologia_Class20031] of  Musculacio
 
+	(Contraindicacions problemes_esquena obesitat_morbida)
 	(Descripcio "Posant una capsa al terra, impulsar-se sobre la capsa fent un salt cap amunt alternant les cames.")
 	(Grups_musculars part_superior_cama)
 	(Majors FALSE)
 	(Nom "Salts amb capsa")
-	(Objectiu Manteniment Musculacio condicio_fisica_general))
+	(Objectiu Manteniment Musculacio condicio_fisica_general)
+	(Repeticions_rec 15))
 
 ([Ontologia_Class20032] of  Musculacio
 
+	(Contraindicacions problemes_esquena obesitat_morbida)
 	(Descripcio "Saltar amb ambdues cames alhora tant amunt com es pugui i tocant-se el cul amb els talons.")
 	(Grups_musculars part_superior_cama)
 	(Majors FALSE)
 	(Nom "Salts picant cul")
-	(Objectiu Manteniment Musculacio condicio_fisica_general))
+	(Objectiu Manteniment Musculacio condicio_fisica_general)
+	(Repeticions_rec 15))
 
 ([Ontologia_Class20033] of  Musculacio
 
@@ -418,7 +447,8 @@
 	(Grups_musculars part_inferior_cama)
 	(Majors FALSE)
 	(Nom "Bessons amb barra i capsa")
-	(Objectiu Manteniment Musculacio condicio_fisica_general))
+	(Objectiu Manteniment Musculacio condicio_fisica_general)
+	(Repeticions_rec 12))
 
 ([Ontologia_Class20034] of  Musculacio
 
@@ -426,7 +456,8 @@
 	(Grups_musculars part_inferior_cama)
 	(Majors FALSE)
 	(Nom "Bessons amb maquina assegut")
-	(Objectiu Manteniment Musculacio condicio_fisica_general))
+	(Objectiu Manteniment Musculacio condicio_fisica_general)
+	(Repeticions_rec 12))
 
 ([Ontologia_Class20035] of  Musculacio
 
@@ -435,7 +466,8 @@
 	(Grups_musculars part_inferior_cama)
 	(Majors FALSE)
 	(Nom "Bessons amb barra")
-	(Objectiu Manteniment Musculacio condicio_fisica_general))
+	(Objectiu Manteniment Musculacio condicio_fisica_general)
+	(Repeticions_rec 12))
 
 ([Ontologia_Class20037] of  Terra_Repeticions
 
@@ -453,13 +485,14 @@
 	(Grups_musculars glutis)
 	(Majors FALSE)
 	(Nom "Cama enrere amb cable")
-	(Objectiu Manteniment condicio_fisica_general Perdre_pes Musculacio))
+	(Objectiu Manteniment condicio_fisica_general Perdre_pes Musculacio)
+	(Repeticions_rec 12))
 
 ([Ontologia_Class20039] of  Terra_Repeticions
 
 	(Descripcio "Estirar-se al terra cara amunt i aixecar els malucs fent un pont amb el cos.")
 	(Grups_musculars glutis)
-	(Majors TRUE)
+	(Majors FALSE)
 	(Menors FALSE)
 	(Nom "Pont glutis terra")
 	(Objectiu Manteniment Musculacio condicio_fisica_general))
@@ -468,7 +501,7 @@
 
 	(Descripcio "Posar-se de quatre grapes (amb genolls i mans) al terra i aixecar, alternadament, cada cama cap enrere i cap amunt, amb el genoll flexionat.")
 	(Grups_musculars glutis)
-	(Majors TRUE)
+	(Majors FALSE)
 	(Menors FALSE)
 	(Nom "Cama enrere al terra")
 	(Objectiu Manteniment Musculacio condicio_fisica_general))
@@ -497,7 +530,8 @@
 	(Grups_musculars coll espatlles esquena)
 	(Majors FALSE)
 	(Nom "Dominades")
-	(Objectiu Manteniment Musculacio))
+	(Objectiu Manteniment Musculacio)
+	(Repeticions_rec 12))
 
 ([Ontologia_Class30004] of  Musculacio
 
@@ -506,7 +540,8 @@
 	(Grups_musculars coll espatlles esquena)
 	(Majors FALSE)
 	(Nom "Aixecar pes mort")
-	(Objectiu Manteniment Musculacio))
+	(Objectiu Manteniment Musculacio)
+	(Repeticions_rec 12))
 
 ([Ontologia_Class30005] of  Musculacio
 
@@ -515,7 +550,8 @@
 	(Grups_musculars coll espatlles esquena)
 	(Majors FALSE)
 	(Nom "Inclinacio en banc")
-	(Objectiu Manteniment Musculacio))
+	(Objectiu Manteniment Musculacio)
+	(Repeticions_rec 12))
 
 ([Ontologia_Class40003] of  Terra_Duracio
 
