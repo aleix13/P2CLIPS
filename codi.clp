@@ -2039,7 +2039,7 @@
 					(send ?client_actual put-Problemes_esquena ?esq)
 
 					(bind ?art (readline jocs))
-					(printout t "Problemes esquena " ?art crlf)
+					(printout t "Problemes articulars " ?art crlf)
 				  (if (eq ?art "si") then (bind ?art TRUE) (assert (p_art)) else (bind ?art FALSE) )
 					(send ?client_actual put-Problemes_articulars ?art)
 
