@@ -1,8 +1,6 @@
 ;--------------------------------CLASSES-----------------------------------------------------------
 
 
-
-
 (defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
 	(is-a USER)
 	(role abstract)
@@ -1590,7 +1588,7 @@
 (defmessage-handler Assignacio_exercici_terra_Duracio printaDur primary()
 	(send ?self:Exercici_Assignat printaEx)
 	(printout t "                - Series: " ?self:Series  crlf)
-	(printout t "                - Durada: " ?self:Durada "minuts per serie." crlf)
+	(printout t "                - Durada: " ?self:Durada "segons per serie." crlf)
 )
 
 (defmessage-handler Exercicis_terra_repeticions printaRep primary()
@@ -4599,6 +4597,7 @@
 
 (defrule imprimeix-justificacions
 	(imprimeix-dia5)
+	(malalties (pesq ?pesq) (part ?part) (pcardio ?pcar) (palta ?palta))
 	(forma_Fisica (valors ?ff))
 	(nivell_Massa (valors ?nm))
 	(objectiu (valors $?obj))
@@ -4704,4 +4703,14 @@
 			mesos per a persones grans degut a la seva dificultat." crlf)
 		)
 	)
+	(printout t crlf)
+	(if (eq ?pesq SI) then  (printout t "            -> Hem detectat que tens problemes d'esquena,
+	per tant, no podras exercitarte amb exercicis contraindicats per aquest tipus de problemes."crlf))
+	(if (eq ?part SI) then  (printout t "            -> Hem detectat que tens problemes articulars. T'hem reduit la intensitat dels
+	exercicis en general."crlf))
+	(if (eq ?pcar SI) then  (printout t "            -> Hem detectat que tens problemes cardiorespiratoris,
+	per tant, no podras exercitarte amb exercicis contraindicats per aquest tipus de problemes."crlf))
+	(if (eq ?palta SI) then  (printout t "            -> Hem detectat que tens la pressio arterial elevada.
+	T'hem reduit la intensitat dels
+	exercicis en general."crlf))
 )
