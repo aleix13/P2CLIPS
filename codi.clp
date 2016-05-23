@@ -1883,6 +1883,7 @@
 							(printout t "				4: [11-15]" crlf)
 							(printout t "				5: mes de 15" crlf)
 
+            
 							(bind ?f (read jocs))
 							(if (eq ?f no) then (bind ?nc 0) (printout t "fumar: no" crlf)
 							else (printout t "fumar: si" crlf)

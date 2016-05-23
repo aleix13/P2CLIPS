@@ -1,62 +1,57 @@
-(clear)
-(load codi.clp)
-(reset)
-(watch facts)
-(run)
-l5:  Nom   ;nom
-l6:  20    ;Edat
-l7:  190   ;Alçada
-l8:  90    ;pes
-l9:  120   ;temps
-l10: Manteniment Musculacio    ;objectius
-l11: 60    ;minima
-l12: 90    ;maxima
-l13: 1     ;desplacaments opcions:
+﻿l1:  Nom   ;nom
+l2:  20    ;Edat
+l3:  190   ;Alçada
+l4:  90    ;pes
+l5:  120   ;temps disponible
+l6: Manteniment Musculacio    ;objectius
+l7: 60    ;minima
+l8: 90    ;maxima
+l9: 1     ;hores setmanals desplaçaments opcions:
           ;1: [0-2]
           ;2: [3-5]
           ;3: mes de 5
-l14: 1     ;domestiques opcions:
+l10: 1    ;hores diàries domèstiques opcions:
           ;1: [0-1]
           ;2: [2-3]
           ;3: mes de 3
 
-l15: 1     ;esport opcions:
+l11: 1    ;hores setmanals esport opcions:
           ;1: [0-1]
           ;2: [2-4]
           ;3: [5-8]
           ;4: mes de 8
 
-l16: 1     ;feina opcions:
+l12: 1    ;hores diaries feina opcions:
           ;1: [0-1]
           ;2: [2-4]
           ;3: [5-8]
           ;4: mes de 8
-l17: 1     ;sedentarisme:
+l13: 1    ;hores diaries sedentarisme:
           ;1: [0-1]
           ;2: [2-4]
           ;3: [5-8]
           ;4: mes de 8
 
 
-l18:no    ;sal
+l14:no    ;sal
 
-l19:1     ;fruita dia
+l15:1     ;fruita dia
           ;1: 0 peces
           ;2: 1 peca
           ;3: 2 peces
           ;4: mes de 3 peces
 
-l20:no    ;picar hores
+l16:no    ;picar hores
 
-l21:  1   ;copes alcohol
+l17:  1   ;copes alcohol setmana
           ;1: [0-2]
           ;2: [3-5]
           ;3: [6-10]
           ;4: [11-15]
           ;5: mes de 15
 
-l22:   si  ;fumar
-l23:   1  ;cigarros:
+l18:   si  ;fumar
+l19:   1  ;cigarros:
       ;1: [1-5]
       ;2: [6-10]
       ;3: [11-20]
@@ -65,5 +60,3 @@ l23:   1  ;cigarros:
 l24:  si    ;esquena
 l25:  si    ;articualrs
 l26:  si    ;cardiorespiratoris
-l27:  si    ;musculoesqueletics
-l28:  cama abdominals   ;parts
