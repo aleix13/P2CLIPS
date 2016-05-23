@@ -1575,7 +1575,7 @@
 	(send ?self:Exercici_Assignat printaEx)
 	(printout t "                - Resistencia: " ?self:Resistencia "% de la capacitat total de la maquina." crlf)
   (printout t "                - Velocitat: " ?self:Velocitat "% de la capacitat total de la maquina." crlf)
-	(printout t "                - Durada: " ?self:Durada "minuts." crlf)
+	(printout t "                - Durada: " ?self:Durada " minuts." crlf)
 )
 
 (defmessage-handler Assignacio_Exercici_Musculacio printaMusc primary()
@@ -3533,7 +3533,7 @@
 			else
 			(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_cinta))
 			(send ?assignacio put-Exercici_Assignat ?ex)
-			(send ?assignacio put-Durada ?te)
+			(send ?assignacio put-Durada ?tc)
 			(switch ?int
 				(case MOLT_BAIXA then
 					(send ?assignacio put-Resistencia 25)
@@ -3949,7 +3949,7 @@
 			else
 			(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_cinta))
 			(send ?assignacio put-Exercici_Assignat ?ex)
-			(send ?assignacio put-Durada ?te)
+			(send ?assignacio put-Durada ?tc)
 			(switch ?int
 				(case MOLT_BAIXA then
 					(send ?assignacio put-Resistencia 25)
@@ -4157,7 +4157,7 @@
 			else
 			(bind ?assignacio (make-instance (gensym) of Assignacio_exercici_cinta))
 			(send ?assignacio put-Exercici_Assignat ?ex)
-			(send ?assignacio put-Durada ?te)
+			(send ?assignacio put-Durada ?tc)
 			(switch ?int
 				(case MOLT_BAIXA then
 					(send ?assignacio put-Resistencia 25)
