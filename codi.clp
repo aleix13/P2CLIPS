@@ -1937,6 +1937,7 @@
 	 (modify ?d3 (imp_Musculacio ALTA)(elas_Final SI) (grups_musc_prio Part_inferior_cama Part_superior_cama Esquena))
 	 (modify ?d4 (imp_Musculacio ALTA)(cardio_Final SI) (grups_musc_prio Coll Abdominals Espatlles))
 	 (modify ?d5 (imp_Musculacio ALTA)(elas_Final SI) (grups_musc_prio Pectoral Brac Avantbrac Glutis))
+	 (assert (impOK))
 	)
 
 	(defrule defMant
@@ -1952,6 +1953,7 @@
 		 (modify ?d3 (imp_Musculacio NORMAL) (imp_Cardio NORMAL)(cardio_Final SI) (grups_musc_prio Part_inferior_cama Part_superior_cama Esquena))
 		 (modify ?d4 (imp_Musculacio POC) (imp_Cardio NORMAL)(elas_Final SI) (grups_musc_prio Coll Abdominals Espatlles))
 		 (modify ?d5 (imp_Musculacio NORMAL) (imp_Cardio NORMAL)(elas_Final SI) (grups_musc_prio Pectoral Brac Avantbrac Glutis))
+		 (assert (impOK))
 		)
 
 		(defrule defCondF
@@ -1967,6 +1969,7 @@
 			(modify ?d3 (imp_Musculacio NORMAL) (imp_Cardio NORMAL)(cardio_Final SI) (grups_musc_prio Part_inferior_cama Part_superior_cama Esquena))
 			(modify ?d4 (imp_Musculacio POC) (imp_Cardio NORMAL)(elas_Final SI) (grups_musc_prio Coll Abdominals Espatlles))
 			(modify ?d5 (imp_Musculacio NORMAL) (imp_Cardio NORMAL)(elas_Final SI) (grups_musc_prio Pectoral Brac Avantbrac Glutis))
+			(assert (impOK))
 			)
 
 			(defrule defPerdrePes
@@ -1982,6 +1985,7 @@
 				 (modify ?d3 (imp_Musculacio NUL) (imp_Cardio ALTA)(elas_Final SI))
 				 (modify ?d4 (imp_Musculacio NUL) (imp_Cardio ALTA)(elas_Final SI))
 				 (modify ?d5 (imp_Musculacio NUL) (imp_Cardio ALTA)(elas_Final SI))
+				 (assert (impOK))
 				)
 
 					(defrule defElasticitat
@@ -1997,6 +2001,7 @@
 							 (modify ?d3 (imp_Elas ALTA)(cardio_Final SI) (grups_musc_prio Part_inferior_cama Part_superior_cama Esquena))
 							 (modify ?d4 (imp_Elas ALTA)(cardio_Final SI) (grups_musc_prio Coll Abdominals Espatlles))
 							 (modify ?d5 (imp_Elas ALTA)(cardio_Final SI)  (grups_musc_prio Pectoral Brac Avantbrac Glutis))
+							 (assert (impOK))
 							)
 
 				(defrule defPC
@@ -2012,7 +2017,9 @@
 					 (modify ?d3 (imp_Musculacio POC) (imp_Cardio ALTA)(elas_Final SI) (grups_musc_prio Part_inferior_cama Part_superior_cama Esquena))
 					 (modify ?d4 (imp_Musculacio POC) (imp_Cardio ALTA)(elas_Final SI) (grups_musc_prio Coll Abdominals Espatlles))
 					 (modify ?d5 (imp_Musculacio NORMAL) (imp_Cardio NORMAL)(elas_Final SI) (grups_musc_prio Pectoral Brac Avantbrac Glutis))
+					 (assert (impOK))
 					)
+
 					(defrule defMC
 						(objectiu (valors Musculacio condicio_fisica_general))
 						?d1 <- (dia (numDia 1)(imp_Musculacio NUL)(imp_Cardio NUL))
@@ -2026,6 +2033,7 @@
 						 (modify ?d3 (imp_Musculacio ALTA) (imp_Cardio POC)(cardio_Final SI) (grups_musc_prio Part_inferior_cama Part_superior_cama Esquena))
 						 (modify ?d4 (imp_Musculacio NORMAL) (imp_Cardio NORMAL)(elas_Final SI)  (grups_musc_prio Coll Abdominals Espatlles))
 						 (modify ?d5 (imp_Musculacio ALTA) (imp_Cardio POC)(cardio_Final SI) (grups_musc_prio Pectoral Brac Avantbrac Glutis))
+             (assert (impOK))
 						)
 
 						(defrule defMP
@@ -2041,6 +2049,7 @@
 							 (modify ?d3 (imp_Musculacio NORMAL) (imp_Cardio NORMAL)(elas_Final SI) (grups_musc_prio Part_inferior_cama Part_superior_cama Esquena))
 							 (modify ?d4 (imp_Musculacio POC) (imp_Cardio ALTA)(elas_Final SI)  (grups_musc_prio Coll Abdominals Espatlles))
 							 (modify ?d5 (imp_Musculacio NUL) (imp_Cardio ALTA)(elas_Final SI) (grups_musc_prio Pectoral Brac Avantbrac Glutis))
+							 (assert (impOK))
 							)
 
 							(defrule defFP
@@ -2056,6 +2065,7 @@
 								 (modify ?d3 (imp_Cardio ALTA) (imp_Elas NORMAL) (elas_Final SI) (grups_musc_prio Part_inferior_cama Part_superior_cama Esquena))
 								 (modify ?d4 (imp_Cardio NORMAL) (imp_Elas ALTA) (cardio_Final SI) (grups_musc_prio Coll Abdominals Espatlles))
 								 (modify ?d5 (imp_Cardio ALTA) (imp_Elas NORMAL) (elas_Final SI) (grups_musc_prio Pectoral Brac Avantbrac Glutis))
+								 (assert (impOK))
 								)
 
 								(defrule defFC
@@ -2071,15 +2081,8 @@
 									 (modify ?d3 (imp_Musculacio ALTA) (imp_Cardio POC) (imp_Elas NORMAL)  (cardio_Final SI) (grups_musc_prio Part_inferior_cama Part_superior_cama Esquena))
 									 (modify ?d4 (imp_Musculacio NORMAL) (imp_Cardio NORMAL) (imp_Elas NORMAL) (elas_Final SI) (grups_musc_prio Coll Abdominals Espatlles) )
 									 (modify ?d5 (imp_Musculacio POC) (imp_Cardio ALTA) (imp_Elas NORMAL) (elas_Final SI) (grups_musc_prio Pectoral Brac Avantbrac Glutis))
+									 (assert (impOK))
 									)
-
-
-
-
-
-
-
-
 
 
 
@@ -2348,6 +2351,7 @@
 
 	(defrule salta-elimina
 		(int_art)
+		(impOK)
 		=>
 		(focus ELIMINA-INST)
 	)
@@ -2442,7 +2446,7 @@
 
 ;---------------------------SOLUCIO CONCRETA------------------------------
 
-(defmodule SOL_CONCR (import MAIN ?ALL) (export ?ALL))
+(defmodule SOL_CONCR (import MAIN ?ALL) (import PREGUNTES ?ALL)(import ABSTRACCIO ?ALL) (import SOL_ABSTR ?ALL)(export ?ALL))
 
 (defrule inicialitza-assignacions
 	(not (assignacio-dia))
@@ -3243,7 +3247,7 @@
 							(send ?assignacio put-Resistencia 90)
 						)
 					)
-	        (bind ?assprin (insert$ ?assprin (+ (length$ ?af) 1) ?assignacio))
+	        (bind ?assprin (insert$ ?assprin (+ (length$ ?assprin) 1) ?assignacio))
 			else
 			(bind ?assignacio (make-instance assig-cinta of Assignacio_exercici_cinta))
 			(send ?assignacio put-Exercici_Assignat ?ex)
@@ -3270,7 +3274,7 @@
 					(send ?assignacio put-Velocitat 80)
 				)
 			)
-			(bind ?assprin (insert$ ?assprin (+ (length$ ?af) 1) ?assignacio))
+			(bind ?assprin (insert$ ?assprin (+ (length$ ?assprin) 1) ?assignacio))
      )
 		)
 
