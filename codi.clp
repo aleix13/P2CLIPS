@@ -4619,7 +4619,7 @@
 			(case Manteniment then
 				(printout t "              -> Un dels teus objectius es manteniment,
 				per tant, faras exercicis relacionats amb musculacio amb una importancia normal/alta
-				i uns quants exercicis de cardio. Faras estiraments a la part principal per relaxar la musculacio. " crlf)
+				i uns quants exercicis de cardio. Faras estiraments a la part final per relaxar la musculacio. " crlf)
 			)
 			(case Musculacio then
 				(printout t "              -> Un dels teus objectius es Musculacio,
