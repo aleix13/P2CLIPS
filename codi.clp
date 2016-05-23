@@ -669,7 +669,6 @@
 
 (definstances instancies
 
-
 	([Ontologia_Class0] of  Musculacio
 
 		(Descripcio "Estirarse cara avall a sobre d'un banc i, amb una pesa o sense al clatell, fer un moviment amb el coll d'amunt cap avall.")
@@ -722,7 +721,6 @@
 
 	([Ontologia_Class10003] of  Cinta
 
-		(Contraindicacions pressio_alta)
 		(Descripcio "Maquina que s'usa per correr on es pot graduar la velocitat i el pendent de la marxa.")
 		(Grups_musculars abdominals glutis part_superior_cama part_inferior_cama)
 		(Majors TRUE)
@@ -1399,6 +1397,7 @@
 		(Menors FALSE)
 		(Nom "Estirament de lumbars 2")
 		(Objectiu Elasticitat))
+
 
 )
 ;--------------------------------INSTANCIES-----------------------------------------------------------
@@ -2239,11 +2238,11 @@
 
 					(defrule defElasticitat
 							(objectiu (valors Elasticitat))
-							?d1 <- (dia (numDia 1)(imp_Musculacio NUL)(imp_Cardio NUL))
-							?d2 <- (dia (numDia 2)(imp_Musculacio NUL)(imp_Cardio NUL))
-							?d3 <- (dia (numDia 3)(imp_Musculacio NUL)(imp_Cardio NUL))
-							?d4 <- (dia (numDia 4)(imp_Musculacio NUL)(imp_Cardio NUL))
-							?d5 <- (dia (numDia 5)(imp_Musculacio NUL)(imp_Cardio NUL))
+							?d1 <- (dia (numDia 1)(imp_Elas NUL)(imp_Cardio NUL))
+							?d2 <- (dia (numDia 2)(imp_Elas NUL)(imp_Cardio NUL))
+							?d3 <- (dia (numDia 3)(imp_Elas NUL)(imp_Cardio NUL))
+							?d4 <- (dia (numDia 4)(imp_Elas NUL)(imp_Cardio NUL))
+							?d5 <- (dia (numDia 5)(imp_Elas NUL)(imp_Cardio NUL))
 							=>
 							 (modify ?d1 (imp_Elas ALTA)(cardio_Final SI) (grups_musc_prio Pectoral Brac Avantbrac))
 							 (modify ?d2 (imp_Elas ALTA)(cardio_Final SI) (grups_musc_prio Espatlles Abdominals))
@@ -2337,7 +2336,12 @@
 
 ;-----------REGLES MALALTIES--------------------------------------
 
-
+(defrule nedat
+	(calcul-edat)
+	(edatP (valors ADULT ))
+	=>
+	(assert (edatTOins))
+)
 (defrule put-edat
 	(calcul-edat)
 	(edatP (valors ?v))
@@ -2349,6 +2353,11 @@
 	(assert (edatTOins))
 )
 
+(defrule n5
+	(not (esqTOins))
+	=>
+	(assert (esqTOins))
+)
 	(defrule put-pesq
 		(p_esq)
 		?mal <- (malalties (pesq NO))
@@ -2362,7 +2371,6 @@
 		=>
 		(assert (artTOins))
 	)
-
   (defrule put-part
 		(malaltiesOK)
 		(p_art)
@@ -2371,6 +2379,7 @@
 			(modify ?mal (part SI))
 			(assert (artTOins))
 		)
+
 		(defrule n3
 			(not (p_cardio))
 			=>
@@ -2385,7 +2394,11 @@
 		(modify ?mal (pcardio SI))
 		(assert (cardioTOins))
 		)
-
+		(defrule n9
+			(not (pressio (valors HIPER)))
+			=>
+			(assert (paTOins))
+		)
 		(defrule put-pressio-alta
 			(pressio (valors HIPER))
 			 ?mal <-(malalties (palta NO))
@@ -2394,7 +2407,11 @@
 				(assert (paTOins))
 			)
 
-
+(defrule n4
+	(not (obes_morbid))
+	=>
+	(assert (obesTOins))
+)
 		(defrule put-obes-morbid
 				(obes_morbid)
 				?mal <-(malalties(obes-morbid NO))
@@ -2406,6 +2423,10 @@
 (defrule intensitatFormaFisica
 	(cardioTOins)
 	(artTOins)
+	(obesTOins)
+	(edatTOins)
+	(esqTOins)
+	(paTOins)
 	?f <- (forma_Fisica (valors ?v))
 	?d1 <- (dia (numDia 1)(int_Entrenament NUL))
 	?d2 <- (dia (numDia 2)(int_Entrenament NUL))
@@ -2617,6 +2638,8 @@
 	(edat (es-menor SI))
 	(not (cm))
 	=>
+	(printout t "Hem detectat que ets menor d'edat, s'eliminaran els exercicis no permesos." crlf)
+	(printout t "Eliminant instancies....")
 	(bind ?list (find-all-instances ((?inst Exercici)) (eq ?inst:Menors TRUE)))
 	(loop-for-count (?i 1 (length$ ?list)) do
 		(bind ?aux (nth$ ?i ?list))
@@ -2629,6 +2652,8 @@
 	(edat (es-ancia SI))
 	(not (ca))
 	=>
+	(printout t "Hem detectat que ets una persona de tercera edat, s'eliminaran els exercicis no permesos." crlf)
+	(printout t "Eliminant instancies....")
 	(bind ?list (find-all-instances ((?inst Exercici)) (eq ?inst:Majors TRUE)))
 	(loop-for-count (?i 1 (length$ ?list)) do
 		(bind ?aux (nth$ ?i ?list))
@@ -2641,6 +2666,8 @@
 	(malalties (palta SI))
 	(not (cpa))
 	=>
+	(printout t "Hem detectat que tens la pressio alta, s'eliminaran els exercicis no permesos." crlf)
+	(printout t "Eliminant instancies....")
 	(bind ?list (find-all-instances ((?inst Exercici)) TRUE))
 	(loop-for-count (?i 1 (length$ ?list)) do
 		(bind ?aux (nth$ ?i ?list))
@@ -2654,6 +2681,8 @@
 	(malalties (pesq SI))
 	(not (cpe))
 	=>
+	(printout t "Hem detectat que tens problemes d'esquena, s'eliminaran els exercicis no permesos." crlf)
+	(printout t "Eliminant instancies....")
 	(bind ?list (find-all-instances ((?inst Exercici)) TRUE))
 	(loop-for-count (?i 1 (length$ ?list)) do
 		(bind ?aux (nth$ ?i ?list))
@@ -2667,6 +2696,9 @@
 	(malalties (obes-morbid SI))
 	(not (obm))
 	=>
+	(printout t "Hem detectat que pateixes d'obesitat morbida
+	, s'eliminaran els exercicis no permesos." crlf)
+	(printout t "Eliminant instancies....")
 	(bind ?list (find-all-instances ((?inst Exercici)) TRUE))
 	(loop-for-count (?i 1 (length$ ?list)) do
 		(bind ?aux (nth$ ?i ?list))
@@ -2680,12 +2712,13 @@
 	(declare (salience 10))
 	?elimina-fact <- (elimina-inst ?inst)
 	=>
+	(printout t "Instancia eliminada:  " ?inst crlf)
 	(send ?inst delete)
 	(retract ?elimina-fact)
 )
 
 (defrule salta-sol-concr
-	(declare (salience -1000))
+	(declare (salience -10000))
 	(not (elimina-inst))
 	=>
 	(focus SOL_CONCR)
@@ -4576,8 +4609,8 @@
 	(printout t "------------------------------>  JUSTIFICACIONS: <--------------------------------------------" crlf)
 	(printout t crlf)
 
-	(printout t "              Objectiu/s: " (nth$ 1 ?obj))
-
+	(printout t "              -Objectiu/s: " (nth$ 1 ?obj))
+	(printout t crlf)
 	(loop-for-count (?i 2 (length$ ?obj)) do
 	(printout t " , " (nth$ ?i ?obj) )
 	)
@@ -4639,8 +4672,8 @@
 		)
 	)
 	(printout t crlf)
-	(printout t "              Estat fisic: " ?nm crlf)
-	(switch ?ff
+	(printout t "              -Estat fisic: " ?nm crlf)
+	(switch ?nm
 		(case Insuf then
 			(printout t "              -> Tens un nivell de massa per sota del normal,
 			t'hem limitat la intensitat als exercicis." crlf)
